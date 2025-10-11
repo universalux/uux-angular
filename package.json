@@ -2,6 +2,8 @@
   "name": "uux-angular",
   "version": "0.0.0",
   "scripts": {
+    "prepare": "husky install",
+    "test:husky": "ng test --watch=false",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

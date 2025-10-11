@@ -1,0 +1,11 @@
+# Detect if a branch is being deleted
+while read local_ref local_sha remote_ref remote_sha; do
+  if [ "$local_sha" = "0000000000000000000000000000000000000000" ]; then
+    echo "Skipping tests — branch deletion detected."
+    exit 0
+  fi
+done
+
+# Run tests on normal pushes
+echo "🧪 Running tests before push..."
+npm run test:husky || exit 1

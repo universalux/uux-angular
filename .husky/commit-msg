@@ -1,0 +1,22 @@
+COMMIT_MSG=$(cat "$1")
+echo "$COMMIT_MSG"
+
+# Check if the commit message follows the defined structure
+if ! echo "$COMMIT_MSG" | grep -qE "^(feat|fix|docs|style|refactor|test|chore|perf|build|ci|revert): .+"; then
+  echo "Commit Error: Invalid commit message format."
+  echo "Use lowercase, include the type, a colon, a space, and a short description."
+  echo "Types allowed: feat, fix, docs, style, refactor, test, chore, perf, build, ci, revert."
+  exit 1
+fi
+
+# Check if the message ends with an issue number
+if ! echo "$COMMIT_MSG" | grep -qE " #([0-9]+)$"; then
+  echo "Commit message should end with an issue number (e.g., #123)."
+  exit 1
+fi
+
+# Prevent commits to the main branch
+if [ "$(git rev-parse --abbrev-ref HEAD)" = "main" ]; then
+  echo "Commit Error: Commits to the main branch are not allowed."
+  exit 1
+fi
