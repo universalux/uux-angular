@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NgMenuButton } from './ng-menu-button';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('NgMenuButton', () => {
   let component: NgMenuButton;
@@ -8,7 +9,8 @@ describe('NgMenuButton', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgMenuButton]
+      imports: [NgMenuButton],
+      providers: [provideZonelessChangeDetection()]
     })
     .compileComponents();
 
