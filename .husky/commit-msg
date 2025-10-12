@@ -20,3 +20,5 @@ if [ "$(git rev-parse --abbrev-ref HEAD)" = "main" ]; then
   echo "Commit Error: Commits to the main branch are not allowed."
   exit 1
 fi
+
+echo "husky > commit-msg passed"

@@ -95,3 +95,4 @@ ng generate component playgrounds/pg-component-name --project=demo-app --skip-pr
 ```bash
 ng build component-name --watch
 ```
+.
