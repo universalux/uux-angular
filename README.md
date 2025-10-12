@@ -1,59 +1,78 @@
-# 
+# UUX Angular Dev Repository
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.1.
+## Project Description
+This is the angular workspace respository for the **UUX component library** for Angular.
+Here you can develop components, execute manual tests on his own playground in demo-app and export them to npm.
 
-## Development server
-
-To start a local development server, run:
-
+## Installation
+### 1. Clone the repository:
 ```bash
-ng serve
+git clone https://github.com/your-org/uux-angular.git
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+### 2. Navigate to the project folder:
 ```bash
-ng generate component component-name
+cd uux-angular
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+### 3. Install dependencies:
 ```bash
-ng generate --help
+npm install
 ```
 
-## Building
-
-To build the project run:
-
+### 4. Make sure you are on the main branch and your local copy is up to date:
 ```bash
-ng build
+git checkout main
+git pull origin main
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Workflow: Creating a New Branch
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
+### 1. Assign yourself to an existing issue you want to work on.
+### 2. Always start from the latest main branch:
 ```bash
-ng test
+git checkout main
+git pull origin main
+```
+### 3. Create a new branch using the issue number and a short description. GitHub allows you to do this directly from the issue page:
+- Click “Create branch” on the issue page.
+- GitHub will automatically create a branch with the format:
+```bash
+<issue-number>-<issue-title>
+```
+- Spaces are replaced by dashes (-), and special characters are sanitized.
+Example:
+```bash
+git checkout -b 12-add-menu-toggler-component
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
+### 4. Make your changes, commit following the Husky commit rules, and push the branch when ready for a pull request:
 ```bash
-ng e2e
+git add .
+git commit -m "feat: add menu toggler component #12"
+git push -u origin 12-add-menu-toggler-component
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Notes:
 
-## Additional Resources
+* All commits must follow the commit message format enforced by Husky:
+```ts
+<type>: <issue-description> #<issue-number>
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+| Type     | Type Description                                    |
+| -------- | --------------------------------------------------- |
+| feat     | A new feature for the project                       |
+| fix      | A bug fix                                           |
+| docs     | Documentation changes only                          |
+| style    | Code style or formatting changes (no logic changes) |
+| refactor | Code refactoring without changing functionality     |
+| test     | Adding or updating tests                            |
+| chore    | Routine tasks and maintenance                       |
+| perf     | Performance improvements                            |
+| build    | Changes affecting build system or dependencies      |
+| ci       | Continuous Integration configuration changes        |
+| revert   | Revert previous commits                             |
+
+
+* Pushes will run automated tests via Husky. Branch deletion skips the tests automatically.
