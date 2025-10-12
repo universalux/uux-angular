@@ -1,18 +1,17 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import 'zone.js';
-import 'zone.js/testing';
-
 import { NgMenuButton } from './ng-menu-button';
 
+
 describe('NgMenuButton', () => {
-  let component: NgMenuButton;
   let fixture: ComponentFixture<NgMenuButton>;
+  let component: NgMenuButton;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgMenuButton]
-    })
-    .compileComponents();
+      imports: [NgMenuButton],
+      providers: [provideZonelessChangeDetection()]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NgMenuButton);
     component = fixture.componentInstance;

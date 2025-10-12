@@ -2,7 +2,7 @@
   "name": "uux-angular",
   "version": "0.0.0",
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky init",
     "test:husky": "ng test --watch=false --browsers=ChromeHeadless",
     "ng": "ng",
     "start": "ng serve",
@@ -36,6 +36,7 @@
     "@angular/cli": "^20.1.1",
     "@angular/compiler-cli": "^20.1.0",
     "@types/jasmine": "~5.1.0",
+    "husky": "^9.1.7",
     "jasmine-core": "~5.8.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -43,7 +44,6 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^20.3.0",
-    "typescript": "~5.8.2",
-    "zone.js": "^0.15.1"
+    "typescript": "~5.8.2"
   }
 }

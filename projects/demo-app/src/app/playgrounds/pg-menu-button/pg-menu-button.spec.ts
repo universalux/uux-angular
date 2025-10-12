@@ -1,5 +1,5 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PgMenuButton } from './pg-menu-button';
 
 describe('PgMenuButton', () => {
@@ -8,7 +8,8 @@ describe('PgMenuButton', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PgMenuButton]
+      imports: [PgMenuButton],
+      providers: [provideZonelessChangeDetection()]
     })
     .compileComponents();
 
