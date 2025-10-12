@@ -2,7 +2,7 @@
   "name": "uux-angular",
   "version": "0.0.0",
   "scripts": {
-    "prepare": "husky init",
+    "prepare": "husky",
     "test:husky": "ng test --watch=false --browsers=ChromeHeadless",
     "ng": "ng",
     "start": "ng serve",
