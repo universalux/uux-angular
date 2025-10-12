@@ -9,6 +9,9 @@
     "paths": {
       "menu-button": [
         "./dist/menu-button"
+      ],
+      "ng-menu-button": [
+        "./dist/ng-menu-button"
       ]
     },
     "noImplicitReturns": true,
@@ -40,6 +43,12 @@
     },
     {
       "path": "./projects/menu-button/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ng-menu-button/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-menu-button/tsconfig.spec.json"
     }
   ]
 }

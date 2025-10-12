@@ -87,20 +87,20 @@
         }
       }
     },
-    "menu-button": {
+    "ng-menu-button": {
       "projectType": "library",
-      "root": "projects/menu-button",
-      "sourceRoot": "projects/menu-button/src",
+      "root": "projects/ng-menu-button",
+      "sourceRoot": "projects/ng-menu-button/src",
       "prefix": "uux",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
           "configurations": {
             "production": {
-              "tsConfig": "projects/menu-button/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ng-menu-button/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/menu-button/tsconfig.lib.json"
+              "tsConfig": "projects/ng-menu-button/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -108,7 +108,7 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "tsConfig": "projects/menu-button/tsconfig.spec.json"
+            "tsConfig": "projects/ng-menu-button/tsconfig.spec.json"
           }
         }
       }
