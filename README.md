@@ -76,3 +76,22 @@ git push -u origin 12-add-menu-toggler-component
 
 
 * Pushes will run automated tests via Husky. Branch deletion skips the tests automatically.
+
+## Util commands:
+
+### 1. Generate a new lib for developing a component:
+
+```bash
+ng generate library component-name
+```
+
+### 2. Generate a new playground component in demo-app:
+
+```bash
+ng generate component playgrounds/pg-component-name --project=demo-app --skip-prefix
+```
+
+### 3. Build the component in "watch" mode to work on it
+```bash
+ng build component-name --watch
+```
