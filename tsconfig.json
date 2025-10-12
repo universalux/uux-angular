@@ -6,6 +6,11 @@
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
+    "paths": {
+      "menu-button": [
+        "./dist/menu-button"
+      ]
+    },
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
@@ -29,6 +34,12 @@
     },
     {
       "path": "./projects/demo-app/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/menu-button/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/menu-button/tsconfig.spec.json"
     }
   ]
 }

@@ -86,6 +86,37 @@
           }
         }
       }
+    },
+    "menu-button": {
+      "projectType": "library",
+      "root": "projects/menu-button",
+      "sourceRoot": "projects/menu-button/src",
+      "prefix": "uux",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/menu-button/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/menu-button/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/menu-button/tsconfig.spec.json"
+          }
+        }
+      }
+    }
+  },
+  "schematics": {
+    "@schematics/angular:library": {
+      "prefix": "uux"
     }
   }
 }
