@@ -1,0 +1,220 @@
+:host {
+  --menu-button-color: black;
+  --menu-button-size: 40px;
+
+  height: var(--menu-button-size);
+  aspect-ratio: 1 / 1;
+  display: block;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// ---------- BUTTON ---------- //
+
+.ngxMenuToggler__button {
+  // BUTTON STYLES
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+
+  // CONTAINER STYLES
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  position: relative;
+
+  transition: transform 0.3s ease-in-out;
+}
+
+.ngxMenuToggler__button.invert {
+  align-items: flex-end;
+}
+
+.ngxMenuToggler__button.rounded {
+  border-radius: 0.2rem;
+}
+
+.ngxMenuToggler__button:focus-visible {
+  outline: 2px solid var(--menu-button-color);
+  outline-offset: 2px;
+}
+
+.ngxMenuToggler__button.isOpen.rotateX {
+  transform: rotate(180deg);
+}
+
+.ngxMenuToggler__button.isOpen.rotateX.faster {
+  transform: rotate(360deg);
+}
+
+.ngxMenuToggler__button.isOpen.rotateY {
+  transform: rotateY(180deg);
+}
+
+.ngxMenuToggler__button.isOpen.rotateY.faster {
+  transform: rotateY(360deg);
+}
+
+// ---------- BARS ---------- //
+
+.ngxMenuToggler__bar {
+  display: block;
+  background-color: var(--menu-button-color);
+  width: 100%;
+  height: 15%;
+}
+
+.ngxMenuToggler__bar.thin {
+  height: 9%;
+}
+
+.ngxMenuToggler__bar.dots {
+  transform: scale(1.2);
+}
+
+.ngxMenuToggler__bar.rounded.dots {
+  border-radius: 50%;
+}
+
+.ngxMenuToggler__bar.rounded {
+  border-radius: 0.3rem;
+}
+
+.ngxMenuToggler__bar--1.dots,
+.ngxMenuToggler__bar--3.dots {
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+  width: 15%;
+  left: calc(50% - 7.5%);
+  align-self: center;
+}
+
+.ngxMenuToggler__bar--1.dots.thin,
+.ngxMenuToggler__bar--3.dots.thin {
+  width: 9%;
+}
+
+.ngxMenuToggler__bar--3.uneven {
+  width: 33%;
+}
+
+.ngxMenuToggler__bar--4.uneven,
+.ngxMenuToggler__bar--5.uneven {
+  width: 66%;
+}
+
+.ngxMenuToggler__bar--4.uneven.invert,
+.ngxMenuToggler__bar--5.uneven.invert {
+  left: 34%;
+}
+
+.ngxMenuToggler__bar--4.uneven.invert.isOpen,
+.ngxMenuToggler__bar--5.uneven.invert.isOpen {
+  left: 0;
+}
+
+.ngxMenuToggler__bar--4.uneven.isOpen,
+.ngxMenuToggler__bar--5.uneven.isOpen {
+  width: 100%;
+}
+
+.ngxMenuToggler__bar--1,
+.ngxMenuToggler__bar--3 {
+  transition: transform 0.3s ease-in-out;
+}
+
+.ngxMenuToggler__bar--1.isOpen,
+.ngxMenuToggler__bar--3.isOpen {
+  transform: scale(0);
+}
+
+.ngxMenuToggler__bar--2 {
+  visibility: hidden;
+}
+
+.ngxMenuToggler__bar--4,
+.ngxMenuToggler__bar--5 {
+  position: absolute;
+  width: 100%;
+  top: calc(50% - 7.5%);
+  left: 0;
+  transform-origin: center;
+
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out,
+    left 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+}
+
+.ngxMenuToggler__bar--4.thin,
+.ngxMenuToggler__bar--5.thin {
+  top: calc(50% - 4.5%);
+}
+
+.ngxMenuToggler__bar--4.dots,
+.ngxMenuToggler__bar--5.dots {
+  width: 15%;
+  left: calc(50% - 7.5%);
+  transition: transform 0.3s ease-in-out, scale 0.3s ease-in-out,
+    width 0.3s ease-in-out, left 0.3s ease-in-out,
+    border-radius 0.3s ease-in-out;
+}
+
+.ngxMenuToggler__bar--4.dots.thin,
+.ngxMenuToggler__bar--5.dots.thin {
+  left: calc(50% - 4.5%);
+  width: 9%;
+}
+
+.ngxMenuToggler__bar--4.dots.rounded,
+.ngxMenuToggler__bar--5.dots.rounded {
+  transition: scale 0.3s ease-in-out, width 0.3s ease-in-out,
+    left 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+}
+
+.ngxMenuToggler__bar--4.dots.rounded {
+  transform: rotate(45deg);
+  scale: 1.2;
+}
+
+.ngxMenuToggler__bar--5.dots.rounded {
+  transform: rotate(-45deg);
+  scale: 1.2;
+}
+
+.ngxMenuToggler__bar--4.isOpen.dots {
+  width: 100%;
+  transform: rotate(45deg);
+  scale: 1;
+  left: 0;
+}
+
+.ngxMenuToggler__bar--5.isOpen.dots {
+  width: 100%;
+  transform: rotate(-45deg);
+  scale: 1;
+  left: 0;
+}
+
+.ngxMenuToggler__bar--4.isOpen.dots.rounded {
+  border-radius: 0.3rem;
+}
+
+.ngxMenuToggler__bar--5.isOpen.dots.rounded {
+  border-radius: 0.3rem;
+}
+
+.ngxMenuToggler__bar--4.isOpen {
+  transform: rotate(45deg);
+}
+
+.ngxMenuToggler__bar--5.isOpen {
+  transform: rotate(-45deg);
+}

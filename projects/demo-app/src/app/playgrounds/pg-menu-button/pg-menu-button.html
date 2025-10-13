@@ -1,1 +1,25 @@
-<ng-menu-button/>
+<ng-menu-button
+  [isOpenSignal]="menuOpenSignal"
+  type="uneven"
+  [thin]="false"
+  [rounded]="true"
+
+  animation="rotateX"
+  [faster]="false"
+
+  [tabIndex]="-1"
+  [lang]="langSignal()"
+/>
+
+<form>
+  <select (change)="handleLang($event)">
+    <option value="en">English</option>
+    <option value="es">Español</option>
+    <option value="it">Italiano</option>
+    <option value="fr">Francia</option>
+    <option value="de">Español</option>
+  </select>
+</form>
+
+
+<h2>{{menuOpenSignal() ? 'Está abierto' : 'Está cerrado'}}</h2>
