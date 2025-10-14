@@ -1,1 +1,61 @@
-<h1>MENU BUTTON</h1>
+<button
+    class="menuButton__button"
+    (click)="handleIsOpen()"
+    [class.isOpen]="isOpen"
+    [class.rotateX]="animation() === 'rotateX'"
+    [class.rotateY]="animation() === 'rotateY'"
+    [class.faster]="faster()"
+    [class.rounded]="rounded()"
+    [class.invert]="invert()"
+    [tabIndex]="tabIndex()"
+    [aria-expanded]="isOpen"
+    [aria-label]="isOpen ? ariaLabels.ariaLabelOpened : ariaLabels.ariaLabelClosed"
+>
+    <!-- TOP BAR -->
+    <span
+        class="menuButton__bar menuButton__bar--1"
+        [class.isOpen]="isOpen"
+        [class.thin]="thin()"
+        [class.rounded]="rounded()"
+        [class.dots]="type() === 'dots'"
+    ></span>
+
+    <!-- MIDDLE BAR (hidden, only for holding position) -->
+    <span
+        class="menuButton__bar menuButton__bar--2"
+        [class.thin]="thin()"
+        [class.dots]="type() === 'dots'"
+    ></span>
+
+    <!-- BOTTOM BAR -->
+    <span
+        class="menuButton__bar menuButton__bar--3"
+        [class.isOpen]="isOpen"
+        [class.thin]="thin()"
+        [class.rounded]="rounded()"
+        [class.dots]="type() === 'dots'"
+        [class.uneven]="type() === 'uneven'"
+    ></span>
+
+    <!-- CROSS BARS -->
+    <span
+        class="menuButton__bar menuButton__bar--4"
+        [class.isOpen]="isOpen"
+        [class.thin]="thin()"
+        [class.rounded]="rounded()"
+        [class.dots]="type() === 'dots'"
+        [class.uneven]="type() === 'uneven'"
+        [class.invert]="invert()"
+    ></span>
+
+    <span
+        class="menuButton__bar menuButton__bar--5"
+        [class.isOpen]="isOpen"
+        [class.thin]="thin()"
+        [class.rounded]="rounded()"
+        [class.dots]="type() === 'dots'"
+        [class.uneven]="type() === 'uneven'"
+        [class.invert]="invert()"
+    ></span>
+
+</button>

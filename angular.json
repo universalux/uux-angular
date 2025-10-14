@@ -6,6 +6,11 @@
     "demo-app": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular": {
+          "component": {
+            "changeDetection": "OnPush"
+          }
+        },
         "@schematics/angular:component": {
           "style": "scss"
         }
@@ -91,7 +96,6 @@
       "projectType": "library",
       "root": "projects/ng-menu-button",
       "sourceRoot": "projects/ng-menu-button/src",
-      "prefix": "uux",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
@@ -115,8 +119,9 @@
     }
   },
   "schematics": {
-    "@schematics/angular:library": {
-      "prefix": "uux"
+    "@schematics/angular:component": {
+      "changeDetection": "OnPush",
+      "style": "scss"
     }
   }
 }
