@@ -15,7 +15,7 @@
 
 // ---------- BUTTON ---------- //
 
-.ngxMenuToggler__button {
+.menuButton__button {
   // BUTTON STYLES
   border: none;
   padding: 0;
@@ -36,113 +36,113 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.ngxMenuToggler__button.invert {
+.menuButton__button.invert {
   align-items: flex-end;
 }
 
-.ngxMenuToggler__button.rounded {
+.menuButton__button.rounded {
   border-radius: 0.2rem;
 }
 
-.ngxMenuToggler__button:focus-visible {
+.menuButton__button:focus-visible {
   outline: 2px solid var(--menu-button-color);
   outline-offset: 2px;
 }
 
-.ngxMenuToggler__button.isOpen.rotateX {
+.menuButton__button.isOpen.rotateX {
   transform: rotate(180deg);
 }
 
-.ngxMenuToggler__button.isOpen.rotateX.faster {
+.menuButton__button.isOpen.rotateX.faster {
   transform: rotate(360deg);
 }
 
-.ngxMenuToggler__button.isOpen.rotateY {
+.menuButton__button.isOpen.rotateY {
   transform: rotateY(180deg);
 }
 
-.ngxMenuToggler__button.isOpen.rotateY.faster {
+.menuButton__button.isOpen.rotateY.faster {
   transform: rotateY(360deg);
 }
 
 // ---------- BARS ---------- //
 
-.ngxMenuToggler__bar {
+.menuButton__bar {
   display: block;
   background-color: var(--menu-button-color);
   width: 100%;
   height: 15%;
 }
 
-.ngxMenuToggler__bar.thin {
-  height: 9%;
+.menuButton__bar.thin {
+  height: 10%;
 }
 
-.ngxMenuToggler__bar.dots {
+.menuButton__bar.dots {
   transform: scale(1.2);
 }
 
-.ngxMenuToggler__bar.rounded.dots {
+.menuButton__bar.rounded.dots {
   border-radius: 50%;
 }
 
-.ngxMenuToggler__bar.rounded {
+.menuButton__bar.rounded {
   border-radius: 0.3rem;
 }
 
-.ngxMenuToggler__bar--1.dots,
-.ngxMenuToggler__bar--3.dots {
+.menuButton__bar--1.dots,
+.menuButton__bar--3.dots {
   transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
   width: 15%;
   left: calc(50% - 7.5%);
   align-self: center;
 }
 
-.ngxMenuToggler__bar--1.dots.thin,
-.ngxMenuToggler__bar--3.dots.thin {
-  width: 9%;
+.menuButton__bar--1.dots.thin,
+.menuButton__bar--3.dots.thin {
+  width: 10%;
 }
 
-.ngxMenuToggler__bar--3.uneven {
+.menuButton__bar--3.uneven {
   width: 33%;
 }
 
-.ngxMenuToggler__bar--4.uneven,
-.ngxMenuToggler__bar--5.uneven {
+.menuButton__bar--4.uneven,
+.menuButton__bar--5.uneven {
   width: 66%;
 }
 
-.ngxMenuToggler__bar--4.uneven.invert,
-.ngxMenuToggler__bar--5.uneven.invert {
+.menuButton__bar--4.uneven.invert,
+.menuButton__bar--5.uneven.invert {
   left: 34%;
 }
 
-.ngxMenuToggler__bar--4.uneven.invert.isOpen,
-.ngxMenuToggler__bar--5.uneven.invert.isOpen {
+.menuButton__bar--4.uneven.invert.isOpen,
+.menuButton__bar--5.uneven.invert.isOpen {
   left: 0;
 }
 
-.ngxMenuToggler__bar--4.uneven.isOpen,
-.ngxMenuToggler__bar--5.uneven.isOpen {
+.menuButton__bar--4.uneven.isOpen,
+.menuButton__bar--5.uneven.isOpen {
   width: 100%;
 }
 
-.ngxMenuToggler__bar--1,
-.ngxMenuToggler__bar--3 {
+.menuButton__bar--1,
+.menuButton__bar--3 {
   transition: transform 0.3s ease-in-out;
 }
 
-.ngxMenuToggler__bar--1.isOpen,
-.ngxMenuToggler__bar--3.isOpen {
+.menuButton__bar--1.isOpen,
+.menuButton__bar--3.isOpen {
   transform: scale(0);
 }
 
-.ngxMenuToggler__bar--2 {
+.menuButton__bar--2 {
   visibility: hidden;
 }
 
-.ngxMenuToggler__bar--4,
-.ngxMenuToggler__bar--5 {
+.menuButton__bar--4,
+.menuButton__bar--5 {
   position: absolute;
   width: 100%;
   top: calc(50% - 7.5%);
@@ -153,13 +153,13 @@
     left 0.3s ease-in-out, border-radius 0.3s ease-in-out;
 }
 
-.ngxMenuToggler__bar--4.thin,
-.ngxMenuToggler__bar--5.thin {
+.menuButton__bar--4.thin,
+.menuButton__bar--5.thin {
   top: calc(50% - 4.5%);
 }
 
-.ngxMenuToggler__bar--4.dots,
-.ngxMenuToggler__bar--5.dots {
+.menuButton__bar--4.dots,
+.menuButton__bar--5.dots {
   width: 15%;
   left: calc(50% - 7.5%);
   transition: transform 0.3s ease-in-out, scale 0.3s ease-in-out,
@@ -167,54 +167,54 @@
     border-radius 0.3s ease-in-out;
 }
 
-.ngxMenuToggler__bar--4.dots.thin,
-.ngxMenuToggler__bar--5.dots.thin {
+.menuButton__bar--4.dots.thin,
+.menuButton__bar--5.dots.thin {
   left: calc(50% - 4.5%);
-  width: 9%;
+  width: 10%;
 }
 
-.ngxMenuToggler__bar--4.dots.rounded,
-.ngxMenuToggler__bar--5.dots.rounded {
+.menuButton__bar--4.dots.rounded,
+.menuButton__bar--5.dots.rounded {
   transition: scale 0.3s ease-in-out, width 0.3s ease-in-out,
     left 0.3s ease-in-out, border-radius 0.3s ease-in-out;
 }
 
-.ngxMenuToggler__bar--4.dots.rounded {
+.menuButton__bar--4.dots.rounded {
   transform: rotate(45deg);
   scale: 1.2;
 }
 
-.ngxMenuToggler__bar--5.dots.rounded {
+.menuButton__bar--5.dots.rounded {
   transform: rotate(-45deg);
   scale: 1.2;
 }
 
-.ngxMenuToggler__bar--4.isOpen.dots {
+.menuButton__bar--4.isOpen.dots {
   width: 100%;
   transform: rotate(45deg);
   scale: 1;
   left: 0;
 }
 
-.ngxMenuToggler__bar--5.isOpen.dots {
+.menuButton__bar--5.isOpen.dots {
   width: 100%;
   transform: rotate(-45deg);
   scale: 1;
   left: 0;
 }
 
-.ngxMenuToggler__bar--4.isOpen.dots.rounded {
+.menuButton__bar--4.isOpen.dots.rounded {
   border-radius: 0.3rem;
 }
 
-.ngxMenuToggler__bar--5.isOpen.dots.rounded {
+.menuButton__bar--5.isOpen.dots.rounded {
   border-radius: 0.3rem;
 }
 
-.ngxMenuToggler__bar--4.isOpen {
+.menuButton__bar--4.isOpen {
   transform: rotate(45deg);
 }
 
-.ngxMenuToggler__bar--5.isOpen {
+.menuButton__bar--5.isOpen {
   transform: rotate(-45deg);
 }

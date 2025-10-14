@@ -1,7 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { NgMenuButton } from 'ng-menu-button';
-
-type languages = 'en' | 'es' | 'it' |'fr' | 'de';
+import { NgMenuButton, MenuButtonLangs, MenuButtonCustomAria } from 'ng-menu-button';
 
 @Component({
   selector: 'pg-menu-button',
@@ -13,12 +11,14 @@ export class PgMenuButton {
 
   menuOpenSignal = signal<boolean>(false);
 
-  langSignal = signal<languages>('en');
+  langSignal = signal<MenuButtonLangs>('en');
 
   handleLang(event: Event){
     const target = event.target as HTMLSelectElement;
-    const value = target.value as languages;
+    const value = target.value as MenuButtonLangs;
     this.langSignal.set(value)
   }
+
+  customAria = signal<MenuButtonCustomAria | null>(null);
 
 }

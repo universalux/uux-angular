@@ -3,3 +3,4 @@
  */
 
 export * from './lib/ng-menu-button';
+export * from './lib/ng-menu-button.types';

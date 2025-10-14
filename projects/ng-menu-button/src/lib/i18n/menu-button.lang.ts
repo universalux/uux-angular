@@ -20,9 +20,3 @@ export const MENU_BUTTON_LANG = {
     ariaLabelClosed: 'Menü öffnen',
   },
 } as const;
-
-export type MenuButtonLangs = keyof typeof MENU_BUTTON_LANG;
-// "en" | "es" | "fr" | "it" | "de"
-
-export type MenuButtonLangValues = typeof MENU_BUTTON_LANG[MenuButtonLangs];
-// { ariaLabelOpened: string; ariaLabelClosed: string; }

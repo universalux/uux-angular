@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, input, output, WritableSignal } from '@angular/core';
-import { MENU_BUTTON_LANG, MenuButtonLangs } from './i18n/menu-button.lang';
+import { MENU_BUTTON_LANG } from './i18n/menu-button.lang';
+import { MenuButtonCustomAria, MenuButtonLangs } from './ng-menu-button.types';
 
 @Component({
   selector: 'ng-menu-button',
@@ -34,12 +35,17 @@ export class NgMenuButton {
   /** ACCESIBILITY */
 
   tabIndex = input<number>(0);
-  ariaLabelOpened = input<string>('Close menu');
-  ariaLabelClosed = input<string>('Open menu');
 
   lang = input<MenuButtonLangs>('en');
+  customAria = input<Partial<MenuButtonCustomAria> | null>(null);
 
-  get ariaLabels() {
-    return MENU_BUTTON_LANG[this.lang()] ?? MENU_BUTTON_LANG.en;
+  get ariaLabels(): MenuButtonCustomAria {
+    const langLabels = MENU_BUTTON_LANG[this.lang()] ?? MENU_BUTTON_LANG.en;
+    const custom = this.customAria();
+
+    return {
+      ariaLabelOpened: custom?.ariaLabelOpened ?? langLabels.ariaLabelOpened,
+      ariaLabelClosed: custom?.ariaLabelClosed ?? langLabels.ariaLabelClosed,
+    };
   }
 }
