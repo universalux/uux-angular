@@ -1,4 +1,4 @@
-import { MENU_BUTTON_LANG } from "./i18n/menu-button.lang";
+import { MENU_BUTTON_LANG } from "./accessibility/menu-button.lang";
 
 /** ACCESSIBILITY TYPES */
 

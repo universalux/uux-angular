@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, output, WritableSignal } from '@angular/core';
-import { MENU_BUTTON_LANG } from './i18n/menu-button.lang';
+import { MENU_BUTTON_LANG } from './accessibility/menu-button.lang';
 import { MenuButtonCustomAria, MenuButtonLangs } from './ng-menu-button.types';
 
 @Component({

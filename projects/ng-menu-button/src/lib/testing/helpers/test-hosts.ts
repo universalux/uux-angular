@@ -1,6 +1,6 @@
 import { Component, signal } from "@angular/core";
-import { NgMenuButton } from "../ng-menu-button";
-import { MenuButtonCustomAria, MenuButtonLangs } from "../ng-menu-button.types";
+import { NgMenuButton } from "../../ng-menu-button";
+import { MenuButtonCustomAria, MenuButtonLangs } from "../../ng-menu-button.types";
 
 @Component({
   imports: [NgMenuButton],
@@ -42,9 +42,7 @@ export class TestHostWithAttrs {
 
   customAria = signal<MenuButtonCustomAria | null>(null);
 
-  menuOpenSignal = signal<boolean>(false);
-
-  langSignal = signal<MenuButtonLangs>('en');
+  langSignal = signal<MenuButtonLangs>('es');
 
   handleLang(event: Event){
     const target = event.target as HTMLSelectElement;
