@@ -23,11 +23,23 @@
 
 .titleContainer hgroup h1{
     font-size: 1.8rem;
-    margin-bottom: .3rem;
+    margin-bottom: .35rem;
+}
+
+.titleContainer hgroup div{
+
+  display: flex;
+  column-gap: .3rem;
+  align-items: end;
+}
+
+.uuxLogo{
+  width: 125px;
+  margin-bottom: .1rem;
 }
 
 .angularLogo{
-    max-width: 50px;
+    max-width: 52px;
 }
 
 .container{
@@ -46,6 +58,6 @@ ng-menu-button:nth-child(5),
 ng-menu-button:nth-child(8),
 ng-menu-button:nth-child(10),
 ng-menu-button:nth-child(12){
-    --menu-button-size: 40px;
+    --menu-button-size: 38px;
     --menu-button-color: white;
 }
