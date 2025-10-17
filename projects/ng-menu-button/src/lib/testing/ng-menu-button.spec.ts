@@ -192,7 +192,7 @@ describe('NgMenuButton - with attributes', () => {
     /** Initial aria label custom attributes ('es' set by lang) */
       expect(menuButtonBtnDebugEl.nativeElement.getAttribute('aria-label')).toBe(closed);
 
-      console.log(menuButtonBtnDebugEl.nativeElement.getAttribute('aria-label'));
+      // console.log(menuButtonBtnDebugEl.nativeElement.getAttribute('aria-label'));
 
       /** Clicking the menu button button */
       menuButtonBtnDebugEl.triggerEventHandler('click', null);
@@ -201,7 +201,7 @@ describe('NgMenuButton - with attributes', () => {
       /** Aria label after first button click */
       expect(menuButtonBtnDebugEl.nativeElement.getAttribute('aria-label')).toBe(opened);
 
-      console.log(menuButtonBtnDebugEl.nativeElement.getAttribute('aria-label'));
+      // console.log(menuButtonBtnDebugEl.nativeElement.getAttribute('aria-label'));
 
       /** Clicking the menu button button */
       menuButtonBtnDebugEl.triggerEventHandler('click', null);
@@ -210,7 +210,7 @@ describe('NgMenuButton - with attributes', () => {
       /** Aria label after second button click */
       expect(menuButtonBtnDebugEl.nativeElement.getAttribute('aria-label')).toBe(closed);
 
-      console.log(menuButtonBtnDebugEl.nativeElement.getAttribute('aria-label'));
+      // console.log(menuButtonBtnDebugEl.nativeElement.getAttribute('aria-label'));
   }
 
   it('should create testHost and include NgMenuButton component', () => {
