@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { NgMenuButton, MenuButtonLangs, MenuButtonCustomAria } from 'ng-menu-button';
 
+
 @Component({
   selector: 'pg-menu-button',
   imports: [NgMenuButton],
