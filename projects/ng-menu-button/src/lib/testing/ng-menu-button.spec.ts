@@ -1,9 +1,9 @@
 import { DebugElement, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NgMenuButton } from './ng-menu-button';
-import { TestHost, TestHostWithAttrs } from './testing/test-hosts';
+import { NgMenuButton } from '../ng-menu-button';
+import { TestHost, TestHostWithAttrs } from './helpers/test-hosts';
 import { By } from '@angular/platform-browser';
-import { MENU_BUTTON_LANG } from './accessibility/menu-button.lang';
+import { MENU_BUTTON_LANG } from '../accessibility/menu-button.lang';
 
 
 describe('NgMenuButton - with No attributes', () => {
