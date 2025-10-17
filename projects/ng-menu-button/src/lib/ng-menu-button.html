@@ -9,7 +9,7 @@
     [class.invert]="invert()"
     [tabIndex]="tabIndex()"
     [aria-expanded]="isOpen"
-    [aria-label]="isOpen ? ariaLabels.ariaLabelOpened : ariaLabels.ariaLabelClosed"
+    [attr.aria-label]="isOpen ? ariaLabels.ariaLabelOpened : ariaLabels.ariaLabelClosed"
 >
     <!-- TOP BAR -->
     <span
