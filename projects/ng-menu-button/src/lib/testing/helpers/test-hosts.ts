@@ -44,10 +44,4 @@ export class TestHostWithAttrs {
 
   langSignal = signal<MenuButtonLangs>('es');
 
-  handleLang(event: Event){
-    const target = event.target as HTMLSelectElement;
-    const value = target.value as MenuButtonLangs;
-    this.langSignal.set(value)
-  }
-
 }
