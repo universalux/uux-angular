@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://alday.dev" target="_blank" rel="noreferrer noopener">
+  <a href="https://www.npmjs.com/~universalux" target="_blank" rel="noreferrer noopener">
     <img src="https://github.com/universalux/uux-hub/blob/main/assets/components/angular/ng-menu-button/ng-menu-button-cover.gif?raw=true" alt="NgMenuButton cover">
   </a>
 </p>
