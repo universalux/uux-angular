@@ -3,6 +3,7 @@ import { MENU_BUTTON_LANG } from './accessibility/menu-button.lang';
 import { MenuButtonCustomAria, MenuButtonLangs } from './ng-menu-button.types';
 
 @Component({
+  standalone: true,
   selector: 'ng-menu-button',
   imports: [],
   templateUrl: './ng-menu-button.html',

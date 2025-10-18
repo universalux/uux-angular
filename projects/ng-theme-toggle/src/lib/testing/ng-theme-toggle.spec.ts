@@ -1,19 +1,20 @@
-import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PgMenuButton } from './pg-menu-button';
 
-describe('PgMenuButton', () => {
-  let component: PgMenuButton;
-  let fixture: ComponentFixture<PgMenuButton>;
+import { NgThemeToggle } from '../ng-theme-toggle';
+import { provideZonelessChangeDetection } from '@angular/core';
+
+describe('NgThemeToggle', () => {
+  let component: NgThemeToggle;
+  let fixture: ComponentFixture<NgThemeToggle>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PgMenuButton],
+      imports: [NgThemeToggle],
       providers: [provideZonelessChangeDetection()]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PgMenuButton);
+    fixture = TestBed.createComponent(NgThemeToggle);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
