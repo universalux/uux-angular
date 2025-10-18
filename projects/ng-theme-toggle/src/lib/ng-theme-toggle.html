@@ -1,20 +1,21 @@
 <button
-    (click)="toggle()"
-    class="ngxThemeToggler__button"
-    [class.isDark]="isDark()"
+    (click)="handleIsDark()"
+    class="themeToggle__button"
+    [class.isDark]="isDark"
     [class.rotateX]="animation() === 'rotateX'"
     [class.rotateY]="animation() === 'rotateY'"
     [class.faster]="faster()"
     [class.shadow]="hover() === 'shadow'"
     [tabIndex]="tabIndex()"
-    [aria-label]="isDark() ? ariaLabelDark() : ariaLabelLight()"
-    [aria-pressed]="isDark()"
+    [attr.aria-label]="isDark ? ariaLabels.ariaLabelDark : ariaLabels.ariaLabelLight"
+    [attr.aria-pressed]="isDark"
 >
 
     <svg
         version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 512 512"
-        class="ngxThemeToggler__svg"
+        class="themeToggle__svg"
+        [class.isDark]="isDark"
         aria-hidden="true"
     >
 
@@ -22,18 +23,18 @@
             <!-- visible -->
             <rect width="100%" height="100%" fill="white" />
             <!-- not visble -->
-            <circle cx="384" cy="189" r="200" [attr.r]="isDark() ? '0' : '200'"
+            <circle cx="384" cy="189" r="200" [attr.r]="isDark ? '0' : '200'"
                 fill="black"
-                class="ngxThemeToggler__outerMask"
+                class="themeToggle__outerMask"
             />
         </mask>
 
 
         <circle
-            cx="256" cy="256" r="256" [attr.r]="isDark() ? '128' : '256'"
-            fill="var(--current-color)"
+            cx="256" cy="256" r="256" [attr.r]="isDark ? '128' : '256'"
+            fill="var(--theme-toggle-color-current)"
             [attr.mask]="'url(#outerMask-' + uniqueId() + ')'"
-            class="ngxThemeToggler__mainCircle"
+            class="themeToggle__mainCircle"
         />
 
         <mask [attr.id]="'innerMask-' + uniqueId()" >
@@ -42,67 +43,67 @@
             <!-- not visible -->
             <circle cx="256" cy="256" r="158"
                 fill="black"
-                class="ngxThemeToggler__innerMask"
-                [class.isDark]="isDark()"
-                [attr.r]="isDark() ? '158' : '512'"
+                class="themeToggle__innerMask"
+                [class.isDark]="isDark"
+                [attr.r]="isDark ? '158' : '512'"
             />
         </mask>
 
         <g
-            class="ngxThemeToggler__rays"
+            class="themeToggle__rays"
             width="512" height="512"
             fill="none"
             [attr.mask]="'url(#innerMask-' + uniqueId() + ')'"
-            [class.isDark]="isDark()"
+            [class.isDark]="isDark"
             [class.rotateX]="animation() === 'rotateX'"
             [class.rotateY]="animation() === 'rotateY'"
             [class.faster]="faster()"
         >
 
             <line x1="0" y1="256" x2="512" y2="256"
-                stroke="var(--current-color)" stroke-width="40"
-                class="ngxThemeToggler__line"
+                stroke="var(--theme-toggle-color-current)" stroke-width="40"
+                class="themeToggle__line"
             />
 
             <line x1="0" y1="256" x2="512" y2="256"
-                stroke="var(--current-color)" stroke-width="40"
-                class="ngxThemeToggler__line"
+                stroke="var(--theme-toggle-color-current)" stroke-width="40"
+                class="themeToggle__line"
                 transform="rotate(45)"
             />
 
             <line x1="0" y1="256" x2="512" y2="256"
-                stroke="var(--current-color)" stroke-width="40"
-                class="ngxThemeToggler__line"
+                stroke="var(--theme-toggle-color-current)" stroke-width="40"
+                class="themeToggle__line"
                 transform="rotate(90)"
             />
 
             <line x1="0" y1="256" x2="512" y2="256"
-                stroke="var(--current-color)" stroke-width="40"
-                class="ngxThemeToggler__line"
+                stroke="var(--theme-toggle-color-current)" stroke-width="40"
+                class="themeToggle__line"
                 transform="rotate(135)"
             />
 
             <line x1="0" y1="256" x2="512" y2="256"
-                stroke="var(--current-color)" stroke-width="40"
-                class="ngxThemeToggler__line"
+                stroke="var(--theme-toggle-color-current)" stroke-width="40"
+                class="themeToggle__line"
                 transform="rotate(180)"
             />
 
             <line x1="0" y1="256" x2="512" y2="256"
-                stroke="var(--current-color)" stroke-width="40"
-                class="ngxThemeToggler__line"
+                stroke="var(--theme-toggle-color-current)" stroke-width="40"
+                class="themeToggle__line"
                 transform="rotate(225)"
             />
 
             <line x1="0" y1="256" x2="512" y2="256"
-                stroke="var(--current-color)" stroke-width="40"
-                class="ngxThemeToggler__line"
+                stroke="var(--theme-toggle-color-current)" stroke-width="40"
+                class="themeToggle__line"
                 transform="rotate(270)"
             />
 
             <line x1="0" y1="256" x2="512" y2="256"
-                stroke="var(--current-color)" stroke-width="40"
-                class="ngxThemeToggler__line"
+                stroke="var(--theme-toggle-color-current)" stroke-width="40"
+                class="themeToggle__line"
                 transform="rotate(315)"
             />
 

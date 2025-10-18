@@ -1,1 +1,21 @@
-<ng-theme-toggle/>
+
+  <ng-theme-toggle
+    [isDarkSignal]="isDark"
+    hover="shadow"
+    animation="soft"
+    [faster]="true"
+    [lang]="currentLang()"
+    [customAria]="customAria()"
+  />
+
+  <!-- <form>
+  <select (change)="handleLang($event)">
+    <option value="en">English</option>
+    <option value="es">Español</option>
+    <option value="it">Italian</option>
+    <option value="fr">French</option>
+    <option value="de">Deutch</option>
+  </select>
+</form> -->
+
+

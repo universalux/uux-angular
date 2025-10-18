@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NgThemeToggle } from 'ng-theme-toggle';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { NgThemeToggle, ThemeToggleCustomAria, ThemeToggleLangs } from 'ng-theme-toggle';
 
 @Component({
   selector: 'pg-theme-toggle',
@@ -9,5 +9,18 @@ import { NgThemeToggle } from 'ng-theme-toggle';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PgThemeToggle {
+  isDark = signal<boolean>(true);
 
+  customAria = signal<ThemeToggleCustomAria | null>({
+    ariaLabelDark: 'Custom Dark',
+    ariaLabelLight: 'Custom Light'
+  });
+
+  currentLang  = signal<ThemeToggleLangs>('en');
+
+  handleLang(event: Event){
+    const target = event.target as HTMLSelectElement;
+    const value = target.value as ThemeToggleLangs;
+    this.currentLang .set(value)
+  }
 }
