@@ -1,0 +1,135 @@
+:host {
+    --color-duration: 0s;
+    --color-timing: linear;
+    --current-color: white;
+
+    height: var(--theme-toggler-size, 40px);
+    aspect-ratio: 1 / 1;
+    display: block;
+    padding: 3px;
+}
+
+:host(.isDark) {
+    --current-color: var(--dark-color);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.ngxThemeToggler__button{
+
+    // BUTTON STYLES
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background-color: transparent;
+
+    // CONTAINER STYLES
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: 100%;
+
+    transition: transform .3s ease-in-out;
+}
+
+.ngxThemeToggler__button:focus-visible{
+    border-radius: .3rem;
+    outline: 2px solid var(--current-color, white);
+    outline-offset: 2px;
+}
+
+
+.ngxThemeToggler__button:hover .ngxThemeToggler__svg{
+    transform: scale(1.1);
+}
+
+.ngxThemeToggler__button.isDark.shadow:hover .ngxThemeToggler__svg{
+    transform: scale(1);
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.664));
+}
+
+.ngxThemeToggler__button.isDark.shadow:hover .ngxThemeToggler__line{
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.664));
+}
+
+.ngxThemeToggler__button.shadow:hover .ngxThemeToggler__svg{
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.623));
+}
+
+
+.ngxThemeToggler__button.isDark.rotateY.faster{
+    transform: rotateY(360deg);
+}
+
+.ngxThemeToggler__button.rotateX{
+    transform: rotate(0deg);
+}
+
+.ngxThemeToggler__button.rotateY{
+    transform: rotateY(0deg);
+}
+
+.ngxThemeToggler__button.isDark.rotateX.faster{
+    transform: rotate(450deg);
+}
+
+.ngxThemeToggler__button.isDark.rotateX{
+    transform: rotate(180deg);
+}
+
+.ngxThemeToggler__button.isDark.rotateY{
+    transform: rotateY(180deg);
+}
+
+.ngxThemeToggler__svg{
+    transition: transform .2s ease-in-out, filter .3s ease;
+}
+
+
+.ngxThemeToggler__mainCircle,
+.ngxThemeToggler__outerMask{
+    transition: r .4s ease-in-out, fill var(--color-duration) var(--color-timing);
+}
+
+.ngxThemeToggler__innerMask.isDark{
+    transition: r .4s ease-in-out, fill var(--color-duration) var(--color-timing);
+}
+
+.ngxThemeToggler__innerMask{
+    transition: r .5s ease-in-out, fill var(--color-duration) var(--color-timing);
+}
+
+.ngxThemeToggler__line{
+    transform-origin: center;
+    transition:
+        stroke var(--color-duration) var(--color-timing),
+        filter .3s ease;
+}
+
+
+.ngxThemeToggler__rays{
+    transition: transform .4s ease-in-out;
+    transform-origin: center;
+    transform: rotate(90deg);
+    transform: rotateY(360deg);
+}
+
+.ngxThemeToggler__rays.rotateX{
+    transform: rotate(90deg);
+}
+
+.ngxThemeToggler__rays.rotateX.faster{
+    transform: rotate(360deg);
+}
+
+.ngxThemeToggler__rays.rotateX.isDark{
+    transform: rotate(0deg);
+}
+
+.ngxThemeToggler__rays.rotateY.isDark{
+    transform: rotateY(0deg);
+}
