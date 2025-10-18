@@ -1,59 +1,64 @@
-
-
 <p align="center">
   <a href="https://alday.dev" target="_blank" rel="noreferrer noopener">
     <img src="https://github.com/universalux/uux-hub/blob/main/assets/components/angular/ng-menu-button/ng-menu-button-cover.gif?raw=true" alt="NgMenuButton cover">
   </a>
 </p>
 
-# NgxMenuToggler - Angular Menu Toggler
+# NgMenuButton - Angular Menu toggle button
 
-`ngx-menu-toggler` is an **standalone, reusable and customizable component** for Angular 18, 19 and 20.
+`ng-menu-button` is an **standalone, reusable and customizable component** for Angular 18, 19 and 20.
 
-It is designed to work with **signals** and Angular **zoneless**, providing a lightweight, flexible, and accessible menu toggler.
+It is designed to work with **signals** and Angular **zoneless**, providing a lightweight, flexible, and accessible menu toggle button.
 
+## Table of Contents
+
+* [Instalation](#installation)
+* [Basic Usage](#basic-usage)
+* [Advanced Usage](#advanced-usage)
+  - [Style and behavior attributes](#style-and-behavior-attributes)
+  - [Accessibility attributes](#accessibility-attributes)
+  - [Custom styles](#custom-styles)
+* [Report or suggest something](#report-or-suggest-something)
 
 ## Installation
 
 If you want to install the latest version (currently 20):
 ```bash
-npm install ngx-menu-toggler
+npm install ng-menu-button
 ```
 
 Angular 19:
 ```bash
-npm install ngx-menu-toggler@angular19
+npm install ng-menu-button@v19-lts
 ```
 
 Angular 18:
 ```bash
-npm install ngx-menu-toggler@angular18
+npm install ng-menu-button@v18-lts
 ```
 
 ## Basic Usage
 
-Using `ngx-menu-toggler` is very simple. Only two inputs/outputs are required: `[isOpen]` and `(setIsOpen)`.
+Using `ng-menu-button` is very simple. Only one input is required: `[isOpen]`.
 All other assignable attributes are explained below and are for you to customize to your liking.
 
-| Prop         | Description              | Type                       | Default |
-| ------------ | ------------------------ | -------------------------- | ------- |
-| `isOpen`     | Current isOpen value     | `boolean`                  | `false` |
-| `setIsOpen`  | Toggle the isOpen value  | `(value: boolean) => void` |    X    |
+| Prop              | Description             | Type                       | Default |
+| ----------------- | ----------------------- | -------------------------- | ------- |
+| `isOpenSignal`    | Menu isOpen signal      | `WritableSignal<boolean>`  | `none`  |
 
 Here is a simple example of use:
 
 ```ts
 import { Component, signal } from '@angular/core';
-import { NgxMenuToggler } from 'ngx-menu-toggler';
+import { NgMenuButton } from 'ng-menu-button';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NgxMenuToggler],
+  imports: [NgMenuButton],
   template: `
-    <ngx-menu-toggler
-      [isOpen]="menuOpen()"
-      (setIsOpen)="menuOpen.set($event)"
+    <ng-menu-button
+      [isOpenSignal]="menuOpen"
     />
   `
 })
@@ -62,96 +67,138 @@ export class App {
 }`
 ```
 
-## Advanced Usage / Optional Attributes
+## Advanced Usage
 
-In addition to `[isOpen]` and `(setIsOpen)`, `ngx-menu-toggler` provides several optional attributes to customize its appearance and behavior.
+In addition to `[isOpenSignal]`, `ng-menu-button` provides several `optional attributes` to customize its appearance and behavior.
 
 ```html
-<ngx-menu-toggler
-  [isOpen]="menuOpen()"
-  (setIsOpen)="menuOpen.set($event)"
+<ng-menu-button
+  [isOpenSignal]="menuOpen"
   type="uneven"
   invert="true"
   [thin]="true"
   [rounded]="true"
-  color="#FF5733"
   animation="rotateY"
   [faster]="true"
   [tabIndex]="1"
-  ariaLabelOpened="Close menu"
-  ariaLabelClosed="Open menu"
+  lang="fr"
+  [customAria]="{ariaLabelOpened: 'Edited Opened aria label', ariaLabelClosed: 'Edited Closed aria label'}"
 />
 ```
 
-### Style Options
+### Style and behavior attributes
 
-| Input       | Description                                         | Type    | Default   |
-| ----------- | --------------------------------------------------- | ------- | --------- |
-| `type`      | Toggler design: `'bars'`, `'dots'`, `'uneven'`      | string  | `'bars'`  |
-| `invert`    | Mirror effect when `type="uneven"`                  | boolean | `false`   |
-| `thin`      | It makes lines or dots thinner                      | boolean | `false`   |
-| `[rounded]` | Rounded borders                                     | boolean | `false`   |
-| `color`     | Toggler color                                       | string  | `'black'` |
-| `animation` | Animation style: `'rotateX'`, `'rotateY'`, `'soft'` | string  | `'soft'`  |
-| `[faster]`  | Speeds up the rotate animation                      | boolean | `false`   |
-
-
-### Accessibility Options
-
-| Input             | Description                              | Type   | Default        |
-| ----------------- | ---------------------------------------- | ------ | -------------- |
-| `[tabIndex]`      | Controls the button `tabindex` attribute | number | `0`            |
-| `ariaLabelOpened` | Custom `aria-label` when menu is opened  | string | `'Close menu'` |
-| `ariaLabelClosed` | Custom `aria-label` when menu is closed  | string | `'Open menu'`  |
-
-The component is already optimized for accessibility by default.
-
-## Advance custom styles
+| Input       | Description                                                | Type    | Default   |
+| ----------- | ---------------------------------------------------------- | ------- | --------- |
+| `type`      | Button design: `'bars'`, `'dots'`, `'uneven'`              | string  | `'bars'`  |
+| `invert`    | Mirror effect. Usefull when `type="uneven"`                | boolean | `false`   |
+| `thin`      | It makes lines or dots thinner                             | boolean | `false`   |
+| `[rounded]` | Rounded borders                                            | boolean | `false`   |
+| `animation` | Animation style: `'rotateX'`, `'rotateY'`, `'soft'`        | string  | `'soft'`  |
+| `[faster]`  | Speeds up the rotate animation if `rotateX` or `rotateY`   | boolean | `false`   |
 
 
-### Custom size
-This component comes with an initial size of 40px. You can easily change its size by setting the --menu-toggler-size CSS variable. For example:
+### Accessibility attributes
+
+There are two ways of setting the aria-label attributes: `by lang attribute` or `by customAria attribute`
+
+| Input        | Description                    | Type                             | Default   |
+| ------------ | ------------------------------ | -------------------------------- | --------- |
+| `lang`       | Aria labels predefine language | `MenuButtonLangs`                | `'en'`    |
+| `customAria` | Aria labels custom content     | `MenuButtonCustomAria` or `null` | `false`   |
+
+- If needed, you can import `MenuButtonLangs` and `MenuButtonCustomAria` like this:
+```ts
+import { NgMenuButton, MenuButtonLangs, MenuButtonCustomAria } from 'ng-menu-button';
+```
+
+#### 1. `lang` attribute:
+
+The component includes **five predefined languages** for accessibility labels that you can set easily with the `lang attribute`:
+
+| Language           | Code | Example                               |
+|------------------- | ---- | --------------------------------------|
+| English (default)  | `en` | `"Open menu" / "Close menu"`          |
+| Spanish            | `es` | `"Abrir menú" / "Cerrar menú"`        |
+| Italian            | `it` | `"Apri menu" / "Chiudi menu"`         |
+| French             | `fr` | `"Ouvrir le menu" / "Fermer le menu"` |
+| German             | `de` | `"Menü öffnen" / "Menü schließen"`    |
+
+> 💡 If no value is provided in `lang`, the default language is **English (`en`)**. <br>
+> 💡 If your application supports `multiple languages`, you can bind the lang attribute to a signal and link it with a `select`, for example.
+
+#### 2. `customAria` attribute:
+
+In addition to the predefined languages available through the `lang` attribute, you can fully **customize the ARIA labels** for your menu button by using the `customAria` input.
+
+This option gives you full control over the **text announced by screen readers** when the menu is opened or closed — perfect for custom translations, accessibility improvements, or when you want to use a language that is not included in the predefined set.
+
+---
+
+##### 🧩 Example usage
+
+```html
+<ng-menu-button
+  [customAria]="{
+    ariaLabelOpened: 'Hide navigation',
+    ariaLabelClosed: 'Show navigation'
+  }">
+</ng-menu-button>
+```
+
+> 💡 Remember that what is indicated in the `customAria` attribute replaces the default language set in `lang`. <br>
+> 💡 If you only set one of the properties, the other will use the label from the current `lang`.
+
+
+### Custom styles
+
+#### Custom styles by css variables
+
+You can customize `size` and `color` by using css variables.
 
 ```css
 ngx-menu-toggler{
-    --menu-toggler-size: 40px;
+    --menu-button-size: 50px;
+    --menu-button-color: red;
 }
 ```
-### Custom styles
+If not set, **default size** is `40px` and **default color** is `black`
+
+#### Custom styles by ng-deep
 You can customize styles by using ::gn-deep in css. For example:
 
 ```css
-:ng-deep .ngxMenuToggler__button{
+:ng-deep .menuButton__button{
   background color: red
 }
 ```
 
 ### Customizable elements
 
-- `.ngxMenuToggler__button` → The main button element
-- `.ngxMenuToggler__bar` → Individual bars inside the button
-- `.ngxMenuToggler__bar--1` → Top bar
-- `.ngxMenuToggler__bar--2` → Hidden bar for spacing
-- `.ngxMenuToggler__bar--3` → Bottom bar
-- `.ngxMenuToggler__bar--4` → Cross bar (positioned absolutely)
-- `.ngxMenuToggler__bar--5` → Cross bar (positioned absolutely)
+- `.menuButton__button` → The main button element
+- `.menuButton__bar` → Individual bars inside the button
+- `.menuButton__bar--1` → Top bar
+- `.menuButton__bar--2` → Hidden bar for spacing
+- `.menuButton__bar--3` → Bottom bar
+- `.menuButton__bar--4` → Cross bar (positioned absolutely)
+- `.menuButton__bar--5` → Cross bar (positioned absolutely)
 
 You can target different states by combining classes. For example:
 
 ```css
-:ng-deep .ngxMenuToggler__button.isOpen {
+:ng-deep .menuButton__button.isOpen {
   background-color: red;
 }
 
-:ng-deep .ngxMenuToggler__bar--1 {
+:ng-deep .menuButton__bar--1 {
   background-color: blue;
 }
 
-:ng-deep .ngxMenuToggler__bar.rounded {
+:ng-deep .menuButton.rounded {
   border: 2px solid red;
 }
 
-:ng-deep .ngxMenuToggler__bar.dots {
+:ng-deep .menuButton__bar.dots {
   filter: drop-shadow(0 0 0.75rem red);
 }
 ```
@@ -160,9 +207,9 @@ You can target different states by combining classes. For example:
 
 Choose the form that best fits your case:
 
-- 🐞 [Report a bug](https://github.com/aldaydev/ngx-components-issues/issues/new?template=bug_report.yml)
-- ✨ [Request an improvement for an existing component](https://github.com/aldaydev/ngx-components-issues/issues/new?template=feature_request.yml)
-- 🧩 [Suggest a new component](https://github.com/aldaydev/ngx-components-issues/issues/new?template=new_component_request.yml)
+- 🐞 [Report a bug](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=angular_bug_report.yml)
+- ✨ [Request an improvement for an existing component](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=angular_feature_request.yml)
+- 🧩 [Suggest a new component](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=new_component_request.yml)
 
 👉 Or go to the [form selector](https://github.com/aldaydev/ngx-components-issues/issues/new/choose).
 

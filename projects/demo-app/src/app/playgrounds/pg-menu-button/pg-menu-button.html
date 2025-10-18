@@ -1,4 +1,21 @@
-<div class="titleContainer">
+<div style="display: flex; flex-direction: column; gap: 1rem; align-items: start;">
+      <!-- Menu Button -->
+      <ng-menu-button
+        [isOpenSignal]="menuOpenSignal"
+        [lang]="currentLang()"
+      />
+
+      <!-- Language Selector -->
+      <label for="lang-select">Select language:</label>
+      <select id="lang-select" (change)="onLangChange($event)">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="it">Italiano</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+      </select>
+    </div>
+<!-- <div class="titleContainer">
     <hgroup>
         <h1>ng-menu-button</h1>
         <div>
@@ -51,13 +68,11 @@
     [invert]="true"
     animation="rotateX"
     [faster]="true"
-  />
-
-
+  /> -->
 
   <!-- ------------THIN----------- -->
 
-  <ng-menu-button
+  <!-- <ng-menu-button
     [isOpenSignal]="menuOpenSignal"
 
     type="uneven"
@@ -112,9 +127,11 @@
     [faster]="true"
   />
 
+</div> -->
 
 
-</div>
+
+
 
 <!-- <ng-menu-button
   [isOpenSignal]="menuOpenSignal"
