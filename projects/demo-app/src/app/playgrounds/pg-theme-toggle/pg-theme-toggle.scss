@@ -1,9 +1,11 @@
 ng-theme-toggle{
   --theme-toggle-color-dark: rgb(216, 101, 120);
   --theme-toggle-color-light: rgb(55, 206, 186);
-  // --theme-toggle-size:40px;
+  --theme-toggle-size:40px;
   --theme-toggle-color-timing: ease-in-out;
   --theme-toggle-color-duration: .3s;
+
+  --theme-toggle-sun-stroke-width: 60px;
 
   --theme-toggle-shadow-color-dark: blue;
   --theme-toggle-shadow-color-light: red;

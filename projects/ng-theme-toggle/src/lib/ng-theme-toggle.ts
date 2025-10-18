@@ -28,7 +28,7 @@ export class NgThemeToggle {
 
   /** STYLES */
 
-  hover = input< 'scale' | 'shadow' >('scale');
+  hover = input< 'scale' | 'shadow' | 'none' >('scale');
 
   animation = input< 'rotateX' | 'rotateY' | 'soft'>('soft');
   faster = input<boolean>(false);
