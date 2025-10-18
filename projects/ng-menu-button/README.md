@@ -157,7 +157,7 @@ This option gives you full control over the **text announced by screen readers**
 You can customize `size` and `color` by using css variables.
 
 ```css
-ngx-menu-toggler{
+ng-menu-button{
     --menu-button-size: 50px;
     --menu-button-color: red;
 }
@@ -168,14 +168,14 @@ If not set, **default size** is `40px` and **default color** is `black`
 You can customize styles by using ::gn-deep in css. For example:
 
 ```css
-:ng-deep .menuButton__button{
+:ng-deep .menuButton{
   background color: red
 }
 ```
 
 ### Customizable elements
 
-- `.menuButton__button` → The main button element
+- `.menuButton` → The main button element
 - `.menuButton__bar` → Individual bars inside the button
 - `.menuButton__bar--1` → Top bar
 - `.menuButton__bar--2` → Hidden bar for spacing
@@ -186,7 +186,7 @@ You can customize styles by using ::gn-deep in css. For example:
 You can target different states by combining classes. For example:
 
 ```css
-:ng-deep .menuButton__button.isOpen {
+:ng-deep .menuButton.isOpen {
   background-color: red;
 }
 
@@ -211,7 +211,7 @@ Choose the form that best fits your case:
 - ✨ [Request an improvement for an existing component](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=angular_feature_request.yml)
 - 🧩 [Suggest a new component](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=new_component_request.yml)
 
-👉 Or go to the [form selector](https://github.com/aldaydev/ngx-components-issues/issues/new/choose).
+👉 Or go to the [form selector](https://github.com/universalux/uux-hub/issues/new/choose).
 
 
 ## License
