@@ -1,63 +1,218 @@
-# NgMenuButton
+<p align="center">
+  <a href="https://www.npmjs.com/~universalux" target="_blank" rel="noreferrer noopener">
+    <img src="https://github.com/universalux/uux-hub/blob/main/assets/components/angular/ng-menu-button/ng-menu-button-cover.gif?raw=true" alt="NgMenuButton cover">
+  </a>
+</p>
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.0.
+# NgMenuButton - Angular Menu toggle button
 
-## Code scaffolding
+`ng-menu-button` is an **standalone, reusable and customizable component** for Angular 18, 19 and 20.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+It is designed to work with **signals** and Angular **zoneless**, providing a lightweight, flexible, and accessible menu toggle button.
 
+## Table of Contents
+
+* [Instalation](#installation)
+* [Basic Usage](#basic-usage)
+* [Advanced Usage](#advanced-usage)
+  - [Style and behavior attributes](#style-and-behavior-attributes)
+  - [Accessibility attributes](#accessibility-attributes)
+  - [Custom styles](#custom-styles)
+* [Report or suggest something](#report-or-suggest-something)
+
+## Installation
+
+If you want to install the latest version (currently 20):
 ```bash
-ng generate component component-name
+npm install ng-menu-button
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+Angular 19:
 ```bash
-ng generate --help
+npm install ng-menu-button@v19-lts
 ```
 
-## Building
-
-To build the library, run:
-
+Angular 18:
 ```bash
-ng build ng-menu-button
+npm install ng-menu-button@v18-lts
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+## Basic Usage
 
-### Publishing the Library
+Using `ng-menu-button` is very simple. Only one input is required: `[isOpen]`.
+All other assignable attributes are explained below and are for you to customize to your liking.
 
-Once the project is built, you can publish your library by following these steps:
+| Prop              | Description             | Type                       | Default |
+| ----------------- | ----------------------- | -------------------------- | ------- |
+| `isOpenSignal`    | Menu isOpen signal      | `WritableSignal<boolean>`  | `none`  |
 
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/ng-menu-button
-   ```
+Here is a simple example of use:
 
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
+```ts
+import { Component, signal } from '@angular/core';
+import { NgMenuButton } from 'ng-menu-button';
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [NgMenuButton],
+  template: `
+    <ng-menu-button
+      [isOpenSignal]="menuOpen"
+    />
+  `
+})
+export class App {
+  menuOpen = signal<boolean>(false);
+}`
 ```
 
-## Running end-to-end tests
+## Advanced Usage
 
-For end-to-end (e2e) testing, run:
+In addition to `[isOpenSignal]`, `ng-menu-button` provides several `optional attributes` to customize its appearance and behavior.
 
-```bash
-ng e2e
+```html
+<ng-menu-button
+  [isOpenSignal]="menuOpen"
+  type="uneven"
+  invert="true"
+  [thin]="true"
+  [rounded]="true"
+  animation="rotateY"
+  [faster]="true"
+  [tabIndex]="1"
+  lang="fr"
+  [customAria]="{ariaLabelOpened: 'Edited Opened aria label', ariaLabelClosed: 'Edited Closed aria label'}"
+/>
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Style and behavior attributes
 
-## Additional Resources
+| Input       | Description                                                | Type    | Default   |
+| ----------- | ---------------------------------------------------------- | ------- | --------- |
+| `type`      | Button design: `'bars'`, `'dots'`, `'uneven'`              | string  | `'bars'`  |
+| `invert`    | Mirror effect. Usefull when `type="uneven"`                | boolean | `false`   |
+| `thin`      | It makes lines or dots thinner                             | boolean | `false`   |
+| `[rounded]` | Rounded borders                                            | boolean | `false`   |
+| `animation` | Animation style: `'rotateX'`, `'rotateY'`, `'soft'`        | string  | `'soft'`  |
+| `[faster]`  | Speeds up the rotate animation if `rotateX` or `rotateY`   | boolean | `false`   |
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+### Accessibility attributes
+
+There are two ways of setting the aria-label attributes: `by lang attribute` or `by customAria attribute`
+
+| Input        | Description                    | Type                             | Default   |
+| ------------ | ------------------------------ | -------------------------------- | --------- |
+| `lang`       | Aria labels predefine language | `MenuButtonLangs`                | `'en'`    |
+| `customAria` | Aria labels custom content     | `MenuButtonCustomAria` or `null` | `false`   |
+
+- If needed, you can import `MenuButtonLangs` and `MenuButtonCustomAria` like this:
+```ts
+import { NgMenuButton, MenuButtonLangs, MenuButtonCustomAria } from 'ng-menu-button';
+```
+
+#### 1. `lang` attribute:
+
+The component includes **five predefined languages** for accessibility labels that you can set easily with the `lang attribute`:
+
+| Language           | Code | Example                               |
+|------------------- | ---- | --------------------------------------|
+| English (default)  | `en` | `"Open menu" / "Close menu"`          |
+| Spanish            | `es` | `"Abrir menú" / "Cerrar menú"`        |
+| Italian            | `it` | `"Apri menu" / "Chiudi menu"`         |
+| French             | `fr` | `"Ouvrir le menu" / "Fermer le menu"` |
+| German             | `de` | `"Menü öffnen" / "Menü schließen"`    |
+
+> 💡 If no value is provided in `lang`, the default language is **English (`en`)**. <br>
+> 💡 If your application supports `multiple languages`, you can bind the lang attribute to a signal and link it with a `select`, for example.
+
+#### 2. `customAria` attribute:
+
+In addition to the predefined languages available through the `lang` attribute, you can fully **customize the ARIA labels** for your menu button by using the `customAria` input.
+
+This option gives you full control over the **text announced by screen readers** when the menu is opened or closed — perfect for custom translations, accessibility improvements, or when you want to use a language that is not included in the predefined set.
+
+---
+
+##### 🧩 Example usage
+
+```html
+<ng-menu-button
+  [customAria]="{
+    ariaLabelOpened: 'Hide navigation',
+    ariaLabelClosed: 'Show navigation'
+  }">
+</ng-menu-button>
+```
+
+> 💡 Remember that what is indicated in the `customAria` attribute replaces the default language set in `lang`. <br>
+> 💡 If you only set one of the properties, the other will use the label from the current `lang`.
+
+
+### Custom styles
+
+#### Custom styles by css variables
+
+You can customize `size` and `color` by using css variables.
+
+```css
+ngx-menu-toggler{
+    --menu-button-size: 50px;
+    --menu-button-color: red;
+}
+```
+If not set, **default size** is `40px` and **default color** is `black`
+
+#### Custom styles by ng-deep
+You can customize styles by using ::gn-deep in css. For example:
+
+```css
+:ng-deep .menuButton__button{
+  background color: red
+}
+```
+
+### Customizable elements
+
+- `.menuButton__button` → The main button element
+- `.menuButton__bar` → Individual bars inside the button
+- `.menuButton__bar--1` → Top bar
+- `.menuButton__bar--2` → Hidden bar for spacing
+- `.menuButton__bar--3` → Bottom bar
+- `.menuButton__bar--4` → Cross bar (positioned absolutely)
+- `.menuButton__bar--5` → Cross bar (positioned absolutely)
+
+You can target different states by combining classes. For example:
+
+```css
+:ng-deep .menuButton__button.isOpen {
+  background-color: red;
+}
+
+:ng-deep .menuButton__bar--1 {
+  background-color: blue;
+}
+
+:ng-deep .menuButton.rounded {
+  border: 2px solid red;
+}
+
+:ng-deep .menuButton__bar.dots {
+  filter: drop-shadow(0 0 0.75rem red);
+}
+```
+
+## 📌 Report or suggest something
+
+Choose the form that best fits your case:
+
+- 🐞 [Report a bug](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=angular_bug_report.yml)
+- ✨ [Request an improvement for an existing component](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=angular_feature_request.yml)
+- 🧩 [Suggest a new component](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=new_component_request.yml)
+
+👉 Or go to the [form selector](https://github.com/aldaydev/ngx-components-issues/issues/new/choose).
+
+
+## License
+MIT

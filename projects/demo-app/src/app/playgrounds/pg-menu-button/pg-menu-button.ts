@@ -12,12 +12,12 @@ export class PgMenuButton {
 
   menuOpenSignal = signal<boolean>(false);
 
-  langSignal = signal<MenuButtonLangs>('en');
+  currentLang  = signal<MenuButtonLangs>('en');
 
-  handleLang(event: Event){
+  onLangChange(event: Event){
     const target = event.target as HTMLSelectElement;
     const value = target.value as MenuButtonLangs;
-    this.langSignal.set(value)
+    this.currentLang .set(value)
   }
 
   customAria = signal<MenuButtonCustomAria | null>(null);

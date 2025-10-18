@@ -1,10 +1,120 @@
-<!-- <ng-menu-button
-  [isOpenSignal]="menuOpenSignal"
-  lang="es"
-  [customAriaLabels]="{ariaLabelClosed:'EDITED: Abrir Menú'}"
-/> -->
+<div class="titleContainer">
+    <hgroup>
+        <h1>ng-menu-button</h1>
+        <div>
+          <h4>by</h4>
+          <img src="images/uux-brand-large-croped-white_300x43px.png" class="uuxLogo">
+        </div>
 
-<ng-menu-button
+    </hgroup>
+    <img src="angular_white.png" class="angularLogo">
+</div>
+<div class="container">
+  <ng-menu-button
+    [isOpenSignal]="menuOpenSignal"
+    type="uneven"
+    [rounded]="true"
+    animation="soft"
+  />
+
+  <ng-menu-button
+    [isOpenSignal]="menuOpenSignal"
+    type="bars"
+    [rounded]="true"
+    animation="rotateX"
+  />
+
+  <ng-menu-button
+    [isOpenSignal]="menuOpenSignal"
+    type="dots"
+    [rounded]="true"
+
+  />
+
+  <ng-menu-button
+    [isOpenSignal]="menuOpenSignal"
+    type="dots"
+    animation="rotateX"
+    [faster]="false"
+  />
+
+  <ng-menu-button
+    [isOpenSignal]="menuOpenSignal"
+    type="bars"
+    animation="rotateY"
+    [faster]="true"
+  />
+
+  <ng-menu-button
+    [isOpenSignal]="menuOpenSignal"
+    type="uneven"
+    [invert]="true"
+    animation="rotateX"
+    [faster]="true"
+  />
+
+  <!-- ------------THIN----------- -->
+
+  <ng-menu-button
+    [isOpenSignal]="menuOpenSignal"
+
+    type="uneven"
+    [rounded]="true"
+    [thin]="true"
+    animation="soft"
+  />
+
+  <ng-menu-button
+    [isOpenSignal]="menuOpenSignal"
+
+    type="bars"
+    [thin]="true"
+    [rounded]="true"
+    animation="rotateX"
+  />
+
+  <ng-menu-button
+    [isOpenSignal]="menuOpenSignal"
+
+    type="dots"
+    [thin]="true"
+    [rounded]="true"
+
+  />
+
+  <ng-menu-button
+    [isOpenSignal]="menuOpenSignal"
+
+    type="dots"
+    [thin]="true"
+    animation="rotateX"
+    [faster]="false"
+  />
+
+  <ng-menu-button
+    [isOpenSignal]="menuOpenSignal"
+
+    type="bars"
+    [thin]="true"
+    animation="rotateY"
+    [faster]="true"
+  />
+
+  <ng-menu-button
+    [isOpenSignal]="menuOpenSignal"
+
+    type="uneven"
+    [invert]="true"
+    [thin]="true"
+    animation="rotateX"
+    [faster]="true"
+  />
+
+</div>
+
+
+
+<!-- <ng-menu-button
   [isOpenSignal]="menuOpenSignal"
   type="dots"
   [thin]="false"
@@ -22,8 +132,6 @@
 
 />
 
-<!-- [customAriaLabels]="{ariaLabelClosed:'EDITED: Open Menu'}" -->
-
 <form>
   <select (change)="handleLang($event)">
     <option value="en">English</option>
@@ -35,4 +143,4 @@
 </form>
 
 
-<h2>{{menuOpenSignal() ? 'Está abierto' : 'Está cerrado'}}</h2>
+<h2>{{menuOpenSignal() ? 'Está abierto' : 'Está cerrado'}}</h2> -->
