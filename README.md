@@ -7,7 +7,7 @@ Here you can develop components, execute manual tests on his own playground in d
 ## Installation
 ### 1. Clone the repository:
 ```bash
-git clone https://github.com/your-org/uux-angular.git
+git clone https://github.com/universalux/uux-angular.git
 ```
 
 ### 2. Navigate to the project folder:

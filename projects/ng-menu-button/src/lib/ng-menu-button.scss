@@ -15,7 +15,7 @@
 
 // ---------- BUTTON ---------- //
 
-.menuButton__button {
+.menuButton {
   // BUTTON STYLES
   border: none;
   padding: 0;
@@ -36,32 +36,32 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.menuButton__button.invert {
+.menuButton.invert {
   align-items: flex-end;
 }
 
-.menuButton__button.rounded {
+.menuButton.rounded {
   border-radius: 0.2rem;
 }
 
-.menuButton__button:focus-visible {
+.menuButton:focus-visible {
   outline: 2px solid var(--menu-button-color);
   outline-offset: 2px;
 }
 
-.menuButton__button.isOpen.rotateX {
+.menuButton.isOpen.rotateX {
   transform: rotate(180deg);
 }
 
-.menuButton__button.isOpen.rotateX.faster {
+.menuButton.isOpen.rotateX.faster {
   transform: rotate(360deg);
 }
 
-.menuButton__button.isOpen.rotateY {
+.menuButton.isOpen.rotateY {
   transform: rotateY(180deg);
 }
 
-.menuButton__button.isOpen.rotateY.faster {
+.menuButton.isOpen.rotateY.faster {
   transform: rotateY(360deg);
 }
 

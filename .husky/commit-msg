@@ -2,7 +2,7 @@ COMMIT_MSG=$(cat "$1")
 echo "$COMMIT_MSG"
 
 # Check if the commit message follows the defined structure
-if ! echo "$COMMIT_MSG" | grep -qE "^(feat|fix|docs|style|refactor|test|chore|perf|build|ci|revert): .+"; then
+if ! echo "$COMMIT_MSG" | grep -qE "^(feat|fix|docs|style|refactor|test|chore|perf|build|ci|revert|deploy): .+"; then
   echo "Commit Error: Invalid commit message format."
   echo "Use lowercase, include the type, a colon, a space, and a short description."
   echo "Types allowed: feat, fix, docs, style, refactor, test, chore, perf, build, ci, revert."

@@ -34,7 +34,7 @@ describe('NgMenuButton - with No attributes', () => {
     menuButtonInstance = menuButtonDebugEl.componentInstance;
 
     /** Instance for Menu Button Btn */
-    menuButtonBtnDebugEl = testHostFixture.debugElement.query(By.css('.menuButton__button'));
+    menuButtonBtnDebugEl = testHostFixture.debugElement.query(By.css('.menuButton'));
 
     testHostFixture.detectChanges();
   });
@@ -182,7 +182,7 @@ describe('NgMenuButton - with attributes', () => {
     menuButtonInstance = menuButtonDebugEl.componentInstance;
 
     /** Instance for Menu Button Button */
-    menuButtonBtnDebugEl = testHostFixture.debugElement.query(By.css('.menuButton__button'));
+    menuButtonBtnDebugEl = testHostFixture.debugElement.query(By.css('.menuButton'));
 
     await testHostFixture.whenStable();
   });
