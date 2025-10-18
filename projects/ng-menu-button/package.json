@@ -26,14 +26,13 @@
     "angular-19",
     "angular-20"
   ],
-  "author": "UniversalUX <aldaydev+uux@gmail.com>",
+  "author": "Universal UX <aldaydev+uux@gmail.com>",
   "contributors": [
     "Rafa Alday <aldaydev@gmail.com>"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/universalux/uux-angular",
-    "directory": "projects/ng-menu-button"
+    "url": "https://github.com/universalux/uux-angular"
   },
   "homepage": "https://github.com/universalux/uux-angular/tree/main/projects/ng-menu-button#readme",
   "bugs": {
