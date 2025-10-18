@@ -14,7 +14,7 @@ export class PgMenuButton {
 
   currentLang  = signal<MenuButtonLangs>('en');
 
-  onLangChange(event: Event){
+  handleLang(event: Event){
     const target = event.target as HTMLSelectElement;
     const value = target.value as MenuButtonLangs;
     this.currentLang .set(value)

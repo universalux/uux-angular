@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, ElementRef, inject, input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, inject, input, signal, WritableSignal } from '@angular/core';
+import { ThemeToggleCustomAria, ThemeToggleLangs } from './ng-theme-toggle.types';
+import { THEME_TOGGLE_LANG } from './accessibility/theme-toggle.lang';
 
 @Component({
   standalone: true,
@@ -13,20 +15,19 @@ export class NgThemeToggle {
 
   /** ISDARK FEATURES */
 
-  isDark = input<boolean>(false);
-  setIsDark = output<any>();
+  isDarkSignal = input<WritableSignal<boolean>>();
 
-  toggle() {
-    this.setIsDark.emit(!this.isDark());
+  handleIsDark() {
+    this.isDarkSignal()?.update(value => !value);
     this.setColor();
+  }
+
+  get isDark() {
+    return this.isDarkSignal()?.();
   }
 
   /** STYLES */
 
-  darkColor = input<string>('white');
-  lightColor = input<string>('black');
-  colorDuration = input<number>(0);
-  colorTimingFunction = input<'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'linear'>('ease');
   hover = input< 'scale' | 'shadow' >('scale');
 
   animation = input< 'rotateX' | 'rotateY' | 'soft'>('soft');
@@ -36,16 +37,26 @@ export class NgThemeToggle {
   /** ACCESIBILITY */
 
   tabIndex = input<number>(0);
-  ariaLabelDark = input<string>('Change to light mode');
-  ariaLabelLight = input<string>('Change to dark mode');
+
+  lang = input<ThemeToggleLangs>('en');
+  customAria = input<Partial<ThemeToggleCustomAria> | null>(null);
 
   uniqueId = signal<string>('');
+
+  get ariaLabels(): ThemeToggleCustomAria {
+    const langLabels = THEME_TOGGLE_LANG[this.lang()] ?? THEME_TOGGLE_LANG.en;
+    const custom = this.customAria();
+
+    return {
+      ariaLabelDark: custom?.ariaLabelDark ?? langLabels.ariaLabelDark,
+      ariaLabelLight: custom?.ariaLabelLight ?? langLabels.ariaLabelLight,
+    };
+  }
 
   /** LIFE CYCLE */
 
   ngOnInit() {
     this.setColor();
-    this.setColorTransition();
     this.uniqueId.set(Math.random().toString(36).substring(2, 9));
   }
 
@@ -55,19 +66,11 @@ export class NgThemeToggle {
 
   /** METHODS */
 
-  private setColor(){
-    if(this.isDark()){
-      const host = this.el.nativeElement as HTMLElement;
-      host.style.setProperty('--current-color', this.darkColor());
-    }else{
-      const host = this.el.nativeElement as HTMLElement;
-      host.style.setProperty('--current-color', this.lightColor());
-    }
+  private setColor() {
+    const host = this.el.nativeElement as HTMLElement;
+    host.classList.toggle('isDark', this.isDark);
   }
 
-  private setColorTransition(){
-    const host = this.el.nativeElement as HTMLElement;
-    host.style.setProperty('--color-duration', `${this.colorDuration()}ms`);
-    host.style.setProperty('--color-timing', this.colorTimingFunction());
-  }
+
+
 }
