@@ -71,6 +71,4 @@ export class NgThemeToggle {
     host.classList.toggle('isDark', this.isDark);
   }
 
-
-
 }
