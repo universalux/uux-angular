@@ -7,8 +7,9 @@
 
     --theme-toggle-shadow-color-dark: rgba(255, 255, 255, 0.664);
     --theme-toggle-shadow-color-light: rgba(0, 0, 0, 0.623);
-
     --theme-toggle-color-current: var(--theme-toggle-color-light);
+
+    --theme-toggle-sun-stroke-width: 60;
 
     height: var(--theme-toggle-size, 40px);
     aspect-ratio: 1 / 1;
@@ -34,7 +35,7 @@
     background-color: transparent;
 
     // CONTAINER STYLES
-    padding: 3px;
+    padding: 2px;
     aspect-ratio: 1 / 1;
     width: 100%;
     height: 100%;
@@ -49,20 +50,20 @@
 }
 
 
-.themeToggle__button:hover .themeToggle__svg{
+.themeToggle__button.hover-scale:hover .themeToggle__svg{
     transform: scale(1.1);
 }
 
-.themeToggle__button.isDark.shadow:hover .themeToggle__svg{
+.themeToggle__button.isDark.hover-shadow:hover .themeToggle__svg{
     transform: scale(1);
     filter: drop-shadow(0 0 3px var(--theme-toggle-shadow-color-dark));
 }
 
-.themeToggle__button.isDark.shadow:hover .themeToggle__line{
+.themeToggle__button.isDark.hover-shadow:hover .themeToggle__line{
     filter: drop-shadow(0 0 20px var(--theme-toggle-shadow-color-dark));
 }
 
-.themeToggle__button.shadow:hover .themeToggle__svg{
+.themeToggle__button.hover-shadow:hover .themeToggle__svg{
     transform: scale(1);
     filter: drop-shadow(0 0 5px var(--theme-toggle-shadow-color-light));
 }
@@ -115,6 +116,7 @@
 }
 
 .themeToggle__line{
+    stroke-width: var(--theme-toggle-sun-stroke-width);
     transform-origin: center;
     transition:
         stroke var(--theme-toggle-color-duration) var(--theme-toggle-color-timing),
