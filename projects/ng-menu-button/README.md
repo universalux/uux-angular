@@ -6,7 +6,7 @@
 
 # NgMenuButton - Angular Menu toggle button
 
-`ng-menu-button` is an **standalone, reusable and customizable component** for Angular 18, 19 and 20.
+**ng-menu-button** is an **standalone, reusable and customizable component** for Angular 18, 19 and 20.
 
 It is designed to work with **signals** and Angular **zoneless**, providing a lightweight, flexible, and accessible menu toggle button.
 
@@ -82,7 +82,10 @@ In addition to `[isOpenSignal]`, `ng-menu-button` provides several `optional att
   [faster]="true"
   [tabIndex]="1"
   lang="fr"
-  [customAria]="{ariaLabelOpened: 'Edited Opened aria label', ariaLabelClosed: 'Edited Closed aria label'}"
+  [customAria]="{
+    ariaLabelOpened: 'Edited Opened aria label',
+    ariaLabelClosed: 'Edited Closed aria label'
+  }"
 />
 ```
 
@@ -105,9 +108,9 @@ There are two ways of setting the aria-label attributes: `by lang attribute` or 
 | Input        | Description                    | Type                             | Default   |
 | ------------ | ------------------------------ | -------------------------------- | --------- |
 | `lang`       | Aria labels predefine language | `MenuButtonLangs`                | `'en'`    |
-| `customAria` | Aria labels custom content     | `MenuButtonCustomAria` or `null` | `false`   |
+| `customAria` | Aria labels custom content     | `MenuButtonCustomAria` or `null` | `none`    |
 
-- If needed, you can import `MenuButtonLangs` and `MenuButtonCustomAria` like this:
+- If needed, you can import `MenuButtonLangs` and `MenuButtonCustomAria` types like this:
 ```ts
 import { NgMenuButton, MenuButtonLangs, MenuButtonCustomAria } from 'ng-menu-button';
 ```
@@ -140,10 +143,10 @@ This option gives you full control over the **text announced by screen readers**
 ```html
 <ng-menu-button
   [customAria]="{
-    ariaLabelOpened: 'Hide navigation',
-    ariaLabelClosed: 'Show navigation'
-  }">
-</ng-menu-button>
+    ariaLabelOpened: 'Custom - Hide navigation',
+    ariaLabelClosed: 'Custom - Show navigation'
+  }"
+/>
 ```
 
 > 💡 Remember that what is indicated in the `customAria` attribute replaces the default language set in `lang`. <br>
@@ -173,7 +176,7 @@ You can customize styles by using ::gn-deep in css. For example:
 }
 ```
 
-### Customizable elements
+##### Customizable elements
 
 - `.menuButton` → The main button element
 - `.menuButton__bar` → Individual bars inside the button

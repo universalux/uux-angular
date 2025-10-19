@@ -6,7 +6,7 @@
 
 # NgThemeToggle - Angular Theme toggle button
 
-`ng-theme-toggle` is an **standalone, reusable and customizable component** for Angular 18, 19 and 20.
+**ng-theme-toggle** is an **standalone, reusable and customizable component** for Angular 18, 19 and 20.
 
 It is designed to work with **signals** and Angular **zoneless**, providing a lightweight, flexible, and accessible theme toggle button.
 
@@ -42,12 +42,11 @@ npm install ng-theme-toggle@v18-lts
 Using `ng-theme-toggle` is very simple. Only one input is required: `[isDarkSignal]`.
 All other assignable attributes are explained below and are for you to customize to your liking.
 
-| Prop              | Description             | Type                       | Default |
-| ----------------- | ----------------------- | -------------------------- | ------- |
-| `isDarkSignal`    | Theme (isDark) signal   | `WritableSignal<boolean>`  | `none`  |
+| Prop              | Description                                  | Type                       | Default |
+| ----------------- | -------------------------------------------- | -------------------------- | ------- |
+| `isDarkSignal`    | Dark/light mode writable signal in your app  | `WritableSignal<boolean>`  | `none`  |
 
 Here is a simple example of use:
-
 ```ts
 import { Component, signal } from '@angular/core';
 import { NgThemeToggle } from 'ng-theme-toggle';
@@ -79,7 +78,10 @@ In addition to `[isDarkSignal]`, `ng-theme-toggle` provides several `optional at
   [faster]="true"
   [tabIndex]="1"
   lang="fr"
-  [customAria]="{ariaLabelDark: 'Edited dark aria label', ariaLabelLight: 'Edited light aria label'}"
+  [customAria]="{
+    ariaLabelDark: 'Edited dark aria label',
+    ariaLabelLight: 'Edited light aria label'
+  }"
 />
 ```
 
@@ -99,9 +101,9 @@ There are two ways of setting the aria-label attributes: `by lang attribute` or 
 | Input        | Description                    | Type                              | Default   |
 | ------------ | ------------------------------ | --------------------------------- | --------- |
 | `lang`       | Aria labels predefine language | `ThemeToggleLangs`                | `'en'`    |
-| `customAria` | Aria labels custom content     | `ThemeToggleCustomAria` or `null` | `false`   |
+| `customAria` | Aria labels custom content     | `ThemeToggleCustomAria` or `null` | `none`    |
 
-- If needed, you can import `ThemeToggleLangs` and `ThemeToggleCustomAria` like this:
+- If needed, you can import `ThemeToggleLangs` and `ThemeToggleCustomAria` types like this:
 ```ts
 import { NgThemeButton, ThemeToggleLangs, ThemeToggleCustomAria } from 'ng-theme-toggle';
 ```
@@ -134,9 +136,10 @@ This option gives you full control over the **text announced by screen readers**
 ```html
 <ng-theme-toggle
   [customAria]="{
-    ariaLabelDark: 'Custom: set light mode',
-    ariaLabelLight: 'Custom: set dark mode'
-  }"/>
+    ariaLabelDark: 'Custom - set light mode',
+    ariaLabelLight: 'Custom - set dark mode'
+  }"
+/>
 ```
 
 > 💡 Remember that what is indicated in the `customAria` attribute replaces the default language set in `lang`. <br>
