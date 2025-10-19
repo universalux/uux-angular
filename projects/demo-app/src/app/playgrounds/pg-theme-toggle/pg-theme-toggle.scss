@@ -1,13 +1,103 @@
-ng-theme-toggle{
-  --theme-toggle-color-dark: rgb(216, 101, 120);
-  --theme-toggle-color-light: rgb(55, 206, 186);
-  --theme-toggle-size:40px;
-  --theme-toggle-color-timing: ease-in-out;
-  --theme-toggle-color-duration: .3s;
+:host{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100dvh;
+    height: 100%;
+    background: linear-gradient(127deg, #30a2fe 20%, #824dfe 100%);
+}
 
-  --theme-toggle-sun-stroke-width: 60px;
+.titleContainer{
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+    color: white;
 
-  --theme-toggle-shadow-color-dark: blue;
-  --theme-toggle-shadow-color-light: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleContainer hgroup h1{
+    font-size: 1.8rem;
+    margin-bottom: .35rem;
+}
+
+.titleContainer hgroup div{
+
+  display: flex;
+  column-gap: .3rem;
+  align-items: end;
+}
+
+.uuxLogo{
+  width: 125px;
+  margin-bottom: .1rem;
+}
+
+.angularLogo{
+    max-width: 52px;
+}
+
+.container{
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 3rem;
+    row-gap: 1.5rem;
+
+    // margin-top: 1rem;
 
 }
+
+// ng-menu-button:first-child,
+// ng-menu-button:nth-child(3),
+// ng-menu-button:nth-child(5),
+// ng-menu-button:nth-child(8),
+// ng-menu-button:nth-child(10),
+// ng-menu-button:nth-child(12){
+//     --menu-button-size: 38px;
+//     --menu-button-color: white;
+// }
+
+ng-theme-toggle{
+  --theme-toggle-size:45px;
+}
+
+
+ng-theme-toggle:first-child{
+  --theme-toggle-sun-stroke-width: 40;
+  --theme-toggle-color-duration: 0s;
+}
+
+ng-theme-toggle:nth-child(2){
+  --theme-toggle-sun-stroke-width: 50;
+
+  --theme-toggle-color-dark: rgb(239, 241, 97);
+  --theme-toggle-color-light: rgb(32, 30, 134);
+
+  --theme-toggle-shadow-color-dark: rgba(239, 241, 97, 0.377);
+  --theme-toggle-shadow-color-light: rgba(32, 30, 134, 0.418);
+}
+
+ng-theme-toggle:nth-child(3){
+  --theme-toggle-color-duration: 0s;
+}
+
+// ng-theme-toggle{
+//   --theme-toggle-color-dark: rgb(216, 101, 120);
+//   --theme-toggle-color-light: rgb(55, 206, 186);
+//   --theme-toggle-size:40px;
+//   --theme-toggle-color-timing: ease-in-out;
+//   --theme-toggle-color-duration: .3s;
+
+//   --theme-toggle-sun-stroke-width: 60px;
+
+//   --theme-toggle-shadow-color-dark: blue;
+//   --theme-toggle-shadow-color-light: red;
+
+// }

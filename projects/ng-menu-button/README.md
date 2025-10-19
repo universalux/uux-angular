@@ -39,7 +39,7 @@ npm install ng-menu-button@v18-lts
 
 ## Basic Usage
 
-Using `ng-menu-button` is very simple. Only one input is required: `[isOpen]`.
+Using `ng-menu-button` is very simple. Only one input is required: `[isOpenSignal]`.
 All other assignable attributes are explained below and are for you to customize to your liking.
 
 | Prop              | Description             | Type                       | Default |
