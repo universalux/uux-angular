@@ -1,12 +1,43 @@
+<div class="titleContainer">
+    <hgroup>
+        <h1>ng-theme-toggle</h1>
+        <div>
+          <h4>by</h4>
+          <img src="images/uux-brand-large-croped-white_300x43px.png" class="uuxLogo">
+        </div>
+
+    </hgroup>
+    <img src="angular_white.png" class="angularLogo">
+</div>
+<div class="container">
+  <ng-theme-toggle
+    [isDarkSignal]="isDark1"
+    animation="rotateX"
+  />
 
   <ng-theme-toggle
+    [isDarkSignal]="isDark2"
+    hover="shadow"
+    animation="soft"
+  />
+
+  <ng-theme-toggle
+    [isDarkSignal]="isDark3"
+    animation="rotateY"
+  />
+
+</div>
+
+
+
+  <!-- <ng-theme-toggle
     [isDarkSignal]="isDark"
     hover="shadow"
     animation="rotateY"
-    [faster]="false"
+
     [lang]="currentLang()"
     [customAria]="customAria()"
-  />
+  /> -->
 
   <!-- <form>
   <select (change)="handleLang($event)">

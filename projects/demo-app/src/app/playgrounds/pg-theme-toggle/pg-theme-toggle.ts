@@ -9,7 +9,10 @@ import { NgThemeToggle, ThemeToggleCustomAria, ThemeToggleLangs } from 'ng-theme
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PgThemeToggle {
-  isDark = signal<boolean>(true);
+
+  isDark1 = signal<boolean>(true);
+  isDark2 = signal<boolean>(true);
+  isDark3 = signal<boolean>(true);
 
   customAria = signal<ThemeToggleCustomAria | null>({
     ariaLabelDark: 'Custom Dark',

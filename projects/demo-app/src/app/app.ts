@@ -5,7 +5,11 @@ import { NgMenuButton } from 'ng-menu-button';
 
 @Component({
   selector: 'app-root',
-  imports: [PgMenuButton, PgThemeToggle, NgMenuButton],
+  imports: [
+    PgMenuButton,
+    PgThemeToggle,
+    NgMenuButton
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
