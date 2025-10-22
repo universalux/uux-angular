@@ -13,6 +13,9 @@
       "ng-menu-button": [
         "./dist/ng-menu-button"
       ],
+      "ng-menu-toggle": [
+        "./dist/ng-menu-toggle"
+      ],
       "ng-theme-toggle": [
         "./dist/ng-theme-toggle"
       ]
@@ -52,6 +55,12 @@
     },
     {
       "path": "./projects/ng-theme-toggle/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ng-menu-toggle/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-menu-toggle/tsconfig.spec.json"
     }
   ]
 }

@@ -1,0 +1,146 @@
+<div class="titleContainer">
+    <hgroup>
+        <h1>ng-menu-toggle</h1>
+        <div>
+          <h4>by</h4>
+          <img src="images/uux-brand-large-croped-white_300x43px.png" class="uuxLogo">
+        </div>
+
+    </hgroup>
+    <img src="angular_white.png" class="angularLogo">
+</div>
+<div class="container">
+  <ng-menu-toggle
+    [isOpenSignal]="menuOpenSignal"
+    type="uneven"
+    [rounded]="true"
+    animation="soft"
+  />
+
+  <ng-menu-toggle
+    [isOpenSignal]="menuOpenSignal"
+    type="bars"
+    [rounded]="true"
+    animation="rotateX"
+  />
+
+  <ng-menu-toggle
+    [isOpenSignal]="menuOpenSignal"
+    type="dots"
+    [rounded]="true"
+
+  />
+
+  <ng-menu-toggle
+    [isOpenSignal]="menuOpenSignal"
+    type="dots"
+    animation="rotateX"
+    [faster]="false"
+  />
+
+  <ng-menu-toggle
+    [isOpenSignal]="menuOpenSignal"
+    type="bars"
+    animation="rotateY"
+    [faster]="true"
+  />
+
+  <ng-menu-toggle
+    [isOpenSignal]="menuOpenSignal"
+    type="uneven"
+    [invert]="true"
+    animation="rotateX"
+    [faster]="true"
+  />
+
+  <!-- ------------THIN----------- -->
+
+  <ng-menu-toggle
+    [isOpenSignal]="menuOpenSignal"
+
+    type="uneven"
+    [rounded]="true"
+    [thin]="true"
+    animation="soft"
+  />
+
+  <ng-menu-toggle
+    [isOpenSignal]="menuOpenSignal"
+
+    type="bars"
+    [thin]="true"
+    [rounded]="true"
+    animation="rotateX"
+  />
+
+  <ng-menu-toggle
+    [isOpenSignal]="menuOpenSignal"
+
+    type="dots"
+    [thin]="true"
+    [rounded]="true"
+
+  />
+
+  <ng-menu-toggle
+    [isOpenSignal]="menuOpenSignal"
+
+    type="dots"
+    [thin]="true"
+    animation="rotateX"
+    [faster]="false"
+  />
+
+  <ng-menu-toggle
+    [isOpenSignal]="menuOpenSignal"
+
+    type="bars"
+    [thin]="true"
+    animation="rotateY"
+    [faster]="true"
+  />
+
+  <ng-menu-toggle
+    [isOpenSignal]="menuOpenSignal"
+
+    type="uneven"
+    [invert]="true"
+    [thin]="true"
+    animation="rotateX"
+    [faster]="true"
+  />
+
+</div>
+
+
+
+<!-- <ng-menu-toggle
+  [isOpenSignal]="menuOpenSignal"
+  type="dots"
+  [thin]="false"
+  [invert]="false"
+  [rounded]="false"
+
+  animation="soft"
+  [faster]="false"
+
+  [tabIndex]="0"
+
+  [lang]="langSignal()"
+
+  [customAria]="customAria()"
+
+/>
+
+<form>
+  <select (change)="handleLang($event)">
+    <option value="en">English</option>
+    <option value="es">Español</option>
+    <option value="it">Italian</option>
+    <option value="fr">French</option>
+    <option value="de">Deutch</option>
+  </select>
+</form>
+
+
+<h2>{{menuOpenSignal() ? 'Está abierto' : 'Está cerrado'}}</h2> -->
