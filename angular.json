@@ -168,6 +168,32 @@
           }
         }
       }
+    },
+    "ng-hero-carousel": {
+      "projectType": "library",
+      "root": "projects/ng-hero-carousel",
+      "sourceRoot": "projects/ng-hero-carousel/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-hero-carousel/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-hero-carousel/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/ng-hero-carousel/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "schematics": {

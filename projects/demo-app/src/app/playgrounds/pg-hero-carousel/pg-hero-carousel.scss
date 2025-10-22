@@ -1,0 +1,30 @@
+:host{
+    display: block;
+    width: 100%;
+}
+
+ng-hero-carousel{
+
+    // --carousel-width: 100%;
+    --carousel-height: 400px;
+
+    --carousel-bg: linear-gradient(127deg, #30a2fe 20%, #824dfe 100%);
+    // --carousel-bg: transparent;
+
+    // --carousel-title-size: 4rem;
+    // --carousel-subtitle-size: 1.2rem;
+
+    // --carousel-overlay-color: rgb(0, 0, 0);
+    // --carousel-overlay-opacity: .3;
+
+    /* Colores base */
+    // --carousel-text-color: red;
+
+    /* Color base, se hereda en todo */
+    // --carousel-accent-color: blue;
+
+    /* Overrides opcionales */
+    // --carousel-autoplay-color: white;
+    // --carousel-arrow-color: white;
+    // --carousel-indicator-color: white;
+}
