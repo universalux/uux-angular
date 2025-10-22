@@ -13,7 +13,7 @@
     --carousel-height: 100dvh;
 
     /* Overlay */
-    --carousel-overlay-color: transparent;
+    --carousel-overlay-color: black;
     --carousel-overlay-opacity: .5;
 
     /* Tipography */
@@ -46,6 +46,7 @@
     max-height: 100dvh;
     height: var(--carousel-height);
     background: var(--carousel-bg);
+    color: var(--carousel-text-color);
 
     overflow: hidden;
     scroll-snap-type: x mandatory;
@@ -67,6 +68,7 @@
     margin: 0;
     padding: 0;
     filter: none;
+    color: var(--carousel-text-color);
 }
 
 .carousel__slides,
@@ -99,6 +101,7 @@
 /* --------- CUSTOM OUTER CONTENT ----------*/
 
 .carousel__outerContent{
+    color: var(--carousel-text-color);
     position: inherit;
     z-index: 30;
 }
@@ -121,7 +124,6 @@
     font-size: 1.1rem;
     padding: 1rem;
     background-color: transparent;
-    color: var(--carousel-autoplay-color);
     z-index: 30;
     cursor: pointer;
 }
@@ -130,11 +132,11 @@
     width: 100%;
     height: auto;
     max-width: 18px;
-    fill: var(--carousel-accent-color);
+    fill: var(--carousel-autoplay-color);
 }
 
 .carousel__autoplayBtn:focus-visible{
-    outline: 2px solid var(--carousel-accent-color);
+    outline: 2px solid var(--carousel-autoplay-color);
     outline-offset: -.5rem;
 }
 
@@ -148,7 +150,6 @@
 }
 
 .carousel__slide{
-    // flex: 0 0 100%;
     width: 100%;
     height: 100%;
     min-height: 100%;
@@ -161,6 +162,12 @@
     right: 0;
     left: 100%;
 
+}
+
+.carousel__slide.bgImage{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .carousel__slide.fromLeft{
@@ -363,20 +370,15 @@
 
 .carousel__prevBtn:focus-visible svg,
 .carousel__nextBtn:focus-visible svg{
-    outline: 2px solid var(--carousel-accent-color);
+    outline: 2px solid var(--carousel-arrow-color);
     outline-offset: 10px;
 }
 
 .carousel__prevBtn svg,
 .carousel__nextBtn svg{
-    fill: var(--carousel-accent-color);
+    fill: var(--carousel-arrow-color);
     width: 1rem;
     height: 1rem;
-}
-
-.carousel__prevBtn svg,
-.carousel__nextBtn svg{
-    fill: var(--carousel-arrow-color);
 }
 
 /* ---------- INDICATORS ---------- */
@@ -458,7 +460,7 @@
 }
 
 .carousel__indicatorBtn.active .carousel__indicatorIcon.circles{
-    outline: 2px solid var(--carousel-accent-color);
+    outline: 2px solid var(--carousel-indicator-color);
     outline-offset: 2px;
 }
 
@@ -469,7 +471,6 @@
 /* ---------- COUNTER ---------- */
 
 .carousel__counter{
-    // width: 100%;
     height: 50px;
     position: absolute;
     right: var(--carousel-counter-right);
@@ -478,7 +479,6 @@
     display: flex;
     justify-content: end;
     align-items: center;
-    color: var(--carousel-text-color);
     font-weight: 400;
     font-size: 1.1rem;
     z-index: 25;

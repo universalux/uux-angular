@@ -3,11 +3,12 @@ import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import { SlideForDirective } from './directives/slide-for-directive';
 import { HERO_CAROUSEL_LANG } from './accessibility/hero-carousel.lang';
 import { CarouselItem, AccessibilityOptions } from './ng-hero-carousel.types';
+import { SlideBgDirective } from "./directives/slide-bg-directive";
 
 @Component({
   standalone: true,
   selector: 'ng-hero-carousel',
-  imports: [ NgTemplateOutlet, CommonModule],
+  imports: [NgTemplateOutlet, CommonModule, SlideBgDirective],
   templateUrl: './ng-hero-carousel.html',
   styleUrl: './ng-hero-carousel.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -372,14 +373,5 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
       this.transitionCssValue
     );
   }
-
-  protected getSlideBackground(slide: CarouselItem): string {
-    const gradient = slide.backgroundColor || 'transparent';
-    if (slide.image_url) {
-      return `url(${slide.image_url}), ${gradient}`;
-    }
-    return gradient;
-  }
-
 
 }

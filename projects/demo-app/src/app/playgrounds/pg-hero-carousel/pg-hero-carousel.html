@@ -2,29 +2,29 @@
     [slides]="items()"
     (selected)="selectedItem.set($event)"
     lang="en"
-    [transitionTime]="800"
+    [transitionTime]="3000"
     [hasAutoplay]="true"
     [hasCounter]="false"
     [hasOverlay]="true"
-    [autoplayTime]="4000"
+    [autoplayTime]="7000"
     [autoplayResumeTime]="15000"
-    indicators="bars"
+    indicators="circles"
     arrowsPlacement="auto"
     [accessibilityOptions]="accOpts()"
 >
 
-    <!-- <ng-template #outerContent>
-        <button style="position: absolute; top: 1rem; right: 1.5rem; background-color: transparent; border: none;color: white; font-size: 1.3rem; cursor: pointer;">
+    <ng-template #outerContent>
+        <button style="position: absolute; top: 1rem; right: 1.5rem; background-color: transparent; border: none; font-size: 1.3rem; cursor: pointer;">
             X
         </button>
-    </ng-template> -->
+    </ng-template>
 
     <ng-template [slideFor]="3">
         <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center; width: 100%; justify-content: center;">
-            <button style="background-color: red; color: white; padding: 1rem; border-radius: .5rem; border: none; font-size: 1.2rem; max-width: 200px; width: 100%;">
+            <button style="background-color: red; color: white; padding: .5rem; border-radius: .5rem; border: none; font-size: 1.2rem; max-width: 200px; width: 100%;">
                 Link 1
             </button>
-            <button style="background-color: rgb(66, 207, 61); color: white; padding: 1rem; border-radius: .5rem; border: none; font-size: 1.2rem; max-width: 200px; width: 100%;">
+            <button style="background-color: rgb(66, 207, 61); color: white; padding: .5rem; border-radius: .5rem; border: none; font-size: 1.2rem; max-width: 200px; width: 100%;">
                 Link 2
             </button>
         </div>
