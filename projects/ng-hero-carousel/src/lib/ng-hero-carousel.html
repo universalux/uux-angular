@@ -1,0 +1,207 @@
+<!-- STOP AUTOPLAY -->
+<button [class]="!hasAutoplay() ? 'carousel__autoplayBtn--sr-only' : 'carousel__autoplayBtn'"
+    (click)="toggleAutoplay()"
+    [attr.aria-label]="hasAutoplay() ? (isPlaying() ? acc().autoplayPauseLabel : acc().autoplayPlayLabel) : null"
+    [attr.title]="hasAutoplay() ? (isPlaying() ? acc().autoplayPauseLabel : acc().autoplayPlayLabel) : null"
+    [attr.aria-pressed]="hasAutoplay() ? (isPlaying() ? 'true' : 'false') : null"
+    [attr.aria-hidden]="!hasAutoplay() ? 'true' : null"
+    [attr.aria-controls]="carouselId()"
+>
+    @if (hasAutoplay()) {
+        @if(isPlaying()){
+            <svg aria-hidden="true" focusable="false" fill="#ffffff" width="100%" height="100%"
+            viewBox="0 0 1920 1920"
+                xmlns="http://www.w3.org/2000/svg">
+                <g stroke-width="0"></g>
+                <g stroke-linecap="round" stroke-linejoin="round"></g>
+                <g>
+                    <path d="M754.571 0v1920H206V0h548.571Zm960 0v1920H1166V0h548.571Z" fill-rule="evenodd"></path>
+                </g>
+            </svg>
+        }@else{
+            <svg
+                aria-hidden="true" focusable="false" fill="#000000" width="100%" height="100%"
+                viewBox="0 0 1920 1920"
+                xmlns="http://www.w3.org/2000/svg" stroke="#000000">
+                <g stroke-width="0"></g>
+                <g stroke-linecap="round" stroke-linejoin="round"></g>
+                <g>
+                    <path d="M175 .024V1920l1570.845-959.927z" fill-rule="evenodd"></path>
+                </g>
+            </svg>
+        }
+    }
+
+</button>
+
+<!-- OUTER CONTENT -->
+@if(outerContent){
+    <div class="carousel__outerContent">
+        <ng-container [ngTemplateOutlet]="outerContent"></ng-container>
+    </div>
+}
+
+<!-- READABLE CONTENT FOR EACH SLIDE -->
+<div class="sr-only" aria-live="polite" aria-atomic="true" role="status">
+    {{liveRegionText()}}
+</div>
+
+
+<!-- PREV ARROW (LEFT) -->
+<div
+    class="carousel__prevBtnContainer"
+    [class.fiveOrLess]="slides().length <= 5"
+    [class.auto]="arrowsPlacement() === 'auto'"
+    [class.up]="arrowsPlacement() === 'up'"
+>
+    <button
+        #prevBtn
+        class="carousel__prevBtn"
+        (click)="prevSlide()"
+        [attr.aria-label]="acc().prevBtnAriaLabel"
+        [attr.aria-controls]="carouselId()"
+        type="button"
+    >
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"
+                width="1rem" height="1rem"
+                viewBox="320 -720 296 480"
+                fill="#ffffff">
+            <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/>
+            </svg>
+    </button>
+</div>
+
+<!-- SLIDES CONTENT -->
+@if(slides()){
+    <section
+        #slidesContainer
+        [id]="carouselId()"
+        class="carousel__slides"
+        (touchstart)="onUserDragStart($event)"
+        (touchend)="onUserDragEnd($event)"
+        (click)="resetAutoplay()"
+
+        role="region"
+        [attr.aria-roledescription]="acc().slidesRegionRoleDescription"
+        [attr.aria-label]="acc().slidesRegionAriaLabel"
+    >
+        @for (slide of slides(); track $index) {
+            <article
+                #slide
+                class="carousel__slide"
+                [style.background-image]="slide.image_url ? 'url(' + slide.image_url + ')' : 'none'"
+                [style.background-color]="slide.backgroundColor || 'transparent'"
+                [class.fromRight]="$index > currentSlide()"
+                [class.fromLeft]="$index < currentSlide()"
+                [class.firstFromLeft]="$index === slides().length -1 && currentSlide() === 0"
+
+                [class.active]="$index === currentSlide()"
+                [class.toLeft]="prev() === $index && currentSlide() > prev()"
+                [class.toRight]="prev() === $index && currentSlide() < prev()"
+
+                [class.firstToRight]="$index === 0 && currentSlide() === slides().length - 1"
+
+                [class.overlay]="hasOverlay()"
+
+                role="group"
+                [attr.aria-roledescription]="acc().slideRoleDescription"
+                [attr.aria-label]="acc().slideAriaLabel?.($index + 1, slides().length) ?? null"
+                [attr.inert]="currentSlide() !== $index ? '' : null"
+            >
+                <div
+                    #slidesContent class="carousel__slideContent"
+                    [class.active]="currentSlide() === $index"
+                    [attr.aria-live]="currentSlide() === $index ? 'polite' : null"
+                    aria-atomic="true"
+
+                >
+
+                @if(slide.title || slide.subtitle){
+                    <hgroup class="carousel__slideHeaders">
+                        @if (slide.title) {
+                            <h2 class="carousel__slideTitle">{{slide.title}}</h2>
+                        }
+
+                        @if (slide.subtitle) {
+                            <h3 class="carousel__slideSubtitle">{{slide.subtitle}}</h3>
+                        }
+                    </hgroup>
+                }
+
+                    @if(getChildren($index)){
+                        <div class="slideCustomContent" slideCustomContent [inert]="currentSlide() !== $index">
+                            <ng-container [ngTemplateOutlet]="getChildren($index)"></ng-container>
+                        </div>
+                    }
+
+                </div>
+
+            </article>
+        }
+    </section>
+
+}
+
+<!-- COUNTER -->
+@if (hasCounter()){
+    <span class="carousel__counter" aria-hidden="true">
+        {{(this.currentSlide() + 1) + '/' + this.slides().length}}
+    </span>
+}
+
+
+<!-- NEXT ARROW (LEFT) -->
+<div
+    class="carousel__nextBtnContainer"
+    [class.fiveOrLess]="slides().length <= 5"
+    [class.auto]="arrowsPlacement() === 'auto'"
+    [class.up]="arrowsPlacement() === 'up'"
+>
+    <button
+        #nextBtn
+        class="carousel__nextBtn"
+        (click)="nextSlide()"
+        [attr.aria-label]="acc().nextBtnAriaLabel"
+        [attr.aria-controls]="carouselId()"
+        type="button"
+    >
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"
+                width="1rem" height="1rem"
+                viewBox="320 -720 296 480"
+                fill="#ffffff"
+            >
+                <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
+            </svg>
+    </button>
+</div>
+
+
+<!-- INDICATORS -->
+@if(indicators() !== 'none'){
+    <section class="carousel__indicatorsContainer">
+        <article
+            #indicatorsContainer
+            class="carousel__indicators"
+            (touchstart)="onUserDragStart($event)"
+            (touchend)="onUserDragEnd($event)"
+            tabindex="-1"
+        >
+            @for (indicator of slides(); track $index) {
+                <button
+                    #indicatorBtn
+                    class="carousel__indicatorBtn"
+                    [class.active]="currentSlide() === $index"
+                    (click)="goToSlide($index)"
+                    tabindex="-1"
+                    aria-hidden="true"
+                >
+                    <span
+                        class="carousel__indicatorIcon"
+                        [class.circles]="indicators() === 'circles'"
+                    >
+                    </span>
+                </button>
+            }
+        </article>
+    </section>
+}
