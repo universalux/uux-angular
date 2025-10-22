@@ -14,10 +14,6 @@ export class PgHeroCarousel {
 
   selectedItem = signal<number>(0);
 
-  // accOptions = signal<AccessibilityOptions>({
-  //   autoplayPauseLabel: 'Pause carousel CHANGED',
-  // })
-
 
   accOpts = signal<AccessibilityOptions>({
     autoplayPauseLabel: 'Pause carousel autoplay CHANGED',
