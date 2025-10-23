@@ -1,5 +1,5 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChild, ContentChildren, effect, ElementRef, HostBinding, HostListener, inject, input, OnInit, output, QueryList, Renderer2, signal, TemplateRef, ViewChild, ViewChildren } from '@angular/core';
-import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChild, ContentChildren, effect, ElementRef, HostBinding, HostListener, inject, input, OnInit, output, PLATFORM_ID, QueryList, Renderer2, signal, TemplateRef, ViewChild, ViewChildren } from '@angular/core';
+import { CommonModule, isPlatformBrowser, NgTemplateOutlet } from '@angular/common';
 import { SlideForDirective } from './directives/slide-for-directive';
 import { HERO_CAROUSEL_LANG } from './accessibility/hero-carousel.lang';
 import { CarouselItem, AccessibilityOptions } from './ng-hero-carousel.types';
@@ -19,6 +19,7 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
 
   private el = inject(ElementRef);
   private renderer = inject(Renderer2);
+  protected isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   /** ---------- INPUTS ---------- */
 
@@ -113,6 +114,8 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
   /** ---------- LIFE CYCLE---------- */
 
   constructor() {
+
+    // Effects for Angular 19, 20 ( NO ", { allowSignalWrites: true }")
     effect(() => {
       const selectedSlide = this.currentSlide();
       this.selected.emit(selectedSlide);
@@ -122,6 +125,8 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
       this.setAccOptions();
       this.setGlobalAriaLabel();
     });
+
+    // **IMPORTANT** For angular 18 add ", { allowSignalWrites: true }" to each effect
   };
 
   ngOnInit(): void {
@@ -133,6 +138,8 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
   };
 
   ngAfterViewInit(): void {
+
+    if (typeof window === 'undefined' || typeof document === 'undefined') return;
 
     this.setTransitionVariable();
     this.setGlobalAriaLabel();
@@ -205,9 +212,9 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
 
     const slides = this.slides();
     if (!slides || slides.length === 0) return;
-    // Limitar el índice al rango válido
+    // Limit the index to the valid range
     const clamped = Math.max(0, Math.min(index, slides.length - 1));
-    // Si no cambia, no hacemos nada
+    // If it doesn't change, we don't do anything.
     if (clamped === this.currentSlide()) return;
 
     this.isChangingSlide.set(true);
@@ -227,7 +234,7 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
     const newSlideEl = this.slidesElements.toArray()[clamped]?.nativeElement;
 
     if (this.transitionTime() === 0) {
-      // No hay transición → desbloqueo inmediato
+      // No transition → immediate unlock
       this.isChangingSlide.set(false);
     } else if (newSlideEl) {
       const onEnd = () => {
@@ -236,7 +243,7 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
       };
       newSlideEl.addEventListener('transitionend', onEnd);
     } else {
-      // fallback de seguridad
+      // security fallback
       setTimeout(() => this.isChangingSlide.set(false), this.transitionTime());
     }
 
@@ -257,17 +264,22 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
 
   private setSelectorInScroll() {
 
+    if (!this.isBrowser) return;
+
     setTimeout(() => {
       const clamped = this.currentSlide();
       const activeButton = this.indicatorBtn.toArray()[clamped];
 
       if (activeButton) {
-        const container = this.indicatorsContainer.nativeElement; // referencia al div padre de los botones
+        // reference to the parent div of the buttons
+        const container = this.indicatorsContainer.nativeElement;
+
         const active = activeButton.nativeElement;
 
         const offsetLeft = active.offsetLeft;
         const offsetWidth = active.offsetWidth;
-        // Calculamos posición para centrar el botón en el contenedor
+
+        // We calculate position to center the button in the container
         const scrollPos = offsetLeft - (this.slideWidth() / 2) + (offsetWidth / 2);
 
         container.scrollTo({
@@ -282,29 +294,29 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
   private startedOnIndicators = false;
 
   protected onUserDragStart(event: TouchEvent) {
-    // si ya estamos en transición, ignoramos
+    // If we are already in transition, we ignore
     if (this.isChangingSlide()) return;
 
-    // Detectar si el touch empezó en los selectores (robusto)
+    // Detect if touch started on selectors
     const target = event.target as HTMLElement;
     this.startedOnIndicators = !!target.closest('.carousel__indicators');
 
-    // Pausar autoplay para evitar que salte mientras se arrastra
+    // Pause autoplay to prevent skipping while crawling
     clearTimeout(this.autoplayTimer());
     this.touchStartX = event.touches[0].clientX;
 
-    // No propagar para evitar conflictos con otros handlers
+    // Do not propagate to avoid conflicts with other handlers
     event.stopPropagation();
   }
 
   protected onUserDragEnd(event: TouchEvent) {
-    // Si estabamos en transición, ignoramos y reseteamos flag
+    // If we were in transition, we ignore and reset flag
     if (this.isChangingSlide()) {
       this.startedOnIndicators = false;
       return;
     }
 
-    // Si el touch empezó en los selectores, no lo consideramos un swipe del carousel
+    // If the touch started on the selectors, we do not consider it a swipe of the carousel
     if (this.startedOnIndicators) {
       this.startedOnIndicators = false; // reset
       return;
@@ -313,25 +325,25 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
     const touchEndX = event.changedTouches[0].clientX;
     const deltaX = touchEndX - this.touchStartX;
 
-    // pequeño umbral para considerar swipe
+    // small threshold to consider swipe
     const THRESHOLD = 50;
 
     event.stopPropagation();
 
     if (Math.abs(deltaX) > THRESHOLD) {
-      // evitar que el touch genere un click fantasma en algunos browsers
+      // Prevent touch from generating a phantom click in some browsers
       event.preventDefault();
 
       if (deltaX > 0) {
-        // swipe right -> anterior
+        // swipe right -> previous
         this.prevSlide();
       } else {
-        // swipe left -> siguiente
+        // swipe left -> next
         this.nextSlide();
       }
     }
 
-    // reanudar o reprogramar autoplay
+    // resume or reschedule autoplay
     this.resetAutoplay();
   }
 
