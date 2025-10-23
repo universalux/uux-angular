@@ -5,6 +5,7 @@
     container-type: inline-size;
 
     --carousel-transition-time: 1s;
+    --carousel-transition-translate-y: -2rem;
 
     --carousel-bg: inherit;
 
@@ -196,7 +197,7 @@
     left: -100%;
     z-index: 0;
 
-    animation: naresturnPositionme 0s ease var(--carousel-transition-time) both;
+    // animation: naresturnPositionme 0s ease var(--carousel-transition-time) both;
 }
 
 .carousel__slide.toRight{
@@ -204,7 +205,7 @@
     left: 100%;
     z-index: 0;
 
-    animation: naresturnPositionme 0s ease var(--carousel-transition-time) both;
+    // animation: naresturnPositionme 0s ease var(--carousel-transition-time) both;
 }
 
 .carousel__slide.firstToRight{
@@ -212,7 +213,7 @@
     left: 100% !important;
     z-index: 0 !important;
 
-    animation: naresturnPositionme 0s ease var(--carousel-transition-time) both !important;
+    // animation: naresturnPositionme 0s ease var(--carousel-transition-time) both !important;
 }
 
 @keyframes resturnPosition {
@@ -252,7 +253,7 @@
     z-index: 20;
 
     opacity: 0;
-    transform: translateY(-2rem);
+    transform: translateY(var(--carousel-transition-translate-y));
     transform-origin: center;
     transition:
         opacity .3s ease-out,

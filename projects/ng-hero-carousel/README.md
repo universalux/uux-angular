@@ -307,14 +307,14 @@ You can customize styles by using different **variables in CSS**.
 
 | CSS Variable                 | Description                                                              | Default                   |
 | ---------------------------- | ------------------------------------------------------------------------ | ------------------------- |
-| `--carousel-transition-time` | Duration of the transition animation between slides                      | `1s`                      |
-| `--carousel-bg`              | General background. Inherits from parent by default                      | `inherit`                 |
 | `--carousel-width`           | Component width                                                          | `100%`                    |
 | `--carousel-height`          | Component height                                                         | `100dvh`                  |
+| `--carousel-bg`              | General background. Inherits from parent by default                      | `inherit`                 |
 | `--carousel-overlay-color`   | Custom color for the overlay (only applies if `[hasOverlay]` is enabled) | `black`                   |
 | `--carousel-overlay-opacity` | Custom opacity for the overlay                                           | `.5`                      |
 | `--carousel-title-size`      | Font size for titles in slides when set in `[slides]` object             | `1.8rem`                  |
 | `--carousel-subtitle-size`   | Font size for subtitles in slides when set in `[slides]` object          | `1.2rem`                  |
+| `--carousel-transition-translate-y` | `Transform: translateY` for slide content when it appears or disapears                | `-2rem`                      |
 | `--carousel-text-color`      | Text color for titles and subtitles. Inherits from parent by default     | `inherit`                 |
 | `--carousel-accent-color`    | Base accent color for arrows, indicators, and autoplay button            | `currentColor`            |
 | `--carousel-autoplay-color`  | Custom color for the autoplay toggle button                              | `var(--carousel-accent-color)` |
