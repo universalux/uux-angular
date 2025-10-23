@@ -19,7 +19,7 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
 
   private el = inject(ElementRef);
   private renderer = inject(Renderer2);
-  private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  protected isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   /** ---------- INPUTS ---------- */
 
