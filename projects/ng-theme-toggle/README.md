@@ -6,7 +6,7 @@
 
 # NgThemeToggle - Angular Theme toggle button
 
-**ng-theme-toggle** is an **standalone, reusable and customizable component** for Angular 18, 19 and 20.
+**ng-theme-toggle** is a **standalone, reusable and customizable component** for Angular 18, 19 and 20.
 
 It is designed to work with **signals** and Angular **zoneless**, providing a lightweight, flexible, and accessible theme toggle button.
 
@@ -169,7 +169,7 @@ ng-theme-toggle{
 ```
 The values you see above are the default values if you dont set them.
 
-## 📌 Report or suggest something
+## Report or suggest something
 
 Choose the form that best fits your case:
 
