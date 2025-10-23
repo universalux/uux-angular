@@ -1,5 +1,5 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChild, ContentChildren, effect, ElementRef, HostBinding, HostListener, inject, input, OnInit, output, QueryList, Renderer2, signal, TemplateRef, ViewChild, ViewChildren } from '@angular/core';
-import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChild, ContentChildren, effect, ElementRef, HostBinding, HostListener, inject, input, OnInit, output, PLATFORM_ID, QueryList, Renderer2, signal, TemplateRef, ViewChild, ViewChildren } from '@angular/core';
+import { CommonModule, isPlatformBrowser, NgTemplateOutlet } from '@angular/common';
 import { SlideForDirective } from './directives/slide-for-directive';
 import { HERO_CAROUSEL_LANG } from './accessibility/hero-carousel.lang';
 import { CarouselItem, AccessibilityOptions } from './ng-hero-carousel.types';
@@ -19,6 +19,7 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
 
   private el = inject(ElementRef);
   private renderer = inject(Renderer2);
+  private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   /** ---------- INPUTS ---------- */
 
@@ -113,6 +114,8 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
   /** ---------- LIFE CYCLE---------- */
 
   constructor() {
+
+    // Effects for Angular 19, 20 ( NO ", { allowSignalWrites: true }")
     effect(() => {
       const selectedSlide = this.currentSlide();
       this.selected.emit(selectedSlide);
@@ -122,6 +125,8 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
       this.setAccOptions();
       this.setGlobalAriaLabel();
     });
+
+    // **IMPORTANT** For angular 18 add ", { allowSignalWrites: true }" to each effect
   };
 
   ngOnInit(): void {
@@ -258,6 +263,8 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
   }
 
   private setSelectorInScroll() {
+
+    if (!this.isBrowser) return;
 
     setTimeout(() => {
       const clamped = this.currentSlide();
