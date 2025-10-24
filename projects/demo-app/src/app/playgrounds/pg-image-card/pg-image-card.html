@@ -1,19 +1,62 @@
-<!-- <a href=""> -->
-  <ng-image-card
-    [cardImage]="{url: 'images/ng-menu-toggle-static-cover.png', alt: 'Alt de la imagen'}"
-  >
-    <ng-template #cardHeader>
-      <p>Holi soy el header de la card</p>
-    </ng-template>
+<div class="titleContainer">
+    <hgroup>
+        <h1>ng-menu-button</h1>
+        <div>
+          <h4>by</h4>
+          <img src="images/uux-brand-large-croped-white_300x43px.png" class="uuxLogo">
+        </div>
 
-    <ng-template #cardBody>
-      <p>Contenido principal de la card</p>
-    </ng-template>
+    </hgroup>
+    <img src="angular_white.png" class="angularLogo">
+</div>
+<div class="container">
+  <!-- VERTICAL -->
+  <a style="margin: 20px; display: block;" href="">
+    <ng-image-card
+      [cardImage]="{url: 'images/ng-menu-toggle-static-cover.png', alt: 'Alt de la imagen'}"
+      [imageHover]="true"
+      [bgHover]="false"
+      [scaleHover]="true"
+    >
+      <ng-template #cardHeader>
+        <p>Holi soy el header de la card</p>
+      </ng-template>
 
-    <ng-template #cardFooter>
-      <p>Footer de la card</p>
-    </ng-template>
+      <ng-template #cardBody>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+      </ng-template>
 
-  </ng-image-card>
+      <ng-template #cardFooter>
+        <p>Footer de la card</p>
+      </ng-template>
 
-<!-- </a> -->
+    </ng-image-card>
+
+  </a>
+
+  <!-- HORIZONTAL -->
+  <a style="margin: 20px; display: block;" href="">
+    <ng-image-card
+      [cardImage]="{url: 'images/card/developer-1x1.png', alt: 'Alt de la imagen'}"
+      orientation="horizontal"
+      [imageHover]="true"
+      [bgHover]="false"
+      [scaleHover]="true"
+    >
+      <ng-template #cardHeader>
+        <p>Header</p>
+      </ng-template>
+
+      <ng-template #cardBody>
+        <p>Body Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores quae officia autem debitis sint dicta laudantium amet animi? Repellat a nesciunt et veritatis? Sint, est quasi animi esse quo unde. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      </ng-template>
+
+      <ng-template #cardFooter>
+        <p>Footer</p>
+      </ng-template>
+
+    </ng-image-card>
+
+  </a>
+
+</div>

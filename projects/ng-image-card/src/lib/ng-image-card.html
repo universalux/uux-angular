@@ -1,8 +1,12 @@
 @if (cardHeader) {
-  <header class="card__header">
+  <header
+    class="card__header"
+    [class.bgHover]="bgHover()"
+  >
     <ng-container [ngTemplateOutlet]="cardHeader"/>
   </header>
 }
+
 @if (cardImage()) {
   <section class="card__image">
     <img
@@ -14,13 +18,13 @@
 }
 
 @if (cardBody) {
-  <section class="card__body">
+  <section class="card__body" [class.bgHover]="bgHover()">
     <ng-container [ngTemplateOutlet]="cardBody"/>
   </section>
 }
 
 @if (cardFooter) {
-  <footer class="card__footer">
+  <footer class="card__footer" [class.bgHover]="bgHover()">
     <ng-container [ngTemplateOutlet]="cardFooter"/>
   </footer>
 }

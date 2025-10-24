@@ -1,24 +1,76 @@
 :host{
-  display: block;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100dvh;
+    height: 100%;
+    background: linear-gradient(127deg, #30a2fe 20%, #824dfe 100%);
+}
+
+.titleContainer{
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleContainer hgroup h1{
+    font-size: 1.8rem;
+    margin-bottom: .35rem;
+}
+
+.titleContainer hgroup div{
+
+  display: flex;
+  column-gap: .3rem;
+  align-items: end;
+}
+
+.uuxLogo{
+  width: 125px;
+  margin-bottom: .1rem;
+}
+
+.angularLogo{
+    max-width: 52px;
+}
+
+.container{
+    // width: 400px;
+    display: grid;
+    // flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+
 }
 
 ng-image-card{
   // --card-padding: 16px;
 
-  // --card-max-width: 500px;
-  // --card-min-height: 500px;
+  --card-shadow: none;
+  // --card-max-width: 200px;
+  // --card-min-height: 200px;
 
-  --card-border: none;
+  // --card-border: none;
   // --card-border-radius: 0;
 
   // --card-text-color: inherit;
   // --card-bg: red;
-  --card-header-bg: white;
-  --card-body-bg: white;
-  --card-footer-bg: white;
+  // --card-header-bg: white;
+  // --card-body-bg: white;
+  // --card-footer-bg: white;
 
-  --card-header-text-color: black;
-  --card-body-text-color: black;
-  --card-footer-text-color: black;
+  // --card-footer-bg-hover: none;
+
+  // --card-header-text-color: black;
+  // --card-body-text-color: black;
+  // --card-footer-text-color: black;
 }

@@ -1,25 +1,43 @@
+// ---------- GLOBAL STYLES ----------
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// ---------- HOST STYLES ----------
+
 :host{
-  --card-padding: 16px;
 
-  --card-max-width: 400px;
-  --card-min-height: auto;
-
-  --card-border: 1px solid currentColor;
-  --card-border-radius: 1rem;
-
-  --card-footer-border-top: 1px solid currentColor;
-
+  // General variables
   --card-text-color: inherit;
   --card-bg: inherit;
+  --card-bg-hover: #c4c4c4;
+  --card-scale-hover: 1.03;
+  --card-hover-velocity: .3s;
+  --card-max-width: 400px;
+  --card-min-height: auto;
+  --card-padding: 16px;
+  --card-border: 1px solid currentColor;
+  --card-border-radius: 1rem;
+  --card-shadow: 1px 1px 10px currentColor;
+  --card-footer-border-top: 0px solid currentColor;
 
+  // Advanced variables
   --card-header-bg: var(--card-bg);
   --card-body-bg: var(--card-bg);
   --card-footer-bg: var(--card-bg);
+
+  --card-header-bg-hover: var(--card-bg-hover);
+  --card-body-bg-hover: var( --card-bg-hover);
+  --card-footer-bg-hover: var( --card-bg-hover);
 
   --card-header-text-color: var(--card-text-color);
   --card-body-text-color: var(--card-text-color);
   --card-footer-text-color: var(--card-text-color);
 
+  // Host Styles
   display: flex;
   flex-direction: column;
 
@@ -32,26 +50,142 @@
 
   overflow: hidden;
 
-  text-decoration: none;
   color: var(--card-text-color);
   background: var(--card-bg);
+
+  box-shadow: var(--card-shadow);
+
+  transition: transform var(--card-hover-velocity) ease-in-out;
 }
 
-*{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+// ---------- HORIZONTAL ----------
+
+:host.horizontal{
+  max-width: 100%;
 }
+
+@media screen and (min-width: 800px) {
+  :host.horizontal{
+    display: grid;
+    grid-template-areas:
+      "image header"
+      "image body"
+      "image footer"
+    ;
+
+    grid-template-columns: minmax(200px, 20%) 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: fit-content;
+  }
+
+  :host.horizontal.scaleHover:hover{
+      transform: scale(1.01);
+    }
+
+
+  :host.horizontal.noHeader{
+    grid-template-areas:
+      "image body"
+      "image footer"
+    ;
+
+    grid-template-rows: 1fr auto;
+  }
+
+  :host.horizontal.noBody{
+    grid-template-areas:
+      "image header"
+      "image footer"
+    ;
+
+    grid-template-rows: auto auto;
+  }
+
+  :host.horizontal.noImage{
+    grid-template-areas:
+      "header"
+      "body"
+      "footer"
+    ;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  :host.horizontal.noFooter{
+    grid-template-areas:
+      "image header"
+      "image body"
+    ;
+
+    grid-template-rows: auto 1fr;
+  }
+
+  :host.horizontal .card__header{
+    grid-area: header;
+    align-self: flex-start;
+  }
+
+  :host.horizontal .card__image{
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    grid-area: image;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  :host.horizontal .card__image img{
+    height: 100%;
+    width: auto;
+  }
+
+  :host.horizontal .card__body{
+    grid-area: body;
+  }
+
+  :host.horizontal .card__footer{
+    grid-area: footer;
+    align-self: flex-end;
+  }
+}
+
+// ---------- SCALE HOVER ----------
+
+:host.scaleHover:hover{
+  transform: scale(var(--card-scale-hover));
+}
+
+// ---------- BACKGROUND HOVER ----------
+
+.bgHover{
+  transition: background .3s ease-in-out;
+}
+
+:host:hover .card__header.bgHover{
+  background-color: var(--card-header-bg-hover);
+}
+:host:hover .card__body.bgHover{
+  background-color: var(--card-body-bg-hover);
+}
+:host:hover .card__footer.bgHover{
+  background-color: var(--card-footer-bg-hover);
+}
+
+// ---------- BACKGROUND HOVER ----------
 
 .card__header{
   padding: var(--card-padding);
   background-color: var(--card-header-bg);
   color: var(--card-header-text-color);
+  order: -1;
 }
+
+// ---------- CONTENT STYLE ----------
 
 .card__image{
   width: 100%;
-
   overflow: hidden;
 }
 
@@ -59,21 +193,12 @@
   width: 100%;
   height: fit-content;
   display: block;
-
-  transition: transform .3s ease-in-out;
+  transition: transform var(--card-hover-velocity) ease-in-out;
 }
 
 :host:hover .card__image img.scaleHover{
   transform: scale(1.1);
 }
-
-// ::ng-deep .card__image img {
-//   width: 100px;
-// }
-
-// .card__image:hover img{
-//   scale: 1.1;
-// }
 
 .card__body{
   padding: var(--card-padding);
