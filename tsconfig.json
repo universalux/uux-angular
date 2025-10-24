@@ -13,6 +13,9 @@
       "ng-hero-carousel": [
         "./dist/ng-hero-carousel"
       ],
+      "ng-image-card": [
+        "./dist/ng-image-card"
+      ],
       "ng-menu-button": [
         "./dist/ng-menu-button"
       ],
@@ -70,6 +73,12 @@
     },
     {
       "path": "./projects/ng-hero-carousel/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ng-image-card/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-image-card/tsconfig.spec.json"
     }
   ]
 }
