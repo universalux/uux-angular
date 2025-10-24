@@ -7,6 +7,9 @@
   --card-border: 1px solid currentColor;
   --card-border-size: 1rem;
 
+  --card-text-color: inherit;
+  --card-bg: inherit;
+
   display: flex;
   flex-direction: column;
 
@@ -17,6 +20,10 @@
   min-height: var(--card-min-height);
 
   overflow: hidden;
+
+  text-decoration: none;
+  color: var(--card-text-color);
+  background: var(--card-bg);
 }
 
 *{
@@ -32,6 +39,7 @@
 .card__image{
   background-color: aqua;
   width: 100%;
+  margin: 8px 0;
 }
 
 .card__image img{
