@@ -194,6 +194,32 @@
           }
         }
       }
+    },
+    "ng-image-card": {
+      "projectType": "library",
+      "root": "projects/ng-image-card",
+      "sourceRoot": "projects/ng-image-card/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-image-card/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-image-card/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/ng-image-card/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "schematics": {

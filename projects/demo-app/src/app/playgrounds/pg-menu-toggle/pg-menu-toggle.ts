@@ -11,6 +11,7 @@ import { NgMenuToggle, MenuToggleLangs, MenuToggleCustomAria } from 'ng-menu-tog
 export class PgMenuToggle {
 
   menuOpenSignal = signal<boolean>(false);
+  menuOpenSignalOpened = signal<boolean>(true);
 
   currentLang  = signal<MenuToggleLangs>('en');
 
