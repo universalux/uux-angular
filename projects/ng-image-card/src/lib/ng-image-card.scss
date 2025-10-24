@@ -5,17 +5,28 @@
   --card-min-height: auto;
 
   --card-border: 1px solid currentColor;
-  --card-border-size: 1rem;
+  --card-border-radius: 1rem;
+
+  --card-footer-border-top: 1px solid currentColor;
 
   --card-text-color: inherit;
   --card-bg: inherit;
+
+  --card-header-bg: var(--card-bg);
+  --card-body-bg: var(--card-bg);
+  --card-footer-bg: var(--card-bg);
+
+  --card-header-text-color: var(--card-text-color);
+  --card-body-text-color: var(--card-text-color);
+  --card-footer-text-color: var(--card-text-color);
 
   display: flex;
   flex-direction: column;
 
   border: var(--card-border);
-  border-radius: var(--card-border-size);
+  border-radius: var(--card-border-radius);
 
+  width: 100%;
   max-width: var(--card-max-width);
   min-height: var(--card-min-height);
 
@@ -33,19 +44,27 @@
 }
 
 .card__header{
-  padding: var(--card-padding) var(--card-padding) 0;
+  padding: var(--card-padding);
+  background-color: var(--card-header-bg);
+  color: var(--card-header-text-color);
 }
 
 .card__image{
-  background-color: aqua;
   width: 100%;
-  margin: 8px 0;
+
+  overflow: hidden;
 }
 
 .card__image img{
   width: 100%;
   height: fit-content;
   display: block;
+
+  transition: transform .3s ease-in-out;
+}
+
+:host:hover .card__image img.scaleHover{
+  transform: scale(1.1);
 }
 
 // ::ng-deep .card__image img {
@@ -57,9 +76,14 @@
 // }
 
 .card__body{
-  padding: 0 var(--card-padding);
+  padding: var(--card-padding);
+  background-color: var(--card-body-bg);
+  color: var(--card-body-text-color);
 }
 
 .card__footer{
-  padding: 0 var(--card-padding) var(--card-padding);
+  color: var(--card-footer-text-color);
+  padding: var(--card-padding);
+  background-color: var(--card-footer-bg);
+  border-top: var(--card-footer-border-top);
 }

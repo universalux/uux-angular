@@ -5,17 +5,23 @@
 }
 @if (cardImage()) {
   <section class="card__image">
-    <img [src]="cardImage()!.url" [alt]="cardImage()!.alt">
-    <!-- <ng-container [ngTemplateOutlet]="cardImage"/> -->
+    <img
+      [src]="cardImage()!.url"
+      [alt]="cardImage()!.alt"
+      [class.scaleHover]="imageHover()"
+    >
   </section>
 }
 
-<!-- <section class="card__image">
-  <ng-content select="[card-image]"></ng-content>
-</section> -->
-<section class="card__body">
+@if (cardBody) {
+  <section class="card__body">
     <ng-container [ngTemplateOutlet]="cardBody"/>
-</section>
-<footer class="card__footer">
+  </section>
+}
+
+@if (cardFooter) {
+  <footer class="card__footer">
     <ng-container [ngTemplateOutlet]="cardFooter"/>
-</footer>
+  </footer>
+}
+

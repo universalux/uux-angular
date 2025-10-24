@@ -1,3 +1,24 @@
 :host{
   display: block;
+  width: 100%;
+}
+
+ng-image-card{
+  // --card-padding: 16px;
+
+  // --card-max-width: 500px;
+  // --card-min-height: 500px;
+
+  --card-border: none;
+  // --card-border-radius: 0;
+
+  // --card-text-color: inherit;
+  // --card-bg: red;
+  --card-header-bg: white;
+  --card-body-bg: white;
+  --card-footer-bg: white;
+
+  --card-header-text-color: black;
+  --card-body-text-color: black;
+  --card-footer-text-color: black;
 }

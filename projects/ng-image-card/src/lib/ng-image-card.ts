@@ -17,4 +17,6 @@ export class NgImageCard {
   @ContentChild('cardFooter') cardFooter!: TemplateRef<any>;
 
   cardImage = input<CardImage | null>(null);
+  imageHover = input<boolean>(true);
+  backgroundHover = input<boolean>(true);
 }
