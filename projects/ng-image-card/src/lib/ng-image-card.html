@@ -10,6 +10,7 @@
 @if (cardImage()) {
   <section class="card__image">
     <img
+      #cardImg
       [src]="cardImage()!.url"
       [alt]="cardImage()!.alt"
       [class.scaleHover]="imageHover()"

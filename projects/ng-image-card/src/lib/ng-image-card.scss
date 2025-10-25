@@ -12,17 +12,19 @@
 
   // General variables
   --card-text-color: inherit;
+  --card-text-color-hover: inherit;
   --card-bg: inherit;
-  --card-bg-hover: #c4c4c4;
+  --card-bg-hover: #dbdbdb;
   --card-scale-hover: 1.03;
   --card-hover-velocity: .3s;
-  --card-max-width: 400px;
-  --card-min-height: auto;
+  --card-max-width: 400px; //delete?
+  --card-min-height: auto; //delete?
   --card-padding: 16px;
-  --card-border: 1px solid currentColor;
-  --card-border-radius: 1rem;
+  --card-border: 1px solid currentColor; //delete?
+  --card-border-radius: 1rem; //delete?
   --card-shadow: 1px 1px 10px currentColor;
   --card-footer-border-top: 0px solid currentColor;
+  --card-animation-delay: 0s;
 
   // Advanced variables
   --card-header-bg: var(--card-bg);
@@ -36,6 +38,10 @@
   --card-header-text-color: var(--card-text-color);
   --card-body-text-color: var(--card-text-color);
   --card-footer-text-color: var(--card-text-color);
+
+  --card-header-text-color-hover: var(--card-text-color-hover);
+  --card-body-text-color-hover: var(--card-text-color-hover);
+  --card-footer-text-color-hover: var(--card-text-color-hover);
 
   // Host Styles
   display: flex;
@@ -55,100 +61,14 @@
 
   box-shadow: var(--card-shadow);
 
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
   transition: transform var(--card-hover-velocity) ease-in-out;
 }
 
-// ---------- HORIZONTAL ----------
-
-:host.horizontal{
-  max-width: 100%;
-}
-
-@media screen and (min-width: 800px) {
-  :host.horizontal{
-    display: grid;
-    grid-template-areas:
-      "image header"
-      "image body"
-      "image footer"
-    ;
-
-    grid-template-columns: minmax(200px, 20%) 1fr;
-    grid-template-rows: auto 1fr auto;
-    height: fit-content;
-  }
-
-  :host.horizontal.scaleHover:hover{
-      transform: scale(1.01);
-    }
-
-
-  :host.horizontal.noHeader{
-    grid-template-areas:
-      "image body"
-      "image footer"
-    ;
-
-    grid-template-rows: 1fr auto;
-  }
-
-  :host.horizontal.noBody{
-    grid-template-areas:
-      "image header"
-      "image footer"
-    ;
-
-    grid-template-rows: auto auto;
-  }
-
-  :host.horizontal.noImage{
-    grid-template-areas:
-      "header"
-      "body"
-      "footer"
-    ;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-  }
-
-  :host.horizontal.noFooter{
-    grid-template-areas:
-      "image header"
-      "image body"
-    ;
-
-    grid-template-rows: auto 1fr;
-  }
-
-  :host.horizontal .card__header{
-    grid-area: header;
-    align-self: flex-start;
-  }
-
-  :host.horizontal .card__image{
-    aspect-ratio: 1 / 1;
-    height: 100%;
-    grid-area: image;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    object-fit: cover;
-    object-position: center center;
-  }
-
-  :host.horizontal .card__image img{
-    height: 100%;
-    width: auto;
-  }
-
-  :host.horizontal .card__body{
-    grid-area: body;
-  }
-
-  :host.horizontal .card__footer{
-    grid-area: footer;
-    align-self: flex-end;
-  }
+:host.loaded {
+  opacity: 1;
 }
 
 // ---------- SCALE HOVER ----------
@@ -157,20 +77,27 @@
   transform: scale(var(--card-scale-hover));
 }
 
+:host.translateAnimation {
+  animation: translateY 1s var(--card-animation-delay) ease-in-out both;
+}
+
 // ---------- BACKGROUND HOVER ----------
 
 .bgHover{
-  transition: background .3s ease-in-out;
+  transition: background .3s ease-in-out, color .3s ease-in-out;
 }
 
 :host:hover .card__header.bgHover{
   background-color: var(--card-header-bg-hover);
+  color: var(--card-header-text-color-hover);
 }
 :host:hover .card__body.bgHover{
   background-color: var(--card-body-bg-hover);
+  color: var(--card-body-text-color-hover);
 }
 :host:hover .card__footer.bgHover{
   background-color: var(--card-footer-bg-hover);
+  color: var(--card-footer-text-color-hover);
 }
 
 // ---------- BACKGROUND HOVER ----------
@@ -211,4 +138,14 @@
   padding: var(--card-padding);
   background-color: var(--card-footer-bg);
   border-top: var(--card-footer-border-top);
+}
+
+@keyframes translateY {
+  from{
+    transform: translateY(20px);
+    opacity: 0;
+  }to{
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
