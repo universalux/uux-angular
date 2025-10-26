@@ -6,8 +6,8 @@
     "outDir": "../../out-tsc/lib",
     "declaration": true,
     "declarationMap": true,
-    "inlineSources": true, // Set up "false" in production
-    "sourceMap": true, // Set up "false" in production
+    "inlineSources": false, // Set up "false" in production
+    "sourceMap": false, // Set up "false" in production
     "types": []
   },
   "include": [
