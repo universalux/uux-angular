@@ -1,81 +1,42 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChild, ElementRef, HostBinding, input, signal, TemplateRef, ViewChild } from '@angular/core';
-import { CardImage } from './ng-image-card.types';
+import { ChangeDetectionStrategy, Component, HostBinding, input } from '@angular/core';
 
 @Component({
   standalone: true,
   selector: 'ng-image-card',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './ng-image-card.html',
   styleUrl: './ng-image-card.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgImageCard implements AfterViewInit{
+export class NgImageCard {
+  animation = input<'translateY' | 'fadeIn'>('translateY');
+  hover = input<'scale' | 'color' | 'both' | 'none'>('scale');
+  shadow = input<boolean>(true);
 
-  @ContentChild('cardHeader') cardHeader!: TemplateRef<any>;
-  @ContentChild('cardBody') cardBody!: TemplateRef<any>;
-  @ContentChild('cardFooter') cardFooter!: TemplateRef<any>;
-  @ViewChild('cardImg') cardImg!: ElementRef<HTMLImageElement>;
+  @HostBinding('class.shadow')
+  get applyShadow() {
+    return this.shadow();
+  }
 
-  cardImage = input<CardImage | null>(null);
-  imageHover = input<boolean>(true);
-  // bgHover = input<boolean>(false);
-  // scaleHover = input<boolean>(false);
-  initialAnimation = input<boolean>(true);
+  @HostBinding('class.scaleHover')
+  get applyScaleHover() {
+    return this.hover() === 'scale' || this.hover() === 'both';
+  }
 
-  // @HostBinding('class.scaleHover')
-  // get applyScaleHover() {
-  //   return this.scaleHover();
-  // }
+  @HostBinding('class.colorHover')
+  get applyColorHover() {
+    return this.hover() === 'color' || this.hover() === 'both';
+  }
 
   @HostBinding('class.translateAnimation')
   get applyTranslateAnimation() {
-    return this.initialAnimation();
+    return this.animation() === 'translateY';
   }
 
-  @HostBinding('class.noHeader')
-  get noHeader(): boolean {
-    return !this.cardHeader;
-  }
-
-  @HostBinding('class.noImage')
-  get noImage(): boolean {
-    return !this.cardImage();
-  }
-
-  @HostBinding('class.noBody')
-  get noBody(): boolean {
-    return !this.cardBody;
-  }
-
-  @HostBinding('class.noFooter')
-  get noFooter(): boolean {
-    return !this.cardFooter;
-  }
-
-  private _imageLoaded = signal<boolean>(false);
-
-  @HostBinding('class.loaded') get loadedClass() {
-    return this._imageLoaded();
-  }
-
-  ngAfterViewInit() {
-    if(!this.cardImage()){
-      this._imageLoaded.set(true);
-      return;
-    };
-    if (this.cardImg?.nativeElement) {
-      const img = this.cardImg.nativeElement;
-
-      if (img.complete && img.naturalHeight !== 0) {
-        // Imagen ya cacheada
-        this._imageLoaded.set(true);
-      } else {
-        img.addEventListener('load', () => {
-          this._imageLoaded.set(true);
-        });
-      }
-    }
+  @HostBinding('class.fadeInAnimation')
+  get applyFadeInAnimation() {
+    return this.animation() === 'fadeIn';
   }
 
 }

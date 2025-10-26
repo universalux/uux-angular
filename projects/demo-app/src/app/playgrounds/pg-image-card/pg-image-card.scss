@@ -49,7 +49,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     justify-content: center;
-    column-gap: 2rem;
+    column-gap: 2.5rem;
     row-gap: 1.5rem;
 
 }
@@ -62,61 +62,58 @@
 ng-image-card{
 
   //External styles
-
-  // max-width: 600px;
+  // max-width: 280px;
   // min-height: 1000px;
-  // border: 1px solid white;
+  // border: 3px solid white;
   // border-radius: 3rem;
-  // box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.432);
-  // color: red;
-  // background: linear-gradient(to left, blue, red 50%);
 
   //Variable Styles
 
-  // --card-padding: 16px;
+  // --card-bg: black;
+  // --card-fg: white;
+  // --card-hover-bg: red;
+  --card-hover-velocity: .3s;
+  --card-section-padding: 16px;
+  // --card-image-padding-x: 0px;
+  --card-footer-border-top: 0px solid currentColor;
+  --card-animation-delay: 0s;
+  --card-animation-velocity: 1s;
+  --card-hover-scale: 1.03;
 
-  // --card-shadow: none;
-  // --card-max-width: 400px;
-  // --card-min-height: 200px;
+  // Advanced variables
+  --card-header-bg: transparent;
+  --card-image-bg: transparent;
+  --card-body-bg: transparent;
+  --card-footer-bg: transparent;
 
-  // --card-border: 3px solid red;
-  // --card-border-radius: 3rem;
-
-  // --card-text-color: black;
-  // --card-bg: white;
-  // --card-header-bg: white;
-
-  // --card-body-bg: white;
-  // --card-footer-bg: white;
-
-  // --card-bg-hover: rgba(255, 0, 0, 0.219);
-
-  // --card-header-text-color: black;
-  // --card-body-text-color: black;
-  // --card-footer-text-color: black;
-
-  // --card-text-color-hover: rgb(255, 255, 255);
+  --card-header-text-color: inherit;
+  --card-body-text-color: inherit;
+  --card-footer-text-color: inherit;
 }
 
-// ng-image-card:hover{
-//   // background-color: green;
-//   transform: scale(1.05);
-// }
-
-// ng-image-card.animation{
-//   animation: fadeIn 1s ease-in-out both;
-// }
-
-// ng-image-card.delay{
-//   --card-animation-delay: .2s;
-// }
 
 // ng-image-card:hover{
-//   --card-bg: blue;
-//   --card-text-color: green;
-//   --card-header-bg-hover: aqua;
+//   background-color: #dbdbdbd5;
 // }
 
+ng-image-card [card-header]{
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+ng-image-card [card-header] img{
+  width: 50px;
+  border-radius: 50%;
+}
+
+ng-image-card [card-footer]{
+  display: flex; column-gap: .5rem; justify-content: end;
+}
+
+// ng-image-card [card-image]:hover img{
+//   transform: scale(1.1);
+// }
 
 @keyframes fadeIn {
   from{
@@ -131,6 +128,10 @@ ng-image-card{
   align-items: center;
   column-gap: 1rem;
 }
+
+// ng-image-card [card-header]{
+//   background-color: red;
+// }
 
 .card_headerContainer div h3{
   margin-bottom: .3rem;

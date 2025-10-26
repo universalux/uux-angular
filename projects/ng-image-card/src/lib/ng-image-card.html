@@ -1,31 +1,5 @@
-@if (cardHeader) {
-  <header
-    class="card__header"
-  >
-    <ng-container [ngTemplateOutlet]="cardHeader"/>
-  </header>
-}
-
-@if (cardImage()) {
-  <section class="card__image">
-    <img
-      #cardImg
-      [src]="cardImage()!.url"
-      [alt]="cardImage()!.alt"
-      [class.imageHover]="imageHover()"
-    >
-  </section>
-}
-
-@if (cardBody) {
-  <section class="card__body">
-    <ng-container [ngTemplateOutlet]="cardBody"/>
-  </section>
-}
-
-@if (cardFooter) {
-  <footer class="card__footer">
-    <ng-container [ngTemplateOutlet]="cardFooter"/>
-  </footer>
-}
+<ng-content select="[card-header]"></ng-content>
+<ng-content select="[card-image]" id="imageHover"></ng-content>
+<ng-content select="[card-body]"></ng-content>
+<ng-content select="[card-footer]"></ng-content>
 
