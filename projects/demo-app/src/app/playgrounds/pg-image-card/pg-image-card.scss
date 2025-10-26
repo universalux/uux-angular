@@ -60,21 +60,30 @@
 // }
 
 ng-image-card{
-  max-width: 600px;
-  min-height: 1000px;
-  border: 3px solid red;
-  border-radius: 3rem;
+
+  //External styles
+
+  // max-width: 600px;
+  // min-height: 1000px;
+  // border: 1px solid white;
+  // border-radius: 3rem;
+  // box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.432);
+  // color: red;
+  // background: linear-gradient(to left, blue, red 50%);
+
+  //Variable Styles
+
   // --card-padding: 16px;
 
-  --card-shadow: none;
+  // --card-shadow: none;
   // --card-max-width: 400px;
   // --card-min-height: 200px;
 
   // --card-border: 3px solid red;
   // --card-border-radius: 3rem;
 
-  --card-text-color: black;
-  --card-bg: white;
+  // --card-text-color: black;
+  // --card-bg: white;
   // --card-header-bg: white;
 
   // --card-body-bg: white;
@@ -87,6 +96,11 @@ ng-image-card{
   // --card-footer-text-color: black;
 
   // --card-text-color-hover: rgb(255, 255, 255);
+}
+
+ng-image-card:hover{
+  background-color: green;
+  transform: scale(1.1);
 }
 
 ng-image-card.animation{

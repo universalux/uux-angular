@@ -11,60 +11,61 @@
 :host{
 
   // General variables
-  --card-text-color: inherit;
+  // --card-text-color: inherit;
   --card-text-color-hover: inherit;
-  --card-bg: inherit;
+  // --card-bg: inherit;
   --card-bg-hover: #dbdbdb;
   --card-scale-hover: 1.03;
   --card-hover-velocity: .3s;
-  --card-max-width: 400px; //delete?
-  --card-min-height: auto; //delete?
+  // --card-max-width: 400px;
+  // --card-min-height: auto;
   --card-padding: 16px;
-  --card-border: 1px solid currentColor; //delete?
-  --card-border-radius: 1rem; //delete?
-  --card-shadow: 1px 1px 10px currentColor;
+  // --card-border: 1px solid currentColor;
+  // --card-border-radius: 1rem;
+  // --card-shadow: 1px 1px 10px currentColor;
   --card-footer-border-top: 0px solid currentColor;
   --card-animation-delay: 0s;
 
   // Advanced variables
-  --card-header-bg: var(--card-bg);
-  --card-body-bg: var(--card-bg);
-  --card-footer-bg: var(--card-bg);
+  --card-header-bg: transparent;
+  --card-body-bg: transparent;
+  --card-footer-bg: transparent;
 
-  --card-header-bg-hover: var(--card-bg-hover);
-  --card-body-bg-hover: var( --card-bg-hover);
-  --card-footer-bg-hover: var( --card-bg-hover);
+  // --card-header-bg-hover: var(--card-bg-hover);
+  // --card-body-bg-hover: var( --card-bg-hover);
+  // --card-footer-bg-hover: var( --card-bg-hover);
 
-  --card-header-text-color: var(--card-text-color);
-  --card-body-text-color: var(--card-text-color);
-  --card-footer-text-color: var(--card-text-color);
+  --card-header-text-color: inherit;
+  --card-body-text-color: inherit;
+  --card-footer-text-color: inherit;
 
-  --card-header-text-color-hover: var(--card-text-color-hover);
-  --card-body-text-color-hover: var(--card-text-color-hover);
-  --card-footer-text-color-hover: var(--card-text-color-hover);
+  // --card-header-text-color-hover: var(--card-text-color-hover);
+  // --card-body-text-color-hover: var(--card-text-color-hover);
+  // --card-footer-text-color-hover: var(--card-text-color-hover);
 
   // Host Styles
   display: flex;
   flex-direction: column;
 
-  border: var(--card-border);
-  border-radius: var(--card-border-radius);
+  // border: var(--card-border);
+  border-radius: 1rem;
 
   width: 100%;
-  max-width: var(--card-max-width);
-  min-height: var(--card-min-height);
+  max-width: 500px;
+  min-height: auto;
+  // max-width: var(--card-max-width);
+  // min-height: var(--card-min-height);
 
   overflow: hidden;
 
-  color: var(--card-text-color);
-  background: var(--card-bg);
+  // color: var(--card-text-color);
+  color: inherit;
+  background: inherit;
 
-  box-shadow: var(--card-shadow);
+  // box-shadow: var(--card-shadow);
 
   opacity: 0;
-  transition: opacity 0.3s ease;
-
-  transition: transform var(--card-hover-velocity) ease-in-out;
+  transition: transform var(--card-hover-velocity) ease-in-out, opacity 0.3s ease;
 }
 
 :host.loaded {
@@ -73,9 +74,9 @@
 
 // ---------- SCALE HOVER ----------
 
-:host.scaleHover:hover{
-  transform: scale(var(--card-scale-hover));
-}
+// :host.scaleHover:hover{
+//   transform: scale(var(--card-scale-hover));
+// }
 
 :host.translateAnimation {
   animation: translateY 1s var(--card-animation-delay) ease-in-out both;
@@ -83,28 +84,28 @@
 
 // ---------- BACKGROUND HOVER ----------
 
-.bgHover{
-  transition: background .3s ease-in-out, color .3s ease-in-out;
-}
+// .bgHover{
+//   transition: background .3s ease-in-out, color .3s ease-in-out;
+// }
 
-:host:hover .card__header.bgHover{
-  background-color: var(--card-header-bg-hover);
-  color: var(--card-header-text-color-hover);
-}
-:host:hover .card__body.bgHover{
-  background-color: var(--card-body-bg-hover);
-  color: var(--card-body-text-color-hover);
-}
-:host:hover .card__footer.bgHover{
-  background-color: var(--card-footer-bg-hover);
-  color: var(--card-footer-text-color-hover);
-}
+// :host:hover .card__header.bgHover{
+//   background-color: var(--card-header-bg-hover);
+//   color: var(--card-header-text-color-hover);
+// }
+// :host:hover .card__body.bgHover{
+//   background-color: var(--card-body-bg-hover);
+//   color: var(--card-body-text-color-hover);
+// }
+// :host:hover .card__footer.bgHover{
+//   background-color: var(--card-footer-bg-hover);
+//   color: var(--card-footer-text-color-hover);
+// }
 
 // ---------- BACKGROUND HOVER ----------
 
 .card__header{
   padding: var(--card-padding);
-  background-color: var(--card-header-bg);
+  background: var(--card-header-bg);
   color: var(--card-header-text-color);
   order: -1;
 }
@@ -129,14 +130,14 @@
 
 .card__body{
   padding: var(--card-padding);
-  background-color: var(--card-body-bg);
+  background: var(--card-body-bg);
   color: var(--card-body-text-color);
 }
 
 .card__footer{
   color: var(--card-footer-text-color);
   padding: var(--card-padding);
-  background-color: var(--card-footer-bg);
+  background: var(--card-footer-bg);
   border-top: var(--card-footer-border-top);
 }
 
