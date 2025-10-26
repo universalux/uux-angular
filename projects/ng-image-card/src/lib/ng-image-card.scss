@@ -40,8 +40,8 @@
 
   overflow: hidden;
 
-  color: inherit;
-  background: inherit;
+  color: black;
+  background: white;
 
   opacity: 0;
   transition: transform var(--card-hover-velocity) ease-in-out, opacity var(--card-hover-velocity) ease;
@@ -53,14 +53,6 @@
 
 :host.translateAnimation {
   animation: translateY var(--card-animation-velocity) var(--card-animation-delay) ease-in-out both;
-}
-
-:host.scaleHover{
-  background-color: aqua;
-}
-
-:host.scaleHover:hover {
-  scale: 2;
 }
 
 // ---------- BACKGROUND HOVER ----------
@@ -87,7 +79,7 @@
   transition: transform var(--card-hover-velocity) ease-in-out;
 }
 
-:host:hover .card__image img.scaleHover{
+:host:hover .card__image img.imageHover{
   transform: scale(1.1);
 }
 

@@ -98,18 +98,18 @@ ng-image-card{
   // --card-text-color-hover: rgb(255, 255, 255);
 }
 
-ng-image-card:hover{
-  background-color: green;
-  transform: scale(1.03);
-}
+// ng-image-card:hover{
+//   // background-color: green;
+//   transform: scale(1.05);
+// }
 
-ng-image-card.animation{
-  animation: fadeIn 1s ease-in-out both;
-}
+// ng-image-card.animation{
+//   animation: fadeIn 1s ease-in-out both;
+// }
 
-ng-image-card.delay{
-  --card-animation-delay: .2s;
-}
+// ng-image-card.delay{
+//   --card-animation-delay: .2s;
+// }
 
 // ng-image-card:hover{
 //   --card-bg: blue;

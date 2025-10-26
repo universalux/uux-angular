@@ -20,13 +20,13 @@ export class NgImageCard implements AfterViewInit{
   cardImage = input<CardImage | null>(null);
   imageHover = input<boolean>(true);
   // bgHover = input<boolean>(false);
-  scaleHover = input<boolean>(false);
+  // scaleHover = input<boolean>(false);
   initialAnimation = input<boolean>(true);
 
-  @HostBinding('class.scaleHover')
-  get applyScaleHover() {
-    return this.scaleHover();
-  }
+  // @HostBinding('class.scaleHover')
+  // get applyScaleHover() {
+  //   return this.scaleHover();
+  // }
 
   @HostBinding('class.translateAnimation')
   get applyTranslateAnimation() {
