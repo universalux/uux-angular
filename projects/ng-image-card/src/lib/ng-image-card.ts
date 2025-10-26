@@ -1,20 +1,42 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ContentChild, input, TemplateRef } from '@angular/core';
-import { CardImage } from './ng-image-card.types';
+import { ChangeDetectionStrategy, Component, HostBinding, input } from '@angular/core';
 
 @Component({
   standalone: true,
   selector: 'ng-image-card',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './ng-image-card.html',
   styleUrl: './ng-image-card.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgImageCard {
+  animation = input<'translateY' | 'fadeIn'>('translateY');
+  hover = input<'scale' | 'color' | 'both' | 'none'>('scale');
+  shadow = input<boolean>(true);
 
-  @ContentChild('cardHeader') cardHeader!: TemplateRef<any>;
-  @ContentChild('cardBody') cardBody!: TemplateRef<any>;
-  @ContentChild('cardFooter') cardFooter!: TemplateRef<any>;
+  @HostBinding('class.shadow')
+  get applyShadow() {
+    return this.shadow();
+  }
 
-  cardImage = input<CardImage | null>(null);
+  @HostBinding('class.scaleHover')
+  get applyScaleHover() {
+    return this.hover() === 'scale' || this.hover() === 'both';
+  }
+
+  @HostBinding('class.colorHover')
+  get applyColorHover() {
+    return this.hover() === 'color' || this.hover() === 'both';
+  }
+
+  @HostBinding('class.translateAnimation')
+  get applyTranslateAnimation() {
+    return this.animation() === 'translateY';
+  }
+
+  @HostBinding('class.fadeInAnimation')
+  get applyFadeInAnimation() {
+    return this.animation() === 'fadeIn';
+  }
+
 }
