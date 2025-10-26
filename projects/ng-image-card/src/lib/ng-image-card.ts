@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, input } from '@angular
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgImageCard {
-  animation = input<'translateY' | 'fadeIn'>('translateY');
+  animation = input<'translateY' | 'fadeIn' |'none'>('translateY');
   hover = input<'scale' | 'color' | 'both' | 'none'>('scale');
   shadow = input<boolean>(true);
 

@@ -25,7 +25,7 @@ export class TestHost {}
 @Component({
   imports: [NgImageCard],
   template: `
-    <ng-image-card animation="fadeIn" [hover]="hoverSignal()" [shadow]="false">
+    <ng-image-card [animation]="animationSignal()" [hover]="hoverSignal()" [shadow]="false">
       <header card-header>
         <p>Header content</p>
       </header>
@@ -42,5 +42,6 @@ export class TestHost {}
   `
 })
 export class TestHostWithAttrs {
+  animationSignal = signal<'translateY' | 'fadeIn' |'none'>('fadeIn');
   hoverSignal = signal<'scale' | 'color' | 'both' | 'none'>('color');
 }
