@@ -40,7 +40,7 @@ npm install ng-image-card@v18-lts
 
 ## Basic Usage
 
-Using `ng-image-card` is simple. You can add only the sections you need, and the card will render accordingly.
+Using `ng-image-card` is simple. You can add only the sections you need (using the projection attribute, such as card-header, card-image, etc.) and the card will render accordingly.
 
 ```html
 <ng-image-card hover="both">
@@ -113,8 +113,6 @@ ng-image-card {
 
 #### 2. Using CSS variables
 
-Here we show you all the
-
 ```css
 ng-image-card {
   // ----- General variables
@@ -150,6 +148,41 @@ ng-image-card {
   --card-footer-text-color: inherit;
 }
 ```
+
+| Variable                       | Description                                                    | Default                  | Related to |
+| ------------------------------ | -------------------------------------------------------------- | ------------------------ | ---------- |
+| **`--card-bg`**                | Background color of the entire card                            | `white`                  | General    |
+| **`--card-fg`**                | Foreground (text) color of the card                            | `black`                  | General    |
+| **`--card-section-padding`**   | Internal padding for each section (`header`, `body`, `footer`) | `16px`                   | General    |
+| **`--card-image-padding-x`**   | Horizontal padding for the image container                     | `0px`                    | General    |
+| **`--card-footer-border-top`** | Top border of the footer section                               | `0px solid currentColor` | General    |
+
+| Variable                    | Description                                                     | Default                                               | Related to |
+| --------------------------- | --------------------------------------------------------------- | ----------------------------------------------------- | ---------- |
+| **`--card-hover-velocity`** | Transition duration applied on hover                            | `.3s`                                                 | Hover      |
+| **`--card-hover-scale`**    | Scale factor when hovering (if `hover='scale'`)                 | `1.03`                                                | Hover      |
+| **`--card-hover-bg`**       | Background color on hover (if `hover='color'` or `'both'`)      | `color-mix(in srgb, var(--card-bg) 70%, #999999 30%)` | Hover      |
+| **`--card-hover-fg`**       | Foreground/text color on hover (if `hover='color'` or `'both'`) | `var(--card-fg)`                                      | Hover      |
+
+| Variable                        | Description                                | Default | Related to |
+| ------------------------------- | ------------------------------------------ | ------- | ---------- |
+| **`--card-animation-delay`**    | Delay before the entrance animation starts | `0s`    | Animation  |
+| **`--card-animation-velocity`** | Duration of the entrance animation         | `1s`    | Animation  |
+
+| Variable            | Description                           | Default                                                            | Related to |
+| ------------------- | ------------------------------------- | ------------------------------------------------------------------ | ---------- |
+| **`--card-shadow`** | Box-shadow applied when `shadow=true` | `3px 3px 20px color-mix(in srgb, var(--card-fg) 60%, #999999 40%)` | Shadow     |
+
+| Variable                       | Description                            | Default       | Related to |
+| ------------------------------ | -------------------------------------- | ------------- | ---------- |
+| **`--card-header-bg`**         | Background color of the header section | `transparent` | Sections   |
+| **`--card-image-bg`**          | Background color of the image section  | `transparent` | Sections   |
+| **`--card-body-bg`**           | Background color of the body section   | `transparent` | Sections   |
+| **`--card-footer-bg`**         | Background color of the footer section | `transparent` | Sections   |
+| **`--card-header-text-color`** | Text color inside the header section   | `inherit`     | Sections   |
+| **`--card-body-text-color`**   | Text color inside the body section     | `inherit`     | Sections   |
+| **`--card-footer-text-color`** | Text color inside the footer section   | `inherit`     | Sections   |
+
 
 #### 3. Styling sections directly
 
