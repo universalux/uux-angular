@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, HostBinding, input } from '@angular/core';
 
 @Component({
