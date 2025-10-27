@@ -12,7 +12,7 @@ export class PgThemeToggle {
 
   isDark1 = signal<boolean>(true);
   isDark2 = signal<boolean>(true);
-  isDark3 = signal<boolean>(true);
+  isDark3 = signal<boolean>(false);
 
   customAria = signal<ThemeToggleCustomAria | null>({
     ariaLabelDark: 'Custom Dark',

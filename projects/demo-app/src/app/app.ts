@@ -9,10 +9,8 @@ import { PgImageCard } from "./playgrounds/pg-image-card/pg-image-card";
 @Component({
   selector: 'app-root',
   imports: [
-    // PgMenuButton,
     // PgMenuToggle,
     // PgThemeToggle,
-    // NgMenuButton,
     // PgHeroCarousel,
     PgImageCard
 ],
