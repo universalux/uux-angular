@@ -1,1 +1,16 @@
-<h1>CONTENT CAROUSEL</h1>
+<div class="contentCarousel__container">
+  <div class="contentCarousel__prevContainer">
+    <button class="contentCarousel__prev" (click)="prev()">←</button>
+  </div>
+
+  <div class="contentCarousel__trackContainer">
+    <div class="contentCarousel__track" [style.transform]="transform" #track>
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+
+  <div class="contentCarousel__nextContainer">
+    <button class="contentCarousel__next" (click)="next()">→</button>
+  </div>
+</div>

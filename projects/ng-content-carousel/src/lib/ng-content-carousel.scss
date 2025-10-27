@@ -1,0 +1,24 @@
+:host{
+  display: inline-block;
+  max-width: 100%;
+}
+
+.contentCarousel__container{
+  background-color: rgb(255, 238, 0);
+  display: flex;
+}
+
+.contentCarousel__prevContainer,
+.contentCarousel__nextContainer{
+  width: 2rem;
+  background-color: black;
+}
+
+.contentCarousel__trackContainer{
+  overflow: hidden;
+}
+
+.contentCarousel__track{
+  display: flex;
+  overflow: hidden;
+}
