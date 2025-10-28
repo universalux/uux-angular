@@ -1,24 +1,38 @@
 :host{
-  display: inline-block;
-  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .contentCarousel__container{
-  background-color: rgb(255, 238, 0);
+  background-color: transparent;
   display: flex;
+  max-width: 100%;
+  width: fit-content;
 }
 
 .contentCarousel__prevContainer,
 .contentCarousel__nextContainer{
-  width: 2rem;
-  background-color: black;
+  width: 32px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.contentCarousel__prev, .contentCarousel__next {
+  width: 100%;
+  height: 50%;
 }
 
 .contentCarousel__trackContainer{
-  overflow: hidden;
+  overflow-x:hidden;
+}
+
+.contentCarousel__track.animation{
+  transition: transform .3s ease-in-out;
 }
 
 .contentCarousel__track{
   display: flex;
-  overflow: hidden;
+  width: fit-content;
 }
