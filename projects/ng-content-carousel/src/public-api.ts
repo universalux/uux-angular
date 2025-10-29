@@ -3,3 +3,4 @@
  */
 
 export * from './lib/ng-content-carousel';
+export * from './lib/directives/carousel-item-directive';

@@ -1,4 +1,5 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostListener, inject, input, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, ElementRef, HostListener, inject, input, QueryList, signal, ViewChild } from '@angular/core';
+import { CarouselItemDirective } from '../public-api';
 
 @Component({
   standalone: true,
@@ -13,8 +14,10 @@ export class NgContentCarousel implements AfterViewInit {
   transition = input<boolean>(true);
   arrowStyle = input<'minimal' |'solid'>('minimal');
   showArrowsOnEdges = input<boolean>(true);
-  gap = input<number>(16);
+  // gap = input<number>(16);
 
+  @ContentChildren(CarouselItemDirective) items!: QueryList<CarouselItemDirective>;
+  @ViewChild('carouselContainer') carouselContainer!: ElementRef<HTMLDivElement>;
   @ViewChild('track') track!: ElementRef;
   @ViewChild('trackContainer') trackContainer!: ElementRef<HTMLDivElement>;
   @ViewChild('arrowButtonPrev') arrowButtonPrev!: ElementRef<HTMLDivElement>;
@@ -46,6 +49,22 @@ export class NgContentCarousel implements AfterViewInit {
     this.calculateTrackContainerWidth();
   }
 
+  onKeyDown(event: KeyboardEvent) {
+    const active = document.activeElement;
+    const container = this.carouselContainer.nativeElement;
+
+    if (active !== container) return; // 👈 ignora si el foco está en un hijo
+
+    if (event.key === 'ArrowRight') {
+      this.next();
+      event.preventDefault();
+    }
+    if (event.key === 'ArrowLeft') {
+      this.prev();
+      event.preventDefault();
+    }
+  }
+
   ngAfterViewInit() {
     this.calculateHostWidth();
     this.calculateCardWidth();
@@ -54,6 +73,10 @@ export class NgContentCarousel implements AfterViewInit {
 
     const initialWidth = this.trackContainer.nativeElement.offsetWidth;
     this.calculateTrackContainerWidth(initialWidth);
+
+    console.log(this.items);
+    // this.calculateElementsOnView();
+    this.updateVisibleItems();
   }
 
   private calculateHostWidth(){
@@ -69,9 +92,10 @@ export class NgContentCarousel implements AfterViewInit {
   };
 
   private calculateCardWidth(){
-    const firstCard = this.track.nativeElement.children[0];
+    const firstCard = this.items.first?.el.nativeElement;
+    console.log('cardWidth', firstCard.offsetWidth);
     if (firstCard) {
-      this.cardWidth.set(firstCard.offsetWidth + this.gap());
+      this.cardWidth.set(firstCard.offsetWidth);
     }
   };
 
@@ -85,14 +109,15 @@ export class NgContentCarousel implements AfterViewInit {
     const cardsViewed = Math.floor(initialWidth / this.cardWidth()!);
     this.cardsViewed.set(cardsViewed);
 
-    const calculatedWidth = cardsViewed * this.cardWidth()!;
+    // const calculatedWidth = (cardsViewed * this.cardWidth()!) + (this.gap() * (cardsViewed - 1));
+    const calculatedWidth = (cardsViewed * this.cardWidth()!);
     const finalWidth = calculatedWidth < this.cardWidth()! ? this.minWidth() : calculatedWidth;
     this.trackContainerWidth.set(finalWidth);
   };
 
   private calculateTotalCards(){
-    this.totalCards.set(this.track.nativeElement.children.length);
-    this.maxWidth.set(this.track.nativeElement.children.length * this.cardWidth()!);
+    this.totalCards.set(this.items.length);
+    this.maxWidth.set(this.items.length * this.cardWidth()!);
     this.minWidth.set(this.cardWidth()! * 2);
   }
 
@@ -110,6 +135,8 @@ export class NgContentCarousel implements AfterViewInit {
       this.onStart.set(false);
     }
 
+    this.updateVisibleItems();
+
   }
 
   prev() {
@@ -125,15 +152,62 @@ export class NgContentCarousel implements AfterViewInit {
     if(this.currentIndex() !== this.totalCards() - this.cardsViewed()! ){
       this.onEnd.set(false);
     }
-  }
+
+    this.updateVisibleItems();
+  };
+
 
   updateTransform() {
-    let translatePoint = (this.currentIndex() * this.cardWidth()!) - this.gap();
-    if(this.currentIndex() === 1 || this.currentIndex() === this.totalCards() - 1){
-      translatePoint = (this.currentIndex() * this.cardWidth()!) - (this.gap() / 2);
-    }else if(this.currentIndex() === 0){
+    // let translatePoint = this.currentIndex() * (this.cardWidth()! + this.gap());
+    let translatePoint = this.currentIndex() * (this.cardWidth()!);
+    if(this.currentIndex() === 0){
       translatePoint = 0;
     }
     this.transform.set(`translateX(-${translatePoint}px)`);
-  }
+  };
+
+  updateVisibleItems() {
+    // console.log('cardsViewed', this.cardsViewed(), 'current', this.currentIndex());
+    const visibleItemsArr : number[] = [];
+    for (let i = this.currentIndex(); i <= (this.currentIndex() + this.cardsViewed()! - 1); i++) {
+      visibleItemsArr.push(i);
+    }
+    this.items.forEach(({ el }, i) => {
+      if(!visibleItemsArr.includes(i)){
+        el.nativeElement.toggleAttribute('inert', true);
+      }else{
+        console.log(el, i);
+        el.nativeElement.toggleAttribute('inert', false);
+      }
+    });
+  };
+
+  // applyItemsClass(){
+  //   this.items.forEach((item) => {
+  //     item.el.nativeElement.classList.add('item');
+  //   });
+  // };
+
+
+  // updateVisibleItems() {
+  //   const containerRect = this.trackContainer.nativeElement.getBoundingClientRect();
+
+  //   this.items.forEach(({ el }) => {
+  //     const rect = el.nativeElement.getBoundingClientRect();
+  //     const isVisible = rect.right > containerRect.left && rect.left < containerRect.right;
+
+  //     el.nativeElement.toggleAttribute('inert', !isVisible);
+  //   });
+  // }
+
+  // updateTransform() {
+  //   let translatePoint = (this.currentIndex() * this.cardWidth()!) - (this.gap());
+  //   if(this.currentIndex() === 1 || this.currentIndex() === this.totalCards() - 1){
+  //     console.log('Es la primera o la ultima');
+  //     translatePoint = (this.currentIndex() * this.cardWidth()!) + (this.gap());
+  //   }else if(this.currentIndex() === 0){
+  //     translatePoint = 0;
+  //   }
+  //   this.transform.set(`translateX(-${translatePoint}px)`);
+  // }
 }

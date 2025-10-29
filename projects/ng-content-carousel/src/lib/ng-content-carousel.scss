@@ -1,3 +1,4 @@
+/* ---------- GENERAL STYLES ---------- */
 *{
   box-sizing: border-box;
   padding: 0;
@@ -30,6 +31,11 @@ button{
   width: fit-content;
 }
 
+.contentCarousel__container:focus-visible{
+  outline: 2px solid var(--content-carousel-accent-color);
+  border-radius: 1rem;
+}
+
 .contentCarousel__prevContainer,
 .contentCarousel__nextContainer{
   width: 46px;
@@ -53,7 +59,8 @@ button{
   width: 0 !important;
 }
 
-.contentCarousel__prev, .contentCarousel__next {
+.contentCarousel__prevButton,
+.contentCarousel__nextButton {
   height: 50%;
   width: 100%;
   display: flex;
@@ -61,19 +68,28 @@ button{
   overflow: hidden;
 }
 
-.contentCarousel__next{
+.contentCarousel__prevButton{
+  justify-content: start;
+}
+
+.contentCarousel__nextButton{
   justify-content: end;
 }
 
-.contentCarousel__next.solid,
-.contentCarousel__prev.solid{
+.contentCarousel__nextButton:focus-visible{
+  border: 2px solid var(--content-carousel-accent-color);
+}
+
+.contentCarousel__nextButton.solid,
+.contentCarousel__prevButton.solid{
   width: 30px;
   background-color: black;
   border-radius: .8rem;
 }
 
-.contentCarousel__next.solid .contentCarousel__nextIcon svg,
-.contentCarousel__prev.solid .contentCarousel__prevIcon svg{
+
+.contentCarousel__nextButton.solid .contentCarousel__nextIcon svg,
+.contentCarousel__prevButton.solid .contentCarousel__prevIcon svg{
   width: .8rem;
 }
 
@@ -100,17 +116,18 @@ button{
   transition: background .2s ease-in-out;
 }
 
-.contentCarousel__next.minimal:hover .contentCarousel__nextIcon,
-.contentCarousel__prev.minimal:hover .contentCarousel__prevIcon{
+.contentCarousel__nextButton.minimal:hover .contentCarousel__nextIcon,
+.contentCarousel__prevButton.minimal:hover .contentCarousel__prevIcon{
   background-color: var(--content-carousel-arrows-hover-bg);
 }
 
-.contentCarousel__prev svg,
-.contentCarousel__next svg{
+.contentCarousel__prevButton svg,
+.contentCarousel__nextButton svg{
   fill: var(--content-carousel-arrows-color);
 }
 
 .contentCarousel__trackContainer{
+  // margin: 0 1rem;
   overflow-x:hidden;
 }
 
@@ -120,8 +137,20 @@ button{
 
 .contentCarousel__track{
   display: flex;
-  column-gap: 8px;
+  padding: 1.5rem 0;
+  // column-gap: 8px;
   align-items: center;
+  justify-content: space-evenly;
   width: fit-content;
   height: fit-content;
+  z-index: 10;
+}
+
+:host ::ng-deep .carousel-item:focus-visible{
+  outline: 2px solid var(--content-carousel-accent-color);
+
+}
+
+:host ::ng-deep .carousel-item{
+  padding: 0 1rem;
 }

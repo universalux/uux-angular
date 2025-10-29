@@ -1,15 +1,23 @@
-<div #carouselContainer class="contentCarousel__container">
+<div #carouselContainer
+  class="contentCarousel__container"
+  role="region"
+  aria-label="Featured content carousel"
+  tabindex="0"
+  (keydown)="onKeyDown($event)"
+>
 
   <div #arrowButtonPrev
     class="contentCarousel__prevContainer"
     [class.onStart]="onStart() && !showArrowsOnEdges()"
   >
     <button
-      class="contentCarousel__prev"
+      class="contentCarousel__prevButton"
       (click)="prev()"
       [class.minimal]="arrowStyle() === 'minimal'"
       [class.solid]="arrowStyle() === 'solid'"
       [attr.inert]="onStart() && !showArrowsOnEdges() ? '' : null"
+      [attr.aria-label]="'Go to previous item'"
+      tabindex="-1"
     >
       <div class="contentCarousel__prevIcon">
         <svg xmlns="http://www.w3.org/2000/svg"s
@@ -30,9 +38,10 @@
     <div #track
       class="contentCarousel__track"
       [style.transform]="transform()"
-      [style.column-gap]="gap() + 'px'"
+
       [class.transition]="transition()"
     >
+    <!-- [style.column-gap]="gap() + 'px'" -->
       <ng-content></ng-content>
     </div>
   </div>
@@ -42,12 +51,14 @@
     [class.onEnd]="onEnd() && !showArrowsOnEdges()"
   >
     <button
-      class="contentCarousel__next"
+      class="contentCarousel__nextButton"
       (click)="next()"
 
       [class.minimal]="arrowStyle() === 'minimal'"
       [class.solid]="arrowStyle() === 'solid'"
       [attr.inert]="onEnd() && !showArrowsOnEdges() ? '' : null"
+      [attr.aria-label]="'Go to next item'"
+      tabindex="-1"
     >
       <div class="contentCarousel__nextIcon" >
         <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"
