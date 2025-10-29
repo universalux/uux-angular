@@ -1,7 +1,24 @@
 <div class="contentCarousel__container" #carouselContainer>
 
-  <div class="contentCarousel__prevContainer" #arrowButton>
-    <button class="contentCarousel__prev" (click)="prev()">←</button>
+  <div class="contentCarousel__prevContainer" #arrowButtonPrev
+  [class.onStart]="onStart() && !showArrowsOnEdges()">
+    <button
+      class="contentCarousel__prev"
+      (click)="prev()"
+
+      [class.minimal]="arrowStyle() === 'minimal'"
+      [class.solid]="arrowStyle() === 'solid'"
+    >
+      <div class="contentCarousel__prevIcon">
+        <svg xmlns="http://www.w3.org/2000/svg"s
+          aria-hidden="true" focusable="false"
+          width="1.5rem" height="1.5rem"
+          viewBox="320 -720 296 480"
+        >
+          <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/>
+        </svg>
+      </div>
+    </button>
   </div>
 
   <div #trackContainer
@@ -11,14 +28,30 @@
     <div
       #track
       class="contentCarousel__track"
-      [style.transform]="transform"
-      [class.animation]="animation()"
+      [style.transform]="transform()"
+      [class.transition]="transition()"
     >
       <ng-content></ng-content>
     </div>
   </div>
 
-  <div class="contentCarousel__nextContainer">
-    <button class="contentCarousel__next" (click)="next()">→</button>
+  <div class="contentCarousel__nextContainer" #arrowButtonNext [class.onEnd]="onEnd() && !showArrowsOnEdges()">
+    <button
+      class="contentCarousel__next"
+      (click)="next()"
+
+      [class.minimal]="arrowStyle() === 'minimal'"
+      [class.solid]="arrowStyle() === 'solid'"
+    >
+      <div class="contentCarousel__nextIcon" >
+        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"
+          width="1.5rem" height="1.5rem"
+          viewBox="320 -720 296 480"
+        >
+          <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
+        </svg>
+      </div>
+
+    </button>
   </div>
 </div>
