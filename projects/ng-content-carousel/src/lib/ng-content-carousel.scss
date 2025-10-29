@@ -1,0 +1,127 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+:host{
+
+  --content-carousel-bg: inherit;
+  --content-carousel-accent-color: white;
+
+  --content-carousel-arrows-color: var(--content-carousel-accent-color);
+  --content-carousel-arrows-hover-bg: rgba(158, 158, 158, 0.623);
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.contentCarousel__container{
+  background-color: transparent;
+  display: flex;
+  max-width: 100%;
+  width: fit-content;
+}
+
+.contentCarousel__prevContainer,
+.contentCarousel__nextContainer{
+  width: 46px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: width .3s ease-in-out;
+}
+
+.contentCarousel__prevContainer{
+  justify-content: start;
+}
+
+.contentCarousel__nextContainer{
+  justify-content: end;
+}
+
+.contentCarousel__prevContainer.onStart,
+.contentCarousel__nextContainer.onEnd{
+  width: 0 !important;
+}
+
+.contentCarousel__prev, .contentCarousel__next {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.contentCarousel__next{
+  justify-content: end;
+}
+
+.contentCarousel__next.solid,
+.contentCarousel__prev.solid{
+  width: 30px;
+  background-color: black;
+  border-radius: .8rem;
+}
+
+.contentCarousel__next.solid .contentCarousel__nextIcon svg,
+.contentCarousel__prev.solid .contentCarousel__prevIcon svg{
+  width: .8rem;
+}
+
+.contentCarousel__nextIcon,
+.contentCarousel__prevIcon{
+  display: flex;
+  width: 2.2rem;
+  height: 2.2rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.contentCarousel__nextIcon{
+  padding-left: .1rem;
+}
+
+.contentCarousel__prevIcon{
+  padding-right: .1rem;
+}
+
+.contentCarousel__nextIcon,
+.contentCarousel__prevIcon{
+  transition: background .2s ease-in-out;
+}
+
+.contentCarousel__next.minimal:hover .contentCarousel__nextIcon,
+.contentCarousel__prev.minimal:hover .contentCarousel__prevIcon{
+  background-color: var(--content-carousel-arrows-hover-bg);
+}
+
+.contentCarousel__prev svg,
+.contentCarousel__next svg{
+  fill: var(--content-carousel-arrows-color);
+}
+
+.contentCarousel__trackContainer{
+  overflow-x:hidden;
+}
+
+.contentCarousel__track.transition{
+  transition: transform .3s ease-in-out;
+}
+
+.contentCarousel__track{
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+}
