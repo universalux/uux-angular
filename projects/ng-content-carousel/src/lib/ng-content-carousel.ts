@@ -1,5 +1,7 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, ElementRef, HostListener, inject, input, QueryList, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, effect, ElementRef, HostListener, inject, input, OnInit, QueryList, signal, ViewChild } from '@angular/core';
 import { CarouselItemDirective } from '../public-api';
+import { CONTENT_CAROUSEL_LANG } from './accessibility/content-carousel.lang';
+import { AccessibilityOptions, ContentCarouselLangs } from './ng-content-carousel.types';
 
 @Component({
   standalone: true,
@@ -9,11 +11,13 @@ import { CarouselItemDirective } from '../public-api';
   styleUrl: './ng-content-carousel.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgContentCarousel implements AfterViewInit {
+export class NgContentCarousel implements AfterViewInit, OnInit {
 
   transition = input<boolean>(true);
   arrowStyle = input<'minimal' |'solid'>('minimal');
   showArrowsOnEdges = input<boolean>(true);
+  lang = input<ContentCarouselLangs>('en');
+  accessibilityOptions = input<AccessibilityOptions | null>(null);
   // gap = input<number>(16);
 
   @ContentChildren(CarouselItemDirective) items!: QueryList<CarouselItemDirective>;
@@ -24,6 +28,8 @@ export class NgContentCarousel implements AfterViewInit {
   @ViewChild('arrowButtonNext') arrowButtonNext!: ElementRef<HTMLDivElement>;
 
   private host = inject(ElementRef<HTMLElement>);
+
+  protected acc = signal<AccessibilityOptions>(CONTENT_CAROUSEL_LANG['en']);
 
   currentIndex = signal<number>(0);
   cardWidth = signal<number | null>(null);
@@ -65,6 +71,10 @@ export class NgContentCarousel implements AfterViewInit {
     }
   }
 
+  ngOnInit(): void {
+    this.setAccOptions();
+  };
+
   ngAfterViewInit() {
     this.calculateHostWidth();
     this.calculateCardWidth();
@@ -78,6 +88,13 @@ export class NgContentCarousel implements AfterViewInit {
     // this.calculateElementsOnView();
     this.updateVisibleItems();
   }
+
+  constructor() {
+    effect(() => {
+      this.setAccOptions();
+    });
+    // **IMPORTANT** For angular 18 add ", { allowSignalWrites: true }" to each effect
+  };
 
   private calculateHostWidth(){
     this.hostWidth.set(this.host.nativeElement.offsetWidth);
@@ -166,12 +183,19 @@ export class NgContentCarousel implements AfterViewInit {
     this.transform.set(`translateX(-${translatePoint}px)`);
   };
 
+  firstVisibleIndex = signal<number>(0);
+  lastVisibleIndex = signal<number>(0);
+
   updateVisibleItems() {
     // console.log('cardsViewed', this.cardsViewed(), 'current', this.currentIndex());
     const visibleItemsArr : number[] = [];
     for (let i = this.currentIndex(); i <= (this.currentIndex() + this.cardsViewed()! - 1); i++) {
       visibleItemsArr.push(i);
     }
+
+    this.firstVisibleIndex.set(visibleItemsArr[0]);
+    this.lastVisibleIndex.set(visibleItemsArr[visibleItemsArr.length - 1]);
+
     this.items.forEach(({ el }, i) => {
       if(!visibleItemsArr.includes(i)){
         el.nativeElement.toggleAttribute('inert', true);
@@ -182,32 +206,28 @@ export class NgContentCarousel implements AfterViewInit {
     });
   };
 
-  // applyItemsClass(){
-  //   this.items.forEach((item) => {
-  //     item.el.nativeElement.classList.add('item');
-  //   });
-  // };
+  private setAccOptions() {
+      const currentLang = this.lang() ?? 'en';
+      const langDefaults = CONTENT_CAROUSEL_LANG[currentLang];
+      const userOptions = this.accessibilityOptions() ?? {};
 
+      this.acc.set({
+        ...langDefaults,
+        ...userOptions,
+      });
+  };
 
-  // updateVisibleItems() {
-  //   const containerRect = this.trackContainer.nativeElement.getBoundingClientRect();
+  visibleRangeMessage() {
+    const first = this.firstVisibleIndex();
+    const last = this.lastVisibleIndex();
+    const total = this.items.length;
 
-  //   this.items.forEach(({ el }) => {
-  //     const rect = el.nativeElement.getBoundingClientRect();
-  //     const isVisible = rect.right > containerRect.left && rect.left < containerRect.right;
+    const acc = this.acc(); // tus opciones de accesibilidad actuales
+    if (acc.rangeMessage) {
+      return acc.rangeMessage(first + 1, last + 1, total);
+    }
 
-  //     el.nativeElement.toggleAttribute('inert', !isVisible);
-  //   });
-  // }
-
-  // updateTransform() {
-  //   let translatePoint = (this.currentIndex() * this.cardWidth()!) - (this.gap());
-  //   if(this.currentIndex() === 1 || this.currentIndex() === this.totalCards() - 1){
-  //     console.log('Es la primera o la ultima');
-  //     translatePoint = (this.currentIndex() * this.cardWidth()!) + (this.gap());
-  //   }else if(this.currentIndex() === 0){
-  //     translatePoint = 0;
-  //   }
-  //   this.transform.set(`translateX(-${translatePoint}px)`);
-  // }
+    // fallback por si no hay función definida
+    return `Showing items ${first + 1} to ${last + 1} of ${total}`;
+  };
 }

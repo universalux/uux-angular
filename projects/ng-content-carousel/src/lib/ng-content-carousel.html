@@ -1,10 +1,15 @@
 <div #carouselContainer
   class="contentCarousel__container"
   role="region"
-  aria-label="Featured content carousel"
+  [attr.aria-roledescription]="acc().globalRoleDescription"
+  [attr.aria-label]="acc().globalAriaLabel"
   tabindex="0"
   (keydown)="onKeyDown($event)"
 >
+
+  <div class="sr-only" aria-live="polite">
+    {{visibleRangeMessage()}}
+  </div>
 
   <div #arrowButtonPrev
     class="contentCarousel__prevContainer"
@@ -16,7 +21,8 @@
       [class.minimal]="arrowStyle() === 'minimal'"
       [class.solid]="arrowStyle() === 'solid'"
       [attr.inert]="onStart() && !showArrowsOnEdges() ? '' : null"
-      [attr.aria-label]="'Go to previous item'"
+      [attr.aria-disabled]="onStart() && !showArrowsOnEdges() ? 'true' : 'false'"
+      [attr.aria-label]="acc().prevBtnAriaLabel"
       tabindex="-1"
     >
       <div class="contentCarousel__prevIcon">
@@ -38,8 +44,10 @@
     <div #track
       class="contentCarousel__track"
       [style.transform]="transform()"
-
       [class.transition]="transition()"
+      role="group"
+      [attr.aria-roledescription]="acc().trackRoleDescription"
+      [attr.aria-label]="acc().trackAriaLabel"
     >
     <!-- [style.column-gap]="gap() + 'px'" -->
       <ng-content></ng-content>
@@ -57,7 +65,8 @@
       [class.minimal]="arrowStyle() === 'minimal'"
       [class.solid]="arrowStyle() === 'solid'"
       [attr.inert]="onEnd() && !showArrowsOnEdges() ? '' : null"
-      [attr.aria-label]="'Go to next item'"
+      [attr.aria-disabled]="onStart() && !showArrowsOnEdges() ? 'true' : 'false'"
+      [attr.aria-label]="acc().nextBtnAriaLabel"
       tabindex="-1"
     >
       <div class="contentCarousel__nextIcon" >

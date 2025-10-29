@@ -2,9 +2,7 @@
   [transition]="true"
   arrowStyle="minimal"
   [showArrowsOnEdges]="false"
-
 >
-  <!-- [gap]="16" -->
   @for (card of cardList; track $index) {
     <a href="/" carouselItem style="position: relative;">
       <ng-image-card animation="none" hover="scale" [shadow]="false">
