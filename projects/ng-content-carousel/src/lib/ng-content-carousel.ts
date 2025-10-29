@@ -13,6 +13,7 @@ export class NgContentCarousel implements AfterViewInit {
   transition = input<boolean>(true);
   arrowStyle = input<'minimal' |'solid'>('minimal');
   showArrowsOnEdges = input<boolean>(true);
+  gap = input<number>(16);
 
   @ViewChild('track') track!: ElementRef;
   @ViewChild('trackContainer') trackContainer!: ElementRef<HTMLDivElement>;
@@ -26,6 +27,7 @@ export class NgContentCarousel implements AfterViewInit {
   transform = signal<string>('');
   totalCards = signal<number>(3);
   maxWidth = signal<number | null>(null);
+  minWidth = signal<number | null>(null);
 
   onStart = signal<boolean>(true);
   onEnd = signal<boolean>(false);
@@ -69,7 +71,7 @@ export class NgContentCarousel implements AfterViewInit {
   private calculateCardWidth(){
     const firstCard = this.track.nativeElement.children[0];
     if (firstCard) {
-      this.cardWidth.set(firstCard.offsetWidth);
+      this.cardWidth.set(firstCard.offsetWidth + this.gap());
     }
   };
 
@@ -78,20 +80,21 @@ export class NgContentCarousel implements AfterViewInit {
     let initialWidth = width;
     if(this.hostWidth() && this.arrowButtonsWidth()){
       const widthFromHost = this.hostWidth()! - this.arrowButtonsWidth()!;
-      console.log(this.maxWidth());
       initialWidth = widthFromHost > this.maxWidth()! ? this.maxWidth()! : widthFromHost;
     }
-    const cardsViewed = Math.floor(initialWidth / this.cardWidth()!)
+    const cardsViewed = Math.floor(initialWidth / this.cardWidth()!);
     this.cardsViewed.set(cardsViewed);
-    const finalWidth = cardsViewed * this.cardWidth()!;
+
+    const calculatedWidth = cardsViewed * this.cardWidth()!;
+    const finalWidth = calculatedWidth < this.cardWidth()! ? this.minWidth() : calculatedWidth;
     this.trackContainerWidth.set(finalWidth);
   };
 
   private calculateTotalCards(){
     this.totalCards.set(this.track.nativeElement.children.length);
     this.maxWidth.set(this.track.nativeElement.children.length * this.cardWidth()!);
+    this.minWidth.set(this.cardWidth()! * 2);
   }
-
 
   next() {
     if(this.currentIndex() <= this.totalCards() - this.cardsViewed()! - 1){
@@ -125,6 +128,12 @@ export class NgContentCarousel implements AfterViewInit {
   }
 
   updateTransform() {
-    this.transform.set(`translateX(-${this.currentIndex() * this.cardWidth()!}px)`);
+    let translatePoint = (this.currentIndex() * this.cardWidth()!) - this.gap();
+    if(this.currentIndex() === 1 || this.currentIndex() === this.totalCards() - 1){
+      translatePoint = (this.currentIndex() * this.cardWidth()!) - (this.gap() / 2);
+    }else if(this.currentIndex() === 0){
+      translatePoint = 0;
+    }
+    this.transform.set(`translateX(-${translatePoint}px)`);
   }
 }

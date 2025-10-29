@@ -1,33 +1,30 @@
-<ng-content-carousel arrowStyle="solid" [showArrowsOnEdges]="true">
-  <a class="item" style="height: 300px;">
-    <div class="slideExample ">SLIDE 1</div>
-  </a>
-  <a class="item">
-    <div class="slideExample ">SLIDE 2</div>
-  </a>
-  <a class="item">
-    <div class="slideExample ">SLIDE 3</div>
-  </a>
-  <a class="item">
-    <div class="slideExample ">SLIDE 4</div>
-  </a>
-  <a class="item">
-    <div class="slideExample ">SLIDE 5</div>
-  </a>
+<ng-content-carousel
+  [transition]="true"
+  arrowStyle="minimal"
+  [showArrowsOnEdges]="false"
+  [gap]="16"
+>
+  @for (card of cardList; track $index) {
+    <a  style="position: relative;">
+      <ng-image-card animation="none" hover="color" [shadow]="false">
+        <header card-header>
+          {{card.header}}
+        </header>
+        <section card-image>
+          <img [src]="card.image.url" [alt]="card.image.alt">
+        </section>
+        <section card-body>
+          {{card.body}}
+        </section>
+        <footer card-footer>
+          {{card.footer}}
+        </footer>
 
-  <a class="item">
-    <div class="slideExample ">SLIDE 1</div>
-  </a>
-  <a class="item">
-    <div class="slideExample ">SLIDE 2</div>
-  </a>
-  <a class="item">
-    <div class="slideExample ">SLIDE 3</div>
-  </a>
-  <a class="item">
-    <div class="slideExample ">SLIDE 4</div>
-  </a>
-  <a class="item">
-    <div class="slideExample ">SLIDE 5</div>
-  </a>
+      </ng-image-card>
+      <div style="position: absolute; z-index: 10; top: 2rem; right: 0; background-color: brown; padding: .3rem;">
+          Featured
+        </div>
+    </a>
+  }
+
 </ng-content-carousel>

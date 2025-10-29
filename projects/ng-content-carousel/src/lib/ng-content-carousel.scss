@@ -95,8 +95,13 @@ button{
   padding-right: .1rem;
 }
 
-.contentCarousel__next.minimal .contentCarousel__nextIcon:hover,
-.contentCarousel__prev.minimal .contentCarousel__prevIcon:hover{
+.contentCarousel__nextIcon,
+.contentCarousel__prevIcon{
+  transition: background .2s ease-in-out;
+}
+
+.contentCarousel__next.minimal:hover .contentCarousel__nextIcon,
+.contentCarousel__prev.minimal:hover .contentCarousel__prevIcon{
   background-color: var(--content-carousel-arrows-hover-bg);
 }
 
@@ -115,11 +120,8 @@ button{
 
 .contentCarousel__track{
   display: flex;
+  column-gap: 8px;
+  align-items: center;
   width: fit-content;
-}
-
-:host ::ng-deep .item{
-  display: block;
-  align-self: stretch !important;
-  padding: 0 .3rem;
+  height: fit-content;
 }
