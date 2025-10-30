@@ -19,6 +19,14 @@
 
 // ng-content-carousel{background-color: aqua;}
 
+ng-content-carousel{
+  // background-color: aqua;
+  --carousel-accent-color: red;
+  --carousel-arrows-hover-bg: blue;
+  --carousel-arrows-hover-color: white;
+  --carousel-transition-time: .3s;
+}
+
 ng-content-carousel a{
   // padding: 1rem;
   cursor: pointer;

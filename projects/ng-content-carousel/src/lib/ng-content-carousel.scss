@@ -25,11 +25,10 @@ button{
 
 :host{
 
-  --content-carousel-bg: inherit;
-  --content-carousel-accent-color: white;
-
-  --content-carousel-arrows-color: var(--content-carousel-accent-color);
-  --content-carousel-arrows-hover-bg: rgba(158, 158, 158, 0.623);
+  --carousel-accent-color: white;
+  --carousel-arrows-hover-bg: rgb(172, 172, 172);
+  --carousel-arrows-hover-color: var(--carousel-accent-color);
+  --carousel-transition-time: .3s;
 
   display: flex;
   justify-content: center;
@@ -44,7 +43,9 @@ button{
 }
 
 .contentCarousel__container:focus-visible{
-  outline: 2px solid var(--content-carousel-accent-color);
+  outline: 2px solid var(--carousel-accent-color);
+  outline-offset: 5px;
+  border-radius: 4px;
   // border-radius: .5rem;
 }
 
@@ -55,7 +56,7 @@ button{
   display: flex;
   align-items: center;
   overflow: hidden;
-  transition: width .3s ease-in-out;
+  transition: width .2s ease-in-out, opacity .2s ease-in-out;
 }
 
 .contentCarousel__prevContainer{
@@ -69,6 +70,7 @@ button{
 .contentCarousel__prevContainer.onStart,
 .contentCarousel__nextContainer.onEnd{
   width: 0 !important;
+  opacity: 0;
 }
 
 .contentCarousel__prevButton,
@@ -88,15 +90,18 @@ button{
   justify-content: end;
 }
 
-.contentCarousel__nextButton:focus-visible{
-  border: 2px solid var(--content-carousel-accent-color);
-}
-
 .contentCarousel__nextButton.solid,
 .contentCarousel__prevButton.solid{
   width: 30px;
+  max-height: 150px;
   background-color: black;
   border-radius: .8rem;
+  transition: background .2s ease-in-out;
+}
+
+.contentCarousel__nextButton.solid:hover,
+.contentCarousel__prevButton.solid:hover{
+  background-color: var(--carousel-arrows-hover-bg);
 }
 
 
@@ -130,12 +135,18 @@ button{
 
 .contentCarousel__nextButton.minimal:hover .contentCarousel__nextIcon,
 .contentCarousel__prevButton.minimal:hover .contentCarousel__prevIcon{
-  background-color: var(--content-carousel-arrows-hover-bg);
+  background-color: var(--carousel-arrows-hover-bg);
+}
+
+.contentCarousel__nextButton:hover .contentCarousel__nextIcon svg,
+.contentCarousel__prevButton:hover .contentCarousel__prevIcon svg{
+  fill: var(--carousel-arrows-hover-color);
 }
 
 .contentCarousel__prevButton svg,
 .contentCarousel__nextButton svg{
-  fill: var(--content-carousel-arrows-color);
+  transition: fill .2s ease-in-out;
+  fill: var(--carousel-accent-color);
 }
 
 .contentCarousel__trackContainer{
@@ -144,13 +155,12 @@ button{
 }
 
 .contentCarousel__track.transition{
-  transition: transform .3s ease-in-out;
+  transition: transform var(--carousel-transition-time) ease-in-out;
 }
 
 .contentCarousel__track{
   display: flex;
   padding: 1.5rem 0;
-  // column-gap: 8px;
   align-items: center;
   justify-content: space-evenly;
   width: fit-content;
@@ -159,9 +169,9 @@ button{
 }
 
 :host ::ng-deep .carousel-item:focus-visible{
-  outline: 2px solid var(--content-carousel-accent-color);
+  outline: 2px solid var(--carousel-accent-color);
   outline-offset: -2px;
-
+  border-radius: 4px;
 }
 
 :host ::ng-deep .carousel-item{

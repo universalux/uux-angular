@@ -40,6 +40,8 @@
   <div #trackContainer
     class="contentCarousel__trackContainer"
     [style.width]="trackContainerWidth() + 'px'"
+    (touchend)="onTouchEnd($event)"
+    (touchstart)="onTouchStart($event)"
   >
     <div #track
       class="contentCarousel__track"

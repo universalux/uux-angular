@@ -1,7 +1,10 @@
 <ng-content-carousel
   [transition]="true"
-  arrowStyle="minimal"
-  [showArrowsOnEdges]="false"
+  arrowStyle="solid"
+  [showArrowsOnEdges]="true"
+  advanceMode="page"
+  lang="es"
+  [accessibilityOptions]="customAccesibilityOptions"
 >
   @for (card of cardList; track $index) {
     <a href="/" carouselItem style="position: relative;">

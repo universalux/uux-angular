@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NgContentCarousel, CarouselItemDirective } from 'ng-content-carousel';
+import { NgContentCarousel, CarouselItemDirective, AccessibilityOptions } from 'ng-content-carousel';
 import { NgImageCard } from 'ng-image-card';
 
 @Component({
@@ -60,4 +60,14 @@ export class PgContentCarousel {
       footer: 'Card footer content'
     },
   ]
+
+  customAccesibilityOptions : AccessibilityOptions = {
+    globalAriaLabel: 'EDIT Content carousel',
+    globalRoleDescription: 'EDIT Carousel of content',
+    prevBtnAriaLabel: 'EDIT Go to previous item',
+    nextBtnAriaLabel: 'EDIT Go to next item',
+    trackRoleDescription: 'EDIT Carousel track',
+    trackAriaLabel: 'EDIT Carousel items',
+    rangeMessage: (first, last, total) => `EDIT Showing items ${first} to ${last} of ${total}`,
+  }
 }

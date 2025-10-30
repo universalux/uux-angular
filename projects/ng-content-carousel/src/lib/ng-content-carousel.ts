@@ -16,9 +16,10 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
   transition = input<boolean>(true);
   arrowStyle = input<'minimal' |'solid'>('minimal');
   showArrowsOnEdges = input<boolean>(true);
+  advanceMode= input<'single' |'page'>('page');
+
   lang = input<ContentCarouselLangs>('en');
   accessibilityOptions = input<AccessibilityOptions | null>(null);
-  // gap = input<number>(16);
 
   @ContentChildren(CarouselItemDirective) items!: QueryList<CarouselItemDirective>;
   @ViewChild('carouselContainer') carouselContainer!: ElementRef<HTMLDivElement>;
@@ -84,8 +85,6 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
     const initialWidth = this.trackContainer.nativeElement.offsetWidth;
     this.calculateTrackContainerWidth(initialWidth);
 
-    console.log(this.items);
-    // this.calculateElementsOnView();
     this.updateVisibleItems();
   }
 
@@ -110,7 +109,6 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
 
   private calculateCardWidth(){
     const firstCard = this.items.first?.el.nativeElement;
-    console.log('cardWidth', firstCard.offsetWidth);
     if (firstCard) {
       this.cardWidth.set(firstCard.offsetWidth);
     }
@@ -135,12 +133,19 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
   private calculateTotalCards(){
     this.totalCards.set(this.items.length);
     this.maxWidth.set(this.items.length * this.cardWidth()!);
-    this.minWidth.set(this.cardWidth()! * 2);
+    this.minWidth.set(this.cardWidth()!);
   }
 
   next() {
     if(this.currentIndex() <= this.totalCards() - this.cardsViewed()! - 1){
-      this.currentIndex.set(this.currentIndex() + 1);
+      if(this.advanceMode() === 'page'){
+        const cardsToAdvance = this.currentIndex() + (this.cardsViewed()! * 2) > this.totalCards()
+          ? this.totalCards() - this.cardsViewed()!
+          : this.currentIndex() + this.cardsViewed()!
+        this.currentIndex.set(cardsToAdvance);
+      }else{
+        this.currentIndex.set(this.currentIndex() + 1);
+      }
       this.updateTransform();
     }
 
@@ -158,7 +163,14 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
 
   prev() {
     if (this.currentIndex() > 0) {
-      this.currentIndex.set(this.currentIndex() - 1);
+      if(this.advanceMode() === 'page'){
+        const cardsToAdvance = this.currentIndex() - (this.cardsViewed()!) < 0
+          ? 0
+          : this.currentIndex() - this.cardsViewed()!
+        this.currentIndex.set(cardsToAdvance);
+      }else{
+        this.currentIndex.set(this.currentIndex() - 1);
+      }
       this.updateTransform();
     }
 
@@ -173,8 +185,32 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
     this.updateVisibleItems();
   };
 
+  private startX = 0;
+  private endX = 0;
+  private startY = 0;
+  private endY = 0;
 
-  updateTransform() {
+  onTouchStart(e: TouchEvent) {
+    this.startX = e.touches[0].clientX;
+    this.startY = e.touches[0].clientY;
+  }
+
+  onTouchEnd(e: TouchEvent) {
+    this.endX = e.changedTouches[0].clientX;
+    this.endY = e.changedTouches[0].clientY;
+
+    const diffX = this.startX - this.endX;
+    const diffY = this.startY - this.endY;
+
+    if (Math.abs(diffY) > Math.abs(diffX)) return;
+
+    if (Math.abs(diffX) > 10) {
+      diffX > 0 ? this.next() : this.prev();
+    }
+  }
+
+
+  private updateTransform() {
     // let translatePoint = this.currentIndex() * (this.cardWidth()! + this.gap());
     let translatePoint = this.currentIndex() * (this.cardWidth()!);
     if(this.currentIndex() === 0){
@@ -187,7 +223,6 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
   lastVisibleIndex = signal<number>(0);
 
   updateVisibleItems() {
-    // console.log('cardsViewed', this.cardsViewed(), 'current', this.currentIndex());
     const visibleItemsArr : number[] = [];
     for (let i = this.currentIndex(); i <= (this.currentIndex() + this.cardsViewed()! - 1); i++) {
       visibleItemsArr.push(i);
@@ -200,21 +235,20 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
       if(!visibleItemsArr.includes(i)){
         el.nativeElement.toggleAttribute('inert', true);
       }else{
-        console.log(el, i);
         el.nativeElement.toggleAttribute('inert', false);
       }
     });
   };
 
   private setAccOptions() {
-      const currentLang = this.lang() ?? 'en';
-      const langDefaults = CONTENT_CAROUSEL_LANG[currentLang];
-      const userOptions = this.accessibilityOptions() ?? {};
+    const currentLang = this.lang() ?? 'en';
+    const langDefaults = CONTENT_CAROUSEL_LANG[currentLang];
+    const userOptions = this.accessibilityOptions() ?? {};
 
-      this.acc.set({
-        ...langDefaults,
-        ...userOptions,
-      });
+    this.acc.set({
+      ...langDefaults,
+      ...userOptions,
+    });
   };
 
   visibleRangeMessage() {
@@ -222,12 +256,14 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
     const last = this.lastVisibleIndex();
     const total = this.items.length;
 
-    const acc = this.acc(); // tus opciones de accesibilidad actuales
-    if (acc.rangeMessage) {
-      return acc.rangeMessage(first + 1, last + 1, total);
-    }
+    const acc = this.acc(); // current accessibility options
+    return acc.rangeMessage!(first + 1, last + 1, total);
+
+    // if (acc.rangeMessage) {
+    //   return acc.rangeMessage(first + 1, last + 1, total);
+    // }
 
     // fallback por si no hay función definida
-    return `Showing items ${first + 1} to ${last + 1} of ${total}`;
+    // return `Showing items ${first + 1} to ${last + 1} of ${total}`;
   };
 }
