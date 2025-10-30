@@ -1,15 +1,14 @@
 import { DebugElement, provideZonelessChangeDetection } from "@angular/core";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-// import { TestHost, TestHostAttr, TestHostAutoplay } from "./testHosts";
-import { TestHost } from "./testHosts";
+import { TestHost, TestHostAttr } from "./testHosts";
 import { By } from "@angular/platform-browser";
 import { NgContentCarousel } from "../../ng-content-carousel";
 
 export interface CarouselElements {
 
     // Test Host declarations
-    hostComponent: TestHost;
-    fixture: ComponentFixture<TestHost>;
+    hostComponent: TestHost | TestHostAttr;
+    fixture: ComponentFixture<TestHost | TestHostAttr>;
 
     // Component Declarations
     carousel: DebugElement;
@@ -31,11 +30,9 @@ export interface CarouselElements {
 
 }
 
-export async function beforeEachCarouselTest(hostType: 'attr' = 'attr'){
+export async function beforeEachCarouselTest(hostType: 'attr' | 'noAttr' = 'noAttr'){
 
-    // const host = hostType === 'attr' ? TestHostAttr : (hostType === 'noAttr' ? TestHost : TestHostAutoplay);
-
-    const host = TestHost;
+    const host = hostType === 'attr' ? TestHostAttr : TestHost;
 
     await TestBed.configureTestingModule({
         providers: [
