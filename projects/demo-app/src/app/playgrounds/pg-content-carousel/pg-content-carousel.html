@@ -1,12 +1,14 @@
 <ng-content-carousel
   [transition]="true"
-  arrowStyle="minimal"
-  [showArrowsOnEdges]="false"
-  [gap]="16"
+  arrowStyle="solid"
+  [showArrowsOnEdges]="true"
+  advanceMode="page"
+  lang="es"
+  [accessibilityOptions]="customAccesibilityOptions"
 >
   @for (card of cardList; track $index) {
-    <a  style="position: relative;">
-      <ng-image-card animation="none" hover="color" [shadow]="false">
+    <a href="/" carouselItem style="position: relative;">
+      <ng-image-card animation="none" hover="scale" [shadow]="false">
         <header card-header>
           {{card.header}}
         </header>
@@ -18,6 +20,7 @@
         </section>
         <footer card-footer>
           {{card.footer}}
+          <button>Go to it</button>
         </footer>
 
       </ng-image-card>

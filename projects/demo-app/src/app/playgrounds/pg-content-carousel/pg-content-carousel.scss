@@ -2,6 +2,7 @@
   display: block;
   width: 80%;
   margin: 0 auto;
+  margin-top: 3rem;
 }
 
 // .slideExample{
@@ -18,7 +19,16 @@
 
 // ng-content-carousel{background-color: aqua;}
 
+ng-content-carousel{
+  // background-color: aqua;
+  --carousel-accent-color: red;
+  --carousel-arrows-hover-bg: blue;
+  --carousel-arrows-hover-color: white;
+  --carousel-transition-time: .3s;
+}
+
 ng-content-carousel a{
+  // padding: 1rem;
   cursor: pointer;
   // width: 100%;
   // max-width: 500px;
@@ -31,7 +41,7 @@ ng-content-carousel a{
 
 ng-image-card {
   width: 100%;
-  max-width: 300px;
+  // max-width: 300px;
   min-width: 300px;
 }
 

@@ -1,15 +1,29 @@
-<div #carouselContainer class="contentCarousel__container">
+<div #carouselContainer
+  class="contentCarousel__container"
+  role="region"
+  [attr.aria-roledescription]="acc().globalRoleDescription"
+  [attr.aria-label]="acc().globalAriaLabel"
+  tabindex="0"
+  (keydown)="onKeyDown($event)"
+>
+
+  <div class="sr-only" aria-live="polite">
+    {{visibleRangeMessage()}}
+  </div>
 
   <div #arrowButtonPrev
     class="contentCarousel__prevContainer"
     [class.onStart]="onStart() && !showArrowsOnEdges()"
   >
     <button
-      class="contentCarousel__prev"
+      class="contentCarousel__prevButton"
       (click)="prev()"
       [class.minimal]="arrowStyle() === 'minimal'"
       [class.solid]="arrowStyle() === 'solid'"
       [attr.inert]="onStart() && !showArrowsOnEdges() ? '' : null"
+      [attr.aria-disabled]="onStart() && !showArrowsOnEdges() ? 'true' : 'false'"
+      [attr.aria-label]="acc().prevBtnAriaLabel"
+      tabindex="-1"
     >
       <div class="contentCarousel__prevIcon">
         <svg xmlns="http://www.w3.org/2000/svg"s
@@ -26,13 +40,18 @@
   <div #trackContainer
     class="contentCarousel__trackContainer"
     [style.width]="trackContainerWidth() + 'px'"
+    (touchend)="onTouchEnd($event)"
+    (touchstart)="onTouchStart($event)"
   >
     <div #track
       class="contentCarousel__track"
       [style.transform]="transform()"
-      [style.column-gap]="gap() + 'px'"
       [class.transition]="transition()"
+      role="group"
+      [attr.aria-roledescription]="acc().trackRoleDescription"
+      [attr.aria-label]="acc().trackAriaLabel"
     >
+    <!-- [style.column-gap]="gap() + 'px'" -->
       <ng-content></ng-content>
     </div>
   </div>
@@ -42,12 +61,15 @@
     [class.onEnd]="onEnd() && !showArrowsOnEdges()"
   >
     <button
-      class="contentCarousel__next"
+      class="contentCarousel__nextButton"
       (click)="next()"
 
       [class.minimal]="arrowStyle() === 'minimal'"
       [class.solid]="arrowStyle() === 'solid'"
       [attr.inert]="onEnd() && !showArrowsOnEdges() ? '' : null"
+      [attr.aria-disabled]="onStart() && !showArrowsOnEdges() ? 'true' : 'false'"
+      [attr.aria-label]="acc().nextBtnAriaLabel"
+      tabindex="-1"
     >
       <div class="contentCarousel__nextIcon" >
         <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"
