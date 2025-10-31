@@ -91,7 +91,7 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
   constructor() {
     effect(() => {
       this.setAccOptions();
-    });
+    }, { allowSignalWrites: true });
     // **IMPORTANT** For angular 18 add ", { allowSignalWrites: true }" to each effect
   };
 
