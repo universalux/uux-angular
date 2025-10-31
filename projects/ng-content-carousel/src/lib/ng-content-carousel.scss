@@ -24,6 +24,8 @@ button{
   border: 0;
 }
 
+/* ---------- HOST STYLES ---------- */
+
 :host{
 
   --carousel-accent-color: currentColor;
@@ -39,6 +41,8 @@ button{
   background: transparent;
 }
 
+/* ---------- CONTAINER STYLES ---------- */
+
 .contentCarousel__container{
   background: transparent;
   display: flex;
@@ -50,8 +54,9 @@ button{
   outline: 2px solid var(--carousel-accent-color);
   outline-offset: 5px;
   border-radius: 4px;
-  // border-radius: .5rem;
 }
+
+/* ---------- PREV/NEXT BUTTON STYLES ---------- */
 
 .contentCarousel__prevContainer,
 .contentCarousel__nextContainer{
@@ -153,6 +158,8 @@ button{
   fill: var(--carousel-accent-color);
 }
 
+/* ---------- TRACK STYLES ---------- */
+
 .contentCarousel__trackContainer{
   overflow-x:hidden;
 }
@@ -170,6 +177,8 @@ button{
   height: fit-content;
   z-index: 10;
 }
+
+/* ---------- ITEM PREDEFINED STYLES ---------- */
 
 :host ::ng-deep .carousel-item:focus-visible{
   outline: 2px solid var(--carousel-accent-color);
