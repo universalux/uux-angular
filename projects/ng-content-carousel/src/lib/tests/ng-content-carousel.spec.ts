@@ -1,7 +1,7 @@
 import { CONTENT_CAROUSEL_LANG } from '../accessibility/content-carousel.lang';
 import { ContentCarouselLangs } from '../ng-content-carousel.types';
 import { beforeEachCarouselTest, CarouselElements } from './helpers/beforeEach';
-import { carouselItemsMock, externalItemSize, initialItemPadding } from './helpers/mocks';
+import { carouselItemsMock, customAccesibilityOptions, externalItemSize, initialItemPadding } from './helpers/mocks';
 import { TestHostAttr } from './helpers/testHosts';
 
 describe('NgContentCarousel - With default Attributes', () => {
@@ -236,6 +236,29 @@ describe('NgContentCarousel - With custom Attributes', () => {
     elements.fixture.detectChanges();
     checkAccByLang('de');
 
+  });
+
+  it('should have custom accessibility values when custom accessibility options attribute', () => {
+    const host = elements.hostComponent as TestHostAttr;
+    const accOptions = customAccesibilityOptions;
+
+    host.accOptions.set(accOptions);
+    elements.fixture.detectChanges();
+
+    const totalItems : number = elements.itemList.length;
+    const firstItem : number = elements.carouselInstance.currentIndex() + 1;
+    const lastItem : number = elements.carouselInstance.currentIndex() + elements.carouselInstance.itemsViewed()!;
+
+    expect(elements.carouselContainer.nativeElement.getAttribute('aria-label')).toBe(accOptions.globalAriaLabel!);
+    expect(elements.carouselContainer.nativeElement.getAttribute('aria-roleDescription')).toBe(accOptions.globalRoleDescription!);
+
+    expect(elements.prevButton.nativeElement.getAttribute('aria-label')).toBe(accOptions.prevBtnAriaLabel!);
+    expect(elements.nextButton.nativeElement.getAttribute('aria-label')).toBe(accOptions.nextBtnAriaLabel!);
+
+    expect(elements.track.nativeElement.getAttribute('aria-roleDescription')).toBe(accOptions.trackRoleDescription!);
+    expect(elements.track.nativeElement.getAttribute('aria-label')).toBe(accOptions.trackAriaLabel!);
+
+    expect(elements.titlesReader.nativeElement.innerText).toBe(accOptions.rangeMessage!(firstItem, lastItem, totalItems));
   });
 
 });
