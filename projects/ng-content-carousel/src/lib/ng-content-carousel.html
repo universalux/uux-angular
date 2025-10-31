@@ -13,15 +13,15 @@
 
   <div #arrowButtonPrev
     class="contentCarousel__prevContainer"
-    [class.onStart]="onStart() && !showArrowsOnEdges()"
+    [class.onStart]="onStart() && hideArrowsOnEdges()"
   >
     <button
       class="contentCarousel__prevButton"
       (click)="prev()"
       [class.minimal]="arrowStyle() === 'minimal'"
       [class.solid]="arrowStyle() === 'solid'"
-      [attr.inert]="onStart() && !showArrowsOnEdges() ? '' : null"
-      [attr.aria-disabled]="onStart() && !showArrowsOnEdges() ? 'true' : 'false'"
+      [attr.inert]="onStart() && hideArrowsOnEdges() ? '' : null"
+      [attr.aria-disabled]="onStart() && hideArrowsOnEdges() ? 'true' : 'false'"
       [attr.aria-label]="acc().prevBtnAriaLabel"
       tabindex="-1"
     >
@@ -51,14 +51,13 @@
       [attr.aria-roledescription]="acc().trackRoleDescription"
       [attr.aria-label]="acc().trackAriaLabel"
     >
-    <!-- [style.column-gap]="gap() + 'px'" -->
       <ng-content></ng-content>
     </div>
   </div>
 
   <div #arrowButtonNext
     class="contentCarousel__nextContainer"
-    [class.onEnd]="onEnd() && !showArrowsOnEdges()"
+    [class.onEnd]="onEnd() && hideArrowsOnEdges()"
   >
     <button
       class="contentCarousel__nextButton"
@@ -66,8 +65,8 @@
 
       [class.minimal]="arrowStyle() === 'minimal'"
       [class.solid]="arrowStyle() === 'solid'"
-      [attr.inert]="onEnd() && !showArrowsOnEdges() ? '' : null"
-      [attr.aria-disabled]="onStart() && !showArrowsOnEdges() ? 'true' : 'false'"
+      [attr.inert]="onEnd() && hideArrowsOnEdges() ? '' : null"
+      [attr.aria-disabled]="onEnd() && hideArrowsOnEdges() ? 'true' : 'false'"
       [attr.aria-label]="acc().nextBtnAriaLabel"
       tabindex="-1"
     >
