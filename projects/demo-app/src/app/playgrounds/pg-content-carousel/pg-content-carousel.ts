@@ -47,18 +47,18 @@ export class PgContentCarousel {
       body: 'This is the content for the body of the card',
       footer: 'Card footer content'
     },
-    {
-      header: 'CARD 7',
-      image: {url: 'images/card/dog_post.png', alt: 'Alt del perro'},
-      body: 'This is the content for the body of the card',
-      footer: 'Card footer content'
-    },
-    {
-      header: 'CARD 8',
-      image: {url: 'images/card/dog_post.png', alt: 'Alt del perro'},
-      body: 'This is the content for the body of the card',
-      footer: 'Card footer content'
-    },
+    // {
+    //   header: 'CARD 7',
+    //   image: {url: 'images/card/dog_post.png', alt: 'Alt del perro'},
+    //   body: 'This is the content for the body of the card',
+    //   footer: 'Card footer content'
+    // },
+    // {
+    //   header: 'CARD 8',
+    //   image: {url: 'images/card/dog_post.png', alt: 'Alt del perro'},
+    //   body: 'This is the content for the body of the card',
+    //   footer: 'Card footer content'
+    // },
   ]
 
   customAccesibilityOptions : AccessibilityOptions = {
