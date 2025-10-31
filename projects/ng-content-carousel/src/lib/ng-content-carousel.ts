@@ -60,7 +60,7 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
     const active = document.activeElement;
     const container = this.carouselContainer.nativeElement;
 
-    if (active !== container) return; // 👈 ignora si el foco está en un hijo
+    if (active !== container) return; // ignore if focus is on a son parent
 
     if (event.key === 'ArrowRight') {
       this.next();
@@ -91,7 +91,7 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
   constructor() {
     effect(() => {
       this.setAccOptions();
-    });
+    }, { allowSignalWrites: true });
     // **IMPORTANT** For angular 18 add ", { allowSignalWrites: true }" to each effect
   };
 
@@ -122,9 +122,10 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
       initialWidth = widthFromHost > this.maxWidth()! ? this.maxWidth()! : widthFromHost;
     }
     const itemsViewed = Math.floor(initialWidth / this.itemWidth()!);
-    this.itemsViewed.set(itemsViewed);
+    itemsViewed === 0
+      ? this.itemsViewed.set(1)
+      : this.itemsViewed.set(itemsViewed);
 
-    // const calculatedWidth = (itemsViewed * this.itemWidth()!) + (this.gap() * (itemsViewed - 1));
     const calculatedWidth = (itemsViewed * this.itemWidth()!);
     const finalWidth = calculatedWidth < this.itemWidth()! ? this.minWidth() : calculatedWidth;
     this.trackContainerWidth.set(finalWidth);
@@ -137,8 +138,11 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
   }
 
   next() {
+    console.log('next');
     if(this.currentIndex() <= this.totalItems() - this.itemsViewed()! - 1){
+
       if(this.advanceMode() === 'page'){
+        console.log('itemsViewed', this.itemsViewed());
         const itemsToAdvance = this.currentIndex() + (this.itemsViewed()! * 2) > this.totalItems()
           ? this.totalItems() - this.itemsViewed()!
           : this.currentIndex() + this.itemsViewed()!
@@ -211,7 +215,6 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
 
 
   updateTransform() {
-    // let translatePoint = this.currentIndex() * (this.itemWidth()! + this.gap());
     let translatePoint = this.currentIndex() * (this.itemWidth()!);
     if(this.currentIndex() === 0){
       translatePoint = 0;
@@ -259,11 +262,5 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
     const acc = this.acc(); // current accessibility options
     return acc.rangeMessage!(first + 1, last + 1, total);
 
-    // if (acc.rangeMessage) {
-    //   return acc.rangeMessage(first + 1, last + 1, total);
-    // }
-
-    // fallback por si no hay función definida
-    // return `Showing items ${first + 1} to ${last + 1} of ${total}`;
   };
 }
