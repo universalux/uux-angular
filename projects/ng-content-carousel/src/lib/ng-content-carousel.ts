@@ -86,12 +86,12 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
     this.calculateTrackContainerWidth(initialWidth);
 
     this.updateVisibleItems();
-  }
+  };
 
   constructor() {
     effect(() => {
       this.setAccOptions();
-    }, { allowSignalWrites: true });
+    });
     // **IMPORTANT** For angular 18 add ", { allowSignalWrites: true }" to each effect
   };
 
@@ -138,11 +138,9 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
   }
 
   next() {
-    console.log('next');
     if(this.currentIndex() <= this.totalItems() - this.itemsViewed()! - 1){
 
       if(this.advanceMode() === 'page'){
-        console.log('itemsViewed', this.itemsViewed());
         const itemsToAdvance = this.currentIndex() + (this.itemsViewed()! * 2) > this.totalItems()
           ? this.totalItems() - this.itemsViewed()!
           : this.currentIndex() + this.itemsViewed()!
@@ -231,9 +229,12 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
       this.firstVisibleIndex.set(0);
       this.lastVisibleIndex.set(0);
 
-      if (typeof ngDevMode === 'undefined' || ngDevMode) {
-        console.warn('NgContentCarousel: no projected children detected.');
-      }
+      // Set timeout for avoiding false positive on ssr
+      setTimeout(() => {
+        if (this.items.length === 0) {
+          console.warn('NgContentCarousel: no projected children detected.');
+        }
+      });
 
       return;
     }
