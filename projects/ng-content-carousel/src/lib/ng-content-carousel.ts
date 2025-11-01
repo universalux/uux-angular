@@ -226,6 +226,18 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
   lastVisibleIndex = signal<number>(0);
 
   updateVisibleItems() {
+
+    if (!this.itemsViewed() || this.items.length === 0) {
+      this.firstVisibleIndex.set(0);
+      this.lastVisibleIndex.set(0);
+
+      if (typeof ngDevMode === 'undefined' || ngDevMode) {
+        console.warn('NgContentCarousel: no projected children detected.');
+      }
+
+      return;
+    }
+
     const visibleItemsArr : number[] = [];
     for (let i = this.currentIndex(); i <= (this.currentIndex() + this.itemsViewed()! - 1); i++) {
       visibleItemsArr.push(i);
