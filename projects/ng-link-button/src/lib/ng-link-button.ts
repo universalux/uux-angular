@@ -2,17 +2,6 @@ import { isPlatformBrowser } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, inject, input, PLATFORM_ID, ViewChild } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 
-// export type LinkRel =
-//   | 'noopener'
-//   | 'noreferrer'
-//   | 'nofollow'
-//   | 'external'
-//   | 'ugc'
-//   | 'sponsored'
-//   | 'prev'
-//   | 'next'
-//   | 'alternate'
-//   | string;
 
 @Component({
   standalone: true,
@@ -22,7 +11,7 @@ import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './ng-link-button.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgLinkButton {
+export class NgLinkButton implements AfterViewInit {
 
   private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
@@ -41,16 +30,25 @@ export class NgLinkButton {
 
   // ----- STYLE INPUTS
   type = input<'minimal' | 'buton'>('minimal');
-  shape = input<'square' | 'rounded'>('rounded');
+  shape = input<'square' | 'rounded'>('square');
   hover = input<'scale' |'color'>('scale');
 
-  @ViewChild('link') link!: ElementRef<HTMLAnchorElement>;
+  // ----- ACCESSIBILITY INPUTS
+  ariaLabel = input<string | null>(null);
+  title = input<string | null>(null);
+  tabIndex = input<number | null>(null);
+  ariaCurrent = input<'page' | 'step' | 'true' | null>(null);
+  download = input<string | boolean | null>(null);
+  role = input<'link' | 'button' | null>(null);
+  disabled = input<boolean>(false);
+
+  @ViewChild('anchor') anchor!: ElementRef<HTMLAnchorElement>;
 
   ngAfterViewInit(): void {
     if(this.isBrowser && this.href() && !this.routerLink()){
-      this.link.nativeElement.setAttribute('href', this.href()!);
-      this.link.nativeElement.setAttribute('target', this.target());
-      this.link.nativeElement.setAttribute('rel', this.rel());
-    }
+      this.anchor.nativeElement.setAttribute('href', this.href()!);
+      this.anchor.nativeElement.setAttribute('target', this.target());
+      this.anchor.nativeElement.setAttribute('rel', this.rel());
+    };
   };
 }

@@ -4,9 +4,19 @@
   --link-button-color: inherit;
   --link-button-bg: transparent;
   --link-button-hover-bg: #acacac;
+  --link-button-border-radius: 1.5rem;
 
   display: block;
   width: fit-content;
+
+  border-radius: var(--link-button-border-radius);
+  border: 1px solid red;
+
+  overflow: hidden;
+}
+
+:host:hover{
+  background-color: aqua;
 }
 
 .linkButton{
@@ -22,8 +32,17 @@
   transition: transform .2s ease-in-out;
 }
 
+.linkButton.disabled{
+  pointer-events: none;
+  opacity: .6;
+}
+
+.linkButton.active{
+
+}
+
 .linkButton.rounded{
-  border-radius: 1.5rem;
+  // border-radius: var(--link-button-border-radius);
 }
 
 .linkButton.hoverScale:hover{
