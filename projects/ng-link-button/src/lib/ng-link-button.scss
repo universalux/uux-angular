@@ -1,0 +1,54 @@
+:host{
+
+  --link-button-padding: .5rem .8rem;
+  --link-button-color: inherit;
+  --link-button-bg: transparent;
+  --link-button-hover-bg: #acacac;
+  --link-button-border-radius: 1.5rem;
+
+  display: block;
+  width: fit-content;
+
+  border-radius: var(--link-button-border-radius);
+  border: 1px solid red;
+
+  overflow: hidden;
+}
+
+:host:hover{
+  background-color: aqua;
+}
+
+.linkButton{
+  display: block;
+  width: fit-content;
+  padding: var(--link-button-padding);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: .5rem;
+
+  transition: transform .2s ease-in-out;
+}
+
+.linkButton.disabled{
+  pointer-events: none;
+  opacity: .6;
+}
+
+.linkButton.active{
+
+}
+
+.linkButton.rounded{
+  // border-radius: var(--link-button-border-radius);
+}
+
+.linkButton.hoverScale:hover{
+  transform: scale(1.05);
+}
+
+.linkButton.rounded:hover{
+  background-color: var(--link-button-hover-bg);
+}

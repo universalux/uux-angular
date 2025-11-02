@@ -9,7 +9,7 @@ import { NgImageCard } from "../../ng-image-card";
         <p>Header content</p>
       </header>
       <section card-image>
-        <img src="./card-image.mock.png">
+        <img src="./helpers/card-image-mock.png">
       </section>
       <section card-body>
         <p>Body content</p>
@@ -30,7 +30,7 @@ export class TestHost {}
         <p>Header content</p>
       </header>
       <section card-image>
-        <img src="./card-image.mock.png">
+        <img src="./helpers/card-image-mock.png">
       </section>
       <section card-body>
         <p>Body content</p>

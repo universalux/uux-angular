@@ -1,3 +1,25 @@
-<a>
-  <ng-content/>
+<a
+  #anchor
+  #link="routerLinkActive"
+  class="linkButton"
+  [class.rounded]="shape() === 'rounded'"
+  [class.hoverScale]="hover() === 'scale'"
+
+  [class.disabled]="disabled()"
+
+  [routerLink]="routerLink()"
+  [queryParams]="queryParams()"
+  [fragment]="fragment()"
+  [state]="state()"
+  routerLinkActive="active"
+
+  [attr.aria-label]="ariaLabel()"
+  [attr.title]="title()"
+  [attr.tabindex]="tabIndex()"
+  [attr.aria-current]="link.isActive ? 'page' : null"
+  [attr.download]="download()"
+  [attr.role]="role()"
+  [attr.aria-disabled]="disabled()"
+>
+  <ng-content></ng-content>
 </a>
