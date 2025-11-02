@@ -8,4 +8,5 @@ done
 
 # Run tests on normal pushes
 echo "🧪 Running tests before push..."
-npm run test:husky || echo "⚠️ Tests passed but returned a warning — continuing push..."
+npm run test:husky || exit 1
+# npm run test:husky || echo "⚠️ Tests passed but returned a warning — continuing push..."
