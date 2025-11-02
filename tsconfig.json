@@ -19,6 +19,9 @@
       "ng-image-card": [
         "./dist/ng-image-card"
       ],
+      "ng-link-button": [
+        "./dist/ng-link-button"
+      ],
       "ng-menu-button": [
         "./dist/ng-menu-button"
       ],
@@ -88,6 +91,12 @@
     },
     {
       "path": "./projects/ng-content-carousel/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ng-link-button/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-link-button/tsconfig.spec.json"
     }
   ]
 }

@@ -246,6 +246,32 @@
           }
         }
       }
+    },
+    "ng-link-button": {
+      "projectType": "library",
+      "root": "projects/ng-link-button",
+      "sourceRoot": "projects/ng-link-button/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-link-button/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-link-button/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/ng-link-button/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "schematics": {

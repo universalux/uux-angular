@@ -6,6 +6,7 @@ import { PgMenuToggle } from './playgrounds/pg-menu-toggle/pg-menu-toggle';
 import { PgHeroCarousel } from './playgrounds/pg-hero-carousel/pg-hero-carousel';
 import { PgImageCard } from "./playgrounds/pg-image-card/pg-image-card";
 import { PgContentCarousel } from "./playgrounds/pg-content-carousel/pg-content-carousel";
+import { PgButtons } from "./playgrounds/pg-buttons/pg-buttons";
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ import { PgContentCarousel } from "./playgrounds/pg-content-carousel/pg-content-
     // PgThemeToggle,
     // PgHeroCarousel,
     PgImageCard,
-    PgContentCarousel
+    PgContentCarousel,
+    PgButtons
 ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
