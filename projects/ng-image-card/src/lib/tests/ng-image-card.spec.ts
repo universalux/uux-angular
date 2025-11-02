@@ -57,7 +57,7 @@ describe('NgImageCard - with No attributes', () => {
   it('should render projected image content', () => {
     const img = testHostFixture.nativeElement.querySelector('[card-image] img');
     expect(img).toBeTruthy();
-    expect(img.src).toContain('card-image.mock.png');
+    expect(img.src).toContain('card-image-mock.png');
   });
 
   it('should render projected body and footer content', () => {
