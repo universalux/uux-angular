@@ -4,7 +4,11 @@ import { NgImageCard } from 'ng-image-card';
 
 @Component({
   selector: 'pg-content-carousel',
-  imports: [NgContentCarousel, NgImageCard, CarouselItemDirective],
+  imports: [
+    NgContentCarousel,
+    NgImageCard,
+    CarouselItemDirective
+  ],
   templateUrl: './pg-content-carousel.html',
   styleUrl: './pg-content-carousel.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

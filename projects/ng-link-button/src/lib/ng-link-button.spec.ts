@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NgLinkButton } from './ng-link-button';
 import { provideZonelessChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
 
 describe('NgLinkButton', () => {
   let component: NgLinkButton;
@@ -10,7 +11,7 @@ describe('NgLinkButton', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NgLinkButton],
-      providers: [provideZonelessChangeDetection()]
+      providers: [provideZonelessChangeDetection(), provideRouter([])]
     })
     .compileComponents();
 

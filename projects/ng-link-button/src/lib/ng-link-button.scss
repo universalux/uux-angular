@@ -1,0 +1,35 @@
+:host{
+
+  --link-button-padding: .5rem .8rem;
+  --link-button-color: inherit;
+  --link-button-bg: transparent;
+  --link-button-hover-bg: #acacac;
+
+  display: block;
+  width: fit-content;
+}
+
+.linkButton{
+  display: block;
+  width: fit-content;
+  padding: var(--link-button-padding);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: .5rem;
+
+  transition: transform .2s ease-in-out;
+}
+
+.linkButton.rounded{
+  border-radius: 1.5rem;
+}
+
+.linkButton.hoverScale:hover{
+  transform: scale(1.05);
+}
+
+.linkButton.rounded:hover{
+  background-color: var(--link-button-hover-bg);
+}

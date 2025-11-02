@@ -1,3 +1,34 @@
-<a>
-  <ng-content/>
+<a
+  #link
+  class="linkButton"
+  [class.rounded]="shape() === 'rounded'"
+  [class.hoverScale]="hover() === 'scale'"
+
+
+  [routerLink]="routerLink()"
+  [queryParams]="queryParams()"
+  [fragment]="fragment()"
+  [state]="state()"
+  routerLinkActive="active"
+>
+  <ng-content></ng-content>
 </a>
+
+<!-- @if (linkType() === 'routerLink') {
+  <a
+    [routerLink]="url()"
+  >
+    Soy router link
+    <ng-content></ng-content>
+  </a>
+}@else{
+  <a
+    [href]="url()"
+    [target]="target()"
+    [rel]="rel()"
+  >
+    Soy href link
+    <ng-content></ng-content>
+  </a>
+} -->
+
