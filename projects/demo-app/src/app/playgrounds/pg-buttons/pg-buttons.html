@@ -6,6 +6,7 @@
   shape="square"
   hover="outline"
   direction="row"
+  ariaCurrent="step"
 >
   <svg role="img" viewBox="0 0 24 24" height="23px" xmlns="http://www.w3.org/2000/svg" class="rightHeader__linkIcon">
             <title>npm</title>
@@ -15,18 +16,17 @@
   <span>Soy routerLink</span>
 </ng-link-button>
 
-<ng-link-button
+<!-- <ng-link-button
   href="https://alday.dev"
   target="_self"
 
   type="solid"
 >
   Soy href Link
-</ng-link-button>
+</ng-link-button> -->
 
 <ng-link-button
-  href="https://alday.dev"
-  target="_self"
+  ariaCurrent="page"
 >
   Soy href Link
 </ng-link-button>

@@ -38,10 +38,10 @@ export class NgLinkButton implements AfterViewInit {
   disabled = input<boolean>(false);
 
   // ----- STYLE INPUTS
-  type = input<'minimal' | 'solid' | 'outline'>('solid');
-  shape = input<'square' | 'rounded'>('rounded');
-  hover = input<'scale' |'color' | 'outline'>('color');
-  direction = input<'column' | 'row'>('row');
+  type = input<'solid' | 'minimal' | 'outline'>('solid');
+  shape = input<'rounded' | 'square'>('rounded');
+  hover = input<'color' | 'scale' | 'outline'>('color');
+  direction = input<'row' | 'column'>('row');
 
   // ----- HOST BINDINGS
 
