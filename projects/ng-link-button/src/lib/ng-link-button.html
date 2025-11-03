@@ -10,7 +10,7 @@
   [queryParams]="queryParams()"
   [fragment]="fragment()"
   [state]="state()"
-  routerLinkActive="active"
+  [routerLinkActive]="routerLink() ? 'active' : ''"
 
   [attr.aria-label]="ariaLabel()"
   [attr.title]="title()"

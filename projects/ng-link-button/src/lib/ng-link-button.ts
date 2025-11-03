@@ -80,9 +80,13 @@ export class NgLinkButton implements AfterViewInit {
 
   ngAfterViewInit(): void {
     if(this.isBrowser && this.href() && !this.routerLink()){
-      this.anchor.nativeElement.setAttribute('href', this.href()!);
-      this.anchor.nativeElement.setAttribute('target', this.target());
-      this.anchor.nativeElement.setAttribute('rel', this.rel());
+      setTimeout(() => {
+        if (this.isBrowser) {
+          this.anchor.nativeElement.setAttribute('href', this.href()!);
+          this.anchor.nativeElement.setAttribute('target', this.target());
+          this.anchor.nativeElement.setAttribute('rel', this.rel());
+        }
+      });
     };
   };
 }
