@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, inject, input, PLATFORM_ID, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostBinding, inject, input, PLATFORM_ID, ViewChild } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 
 
@@ -28,11 +28,6 @@ export class NgLinkButton implements AfterViewInit {
   queryParamsHandling = input<'merge' | 'preserve' | null>(null);
   state = input<{ [k: string]: any; } | undefined>(undefined);
 
-  // ----- STYLE INPUTS
-  type = input<'minimal' | 'buton'>('minimal');
-  shape = input<'square' | 'rounded'>('square');
-  hover = input<'scale' |'color'>('scale');
-
   // ----- ACCESSIBILITY INPUTS
   ariaLabel = input<string | null>(null);
   title = input<string | null>(null);
@@ -41,6 +36,45 @@ export class NgLinkButton implements AfterViewInit {
   download = input<string | boolean | null>(null);
   role = input<'link' | 'button' | null>(null);
   disabled = input<boolean>(false);
+
+  // ----- STYLE INPUTS
+  type = input<'minimal' | 'solid' | 'outline'>('solid');
+  shape = input<'square' | 'rounded'>('rounded');
+  hover = input<'scale' |'color' | 'outline'>('color');
+  direction = input<'column' | 'row'>('row');
+
+  // ----- HOST BINDINGS
+
+  @HostBinding('class.solid') get isSolid() {
+    return this.type() === 'solid';
+  };
+
+  @HostBinding('class.outline') get isOutline() {
+    return this.type() === 'outline';
+  };
+
+  @HostBinding('class.square') get isSquare() {
+    return this.shape() === 'square';
+  };
+
+  @HostBinding('class.colorHover') get isColorHover() {
+    return this.hover() === 'color';
+  };
+
+  @HostBinding('class.scaleHover') get isScaleHover() {
+    return this.hover() === 'scale';
+  };
+
+  @HostBinding('class.outlineHover') get isOutlineHover() {
+    return this.hover() === 'outline';
+  };
+
+  @HostBinding('class.disabled') get isDisabled() {
+    return this.disabled();
+  };
+
+
+  // ----- HREF BINDINGS
 
   @ViewChild('anchor') anchor!: ElementRef<HTMLAnchorElement>;
 
