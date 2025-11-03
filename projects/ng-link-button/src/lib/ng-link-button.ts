@@ -1,4 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, NgTemplateOutlet } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostBinding, inject, input, PLATFORM_ID, ViewChild } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -6,12 +6,12 @@ import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   standalone: true,
   selector: 'ng-link-button',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, NgTemplateOutlet],
   templateUrl: './ng-link-button.html',
   styleUrl: './ng-link-button.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgLinkButton implements AfterViewInit {
+export class NgLinkButton {
 
   private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
@@ -21,7 +21,7 @@ export class NgLinkButton implements AfterViewInit {
   rel = input<string>('noreferrer noopener');
 
   // ----- ROUTERLINK INPUTS
-  routerLink = input<string | any[] | null>(null);
+  routerLink = input<string | any[] | undefined>(undefined);
   queryParams = input<Record<string, any> | null>(null);
   fragment = input<string | undefined>(undefined);
   relativeTo = input<ActivatedRoute | null>(null);
@@ -45,17 +45,23 @@ export class NgLinkButton implements AfterViewInit {
 
   // ----- HOST BINDINGS
 
-  @HostBinding('class.solid') get isSolid() {
-    return this.type() === 'solid';
+  // TYPE BINDINGS
+
+  @HostBinding('class.minimal') get isMinimal() {
+    return this.type() === 'minimal';
   };
 
   @HostBinding('class.outline') get isOutline() {
     return this.type() === 'outline';
   };
 
+  // SHAPE BINDINGS
+
   @HostBinding('class.square') get isSquare() {
     return this.shape() === 'square';
   };
+
+  // HOVER BINDINGS
 
   @HostBinding('class.colorHover') get isColorHover() {
     return this.hover() === 'color';
@@ -78,15 +84,15 @@ export class NgLinkButton implements AfterViewInit {
 
   @ViewChild('anchor') anchor!: ElementRef<HTMLAnchorElement>;
 
-  ngAfterViewInit(): void {
-    if(this.isBrowser && this.href() && !this.routerLink()){
-      setTimeout(() => {
-        if (this.isBrowser) {
-          this.anchor.nativeElement.setAttribute('href', this.href()!);
-          this.anchor.nativeElement.setAttribute('target', this.target());
-          this.anchor.nativeElement.setAttribute('rel', this.rel());
-        }
-      });
-    };
-  };
+  // ngAfterViewInit(): void {
+  //   if(this.isBrowser && this.href() && !this.routerLink()){
+  //     setTimeout(() => {
+  //       if (this.isBrowser) {
+  //         this.anchor.nativeElement.setAttribute('href', this.href()!);
+  //         this.anchor.nativeElement.setAttribute('target', this.target());
+  //         this.anchor.nativeElement.setAttribute('rel', this.rel());
+  //       }
+  //     });
+  //   };
+  // };
 }

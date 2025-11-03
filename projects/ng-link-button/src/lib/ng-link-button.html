@@ -1,4 +1,54 @@
-<a
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>
+
+@if (routerLink()) {
+  <a
+    #anchor
+    #link="routerLinkActive"
+    class="linkButton"
+    [class.column]="direction() === 'column'"
+    [class.disabled]="disabled()"
+
+    [routerLink]="routerLink()"
+    [queryParams]="queryParams()"
+    [fragment]="fragment()"
+    [state]="state()"
+    routerLinkActive="active"
+
+    [attr.aria-label]="ariaLabel()"
+    [attr.title]="title()"
+    [attr.tabindex]="tabIndex()"
+    [attr.aria-current]="link.isActive ? ariaCurrent() : null"
+    [attr.download]="download()"
+    [attr.role]="role()"
+    [attr.aria-disabled]="disabled()"
+  >
+    <ng-template [ngTemplateOutlet]="content"></ng-template>
+  </a>
+} @else {
+  <a
+    #anchor
+    class="linkButton"
+    [class.column]="direction() === 'column'"
+    [class.disabled]="disabled()"
+
+    [attr.href]="href()"
+    [attr.target]="target()"
+    [attr.rel]="rel()"
+
+    [attr.aria-label]="ariaLabel()"
+    [attr.title]="title()"
+    [attr.tabindex]="tabIndex()"
+    [attr.download]="download()"
+    [attr.role]="role()"
+    [attr.aria-disabled]="disabled()"
+  >
+    <ng-template [ngTemplateOutlet]="content"></ng-template>
+  </a>
+}
+
+<!-- <a
   #anchor
   #link="routerLinkActive"
   class="linkButton"
@@ -21,4 +71,4 @@
   [attr.aria-disabled]="disabled()"
 >
   <ng-content></ng-content>
-</a>
+</a> -->
