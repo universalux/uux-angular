@@ -82,7 +82,7 @@ export class NgLinkButton {
 
   // ----- HREF BINDINGS
 
-  @ViewChild('anchor') anchor!: ElementRef<HTMLAnchorElement>;
+  // @ViewChild('anchor') anchor!: ElementRef<HTMLAnchorElement>;
 
   // ngAfterViewInit(): void {
   //   if(this.isBrowser && this.href() && !this.routerLink()){

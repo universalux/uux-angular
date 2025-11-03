@@ -54,30 +54,31 @@
 }
 
 ng-link-button.myClass{
-  --link-button-outline: 2px solid orange;
+  // --link-button-outline: 2px solid orange;
 }
 
 ng-link-button{
 
-  background: red; //Only affects to type='solid'
-  margin: 5px;
-  box-shadow: 3px 3px 10px black;
-  border-radius: 100px; //Only affects to shape='rounded'
+  // background: red; //Only affects to type='solid'
+  // margin: 5px;
+  // box-shadow: 3px 3px 10px black;
+  // border-radius: 1.5rem; //Only affects to shape='rounded'
+  // color: blue;
 
-  --link-button-outline: 2px solid yellow;
-  --link-button-bg: blue; // Affects to all types
-  --link-button-padding: .5rem 1rem;
-  --link-button-flex-gap: .5rem;
-  --link-button-transition-duration: 0.2s;
+  // --link-button-outline: 2px solid yellow;
+  // --link-button-bg: blue; // Affects to all types
+  // --link-button-padding: .5rem 1rem;
+  // --link-button-flex-gap: .5rem;
+  // --link-button-transition-duration: 0.2s;
 
-  --link-button-hover-bg: red;
-  --link-button-hover-color: inherit;
-  --link-button-hover-outline: 1px solid #824dfe;
-  --link-button-hover-scale: 1.05;
+  // --link-button-hover-bg: red;
+  // --link-button-hover-color: inherit;
+  // --link-button-hover-outline: 1px solid #824dfe;
+  // --link-button-hover-scale: 1.05;
 
-  --link-button-active-bg: var(--link-button-hover-bg);
-  --link-button-active-color: inherit;
-  --link-button-active-outline: var(--link-button-hover-outline);
-  --link-button-active-scale: 1.02;
+  // --link-button-active-bg: var(--link-button-hover-bg);
+  // --link-button-active-color: inherit;
+  // --link-button-active-outline: var(--link-button-hover-outline);
+  // --link-button-active-scale: 1.02;
 
 }

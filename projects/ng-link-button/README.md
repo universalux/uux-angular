@@ -139,6 +139,7 @@ ng-link-button{
   margin: 5px;
   box-shadow: 3px 3px 10px black;
   border-radius: 100px; //Only affects to shape='rounded'
+  color: white;
 
   --link-button-outline: 2px solid yellow;
   --link-button-bg: blue; // Affects to all types

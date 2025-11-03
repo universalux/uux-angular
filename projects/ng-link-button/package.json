@@ -1,6 +1,6 @@
 {
   "name": "ng-link-button",
-  "version": "18.0.0",
+  "version": "19.0.0",
   "description": "An Angular customizable link button component",
   "keywords": [
     "angular",
@@ -38,8 +38,8 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^18.0.0",
-    "@angular/core": "^18.0.0"
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
