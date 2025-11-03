@@ -1,63 +1,161 @@
-# NgLinkButton
+<p align="center">
+  <a href="https://www.npmjs.com/~universalux" target="_blank" rel="noreferrer noopener">
+    <img src="https://github.com/universalux/uux-hub/blob/main/assets/components/angular/ng-link-button/ng-link-button-cover.png?raw=true" alt="NgLinkButton cover">
+  </a>
+</p>
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.0.
+# NgLinkButton - Angular link button
 
-## Code scaffolding
+**ng-link-button** is a **standalone, reusable and customizable component** for Angular 18, 19 and 20.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+It is designed to work with **signals** and Angular **zoneless**, providing a lightweight, flexible, and accessible link button. It is also fully compatible with **SSR, CSR and prerender**.
 
+## Table of Contents
+
+* [Installation](#installation)
+* [Basic Usage](#basic-usage)
+* [Advanced Usage](#advanced-usage)
+  - [Router Link attributes](#router-link-attributes)
+  - [Href attributes](#href-attributes)
+  - [Style and behavior Attributes](#style-and-behavior-attributes)
+  - [Accessibility Attributes](#accessibility-attributes)
+  - [Custom Styles](#custom-styles)
+* [Report or suggest something](#report-or-suggest-something)
+
+## Installation
+
+If you want to install the latest version (currently 20):
 ```bash
-ng generate component component-name
+npm install ng-link-button
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+Angular 19:
 ```bash
-ng generate --help
+npm install ng-link-button@v19-lts
 ```
 
-## Building
-
-To build the library, run:
-
+Angular 18:
 ```bash
-ng build ng-link-button
+npm install ng-link-button@v18-lts
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+## Basic Usage
 
-### Publishing the Library
+Using `ng-link-button` is simple. You just have to add desired content as children of the component and control its behavior, style and accessibility using some attributes and css variables.
 
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/ng-link-button
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+```html
+<ng-link-button routerLink="home" type="solid" shape="square">
+  Link button inner content
+</ng-link-button>
 ```
 
-## Running end-to-end tests
+```ts
+import { NgLinkButton } from 'ng-link-button';
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
+@Component({
+  selector: 'app',
+  imports: [ NgLinkButton ],
+  template: `
+    <ng-link-button routerLink="home" type="solid" shape="square">
+      Link button inner content
+    </ng-link-button>
+  `,
+})
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Advanced Usage
 
-## Additional Resources
+You can define the link’s destination using either href or routerLink,
+just like you would with a standard `<a>` tag in Angular.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Router Link Attributes
+
+| Input                 | Description                                                                                                                                            | Type                                | Default     |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------- | ----------- |
+| `routerLink`          | The route to navigate when the link is clicked. Accepts a string or an array of route segments.                                                        | `string \| any[] \| null`           | `null`      |
+| `queryParams`         | Defines the query parameters to pass when navigating with the `routerLink`.                                                                            | `Record<string, any> \| null`       | `null`      |
+| `fragment`            | Sets the URL fragment (the part after `#`) to navigate to within the target page.                                                                      | `string \| undefined`               | `undefined` |
+| `relativeTo`          | Defines the `ActivatedRoute` from which relative navigation paths should be resolved. Useful for child routes.                                         | `ActivatedRoute \| null`            | `null`      |
+| `queryParamsHandling` | Determines how query parameters should be handled when navigating. `'merge'` merges new params with existing ones, `'preserve'` keeps existing params. | `'merge' \| 'preserve' \| null`     | `null`      |
+| `state`               | Passes a custom navigation state object that can be accessed after navigation using the browser’s history API.                                         | `{ [k: string]: any } \| undefined` | `undefined` |
+
+
+### Href Attributes
+
+| Input    | Description                                                                                                                                                           | Type                                                   | Default                 |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | ----------------------- |
+| `href`   | Specifies the external URL that the link should navigate to when clicked. Only used when no `routerLink` is provided.                                                 | `string \| null`                                       | `null`                  |
+| `target` | Defines where to open the linked document. Common values are `_blank` (new tab), `_self`, `_parent`, and `_top`.                                                      | `'_self' \| '_blank' \| '_parent' \| '_top' \| string` | `'_blank'`              |
+| `rel`    | Specifies the relationship between the current document and the linked one. Recommended values like `noreferrer` and `noopener` improve security when using `_blank`. | `string`                                               | `'noreferrer noopener'` |
+
+### Style and behavior Attributes
+
+| Input       | Description                                       | Type                                | Default     |
+| ----------- | ------------------------------------------------- | ----------------------------------- | ----------- |
+| `type`      | Defines the visual style of the button.           | `'solid' \| 'minimal' \| 'outline'` | `'solid'`   |
+| `shape`     | Determines the button’s corner style.             | `'rounded' \| 'square'`             | `'rounded'` |
+| `hover`     | Controls the hover interaction effect.            | `'color' \| 'scale' \| 'outline'`   | `'color'`   |
+| `direction` | Sets the layout direction for the button content. | `'row' \| 'column'`                 | `'row'`     |
+
+
+### Accessibility Attributes
+
+| Input         | Description                                                           | Type                                 | Default |
+| ------------- | --------------------------------------------------------------------- | ------------------------------------ | ------- |
+| `ariaLabel`   | Provides an accessible label for assistive technologies.              | `string \| null`                     | `null`  |
+| `title`       | Sets the native `title` attribute for tooltip or accessibility.       | `string \| null`                     | `null`  |
+| `tabIndex`    | Controls the element’s position in the tab order.                     | `number \| null`                     | `null`  |
+| `ariaCurrent` | Indicates the current item within a set (e.g., current page or step). | `'page' \| 'step' \| 'true' \| null` | `null`  |
+| `download`    | Specifies that the link should be downloaded instead of navigated.    | `string \| boolean \| null`          | `null`  |
+| `role`        | Defines the ARIA role of the element.                                 | `'link' \| 'button' \| null`         | `null`  |
+| `disabled`    | Disables the button and prevents interaction.                         | `boolean`                            | `false` |
+
+### Custom Styles
+
+You can add some global styles directly on the component:
+
+```css
+ng-link-button{
+  margin: 5px;
+  background-color: red;
+}
+```
+
+We’ve also prepared some useful CSS variables to handle style and behavior:
+
+| Variable                            | Description                                                 | Default Value                      |
+| ----------------------------------- | ----------------------------------------------------------- | ---------------------------------- |
+| `--link-button-padding`             | Defines the internal padding of the button.                 | `.5rem 1rem`                       |
+| `--link-button-flex-gap`            | Sets the horizontal space between icon and text.            | `.5rem`                            |
+| `--link-button-transition-duration` | Controls the transition speed for hover and active effects. | `0.2s`                             |
+| `--link-button-hover-bg`            | Background color on hover.                                  | `#9e9e9e`                          |
+| `--link-button-hover-color`         | Text color on hover.                                        | `inherit`                          |
+| `--link-button-hover-outline`       | Outline style on hover.                                     | `1px solid rgb(209, 70, 70)`       |
+| `--link-button-hover-scale`         | Scale transform applied on hover.                           | `1.05`                             |
+| `--link-button-active-bg`           | Background color when active (pressed).                     | `var(--link-button-hover-bg)`      |
+| `--link-button-active-color`        | Text color when active.                                     | `inherit`                          |
+| `--link-button-active-outline`      | Outline style when active.                                  | `var(--link-button-hover-outline)` |
+| `--link-button-active-scale`        | Scale transform applied when active.                        | `1.02`                             |
+
+Here you have an example of usage:
+
+```css
+ng-link-button{
+  --link-button-padding: 5px 10px;
+  --link-button-hover-bg: blue;
+  --link-button-active-bg: red;
+}
+```
+
+## Report or suggest something
+
+Choose the form that best fits your case:
+
+- 🐞 [Report a bug](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=angular_bug_report.yml)
+- ✨ [Request an improvement for an existing component](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=angular_feature_request.yml)
+- 🧩 [Suggest a new component](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=new_component_request.yml)
+
+👉 Or go to the [form selector](https://github.com/universalux/uux-hub/issues/new/choose).
+
+## License
+MIT

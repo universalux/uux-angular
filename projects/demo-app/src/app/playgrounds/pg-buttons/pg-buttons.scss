@@ -1,21 +1,60 @@
 :host{
-  display: block;
-  margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 3rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100dvh;
+    height: 100%;
+    background: linear-gradient(127deg, #30a2fe 20%, #824dfe 100%);
 }
 
-ng-link-button svg{
-  // fill: red;
+.titleContainer{
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleContainer hgroup h1{
+    font-size: 1.8rem;
+    margin-bottom: .35rem;
+}
+
+.titleContainer hgroup div{
+
+  display: flex;
+  column-gap: .3rem;
+  align-items: end;
+}
+
+.uuxLogo{
+  width: 125px;
+  margin-bottom: .1rem;
+}
+
+.angularLogo{
+    max-width: 52px;
+}
+
+.container{
+    width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+
 }
 
 ng-link-button{
-  // box-shadow: 2px 2px 15px #e4e4e4;
-  // background-color: aqua;
-  // --link-button-hover-color: red;
-  // --link-button-transition-time: 0;
+  font-weight: 700;
+  --link-button-hover-bg: #824dfe;
+  --link-button-hover-outline: 1px solid #000000;
 
-  // --link-button-hover-border: 3px solid red;
-  // --link-button-hover-bg: red;
-  // border-radius: 20px;
-  // border-bottom-left-radius: 0px;
-  // border-top-left-radius: 0px;
 }

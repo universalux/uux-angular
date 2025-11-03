@@ -12,16 +12,17 @@
 
   --link-button-hover-bg: #9e9e9e;
   --link-button-hover-color: inherit;
-  --link-button-hover-border: 1px solid rgb(209, 70, 70);
+  --link-button-hover-outline: 1px solid rgb(209, 70, 70);
   --link-button-hover-scale: 1.05;
 
   --link-button-active-bg: var(--link-button-hover-bg);
   --link-button-active-color: inherit;
-  --link-button-active-border: var(--link-button-hover-border);
+  --link-button-active-outline: var(--link-button-hover-outline);
   --link-button-active-scale: 1.02;
 
   display: block;
   width: fit-content;
+  height: fit-content;
 
   border-radius: 1.3rem;
   outline: 1px solid transparent;
@@ -74,11 +75,11 @@
 }
 
 :host.outlineHover:hover{
-  outline: var(--link-button-hover-border);
+  outline: var(--link-button-hover-outline);
 }
 
 :host.outlineHover:has(.linkButton.active){
-  outline: var(--link-button-active-border);
+  outline: var(--link-button-active-outline);
 }
 
 /* ----- HOST DISBABLE STYLE ----- */
