@@ -8,7 +8,7 @@
 
 **ng-theme-toggle** is a **standalone, reusable and customizable component** for Angular 18, 19 and 20.
 
-It is designed to work with **signals** and Angular **zoneless**, providing a lightweight, flexible, and accessible theme toggle button.
+It is designed to work with **signals** and Angular **zoneless**, providing a lightweight, flexible, and accessible theme toggle button. It is also fully compatible with **SSR, CSR and prerender**.
 
 ## Table of Contents
 

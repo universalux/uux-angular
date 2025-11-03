@@ -12,7 +12,7 @@ It is designed to work with **signals** and Angular **zoneless**, providing a li
 
 ## Table of Contents
 
-* [Instalation](#installation)
+* [Installation](#installation)
 * [Basic Usage](#basic-usage)
 * [Advanced Usage](#advanced-usage)
   - [Slots and Sections](#slots-and-sections)
