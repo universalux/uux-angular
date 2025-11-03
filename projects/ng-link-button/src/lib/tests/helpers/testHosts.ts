@@ -44,7 +44,6 @@ export class TestHostWithAttr {
 
 @Component({
   imports: [NgLinkButton],
-  providers: [ActivatedRoute],
   template: `
     <ng-link-button
       routerLink="/test"
@@ -61,7 +60,7 @@ export class TestHostWithAttr {
 export class TestHostRouterLink {
 
   route = inject(ActivatedRoute);
-  queryParamsHandling = signal<'merge' | 'preserve' | null>(null);
+  queryParamsHandling = signal<'merge' | 'preserve' | null>('merge');
 
 }
 

@@ -2,6 +2,7 @@ import {
   beforeEachLinkButtonTest,
   LinkButtonElements,
 } from './helpers/beforeEach';
+import { TestHostRouterLink } from './helpers/testHosts';
 
 describe('NgLinkButton - No attributes', () => {
   let elements: LinkButtonElements;
@@ -89,6 +90,48 @@ describe('NgLinkButton - With Attributes', () => {
 
     expect(elements.linkButtonAnchor.nativeElement.classList.contains('column')).toBeTrue();
 
+    expect(elements.linkButtonAnchor.nativeElement.getAttribute('aria-label')).toBe('Aria label example');
+    expect(elements.linkButtonAnchor.nativeElement.getAttribute('title')).toBe('Title example');
+    expect(elements.linkButtonAnchor.nativeElement.getAttribute('tabIndex')).toBe('-1');
+    expect(elements.linkButtonAnchor.nativeElement.getAttribute('role')).toBe('link');
     expect(elements.linkButtonAnchor.nativeElement.getAttribute('aria-disabled')).toBe('true');
+
   });
+
+});
+
+describe('NgLinkButton - routerLink mode', () => {
+  let elements: LinkButtonElements;
+
+  beforeEach(async () => {
+    elements = await beforeEachLinkButtonTest('routerLink');
+  });
+
+  it('should have initial custom attributes', () => {
+    expect(elements.linkButtonInstance.routerLink()).toBe('/test');
+    expect(elements.linkButtonInstance.queryParams()).toEqual({ category: 'books', sort: 'price' });
+    expect(elements.linkButtonInstance.fragment()).toBe('fragment');
+
+    const hostComponent = elements.fixture.componentInstance as TestHostRouterLink;
+    const relativeTo = elements.linkButtonInstance.relativeTo();
+    expect(relativeTo).toBe(hostComponent.route);
+    expect(elements.linkButtonInstance.queryParamsHandling()).toBe('merge');
+    expect(elements.linkButtonInstance.state()).toEqual({state: 'hola'});
+  });
+
+});
+
+describe('NgLinkButton - href mode', () => {
+  let elements: LinkButtonElements;
+
+  beforeEach(async () => {
+    elements = await beforeEachLinkButtonTest('href');
+  });
+
+  it('should have initial custom attributes', () => {
+    expect(elements.linkButtonInstance.href()).toBe('https://alday.dev');
+    expect(elements.linkButtonInstance.target()).toBe('_blank');
+    expect(elements.linkButtonInstance.rel()).toBe('noreferrer noopener');
+  });
+
 });
