@@ -16,11 +16,11 @@ export class TestHost {}
   imports: [NgLinkButton],
   template: `
     <ng-link-button
-      ariaLabel="Aria label xample"
-      title="Title Example"
+      ariaLabel="Aria label example"
+      title="Title example"
       [tabIndex]="-1"
       [ariaCurrent]="ariaCurrent()"
-      [download]="download()"
+      [download]="true"
       [role]="role()"
       [disabled]="true"
 
@@ -34,9 +34,8 @@ export class TestHost {}
   `
 })
 export class TestHostWithAttr {
-  ariaCurrent = signal<'page' | 'step' | 'true' | null>(null);
-  download = signal<string | boolean | null>(null);
-  role = signal<'link' | 'button' | null>(null);
+  ariaCurrent = signal<'page' | 'step' | 'true' | null>('page');
+  role = signal<'link' | 'button' | null>('link');
 
   type = signal<'solid' | 'minimal' | 'outline'>('minimal');
   hover = signal<'color' | 'scale' | 'outline'>('scale');

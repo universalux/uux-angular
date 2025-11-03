@@ -41,7 +41,7 @@ export async function beforeEachLinkButtonTest(hostType: keyof typeof hosts = 'a
 
   fixture.detectChanges();
 
-  const linkButtonAnchor = fixture.debugElement.query(By.css('a.linkButton'));
+  const linkButtonAnchor = fixture.debugElement.query(By.css('.linkButton'));
 
   return {
     fixture,
