@@ -1,54 +1,110 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 :host{
 
-  --link-button-padding: .5rem .8rem;
-  --link-button-color: inherit;
-  --link-button-bg: transparent;
-  --link-button-hover-bg: #acacac;
-  --link-button-border-radius: 1.5rem;
+  --link-button-padding: .5rem 1rem;
+  --link-button-flex-gap: .5rem;
+  --link-button-transition-duration: 0.2s;
+
+  --link-button-hover-bg: #9e9e9e;
+  --link-button-hover-color: inherit;
+  --link-button-hover-border: 1px solid rgb(209, 70, 70);
+  --link-button-hover-scale: 1.05;
+
+  --link-button-active-bg: var(--link-button-hover-bg);
+  --link-button-active-color: inherit;
+  --link-button-active-border: var(--link-button-hover-border);
+  --link-button-active-scale: 1.02;
 
   display: block;
   width: fit-content;
 
-  border-radius: var(--link-button-border-radius);
-  border: 1px solid red;
+  border-radius: 1.3rem;
+  outline: 1px solid transparent;
 
   overflow: hidden;
+  cursor: pointer;
+
+  background-color: transparent;
+  color: inherit;
+
+  transition: all var(--link-button-transition-duration) ease-in-out;
 }
 
-:host:hover{
-  background-color: aqua;
+/* ----- HOST TYPE STYLES ----- */
+
+:host.solid{
+  background-color: white;
+  color: black;
 }
+
+:host.outline{
+  outline: 1px solid white;
+  background-color: transparent;
+}
+
+/* ----- HOST SHAPE STYLES ----- */
+
+:host.square{
+  border-radius: 0px;
+}
+
+/* ----- HOST HOVER & ACTIVE STYLES ----- */
+
+:host.colorHover:hover{
+  background-color: var(--link-button-hover-bg);
+  color: var(--link-button-hover-color);
+}
+
+:host.colorHover:has(.linkButton.active){
+  background-color: var(--link-button-active-bg);
+  color: var(--link-button-active-color);
+}
+
+:host.scaleHover:hover{
+  transform: scale(var(--link-button-hover-scale));
+}
+
+:host.scaleHover:has(.linkButton.active){
+  transform: scale(var(--link-button-active-scale));
+}
+
+:host.outlineHover:hover{
+  outline: var(--link-button-hover-border);
+}
+
+:host.outlineHover:has(.linkButton.active){
+  outline: var(--link-button-active-border);
+}
+
+/* ----- HOST DISBABLE STYLE ----- */
+
+:host.disabled{
+  opacity: .6;
+  pointer-events: none;
+}
+
+/* ----- LINK BUTTON STYLES ----- */
 
 .linkButton{
-  display: block;
-  width: fit-content;
   padding: var(--link-button-padding);
+  width: fit-content;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  column-gap: .5rem;
+  gap: var(--link-button-flex-gap);
+}
 
-  transition: transform .2s ease-in-out;
+.linkButton.column{
+  flex-direction: column;
 }
 
 .linkButton.disabled{
   pointer-events: none;
   opacity: .6;
-}
-
-.linkButton.active{
-
-}
-
-.linkButton.rounded{
-  // border-radius: var(--link-button-border-radius);
-}
-
-.linkButton.hoverScale:hover{
-  transform: scale(1.05);
-}
-
-.linkButton.rounded:hover{
-  background-color: var(--link-button-hover-bg);
 }

@@ -1,3 +1,21 @@
+:host{
+  display: block;
+  margin: 1rem;
+}
+
 ng-link-button svg{
-  fill: red;
+  // fill: red;
+}
+
+ng-link-button{
+  // box-shadow: 2px 2px 15px #e4e4e4;
+  // background-color: aqua;
+  // --link-button-hover-color: red;
+  // --link-button-transition-time: 0;
+
+  // --link-button-hover-border: 3px solid red;
+  // --link-button-hover-bg: red;
+  // border-radius: 20px;
+  // border-bottom-left-radius: 0px;
+  // border-top-left-radius: 0px;
 }
