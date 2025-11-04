@@ -28,6 +28,9 @@
       "ng-menu-toggle": [
         "./dist/ng-menu-toggle"
       ],
+      "ng-simple-button": [
+        "./dist/ng-simple-button"
+      ],
       "ng-theme-toggle": [
         "./dist/ng-theme-toggle"
       ]
@@ -97,6 +100,12 @@
     },
     {
       "path": "./projects/ng-link-button/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ng-simple-button/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-simple-button/tsconfig.spec.json"
     }
   ]
 }
