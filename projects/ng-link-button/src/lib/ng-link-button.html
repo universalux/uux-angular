@@ -1,24 +1,47 @@
-<a
-  #anchor
-  #link="routerLinkActive"
-  class="linkButton"
-  [class.column]="direction() === 'column'"
-
-  [class.disabled]="disabled()"
-
-  [routerLink]="routerLink()"
-  [queryParams]="queryParams()"
-  [fragment]="fragment()"
-  [state]="state()"
-  [routerLinkActive]="routerLink() ? 'active' : ''"
-
-  [attr.aria-label]="ariaLabel()"
-  [attr.title]="title()"
-  [attr.tabindex]="tabIndex()"
-  [attr.aria-current]="link.isActive ? ariaCurrent() : null"
-  [attr.download]="download()"
-  [attr.role]="role()"
-  [attr.aria-disabled]="disabled()"
->
+<ng-template #content>
   <ng-content></ng-content>
-</a>
+</ng-template>
+
+@if (routerLink()) {
+  <a
+    #link="routerLinkActive"
+    class="linkButton"
+    [class.column]="direction() === 'column'"
+    [class.disabled]="disabled()"
+
+    [routerLink]="routerLink()"
+    [queryParams]="queryParams()"
+    [fragment]="fragment()"
+    [state]="state()"
+    [routerLinkActive]="activatedRoute() ? 'active' : ''"
+
+    [attr.aria-label]="ariaLabel()"
+    [attr.title]="title()"
+    [attr.tabindex]="tabIndex()"
+    [attr.aria-current]="link.isActive ? ariaCurrent() : null"
+    [attr.download]="download()"
+    [attr.role]="role()"
+    [attr.aria-disabled]="disabled()"
+  >
+    <ng-template [ngTemplateOutlet]="content"></ng-template>
+  </a>
+} @else {
+  <a
+    class="linkButton"
+    [class.column]="direction() === 'column'"
+    [class.disabled]="disabled()"
+
+    [attr.href]="href()"
+    [attr.target]="target()"
+    [attr.rel]="rel()"
+
+    [attr.aria-label]="ariaLabel()"
+    [attr.title]="title()"
+    [attr.tabindex]="tabIndex()"
+    [attr.download]="download()"
+    [attr.role]="role()"
+    [attr.aria-disabled]="disabled()"
+  >
+    <ng-template [ngTemplateOutlet]="content"></ng-template>
+  </a>
+}

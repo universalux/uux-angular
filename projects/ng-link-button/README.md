@@ -112,19 +112,15 @@ just like you would with a standard `<a>` tag in Angular.
 
 ### Custom Styles
 
-You can add some global styles directly on the component:
-
-```css
-ng-link-button{
-  margin: 5px;
-  background-color: red;
-}
-```
-
-We’ve also prepared some useful CSS variables to handle style and behavior:
+You can add some global styles directly on the component (see example bellow) and we’ve also prepared some useful CSS variables to handle style and behavior:
 
 | Variable                            | Description                                                 | Default Value                      |
 | ----------------------------------- | ----------------------------------------------------------- | ---------------------------------- |
+| `--link-button-color`             | Defines the internal color of the button.             | `inherit`                       |
+| `--link-button-bg`             | Defines the internal background color of the button.             | `depends on type`                       |
+| `--link-button-width`             | Defines the width of the button.             | `fit-content`                       |
+| `--link-button-justify-content`   | Defines how inner content is align.             | `center`                       |
+| `--link-button-outline`        | Defines the outline of the button.                 | `depends on type`                       |
 | `--link-button-padding`             | Defines the internal padding of the button.                 | `.5rem 1rem`                       |
 | `--link-button-flex-gap`            | Sets the horizontal space between icon and text.            | `.5rem`                            |
 | `--link-button-transition-duration` | Controls the transition speed for hover and active effects. | `0.2s`                             |
@@ -141,9 +137,47 @@ Here you have an example of usage:
 
 ```css
 ng-link-button{
-  --link-button-padding: 5px 10px;
-  --link-button-hover-bg: blue;
-  --link-button-active-bg: red;
+
+  background: red; //Only affects to type='solid'
+  margin: 5px;
+  box-shadow: 3px 3px 10px black;
+  border-radius: 100px; //Only affects to shape='rounded'
+
+  --link-button-width: 100%;
+  --link-button-justify-content: start;
+  --link-button-color: red;
+  --link-button-outline: 2px solid yellow;
+  --link-button-bg: blue; // Affects to all types
+  --link-button-padding: .5rem 1rem;
+  --link-button-flex-gap: .5rem;
+  --link-button-transition-duration: 0.2s;
+
+  --link-button-hover-bg: red;
+  --link-button-hover-color: inherit;
+  --link-button-hover-outline: 1px solid #824dfe;
+  --link-button-hover-scale: 1.05;
+
+  --link-button-active-bg: green;
+  --link-button-active-color: inherit;
+  --link-button-active-outline: 2px solid blue;
+  --link-button-active-scale: 1.02;
+
+}
+```
+
+You can set the style only for certain "type" link buttons this way:
+
+```css
+ng-link-button[type="solid"]{
+  --link-button-bg: orange;
+}
+```
+
+If you have several link buttons and you need diferent custom styles, we recomend you to add a class so you can narrow down elements. For example:
+
+```css
+ng-link-button.myClass{
+  --link-button-outline: 2px solid orange;
 }
 ```
 
