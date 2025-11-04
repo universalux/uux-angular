@@ -103,10 +103,10 @@ ng-image-card [card-footer]{
   display: flex; column-gap: .5rem; justify-content: end;
 }
 
-ng-content-carousel .carousel-item{
-  background-color: blue;
-  margin: 0 2rem;
-}
+// ng-content-carousel .carousel-item{
+//   background-color: blue;
+//   margin: 0 2rem;
+// }
 
 @media screen and (max-width: 1024px) {
   .slideExample{
