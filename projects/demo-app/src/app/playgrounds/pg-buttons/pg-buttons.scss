@@ -7,8 +7,8 @@
     width: 100%;
     min-height: 100dvh;
     height: 100%;
-    // background: linear-gradient(127deg, #30a2fe 20%, #824dfe 100%);
-    background-color: white;
+    background: linear-gradient(127deg, #30a2fe 20%, #824dfe 100%);
+    // background-color: white;
 }
 
 .titleContainer{
@@ -57,8 +57,16 @@ ng-link-button.myClass{
   // --link-button-outline: 2px solid orange;
 }
 
-ng-link-button{
+ng-link-button[type="outline"]{
 
+  --link-button-outline: 2px solid white;
+  --link-button-color: white;
+}
+
+ng-link-button[type="solid"]{
+
+  --link-button-bg: white;
+  --link-button-color: black;
   // background: red; //Only affects to type='solid'
   // margin: 5px;
   // box-shadow: 3px 3px 10px black;
