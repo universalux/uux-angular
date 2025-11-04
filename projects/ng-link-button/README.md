@@ -116,7 +116,10 @@ You can add some global styles directly on the component (see example bellow) an
 
 | Variable                            | Description                                                 | Default Value                      |
 | ----------------------------------- | ----------------------------------------------------------- | ---------------------------------- |
+| `--link-button-color`             | Defines the internal color of the button.             | `inherit`                       |
 | `--link-button-bg`             | Defines the internal background color of the button.             | `depends on type`                       |
+| `--link-button-width`             | Defines the width of the button.             | `fit-content`                       |
+| `--link-button-justify-content`   | Defines how inner content is align.             | `center`                       |
 | `--link-button-outline`        | Defines the outline of the button.                 | `depends on type`                       |
 | `--link-button-padding`             | Defines the internal padding of the button.                 | `.5rem 1rem`                       |
 | `--link-button-flex-gap`            | Sets the horizontal space between icon and text.            | `.5rem`                            |
@@ -139,8 +142,10 @@ ng-link-button{
   margin: 5px;
   box-shadow: 3px 3px 10px black;
   border-radius: 100px; //Only affects to shape='rounded'
-  color: white;
 
+  --link-button-width: 100%;
+  --link-button-justify-content: start;
+  --link-button-color: red;
   --link-button-outline: 2px solid yellow;
   --link-button-bg: blue; // Affects to all types
   --link-button-padding: .5rem 1rem;
@@ -160,7 +165,15 @@ ng-link-button{
 }
 ```
 
-**IMPORTANT** - If you have several link buttons and you need diferent custom styles, we recomend you to add a class so you can narrow down elements. For example:
+You can set the style only for certain "type" link buttons this way:
+
+```css
+ng-link-button[type="solid"]{
+  --link-button-bg: orange;
+}
+```
+
+If you have several link buttons and you need diferent custom styles, we recomend you to add a class so you can narrow down elements. For example:
 
 ```css
 ng-link-button.myClass{

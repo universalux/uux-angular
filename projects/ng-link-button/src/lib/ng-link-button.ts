@@ -1,5 +1,5 @@
-import { isPlatformBrowser, NgTemplateOutlet } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostBinding, inject, input, PLATFORM_ID, ViewChild } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
+import { ChangeDetectionStrategy, Component, HostBinding, input } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 
 
@@ -13,8 +13,6 @@ import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class NgLinkButton {
 
-  private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-
   // ----- HREF INPUTS
   href = input<string | null>(null);
   target = input<'_self' | '_blank' | '_parent' | '_top' | string>('_blank');
@@ -22,6 +20,7 @@ export class NgLinkButton {
 
   // ----- ROUTERLINK INPUTS
   routerLink = input<string | any[] | undefined>(undefined);
+  activatedRoute = input<boolean>(true);
   queryParams = input<Record<string, any> | null>(null);
   fragment = input<string | undefined>(undefined);
   relativeTo = input<ActivatedRoute | null>(null);
@@ -46,6 +45,10 @@ export class NgLinkButton {
   // ----- HOST BINDINGS
 
   // TYPE BINDINGS
+
+  @HostBinding('class.solid') get isSolid() {
+    return this.type() === 'solid';
+  };
 
   @HostBinding('class.minimal') get isMinimal() {
     return this.type() === 'minimal';
@@ -79,20 +82,4 @@ export class NgLinkButton {
     return this.disabled();
   };
 
-
-  // ----- HREF BINDINGS
-
-  // @ViewChild('anchor') anchor!: ElementRef<HTMLAnchorElement>;
-
-  // ngAfterViewInit(): void {
-  //   if(this.isBrowser && this.href() && !this.routerLink()){
-  //     setTimeout(() => {
-  //       if (this.isBrowser) {
-  //         this.anchor.nativeElement.setAttribute('href', this.href()!);
-  //         this.anchor.nativeElement.setAttribute('target', this.target());
-  //         this.anchor.nativeElement.setAttribute('rel', this.rel());
-  //       }
-  //     });
-  //   };
-  // };
 }

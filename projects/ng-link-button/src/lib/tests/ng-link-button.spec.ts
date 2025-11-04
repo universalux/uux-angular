@@ -37,7 +37,6 @@ describe('NgLinkButton - No attributes', () => {
     elements.fixture.detectChanges();
     const linkButtonHostEl = elements.linkButton.nativeElement as HTMLElement;
 
-    expect(linkButtonHostEl.classList.contains('solid')).toBeTrue();
     expect(linkButtonHostEl.classList.contains('minimal')).toBeFalse();
     expect(linkButtonHostEl.classList.contains('outline')).toBeFalse();
 

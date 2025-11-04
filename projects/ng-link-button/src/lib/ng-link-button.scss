@@ -6,12 +6,14 @@
 
 :host{
 
+  --link-button-width: fit-content;
+  --link-button-justify-content: center;
   --link-button-padding: .5rem 1rem;
   --link-button-flex-gap: .5rem;
   --link-button-transition-duration: 0.2s;
 
   --link-button-hover-bg: #30a2fe;
-  --link-button-hover-color: inherit;
+  --link-button-hover-color: var(--link-button-color, inherit);
   --link-button-hover-outline: 1px solid #824dfe;
   --link-button-hover-scale: 1.05;
 
@@ -21,7 +23,7 @@
   --link-button-active-scale: 1.02;
 
   display: block;
-  width: fit-content;
+  width: var(--link-button-width);
   height: fit-content;
 
   border-radius: 1.3rem;
@@ -30,23 +32,24 @@
   overflow: hidden;
   cursor: pointer;
 
-  background: var(--link-button-bg, #824dfe);
-  color: inherit;
+  color: var(--link-button-color, inherit);
 
   transition: all var(--link-button-transition-duration) ease-in-out;
 }
 
 /* ----- HOST TYPE STYLES ----- */
 
+:host.solid{
+  background: var(--link-button-bg, #824dfe);
+}
+
 :host.minimal{
   background: var(--link-button-bg, transparent);
-  color: #824dfe;
 }
 
 :host.outline{
   outline: var(--link-button-outline, 1px solid #824dfe);
   background: var(--link-button-bg, transparent);
-  color: #824dfe;
 }
 
 /* ----- HOST SHAPE STYLES ----- */
@@ -94,12 +97,13 @@
 
 .linkButton{
   text-decoration: none;
+  text-align: center;
   color: inherit;
   padding: var(--link-button-padding);
-  width: fit-content;
+  width: var(--link-button-width);
 
   display: flex;
-  justify-content: center;
+  justify-content: var(--link-button-justify-content);
   align-items: center;
   gap: var(--link-button-flex-gap);
 }

@@ -4,7 +4,6 @@
 
 @if (routerLink()) {
   <a
-    #anchor
     #link="routerLinkActive"
     class="linkButton"
     [class.column]="direction() === 'column'"
@@ -14,7 +13,7 @@
     [queryParams]="queryParams()"
     [fragment]="fragment()"
     [state]="state()"
-    routerLinkActive="active"
+    [routerLinkActive]="activatedRoute() ? 'active' : ''"
 
     [attr.aria-label]="ariaLabel()"
     [attr.title]="title()"
@@ -28,7 +27,6 @@
   </a>
 } @else {
   <a
-    #anchor
     class="linkButton"
     [class.column]="direction() === 'column'"
     [class.disabled]="disabled()"
@@ -47,28 +45,3 @@
     <ng-template [ngTemplateOutlet]="content"></ng-template>
   </a>
 }
-
-<!-- <a
-  #anchor
-  #link="routerLinkActive"
-  class="linkButton"
-  [class.column]="direction() === 'column'"
-
-  [class.disabled]="disabled()"
-
-  [routerLink]="routerLink()"
-  [queryParams]="queryParams()"
-  [fragment]="fragment()"
-  [state]="state()"
-  [routerLinkActive]="routerLink() ? 'active' : ''"
-
-  [attr.aria-label]="ariaLabel()"
-  [attr.title]="title()"
-  [attr.tabindex]="tabIndex()"
-  [attr.aria-current]="link.isActive ? ariaCurrent() : null"
-  [attr.download]="download()"
-  [attr.role]="role()"
-  [attr.aria-disabled]="disabled()"
->
-  <ng-content></ng-content>
-</a> -->
