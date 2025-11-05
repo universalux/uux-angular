@@ -62,6 +62,8 @@
 
 <!-- ------------------- SIMPLE BUTTON --------------------- -->
 
-<ng-simple-button>
-
+<ng-simple-button (onClick)="testClick($event)" type="outline" hover="color">
+  Simple button
 </ng-simple-button>
+
+<span>{{count()}}</span>

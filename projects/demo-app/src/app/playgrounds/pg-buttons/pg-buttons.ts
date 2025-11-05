@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { NgLinkButton } from 'ng-link-button';
 import {NgSimpleButton} from 'ng-simple-button'
 
@@ -10,5 +10,11 @@ import {NgSimpleButton} from 'ng-simple-button'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PgButtons {
+  count = signal<number>(1);
 
+  testClick(event: MouseEvent){
+    const current = this.count();
+    this.count.set(current + 1);
+    console.log(event);
+  };
 }
