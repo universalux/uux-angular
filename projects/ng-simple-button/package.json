@@ -1,12 +1,48 @@
 {
   "name": "ng-simple-button",
-  "version": "0.0.1",
+  "version": "20.0.0",
+  "description": "An Angular customizable simple button component",
+  "keywords": [
+    "angular",
+    "angular-component",
+    "ngx",
+    "ng",
+    "button",
+    "simple-button",
+    "styled-button",
+    "custom-button",
+    "ui-component",
+    "standalone",
+    "zoneless",
+    "typescript",
+    "accessibility",
+    "angular-18",
+    "angular-19",
+    "angular-20"
+  ],
+  "author": "Universal UX <aldaydev+uux@gmail.com>",
+  "contributors": [
+    "Rafa Alday <aldaydev@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/universalux/uux-angular"
+  },
+  "homepage": "https://github.com/universalux/uux-angular/tree/main/projects/ng-simple-button#readme",
+  "bugs": {
+    "url": "https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=angular_bug_report.yml",
+    "email": "aldaydev+uux@gmail.com"
+  },
+  "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^18.0.0",
-    "@angular/core": "^18.0.0"
+    "@angular/common": "^20.0.0",
+    "@angular/core": "^20.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "files": [
+    "**/*"
+  ]
 }
