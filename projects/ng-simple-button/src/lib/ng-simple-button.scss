@@ -6,120 +6,122 @@
 
 :host{
 
-  --link-button-width: fit-content;
-  --link-button-justify-content: center;
-  --link-button-padding: .5rem 1rem;
-  --link-button-flex-gap: .5rem;
-  --link-button-transition-duration: 0.2s;
-
-  --link-button-hover-bg: #30a2fe;
-  --link-button-hover-color: var(--link-button-color, inherit);
-  --link-button-hover-outline: 1px solid #824dfe;
-  --link-button-hover-scale: 1.05;
-
-  --link-button-active-bg: var(--link-button-hover-bg);
-  --link-button-active-color: inherit;
-  --link-button-active-outline: var(--link-button-hover-outline);
-  --link-button-active-scale: 1.02;
-
   display: block;
-  width: var(--link-button-width);
-  height: fit-content;
+  width: var(--simple-button-width, fit-content);
+  height: var(--simple-button-height, fit-content);
+  border-radius: var(--simple-button-radius, 1.3rem);
 
-  border-radius: 1.3rem;
-  outline: var(--link-button-outline, 1px solid transparent);
-
-  overflow: hidden;
-  cursor: pointer;
-
-  color: var(--link-button-color, inherit);
-
-  transition: all var(--link-button-transition-duration) ease-in-out;
 }
 
-/* ----- HOST TYPE STYLES ----- */
-
-:host.solid{
-  background: var(--link-button-bg, #824dfe);
-}
-
-:host.minimal{
-  background: var(--link-button-bg, transparent);
-}
-
-:host.outline{
-  outline: var(--link-button-outline, 1px solid #824dfe);
-  background: var(--link-button-bg, transparent);
-}
-
-/* ----- HOST SHAPE STYLES ----- */
-
-:host.square{
-  border-radius: 0px;
-}
-
-/* ----- HOST HOVER & ACTIVE STYLES ----- */
-
-:host.colorHover:hover{
-  background: var(--link-button-hover-bg);
-  color: var(--link-button-hover-color);
-}
-
-:host.colorHover:has(.simpleButton.active){
-  background: var(--link-button-active-bg);
-  color: var(--link-button-active-color);
-}
-
-:host.scaleHover:hover{
-  transform: scale(var(--link-button-hover-scale));
-}
-
-:host.scaleHover:has(.simpleButton.active){
-  transform: scale(var(--link-button-active-scale));
-}
-
-:host.outlineHover:hover{
-  outline: var(--link-button-hover-outline);
-}
-
-:host.outlineHover:has(.simpleButton.active){
-  outline: var(--link-button-active-outline);
-}
-
-/* ----- HOST DISBABLE STYLE ----- */
-
-:host.disabled{
-  opacity: .6;
-  pointer-events: none;
-}
-
-/* ----- LINK BUTTON STYLES ----- */
+/* ----- BUTTON GENERAL STYLES ----- */
 
 .simpleButton{
   //Reset button styles
-  background-color: inherit;
   border: none;
   font-family: inherit;
   font-size: inherit;
   cursor: pointer;
-
   text-decoration: none;
   text-align: center;
-  color: inherit;
-  padding: var(--link-button-padding);
-  width: var(--link-button-width);
+
+  padding: var(--simple-button-padding, .5rem 1rem);
+  width: var(--simple-button-width, fit-content);
+  height: var(--simple-button-height, fit-content);
+  border-radius: var(--simple-button-radius, 1.3rem);
+  text-align: center;
 
   display: flex;
-  justify-content: var(--link-button-justify-content);
-  align-items: center;
-  gap: var(--link-button-flex-gap);
+  justify-content: var(--simple-button-justify-content, center);
+  align-items: var(--simple-button-align-items, center);
+  gap: var(--simple-button-gap, .5rem);
+
+  outline: 2px solid transparent;
+
+  transition: all var(--simple-button-transition-duration, .3s) ease-in-out;
 }
 
-.simpleButton.column{
-  flex-direction: column;
+.simpleButton:focus-visible{
+  outline: 2px solid var(--simple-button-focus-ring, var(--simple-button-color, currentColor));
+  outline-offset: 2px;
 }
+
+/* ----- BUTTON TYPE STYLES ----- */
+
+.simpleButton.solid{
+  background: var(--simple-button-bg, white);
+  color: var(--simple-button-color, black);
+  border: var(--simple-button-border, none);
+}
+
+.simpleButton.minimal{
+  background: var(--simple-button-bg, transparent);
+  color: var(--simple-button-color, inherit);
+  border: var(--simple-button-border, none);
+}
+
+.simpleButton.outline{
+  background: var(--simple-button-bg, transparent);
+  color: var(--simple-button-color, inherit);
+  border: var(--simple-button-border, 2px solid currentColor);
+}
+
+/* ----- BUTTON SHAPE STYLES ----- */
+
+.simpleButton.square{
+  border-radius: var(--simple-button-radius, 0px);
+}
+
+/* ----- BUTTON HOVER & ACTIVE STYLES ----- */
+
+.simpleButton.solid:hover{
+  color: var(--simple-button-hover-color, var(--simple-button-color, black));
+  transform: scale(var(--simple-button-hover-scale, none));
+  box-shadow: var(--simple-button-hover-shadow, none);
+}
+
+.simpleButton.outline:hover,
+.simpleButton.minimal:hover{
+  color: var(--simple-button-hover-color, var(--simple-button-color, inherit));
+  transform: scale(var(--simple-button-hover-scale, none));
+  background: var(--simple-button-hover-bg, var(--simple-button-bg, transparent));
+  box-shadow: var(--simple-button-hover-shadow, none);
+}
+
+// TONE HOVER
+
+.simpleButton.toneHover:hover{
+  background: var(--simple-button-hover-bg, #949494);
+}
+
+// SCALE HOVER
+
+.simpleButton.scaleHover:hover{
+  transform: scale(var(--simple-button-hover-scale, 1.05));
+}
+
+// stroke HOVER
+
+.simpleButton.strokeHover:hover{
+  outline: var(--simple-button-hover-stroke, 2px solid currentColor);
+}
+
+// shadow HOVER
+
+.simpleButton.shadowHover:hover{
+  box-shadow: var(--simple-button-hover-shadow, 2px 2px 5px #525252);
+}
+
+/* ----- DISBABLE STYLE ----- */
 
 .simpleButton.disabled{
   pointer-events: none;
   opacity: .6;
 }
+
+/* ----- BUTTON DIRECTION STYLES ----- */
+
+.simpleButton.column{
+  flex-direction: column;
+}
+
+

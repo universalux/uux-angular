@@ -30,7 +30,7 @@ export class NgLinkButton {
   // ----- ACCESSIBILITY INPUTS
   ariaLabel = input<string | null>(null);
   title = input<string | null>(null);
-  tabIndex = input<number | null>(null);
+  tabIndex = input<number | null>(0);
   ariaCurrent = input<'page' | 'step' | 'true' | null>(null);
   download = input<string | boolean | null>(null);
   role = input<'link' | 'button' | null>(null);
