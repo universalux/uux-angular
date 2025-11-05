@@ -1,3 +1,25 @@
-<button (click)="handleClick($event)" class="simpleButton">
+<button
+  (click)="handleClick($event)"
+  class="simpleButton"
+
+  [class.solid]="type() === 'solid'"
+  [class.minimal]="type() === 'minimal'"
+  [class.outline]="type() === 'outline'"
+
+  [class.square]="square()"
+
+  [class.toneHover]="hover() === 'tone'"
+  [class.scaleHover]="hover() === 'scale'"
+  [class.strokeHover]="hover() === 'stroke'"
+  [class.shadowHover]="hover() === 'shadow'"
+
+  [class.column]="direction() === 'column'"
+
+  [attr.aria-label]="ariaLabel()"
+  [attr.title]="title()"
+  [tabindex]="tabIndex()"
+  [attr.aria-disabled]="disabled()"
+  [class.disabled]="disabled()"
+>
   <ng-content></ng-content>
 </button>

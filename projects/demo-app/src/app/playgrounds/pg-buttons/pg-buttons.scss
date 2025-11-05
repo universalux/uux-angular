@@ -8,6 +8,7 @@
     min-height: 100dvh;
     height: 100%;
     background: linear-gradient(127deg, #30a2fe 20%, #824dfe 100%);
+    color: red;
     // background-color: white;
 }
 
@@ -89,4 +90,22 @@ ng-link-button[type="solid"]{
   // --link-button-active-outline: var(--link-button-hover-outline);
   // --link-button-active-scale: 1.02;
 
+}
+
+ng-simple-button{
+  // --simple-button-hover-stroke: 1px solid red;
+  // --simple-button-width: 100%;
+  // --simple-button-justify-content: center;
+  // --simple-button-height: 100%;
+  // --simple-button-radius: 0rem;
+  // --simple-button-padding: .7rem 2rem;
+  // --simple-button-bg: red;
+  // --simple-button-color: white;
+  // --simple-button-border: 1px solid white;
+  // --simple-button-focus-ring: green;
+  // --simple-button-border: 1px solid red;
+
+  // --simple-button-hover-scale: 1.1;
+  // --simple-button-hover-bg: blue;
+  // --simple-button-hover-shadow: 5px 5px 10px black;
 }
