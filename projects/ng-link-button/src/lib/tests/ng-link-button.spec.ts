@@ -21,7 +21,7 @@ describe('NgLinkButton - No attributes', () => {
   it('should have initial default attributes', () => {
     expect(elements.linkButtonInstance.ariaLabel()).toBeNull();
     expect(elements.linkButtonInstance.title()).toBeNull();
-    expect(elements.linkButtonInstance.tabIndex()).toBeNull();
+    expect(elements.linkButtonInstance.tabIndex()).toBe(0);
     expect(elements.linkButtonInstance.ariaCurrent()).toBeNull();
     expect(elements.linkButtonInstance.download()).toBeNull();
     expect(elements.linkButtonInstance.role()).toBeNull();
