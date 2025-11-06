@@ -6,113 +6,152 @@
 
 :host{
 
-  --link-button-width: fit-content;
-  --link-button-justify-content: center;
-  --link-button-padding: .5rem 1rem;
-  --link-button-flex-gap: .5rem;
-  --link-button-transition-duration: 0.2s;
-
-  --link-button-hover-bg: #30a2fe;
-  --link-button-hover-color: var(--link-button-color, inherit);
-  --link-button-hover-outline: 1px solid #824dfe;
-  --link-button-hover-scale: 1.05;
-
-  --link-button-active-bg: var(--link-button-hover-bg);
-  --link-button-active-color: inherit;
-  --link-button-active-outline: var(--link-button-hover-outline);
-  --link-button-active-scale: 1.02;
-
   display: block;
-  width: var(--link-button-width);
-  height: fit-content;
+  width: var(--link-button-width, fit-content);
+  height: var(--link-button-height, fit-content);
+  border-radius: var(--link-button-radius, 1.3rem);
 
-  border-radius: 1.3rem;
-  outline: var(--link-button-outline, 1px solid transparent);
-
-  overflow: hidden;
-  cursor: pointer;
-
-  color: var(--link-button-color, inherit);
-
-  transition: all var(--link-button-transition-duration) ease-in-out;
 }
 
-/* ----- HOST TYPE STYLES ----- */
-
-:host.solid{
-  background: var(--link-button-bg, #824dfe);
-}
-
-:host.minimal{
-  background: var(--link-button-bg, transparent);
-}
-
-:host.outline{
-  outline: var(--link-button-outline, 1px solid #824dfe);
-  background: var(--link-button-bg, transparent);
-}
-
-/* ----- HOST SHAPE STYLES ----- */
-
-:host.square{
-  border-radius: 0px;
-}
-
-/* ----- HOST HOVER & ACTIVE STYLES ----- */
-
-:host.colorHover:hover{
-  background: var(--link-button-hover-bg);
-  color: var(--link-button-hover-color);
-}
-
-:host.colorHover:has(.linkButton.active){
-  background: var(--link-button-active-bg);
-  color: var(--link-button-active-color);
-}
-
-:host.scaleHover:hover{
-  transform: scale(var(--link-button-hover-scale));
-}
-
-:host.scaleHover:has(.linkButton.active){
-  transform: scale(var(--link-button-active-scale));
-}
-
-:host.outlineHover:hover{
-  outline: var(--link-button-hover-outline);
-}
-
-:host.outlineHover:has(.linkButton.active){
-  outline: var(--link-button-active-outline);
-}
-
-/* ----- HOST DISBABLE STYLE ----- */
-
-:host.disabled{
-  opacity: .6;
-  pointer-events: none;
-}
-
-/* ----- LINK BUTTON STYLES ----- */
+/* ----- BUTTON GENERAL STYLES ----- */
 
 .linkButton{
+  /* Reset button styles */
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
   text-decoration: none;
   text-align: center;
-  color: inherit;
-  padding: var(--link-button-padding);
-  width: var(--link-button-width);
+
+  padding: var(--link-button-padding, .5rem 1rem);
+  width: var(--link-button-width, fit-content);
+  height: var(--link-button-height, fit-content);
+  border-radius: var(--link-button-radius, 1.3rem);
+  text-align: center;
 
   display: flex;
-  justify-content: var(--link-button-justify-content);
-  align-items: center;
-  gap: var(--link-button-flex-gap);
+  justify-content: var(--link-button-justify-content, center);
+  align-items: var(--link-button-align-items, center);
+  gap: var(--link-button-gap, .5rem);
+
+  outline: 2px solid transparent;
+
+  transition: all var(--link-button-transition-duration, .3s) ease-in-out;
 }
 
-.linkButton.column{
-  flex-direction: column;
+.linkButton:focus-visible{
+  outline: 2px solid var(--link-button-focus-ring, var(--link-button-color, currentColor));
+  outline-offset: 2px;
 }
+
+/* ----- BUTTON TYPE STYLES ----- */
+
+.linkButton.solid{
+  background: var(--link-button-bg, white);
+  color: var(--link-button-color, black);
+  border: var(--link-button-border, none);
+}
+
+.linkButton.minimal{
+  background: var(--link-button-bg, transparent);
+  color: var(--link-button-color, inherit);
+  border: var(--link-button-border, none);
+}
+
+.linkButton.outline{
+  background: var(--link-button-bg, transparent);
+  color: var(--link-button-color, inherit);
+  border: var(--link-button-border, 2px solid currentColor);
+}
+
+/* ----- BUTTON SHAPE STYLES ----- */
+
+.linkButton.square{
+  border-radius: var(--link-button-radius, 0px);
+}
+
+/* ----- BUTTON HOVER & ACTIVE STYLES ----- */
+
+.linkButton.solid:hover{
+  color: var(--link-button-hover-color, var(--link-button-color, black));
+  transform: scale(var(--link-button-hover-scale, 1));
+  box-shadow: var(--link-button-hover-shadow, none);
+}
+
+.linkButton.solid.active{
+  color: var(--link-button-active-color, var(--link-button-color, black));
+  transform: scale(var(--link-button-active-scale, 1));
+  box-shadow: var(--link-button-active-shadow, none);
+}
+
+.linkButton.outline:hover,
+.linkButton.minimal:hover{
+  color: var(--link-button-hover-color, var(--link-button-color, inherit));
+  transform: scale(var(--link-button-hover-scale, none));
+  background: var(--link-button-hover-bg, var(--link-button-bg, transparent));
+  box-shadow: var(--link-button-hover-shadow, none);
+}
+
+.linkButton.outline.active,
+.linkButton.minimal.active{
+  color: var(--link-button-active-color, var(--link-button-color, inherit));
+  transform: scale(var(--link-button-active-scale, none));
+  background: var(--link-button-active-bg, var(--link-button-bg, transparent));
+  box-shadow: var(--link-button-active-shadow, none);
+}
+
+/* TONE HOVER & ACTIVE */
+
+.linkButton.toneHover:hover{
+  background: var(--link-button-hover-bg, #949494);
+}
+
+.linkButton.toneHover.active{
+  background: var(--link-button-active-bg, #949494);
+}
+
+/* SCALE HOVER & ACTIVE */
+
+.linkButton.scaleHover:hover{
+  transform: scale(var(--link-button-hover-scale, 1.05));
+}
+
+.linkButton.scaleHover.active{
+  transform: scale(var(--link-button-active-scale, 1.05));
+}
+
+/* STROKE HOVER & ACTIVE */
+
+.linkButton.strokeHover:hover{
+  outline: var(--link-button-hover-stroke, 2px solid currentColor);
+}
+
+.linkButton.strokeHover.active{
+  outline: var(--link-button-active-stroke, 2px solid currentColor);
+}
+
+/* SHADOW HOVER & ACTIVE */
+
+.linkButton.shadowHover:hover{
+  box-shadow: var(--link-button-hover-shadow, 2px 2px 5px #525252);
+}
+
+.linkButton.shadowHover.active{
+  box-shadow: var(--link-button-active-shadow, 2px 2px 5px #525252);
+}
+
+/* ----- DISBABLED STYLE ----- */
 
 .linkButton.disabled{
   pointer-events: none;
   opacity: .6;
 }
+
+/* ----- BUTTON DIRECTION STYLES ----- */
+
+.linkButton.column{
+  flex-direction: column;
+}
+
+

@@ -6,14 +6,23 @@
   <a
     #link="routerLinkActive"
     class="linkButton"
-    [class.column]="direction() === 'column'"
-    [class.disabled]="disabled()"
 
     [routerLink]="routerLink()"
     [queryParams]="queryParams()"
     [fragment]="fragment()"
     [state]="state()"
     [routerLinkActive]="activatedRoute() ? 'active' : ''"
+
+    [class.solid]="type() === 'solid'"
+    [class.minimal]="type() === 'minimal'"
+    [class.outline]="type() === 'outline'"
+    [class.square]="square()"
+    [class.toneHover]="hover() === 'tone'"
+    [class.scaleHover]="hover() === 'scale'"
+    [class.strokeHover]="hover() === 'stroke'"
+    [class.shadowHover]="hover() === 'shadow'"
+
+    [class.column]="direction() === 'column'"
 
     [attr.aria-label]="ariaLabel()"
     [attr.title]="title()"
@@ -22,18 +31,28 @@
     [attr.download]="download()"
     [attr.role]="role()"
     [attr.aria-disabled]="disabled()"
+    [class.disabled]="disabled()"
   >
     <ng-template [ngTemplateOutlet]="content"></ng-template>
   </a>
 } @else {
   <a
     class="linkButton"
-    [class.column]="direction() === 'column'"
-    [class.disabled]="disabled()"
 
     [attr.href]="href()"
     [attr.target]="target()"
     [attr.rel]="rel()"
+
+    [class.solid]="type() === 'solid'"
+    [class.minimal]="type() === 'minimal'"
+    [class.outline]="type() === 'outline'"
+    [class.square]="square()"
+    [class.toneHover]="hover() === 'tone'"
+    [class.scaleHover]="hover() === 'scale'"
+    [class.strokeHover]="hover() === 'stroke'"
+    [class.shadowHover]="hover() === 'shadow'"
+
+    [class.column]="direction() === 'column'"
 
     [attr.aria-label]="ariaLabel()"
     [attr.title]="title()"
@@ -41,6 +60,7 @@
     [attr.download]="download()"
     [attr.role]="role()"
     [attr.aria-disabled]="disabled()"
+    [class.disabled]="disabled()"
   >
     <ng-template [ngTemplateOutlet]="content"></ng-template>
   </a>

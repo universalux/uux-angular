@@ -25,7 +25,7 @@ export class TestHost {}
       [disabled]="true"
 
       [type]="type()"
-      shape="square"
+      [square]="true"
       [hover]="hover()"
       direction="column"
     >
@@ -38,7 +38,7 @@ export class TestHostWithAttr {
   role = signal<'link' | 'button' | null>('link');
 
   type = signal<'solid' | 'minimal' | 'outline'>('minimal');
-  hover = signal<'color' | 'scale' | 'outline'>('scale');
+  hover = signal<'tone' | 'scale' | 'stroke' | 'shadow' | 'none'>('scale');
 }
 
 

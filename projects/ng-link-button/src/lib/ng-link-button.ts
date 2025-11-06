@@ -38,48 +38,8 @@ export class NgLinkButton {
 
   // ----- STYLE INPUTS
   type = input<'solid' | 'minimal' | 'outline'>('solid');
-  shape = input<'rounded' | 'square'>('rounded');
-  hover = input<'color' | 'scale' | 'outline'>('color');
+  square = input<boolean>(false);
+  hover = input<'tone' | 'scale' | 'stroke' | 'shadow' | 'none'>('tone');
   direction = input<'row' | 'column'>('row');
-
-  // ----- HOST BINDINGS
-
-  // TYPE BINDINGS
-
-  @HostBinding('class.solid') get isSolid() {
-    return this.type() === 'solid';
-  };
-
-  @HostBinding('class.minimal') get isMinimal() {
-    return this.type() === 'minimal';
-  };
-
-  @HostBinding('class.outline') get isOutline() {
-    return this.type() === 'outline';
-  };
-
-  // SHAPE BINDINGS
-
-  @HostBinding('class.square') get isSquare() {
-    return this.shape() === 'square';
-  };
-
-  // HOVER BINDINGS
-
-  @HostBinding('class.colorHover') get isColorHover() {
-    return this.hover() === 'color';
-  };
-
-  @HostBinding('class.scaleHover') get isScaleHover() {
-    return this.hover() === 'scale';
-  };
-
-  @HostBinding('class.outlineHover') get isOutlineHover() {
-    return this.hover() === 'outline';
-  };
-
-  @HostBinding('class.disabled') get isDisabled() {
-    return this.disabled();
-  };
 
 }
