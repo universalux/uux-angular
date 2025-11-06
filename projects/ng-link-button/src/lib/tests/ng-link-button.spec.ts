@@ -2,7 +2,7 @@ import {
   beforeEachLinkButtonTest,
   LinkButtonElements,
 } from './helpers/beforeEach';
-import { TestHostRouterLink } from './helpers/testHosts';
+import { TestHostRouterLink, TestHostWithAttr } from './helpers/testHosts';
 
 describe('NgLinkButton - No attributes', () => {
   let elements: LinkButtonElements;
@@ -18,6 +18,10 @@ describe('NgLinkButton - No attributes', () => {
     expect(elements.linkButtonAnchor).toBeTruthy();
   });
 
+  it('should render inner content', () => {
+    expect(elements.linkButtonAnchor.nativeElement.textContent).toContain('Link Button Content');
+  });
+
   it('should have initial default attributes', () => {
     expect(elements.linkButtonInstance.ariaLabel()).toBeNull();
     expect(elements.linkButtonInstance.title()).toBeNull();
@@ -28,28 +32,30 @@ describe('NgLinkButton - No attributes', () => {
     expect(elements.linkButtonInstance.disabled()).toBeFalse();
 
     expect(elements.linkButtonInstance.type()).toBe('solid');
-    expect(elements.linkButtonInstance.shape()).toBe('rounded');
-    expect(elements.linkButtonInstance.hover()).toBe('color');
+    expect(elements.linkButtonInstance.square()).toBe(false);
+    expect(elements.linkButtonInstance.hover()).toBe('tone');
     expect(elements.linkButtonInstance.direction()).toBe('row');
   });
 
   it('should apply classes according to default attributes', () => {
-    elements.fixture.detectChanges();
-    const linkButtonHostEl = elements.linkButton.nativeElement as HTMLElement;
 
-    expect(linkButtonHostEl.classList.contains('minimal')).toBeFalse();
-    expect(linkButtonHostEl.classList.contains('outline')).toBeFalse();
+    const linkButtonAnchor = elements.linkButtonAnchor.nativeElement as HTMLButtonElement;
 
-    expect(linkButtonHostEl.classList.contains('square')).toBeFalse();
+    //Accessibility attributes
+    expect(linkButtonAnchor.getAttribute('aria-label')).toBeNull();
+    expect(linkButtonAnchor.getAttribute('title')).toBeNull();
+    expect(linkButtonAnchor.getAttribute('tabindex')).toBe('0');
+    expect(linkButtonAnchor.getAttribute('aria-disabled')).toBe('false');
+    expect(linkButtonAnchor.classList.contains('disabled')).toBeFalse();
 
-    expect(linkButtonHostEl.classList.contains('colorHover')).toBeTrue();
-    expect(linkButtonHostEl.classList.contains('scaleHover')).toBeFalse();
-    expect(linkButtonHostEl.classList.contains('outlineHover')).toBeFalse();
+    // Style and behavior attributes
+    expect(linkButtonAnchor.classList.contains('solid')).toBeTrue();
+    expect(linkButtonAnchor.classList.contains('square')).toBeFalse();
+    expect(linkButtonAnchor.classList.contains('toneHover')).toBeTrue();
+    expect(linkButtonAnchor.classList.contains('column')).toBeFalse();
 
-    expect(elements.linkButtonAnchor.nativeElement.classList.contains('column')).toBeFalse();
-
-    expect(elements.linkButtonAnchor.nativeElement.getAttribute('aria-disabled')).toBe('false');
   });
+
 });
 
 describe('NgLinkButton - With Attributes', () => {
@@ -69,31 +75,52 @@ describe('NgLinkButton - With Attributes', () => {
     expect(elements.linkButtonInstance.disabled()).toBeTrue();
 
     expect(elements.linkButtonInstance.type()).toBe('minimal');
-    expect(elements.linkButtonInstance.shape()).toBe('square');
+    expect(elements.linkButtonInstance.square()).toBe(true);
     expect(elements.linkButtonInstance.hover()).toBe('scale');
     expect(elements.linkButtonInstance.direction()).toBe('column');
   });
 
-  it('should apply classes according to default attributes', () => {
+  it('should apply attributes and classes according to accessibility inputs', () => {
+    const linkButtonAnchor = elements.linkButtonAnchor.nativeElement as HTMLButtonElement;
+
+    //Accessibility attributes
+    expect(linkButtonAnchor.getAttribute('aria-label')).toBe('Aria label example');
+    expect(linkButtonAnchor.getAttribute('title')).toBe('Title example');
+    expect(linkButtonAnchor.getAttribute('tabindex')).toBe('-1');
+    expect(linkButtonAnchor.getAttribute('aria-disabled')).toBe('true');
+    expect(linkButtonAnchor.classList.contains('disabled')).toBeTrue();
+
+  });
+
+  it('should apply attributes and classes according to style and behavior inputs', () => {
+    const linkButtonAnchor = elements.linkButtonAnchor.nativeElement as HTMLButtonElement;
+
+    // Initial style and behavior custom attributes
+    expect(linkButtonAnchor.classList.contains('minimal')).toBeTrue();
+    expect(linkButtonAnchor.classList.contains('square')).toBeTrue();
+    expect(linkButtonAnchor.classList.contains('scaleHover')).toBeTrue();
+    expect(linkButtonAnchor.classList.contains('column')).toBeTrue();
+
+    // Testing rest of "type" options
+    const hostComponent = elements.hostComponent as TestHostWithAttr;
+    hostComponent.type.set('outline');
     elements.fixture.detectChanges();
-    const linkButtonHostEl = elements.linkButton.nativeElement as HTMLElement;
+    expect(linkButtonAnchor.classList.contains('minimal')).toBeFalse();
+    expect(linkButtonAnchor.classList.contains('outline')).toBeTrue();
 
-    expect(linkButtonHostEl.classList.contains('solid')).toBeFalse();
-    expect(linkButtonHostEl.classList.contains('outline')).toBeFalse();
-
-    expect(linkButtonHostEl.classList.contains('square')).toBeTrue();
-
-    expect(linkButtonHostEl.classList.contains('scaleHover')).toBeTrue();
-    expect(linkButtonHostEl.classList.contains('colorHover')).toBeFalse();
-    expect(linkButtonHostEl.classList.contains('outlineHover')).toBeFalse();
-
-    expect(elements.linkButtonAnchor.nativeElement.classList.contains('column')).toBeTrue();
-
-    expect(elements.linkButtonAnchor.nativeElement.getAttribute('aria-label')).toBe('Aria label example');
-    expect(elements.linkButtonAnchor.nativeElement.getAttribute('title')).toBe('Title example');
-    expect(elements.linkButtonAnchor.nativeElement.getAttribute('tabIndex')).toBe('-1');
-    expect(elements.linkButtonAnchor.nativeElement.getAttribute('role')).toBe('link');
-    expect(elements.linkButtonAnchor.nativeElement.getAttribute('aria-disabled')).toBe('true');
+    // Testing rest of "hover" options
+    hostComponent.hover.set('stroke');
+    elements.fixture.detectChanges();
+    expect(linkButtonAnchor.classList.contains('strokeHover')).toBeTrue();
+    hostComponent.hover.set('shadow');
+    elements.fixture.detectChanges();
+    expect(linkButtonAnchor.classList.contains('shadowHover')).toBeTrue();
+    hostComponent.hover.set('none');
+    elements.fixture.detectChanges();
+    expect(linkButtonAnchor.classList.contains('shadowHover')).toBeFalse();
+    expect(linkButtonAnchor.classList.contains('toneHover')).toBeFalse();
+    expect(linkButtonAnchor.classList.contains('scaleHover')).toBeFalse();
+    expect(linkButtonAnchor.classList.contains('strokeHover')).toBeFalse();
 
   });
 
