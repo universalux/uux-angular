@@ -16,7 +16,7 @@
 /* ----- BUTTON GENERAL STYLES ----- */
 
 .simpleButton{
-  //Reset button styles
+  /* Reset button styles */
   border: none;
   font-family: inherit;
   font-size: inherit;
@@ -75,7 +75,7 @@
 
 .simpleButton.solid:hover{
   color: var(--simple-button-hover-color, var(--simple-button-color, black));
-  transform: scale(var(--simple-button-hover-scale, none));
+  transform: scale(var(--simple-button-hover-scale, 1));
   box-shadow: var(--simple-button-hover-shadow, none);
 }
 
@@ -87,31 +87,31 @@
   box-shadow: var(--simple-button-hover-shadow, none);
 }
 
-// TONE HOVER
+/* TONE HOVER */
 
 .simpleButton.toneHover:hover{
   background: var(--simple-button-hover-bg, #949494);
 }
 
-// SCALE HOVER
+/* SCALE HOVER */
 
 .simpleButton.scaleHover:hover{
   transform: scale(var(--simple-button-hover-scale, 1.05));
 }
 
-// stroke HOVER
+/* STROKE HOVER */
 
 .simpleButton.strokeHover:hover{
   outline: var(--simple-button-hover-stroke, 2px solid currentColor);
 }
 
-// shadow HOVER
+/* SHADOW HOVER */
 
 .simpleButton.shadowHover:hover{
   box-shadow: var(--simple-button-hover-shadow, 2px 2px 5px #525252);
 }
 
-/* ----- DISBABLE STYLE ----- */
+/* ----- DISBABLED STYLE ----- */
 
 .simpleButton.disabled{
   pointer-events: none;

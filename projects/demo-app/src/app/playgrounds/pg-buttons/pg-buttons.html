@@ -1,6 +1,6 @@
-<!-- <div class="titleContainer">
+<div class="titleContainer">
   <hgroup>
-    <h1>ng-link-button</h1>
+    <h1>ng-simple-button</h1>
     <div>
       <h4>by</h4>
       <img src="images/uux-brand-large-croped-white_300x43px.png" class="uuxLogo">
@@ -8,34 +8,30 @@
 
   </hgroup>
   <img src="angular_white.png" class="angularLogo">
-</div> -->
+</div>
 <div class="container">
 
-  <ng-link-button type="outline" shape="square" hover="color" direction="row" ariaCurrent="step">
-    <span>Square</span>
+  <ng-link-button type="solid" shape="square" hover="color" direction="row" ariaCurrent="step">
+    <span>Solid Square</span>
   </ng-link-button>
 
-  <ng-link-button class="myClass" type="solid" shape="square" hover="color" direction="row" ariaCurrent="step">
+  <!-- <ng-link-button class="myClass" type="solid" shape="square" hover="color" direction="row" ariaCurrent="step">
     <span>Solid</span>
-  </ng-link-button>
-
-  <!-- <ng-link-button type="outline" shape="square" hover="scale" direction="row" ariaCurrent="step">
-    <span>Outline Square</span>
   </ng-link-button> -->
+
+  <ng-link-button type="outline" shape="square" hover="scale" direction="row" ariaCurrent="step">
+    <span>Outline Square</span>
+  </ng-link-button>
 
   <ng-link-button type="minimal" shape="square" hover="outline" direction="row" ariaCurrent="step">
     <span>Minimal</span>
   </ng-link-button>
 
   <ng-link-button type="outline" shape="rounded" hover="color" direction="row" ariaCurrent="step">
-    <span>Outline</span>
+    <span>Outline Rounded</span>
   </ng-link-button>
 
   <ng-link-button type="solid" shape="rounded" hover="color" direction="row" ariaCurrent="step">
-    <span>Rounded</span>
-  </ng-link-button>
-
-  <!-- <ng-link-button type="solid" shape="rounded" hover="color" direction="row" ariaCurrent="step">
     <span>Solid Rounded</span>
   </ng-link-button>
 
@@ -56,11 +52,12 @@
       <path
         d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.113z" />
     </svg>
-  </ng-link-button> -->
+  </ng-link-button>
 </div>
-<!-- <h4>100% Customizable</h4> -->
+<h4>100% Customizable</h4>
 
 <!-- ------------------- SIMPLE BUTTON --------------------- -->
+
 <div style="display: flex; gap: 2rem; width: 80%;">
 <ng-simple-button (onClick)="testClick($event)" type="solid" [square]="true" hover="stroke" direction="column" >
   <svg role="img" viewBox="0 0 24 24" height="23px" xmlns="http://www.w3.org/2000/svg" class="rightHeader__linkIcon">

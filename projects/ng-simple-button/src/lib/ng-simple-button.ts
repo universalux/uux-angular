@@ -13,14 +13,14 @@ export class NgSimpleButton {
   // ----- ACTION INPUT
   onClick = output<MouseEvent>();
 
-  handleClick(event: MouseEvent) {
+  handleClick(event: MouseEvent) : void {
     this.onClick.emit(event);
   };
 
   // ----- ACCESSIBILITY INPUTS
   ariaLabel = input<string | null>(null);
   title = input<string | null>(null);
-  tabIndex = input<number | null>(0);
+  tabIndex = input<number>(0);
   disabled = input<boolean>(false);
 
   // ----- STYLE AND BEHAVIOR INPUTS
