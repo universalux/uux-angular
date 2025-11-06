@@ -97,7 +97,7 @@
 .linkButton.minimal.active{
   color: var(--link-button-active-color, var(--link-button-color, inherit));
   transform: scale(var(--link-button-active-scale, none));
-  background: var(--link-button-active-bg, var(--link-button-bg, transparent));
+  background: var(--link-button-active-bg, var(--link-button-hover-bg, transparent));
   box-shadow: var(--link-button-active-shadow, none);
 }
 
@@ -108,7 +108,7 @@
 }
 
 .linkButton.toneHover.active{
-  background: var(--link-button-active-bg, #949494);
+  background: var(--link-button-active-bg, var(--link-button-hover-bg, #949494));
 }
 
 /* SCALE HOVER & ACTIVE */
