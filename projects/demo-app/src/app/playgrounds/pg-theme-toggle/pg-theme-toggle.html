@@ -1,4 +1,4 @@
-<!-- <div class="titleContainer">
+<div class="titleContainer">
     <hgroup>
         <h1>ng-theme-toggle</h1>
         <div>
@@ -8,22 +8,28 @@
 
     </hgroup>
     <img src="angular_white.png" class="angularLogo">
-</div> -->
+</div>
 <div class="container">
   <ng-theme-toggle
     [isDarkSignal]="isDark1"
-    animation="rotateX"
+    type="solid"
+    hover="scale"
   />
 
-  <!-- <ng-theme-toggle
+  <ng-theme-toggle
     [isDarkSignal]="isDark2"
     hover="shadow"
-    animation="soft"
-  /> -->
+    type="minimal"
+    animation="rotateX"
+    [faster]="false"
+  />
 
   <ng-theme-toggle
     [isDarkSignal]="isDark3"
     animation="rotateY"
+    type="outline"
+    hover="shadow"
+    [faster]="true"
   />
 
 </div>

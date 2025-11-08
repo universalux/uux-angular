@@ -11,9 +11,9 @@ import { PgButtons } from "./playgrounds/pg-buttons/pg-buttons";
 @Component({
   selector: 'app-root',
   imports: [
-    // PgMenuToggle,
-    // PgThemeToggle,
-    // PgHeroCarousel,
+    PgMenuToggle,
+    PgThemeToggle,
+    PgHeroCarousel,
     PgImageCard,
     PgContentCarousel,
     PgButtons

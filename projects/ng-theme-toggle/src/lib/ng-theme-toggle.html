@@ -2,16 +2,26 @@
     (click)="handleIsDark()"
     class="themeToggle__button"
     [class.isDark]="isDark"
-    [class.rotateX]="animation() === 'rotateX'"
-    [class.rotateY]="animation() === 'rotateY'"
-    [class.faster]="faster()"
+
+    [class.solid]="type() === 'solid'"
+    [class.minimal]="type() === 'minimal'"
+    [class.outline]="type() === 'outline'"
+
     [class.hover-shadow]="hover() === 'shadow'"
     [class.hover-scale]="hover() === 'scale'"
+    [class.hover-tone]="hover() === 'tone'"
+
     [tabIndex]="tabIndex()"
     [attr.aria-label]="isDark ? ariaLabels.ariaLabelDark : ariaLabels.ariaLabelLight"
     [attr.aria-pressed]="isDark"
 >
-
+  <div
+    class="themeToggle__svgContainer"
+    [class.rotateX]="animation() === 'rotateX'"
+    [class.rotateY]="animation() === 'rotateY'"
+    [class.faster]="faster()"
+    [class.isDark]="isDark"
+  >
     <svg
         version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 512 512"
@@ -33,7 +43,6 @@
 
         <circle
             cx="256" cy="256" r="256" [attr.r]="isDark ? '128' : '256'"
-            fill="var(--theme-toggle-color-current)"
             [attr.mask]="'url(#outerMask-' + uniqueId() + ')'"
             class="themeToggle__mainCircle"
         />
@@ -62,48 +71,40 @@
         >
 
             <line x1="0" y1="256" x2="512" y2="256"
-                stroke="var(--theme-toggle-color-current)"
                 class="themeToggle__line"
             />
 
             <line x1="0" y1="256" x2="512" y2="256"
-                stroke="var(--theme-toggle-color-current)"
                 class="themeToggle__line"
                 transform="rotate(45)"
             />
 
             <line x1="0" y1="256" x2="512" y2="256"
-                stroke="var(--theme-toggle-color-current)"
                 class="themeToggle__line"
                 transform="rotate(90)"
             />
 
             <line x1="0" y1="256" x2="512" y2="256"
-                stroke="var(--theme-toggle-color-current)"
                 class="themeToggle__line"
                 transform="rotate(135)"
             />
 
             <line x1="0" y1="256" x2="512" y2="256"
-                stroke="var(--theme-toggle-color-current)"
                 class="themeToggle__line"
                 transform="rotate(180)"
             />
 
             <line x1="0" y1="256" x2="512" y2="256"
-                stroke="var(--theme-toggle-color-current)"
                 class="themeToggle__line"
                 transform="rotate(225)"
             />
 
             <line x1="0" y1="256" x2="512" y2="256"
-                stroke="var(--theme-toggle-color-current)"
                 class="themeToggle__line"
                 transform="rotate(270)"
             />
 
             <line x1="0" y1="256" x2="512" y2="256"
-                stroke="var(--theme-toggle-color-current)"
                 class="themeToggle__line"
                 transform="rotate(315)"
             />
@@ -112,6 +113,7 @@
 
 
     </svg>
+  </div>
 </button>
 
 
