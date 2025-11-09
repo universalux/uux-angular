@@ -16,6 +16,7 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
   transition = input<boolean>(true);
   arrowStyle = input<'minimal' |'solid'>('minimal');
   hideArrowsOnEdges = input<boolean>(true);
+  hideArrowsWhenNoOverflow = input<boolean>(true);
   advanceMode= input<'single' |'page'>('page');
 
   lang = input<ContentCarouselLangs>('en');
@@ -38,6 +39,7 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
   totalItems = signal<number>(3);
   maxWidth = signal<number | null>(null);
   minWidth = signal<number | null>(null);
+  hasOverflow = signal<boolean>(true);
 
   onStart = signal<boolean>(true);
   onEnd = signal<boolean>(false);
@@ -54,6 +56,7 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
     this.calculateArrowsWidth();
 
     this.calculateTrackContainerWidth();
+    this.calculateOverflow();
   }
 
   onKeyDown(event: KeyboardEvent) {
@@ -86,6 +89,7 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
     this.calculateTrackContainerWidth(initialWidth);
 
     this.updateVisibleItems();
+    this.calculateOverflow();
   };
 
   constructor() {
@@ -135,7 +139,18 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
     this.totalItems.set(this.items.length);
     this.maxWidth.set(this.items.length * this.itemWidth()!);
     this.minWidth.set(this.itemWidth()!);
-  }
+  };
+
+  calculateOverflow(){
+
+    if(this.hideArrowsWhenNoOverflow() && this.itemsViewed() === this.totalItems()) {
+      this.hasOverflow.set(false);
+    }else{
+      this.hasOverflow.set(true);
+    }
+    // console.log('Total items: ', this.totalItems(), 'items viewed: ', this.itemsViewed())
+  };
+
 
   next() {
     if(this.currentIndex() <= this.totalItems() - this.itemsViewed()! - 1){
