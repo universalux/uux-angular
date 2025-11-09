@@ -14,9 +14,11 @@
   <div #arrowButtonPrev
     class="contentCarousel__prevContainer"
     [class.onStart]="onStart() && hideArrowsOnEdges()"
+
   >
     <button
       class="contentCarousel__prevButton"
+      [class.noOverflow]="!hasOverflow()"
       (click)="prev()"
       [class.minimal]="arrowStyle() === 'minimal'"
       [class.solid]="arrowStyle() === 'solid'"
@@ -58,9 +60,11 @@
   <div #arrowButtonNext
     class="contentCarousel__nextContainer"
     [class.onEnd]="onEnd() && hideArrowsOnEdges()"
+
   >
     <button
       class="contentCarousel__nextButton"
+      [class.noOverflow]="!hasOverflow()"
       (click)="next()"
 
       [class.minimal]="arrowStyle() === 'minimal'"

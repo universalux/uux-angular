@@ -72,8 +72,16 @@ button{
   justify-content: start;
 }
 
+.contentCarousel__prevButton.noOverflow{
+  display: none;
+}
+
 .contentCarousel__nextContainer{
   justify-content: end;
+}
+
+.contentCarousel__nextButton.noOverflow{
+  display: none;
 }
 
 .contentCarousel__prevContainer.onStart,
