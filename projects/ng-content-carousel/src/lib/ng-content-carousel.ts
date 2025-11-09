@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChildren, effect, ElementRef, HostListener, inject, input, OnInit, QueryList, signal, ViewChild } from '@angular/core';
-import { CarouselItemDirective } from '../public-api';
+import { ContentCarouselItemDirective } from '../public-api';
 import { CONTENT_CAROUSEL_LANG } from './accessibility/content-carousel.lang';
-import { AccessibilityOptions, ContentCarouselLangs } from './ng-content-carousel.types';
+import { ContentCarouselCustomAria, ContentCarouselLangs } from './ng-content-carousel.types';
 
 @Component({
   standalone: true,
@@ -20,9 +20,9 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
   advanceMode= input<'single' |'page'>('page');
 
   lang = input<ContentCarouselLangs>('en');
-  accessibilityOptions = input<AccessibilityOptions | null>(null);
+  customAria = input<ContentCarouselCustomAria | null>(null);
 
-  @ContentChildren(CarouselItemDirective) items!: QueryList<CarouselItemDirective>;
+  @ContentChildren(ContentCarouselItemDirective) items!: QueryList<ContentCarouselItemDirective>;
   @ViewChild('carouselContainer') carouselContainer!: ElementRef<HTMLDivElement>;
   @ViewChild('track') track!: ElementRef;
   @ViewChild('trackContainer') trackContainer!: ElementRef<HTMLDivElement>;
@@ -31,7 +31,7 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
 
   host = inject(ElementRef<HTMLElement>);
 
-  acc = signal<AccessibilityOptions>(CONTENT_CAROUSEL_LANG['en']);
+  acc = signal<ContentCarouselCustomAria>(CONTENT_CAROUSEL_LANG['en']);
 
   currentIndex = signal<number>(0);
   itemWidth = signal<number | null>(null);
@@ -274,7 +274,7 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
   setAccOptions() {
     const currentLang = this.lang() ?? 'en';
     const langDefaults = CONTENT_CAROUSEL_LANG[currentLang];
-    const userOptions = this.accessibilityOptions() ?? {};
+    const userOptions = this.customAria() ?? {};
 
     this.acc.set({
       ...langDefaults,

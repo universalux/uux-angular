@@ -1,17 +1,17 @@
 import { Component, signal } from "@angular/core";
 import { NgContentCarousel } from "../../ng-content-carousel";
-import { CarouselItemDirective } from "../../directives/carousel-item-directive";
-import { AccessibilityOptions, ContentCarouselLangs } from "../../ng-content-carousel.types";
+import { ContentCarouselItemDirective } from "../../directives/carousel-item-directive";
+import { ContentCarouselCustomAria, ContentCarouselLangs } from "../../ng-content-carousel.types";
 import { carouselItemsMock, customAccesibilityOptions, externalItemSize } from "./mocks";
 // import { accessibilityOptionsMock, carouselItemsMock } from "./mocks";
 // import { SlideForDirective } from "../../directives/slide-for-directive";
 
 @Component({
-  imports: [NgContentCarousel, CarouselItemDirective],
+  imports: [NgContentCarousel, ContentCarouselItemDirective],
   template: `
     <ng-content-carousel>
       @for(item of carouselItems; track $index){
-        <div carouselItem [style.width]="itemSize + 'px'" [style.height]="itemSize + 'px'">
+        <div contentCarouselItem [style.width]="itemSize + 'px'" [style.height]="itemSize + 'px'">
           {{item}}
         </div>
       }
@@ -24,7 +24,7 @@ export class TestHost {
 }
 
 @Component({
-    imports: [NgContentCarousel, CarouselItemDirective],
+    imports: [NgContentCarousel, ContentCarouselItemDirective],
     template: `
       <ng-content-carousel
         [transition]="false"
@@ -33,10 +33,10 @@ export class TestHost {
         advanceMode="single"
 
         [lang]="langSelection()"
-        [accessibilityOptions]="accOptions()"
+        [customAria]="accOptions()"
       >
         @for(item of carouselItems; track $index){
-          <div carouselItem [style.width]="itemSize + 'px'" [style.height]="itemSize + 'px'">
+          <div contentCarouselItem [style.width]="itemSize + 'px'" [style.height]="itemSize + 'px'">
             {{item}}
           </div>
         }
@@ -48,7 +48,7 @@ export class TestHostAttr {
     itemSize : number = externalItemSize;
 
     langSelection = signal<ContentCarouselLangs>('es');
-    accOptions = signal<AccessibilityOptions | null>(null);
+    accOptions = signal<ContentCarouselCustomAria | null>(null);
 }
 
 // @Component({

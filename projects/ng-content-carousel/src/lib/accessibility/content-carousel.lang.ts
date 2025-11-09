@@ -1,6 +1,6 @@
-import { AccessibilityOptions } from "../ng-content-carousel.types";
+import { ContentCarouselCustomAria } from "../ng-content-carousel.types";
 
-export const CONTENT_CAROUSEL_LANG: Record<string, AccessibilityOptions> = {
+export const CONTENT_CAROUSEL_LANG: Record<string, ContentCarouselCustomAria> = {
     en: {
       globalAriaLabel: 'Content carousel',
       globalRoleDescription: 'Carousel of content',

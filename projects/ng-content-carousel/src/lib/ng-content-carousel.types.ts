@@ -3,7 +3,7 @@ import { CONTENT_CAROUSEL_LANG } from "./accessibility/content-carousel.lang";
 export type ContentCarouselLangs = keyof typeof CONTENT_CAROUSEL_LANG;
 // "en" | "es" | "fr" | "it" | "de"
 
-export interface AccessibilityOptions {
+export interface ContentCarouselCustomAria {
   globalAriaLabel?: string;
   globalRoleDescription?: string;
   prevBtnAriaLabel?: string;

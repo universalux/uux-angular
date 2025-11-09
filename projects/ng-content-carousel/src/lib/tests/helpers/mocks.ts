@@ -1,4 +1,4 @@
-import { AccessibilityOptions } from "../../ng-content-carousel.types";
+import { ContentCarouselCustomAria } from "../../ng-content-carousel.types";
 
 export const carouselItemsMock : string[] = [
   'Item 1',
@@ -21,7 +21,7 @@ export const externalItemSize : number = 100;
 
 export const initialItemPadding: number = 16 * 2;
 
-export const customAccesibilityOptions : AccessibilityOptions = {
+export const customAccesibilityOptions : ContentCarouselCustomAria = {
   globalAriaLabel: 'EDIT Content carousel',
   globalRoleDescription: 'EDIT Carousel of content',
   prevBtnAriaLabel: 'EDIT Go to previous item',
