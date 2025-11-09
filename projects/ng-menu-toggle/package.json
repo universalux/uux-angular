@@ -1,6 +1,6 @@
 {
   "name": "ng-menu-toggle",
-  "version": "20.0.0",
+  "version": "20.0.1",
   "description": "An Angular component for toggling menus in a simple and customizable way",
   "keywords": [
     "angular",

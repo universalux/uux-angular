@@ -6,6 +6,6 @@ export type MenuToggleLangs = keyof typeof MENU_TOGGLE_LANG;
 // "en" | "es" | "fr" | "it" | "de"
 
 export interface MenuToggleCustomAria {
-  ariaLabelOpened: string;
-  ariaLabelClosed: string;
-}
+  ariaLabelOpened?: string;
+  ariaLabelClosed?: string;
+};

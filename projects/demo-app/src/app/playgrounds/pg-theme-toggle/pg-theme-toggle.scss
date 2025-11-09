@@ -19,6 +19,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    margin-bottom: 2rem;
 }
 
 .titleContainer hgroup h1{
@@ -65,28 +67,51 @@
 // }
 
 ng-theme-toggle{
-  --theme-toggle-size:45px;
+  // --theme-toggle-color-dark: yellow;
+  // --theme-toggle-size:50px;
+  // --theme-toggle-hover-bg-dark: red;
+  // --theme-toggle-hover-bg-light: blue;
+  // --theme-toggle-hover-bg: orange;
+  // --theme-toggle-hover-scale: 1.1;
+  // --theme-toggle-hover-transition: 1s ease;
+  // --theme-toggle-size:45px;
+  // --theme-toggle-color-current: red;
 }
 
+// ng-theme-toggle:hover{
+//   --theme-toggle-color-dark: red;
+//   --theme-toggle-color-light: green;
+// }
 
-ng-theme-toggle:first-child{
-  --theme-toggle-sun-stroke-width: 40;
-  --theme-toggle-color-duration: 0s;
-}
+
+// ng-theme-toggle:first-child{
+//   --theme-toggle-size:50px;
+//   --theme-toggle-sun-stroke-width: 40;
+//   --theme-toggle-color-duration: .4s;
+//   // --them-toggle-bg: green;
+//   --theme-toggle-padding: 8px;
+//   --theme-toggle-radius: 50%;
+
+//   --theme-toggle-hover-bg: red;
+//   --theme-toggle-bg: orange;
+// }
 
 ng-theme-toggle:nth-child(2){
-  --theme-toggle-sun-stroke-width: 50;
-
-  --theme-toggle-color-dark: rgb(239, 241, 97);
-  --theme-toggle-color-light: rgb(32, 30, 134);
-
-  --theme-toggle-shadow-color-dark: rgba(239, 241, 97, 0.377);
-  --theme-toggle-shadow-color-light: rgba(32, 30, 134, 0.418);
+  --theme-toggle-color-dark: yellow;
+  --theme-toggle-color-light: blue;
 }
+//   --theme-toggle-sun-stroke-width: 50;
 
-ng-theme-toggle:nth-child(3){
-  --theme-toggle-color-duration: 0s;
-}
+//   --theme-toggle-color-dark: rgb(239, 241, 97);
+//   --theme-toggle-color-light: rgb(32, 30, 134);
+
+//   --theme-toggle-shadow-color-dark: rgba(239, 241, 97, 0.377);
+//   --theme-toggle-shadow-color-light: rgba(32, 30, 134, 0.418);
+// }
+
+// ng-theme-toggle:nth-child(3){
+//   --theme-toggle-color-duration: 0s;
+// }
 
 // ng-theme-toggle{
 //   --theme-toggle-color-dark: rgb(216, 101, 120);

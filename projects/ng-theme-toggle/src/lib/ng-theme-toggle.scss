@@ -1,97 +1,166 @@
-:host {
-    --theme-toggle-color-duration: 400ms;
-    --theme-toggle-color-timing: linear;
-
-    --theme-toggle-color-dark: white;
-    --theme-toggle-color-light: black;
-
-    --theme-toggle-shadow-color-dark: rgba(255, 255, 255, 0.664);
-    --theme-toggle-shadow-color-light: rgba(0, 0, 0, 0.623);
-    --theme-toggle-color-current: var(--theme-toggle-color-light);
-
-    --theme-toggle-sun-stroke-width: 50;
-
-    height: var(--theme-toggle-size, 40px);
-    aspect-ratio: 1 / 1;
-    display: block;
-}
-
-:host(.isDark) {
-    --theme-toggle-color-current: var(--theme-toggle-color-dark);
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+:host {
+    height: var(--theme-toggle-size, 40px);
+    aspect-ratio: 1 / 1;
+    display: block;
+}
+
+/* ----- BUTTON ----- */
+
 .themeToggle__button{
 
-    // BUTTON STYLES
+    /* BUTTON STYLES */
     border: none;
-    padding: 0;
     cursor: pointer;
-    background-color: transparent;
 
-    // CONTAINER STYLES
-    padding: 2px;
+    /* CONTAINER STYLES */
+
     aspect-ratio: 1 / 1;
     width: 100%;
     height: 100%;
 
-    transition: transform .3s ease-in-out;
+    background: var(--theme-toggle-bg, var(--theme-toggle-bg-light, transparent));
+    padding: var(--theme-toggle-padding, 0);
+    border: var(--theme-toggle-border, var(--theme-toggle-border-light, 2px solid black));
+    border-radius: var(--theme-toggle-radius, 50%);
+    box-shadow: var(--theme-toggle-shadow, var(--theme-toggle-shadow-light, none));
+
+    transition:
+      background var(--theme-toggle-hover-transition, .4s ease-in-out),
+      border var(--theme-toggle-color-transition, .4s ease-in-out),
+      transform var(--theme-toggle-hover-transition, .4s ease-in-out);
 }
 
+.themeToggle__button.isDark{
+  background: var(--theme-toggle-bg, var(--theme-toggle-bg-dark, transparent));
+  border: var(--theme-toggle-border, var(--theme-toggle-border-dark, 2px solid white));
+  box-shadow: var(--theme-toggle-shadow, var(--theme-toggle-shadow-dark, none));
+}
+
+/* BUTTON - FOCUS */
+
 .themeToggle__button:focus-visible{
-    border-radius: .3rem;
-    outline: 2px solid var(--theme-toggle-color-current, white);
+    outline: 2px solid var(--theme-toggle-color, var(--theme-toggle-color-light, black));
     outline-offset: 2px;
 }
 
-
-.themeToggle__button.hover-scale:hover .themeToggle__svg{
-    transform: scale(1.1);
+.themeToggle__button.isDark:focus-visible{
+    outline: 2px solid var(--theme-toggle-color, var(--theme-toggle-color-light, white));
+    outline-offset: 2px;
 }
 
-.themeToggle__button.isDark.hover-shadow:hover .themeToggle__svg{
-    transform: scale(1);
-    filter: drop-shadow(0 0 3px var(--theme-toggle-shadow-color-dark));
+/* BUTTON - TYPES */
+
+.themeToggle__button.solid{
+  background: var(--theme-toggle-bg, var(--theme-toggle-bg-light, white));
+  border: var(--theme-toggle-border, var(--theme-toggle-border-light, none));
+  padding: var(--theme-toggle-padding, 5px);
 }
 
-.themeToggle__button.isDark.hover-shadow:hover .themeToggle__line{
-    filter: drop-shadow(0 0 20px var(--theme-toggle-shadow-color-dark));
+.themeToggle__button.solid.isDark{
+  background: var(--theme-toggle-bg, var(--theme-toggle-bg-dark, black));
+  border: var(--theme-toggle-border, var(--theme-toggle-border-dark, none));
 }
 
-.themeToggle__button.hover-shadow:hover .themeToggle__svg{
-    transform: scale(1);
-    filter: drop-shadow(0 0 5px var(--theme-toggle-shadow-color-light));
+.themeToggle__button.minimal{
+  background: var(--theme-toggle-bg, transparent);
+  border: var(--theme-toggle-border, none);
+}
+
+.themeToggle__button.outline{
+  background: var(--theme-toggle-bg, transparent);
+  border: var(--theme-toggle-border, var(--theme-toggle-border-light, 2px solid var(--theme-toggle-color, var(--theme-toggle-color-light, black))));
+  padding: var(--theme-toggle-padding, 5px);
+}
+
+.themeToggle__button.outline.isDark{
+  border: var(--theme-toggle-border, var(--theme-toggle-border-dark, 2px solid var(--theme-toggle-color, var(--theme-toggle-color-dark, white))));
+}
+
+/* --- BUTTON - HOVERS --- */
+
+/* BUTTON TONE HOVER */
+
+.themeToggle__button.hover-tone:hover{
+  background: var(--theme-toggle-hover-bg, var(--theme-toggle-hover-bg-light, #949494));
+}
+
+.themeToggle__button.isDark.hover-tone:hover{
+  background: var(--theme-toggle-hover-bg, var(--theme-toggle-hover-bg-dark, #949494));
 }
 
 
-.themeToggle__button.isDark.rotateY.faster{
+/* BUTTON SCALE HOVER */
+
+.themeToggle__button.hover-scale:hover{
+  transform: scale(var(--theme-toggle-hover-scale, 1.05));
+}
+
+/* BUTTON SHADOW HOVER */
+
+.themeToggle__button.minimal.isDark.hover-shadow:hover .themeToggle__svg{
+    // transform: scale(1);
+    filter: drop-shadow(0 0 3px var(--theme-toggle-hover-shadow-color-dark, rgba(255, 255, 255, 0.664)));
+}
+
+.themeToggle__button.minimal.isDark.hover-shadow:hover .themeToggle__line{
+    filter: drop-shadow(0 0 20px var(--theme-toggle-hover-shadow-color-dark, rgba(255, 255, 255, 0.664)));
+}
+
+.themeToggle__button.minimal.hover-shadow:hover .themeToggle__svg{
+    // transform: scale(1);
+    filter: drop-shadow(0 0 5px var(--theme-toggle-hover-shadow-color-light, rgba(0, 0, 0, 0.623)));
+}
+
+.themeToggle__button.isDark.hover-shadow:not(.minimal):hover {
+  box-shadow: 2px 2px 5px var(--theme-toggle-hover-shadow-color-dark, rgba(83, 83, 83, 0.664));
+}
+
+.themeToggle__button.hover-shadow:not(.minimal):hover {
+  box-shadow: 2px 2px 5px var(--theme-toggle-hover-shadow-color-light, rgba(83, 83, 83, 0.664));
+}
+
+
+/* ----- SVG CONTAINER ----- */
+
+.themeToggle__svgContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .3s ease-in-out;
+}
+
+.themeToggle__svgContainer.isDark.rotateY.faster{
     transform: rotateY(360deg);
 }
 
-.themeToggle__button.rotateX{
+.themeToggle__svgContainer.rotateX{
     transform: rotate(0deg);
 }
 
-.themeToggle__button.rotateY{
+.themeToggle__svgContainer.rotateY{
     transform: rotateY(0deg);
 }
 
-.themeToggle__button.isDark.rotateX.faster{
+.themeToggle__svgContainer.isDark.rotateX.faster{
     transform: rotate(450deg);
 }
 
-.themeToggle__button.isDark.rotateX{
+.themeToggle__svgContainer.isDark.rotateX{
     transform: rotate(180deg);
 }
 
-.themeToggle__button.isDark.rotateY{
+.themeToggle__svgContainer.isDark.rotateY{
     transform: rotateY(180deg);
 }
+
+/* ----- SVG ----- */
 
 .themeToggle__svg{
     transition: transform .2s ease-in-out, filter .3s ease;
@@ -102,27 +171,48 @@
   scale: 1;
 }
 
-.themeToggle__mainCircle,
-.themeToggle__outerMask{
-    transition: r .4s ease-in-out, fill var(--theme-toggle-color-duration) var(--theme-toggle-color-timing);
+.themeToggle__svg .themeToggle__line{
+  stroke: var(--theme-toggle-color, var(--theme-toggle-color-light, black));
 }
 
-.themeToggle__innerMask.isDark{
-    transition: r .4s ease-in-out, fill var(--theme-toggle-color-duration) var(--theme-toggle-color-timing);
+.themeToggle__svg.isDark .themeToggle__line{
+  stroke: var(--theme-toggle-color, var(--theme-toggle-color-dark, white));
+}
+
+.themeToggle__svg.isDark .themeToggle__mainCircle{
+  fill: var(--theme-toggle-color, var(--theme-toggle-color-dark, white));
+}
+
+.themeToggle__svg .themeToggle__mainCircle{
+  fill: var(--theme-toggle-color, var(--theme-toggle-color-light, black));
+}
+
+.themeToggle__mainCircle,
+.themeToggle__outerMask{
+    transition:
+      r .4s ease-in-out,
+      fill var(--theme-toggle-color-transition, .4s ease-in-out);
 }
 
 .themeToggle__innerMask{
-    transition: r .5s ease-in-out, fill var(--theme-toggle-color-duration) var(--theme-toggle-color-timing);
+    transition:
+      r .5s ease-in-out,
+      fill var(--theme-toggle-color-transition, .4s ease-in-out);
+}
+
+.themeToggle__innerMask.isDark{
+    transition:
+      r .4s ease-in-out,
+      fill var(--theme-toggle-color-transition, .4s ease-in-out);
 }
 
 .themeToggle__line{
-    stroke-width: var(--theme-toggle-sun-stroke-width);
+    stroke-width: var(--theme-toggle-rays-stroke-width, 50);
     transform-origin: center;
     transition:
-        stroke var(--theme-toggle-color-duration) var(--theme-toggle-color-timing),
+        stroke var(--theme-toggle-color-transition, .4s ease-in-out),
         filter .3s ease;
 }
-
 
 .themeToggle__rays{
     transition: transform .4s ease-in-out;

@@ -217,16 +217,17 @@ describe('NgThemeToggle - with attributes', () => {
 
     /** Initial selection of elements */
     const rays = testHostFixture.debugElement.query(By.css('.themeToggle__rays'));
+    const svgContainer = testHostFixture.debugElement.query(By.css('.themeToggle__svgContainer'));
 
     /** .shadow class */
     expect(themeToggleBtnDebugEl.nativeElement.classList).toContain('hover-shadow');
 
     /** .rotateX class */
-    expect(themeToggleBtnDebugEl.nativeElement.classList).toContain('rotateX');
+    expect(svgContainer.nativeElement.classList).toContain('rotateX');
     expect(rays.nativeElement.classList).toContain('rotateX');
 
     /** .faster class */
-    expect(themeToggleBtnDebugEl.nativeElement.classList).toContain('faster');
+    expect(svgContainer.nativeElement.classList).toContain('faster');
     expect(rays.nativeElement.classList).toContain('faster');
 
     /** tabindex */
@@ -238,6 +239,7 @@ describe('NgThemeToggle - with attributes', () => {
 
     //Selectin "rays" element
     const rays = testHostFixture.debugElement.query(By.css('.themeToggle__rays'));
+    const svgContainer = testHostFixture.debugElement.query(By.css('.themeToggle__svgContainer'));
 
     // Changing animation value
     testHostComponent.animation.set('rotateY');
@@ -246,7 +248,7 @@ describe('NgThemeToggle - with attributes', () => {
     /** rotate input changed */
     expect(themeToggleInstance.animation()).toBe('rotateY');
     /** .rotateY class */
-    expect(themeToggleBtnDebugEl.nativeElement.classList).toContain('rotateY');
+    expect(svgContainer.nativeElement.classList).toContain('rotateY');
     expect(rays.nativeElement.classList).toContain('rotateY');
   });
 
