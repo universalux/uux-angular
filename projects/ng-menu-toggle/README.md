@@ -12,13 +12,13 @@ It is designed to work with **signals** and Angular **zoneless**, providing a li
 
 ## Table of Contents
 
-* [Instalation](#installation)
-* [Basic Usage](#basic-usage)
-* [Advanced Usage](#advanced-usage)
-  - [Style and behavior attributes](#style-and-behavior-attributes)
-  - [Accessibility attributes](#accessibility-attributes)
-  - [Custom styles](#custom-styles)
-* [Report or suggest something](#report-or-suggest-something)
+* [Installation](#installation)
+* [Overview](#overview)
+* [Functionality](#functionality)
+* [Inputs and Outputs](#inputs-and-outputs)
+* [Styling](#styling)
+* [Accessibility](#accessibility)
+* [Contribute or Report](#contribute-or-report)
 
 ## Installation
 
@@ -37,16 +37,12 @@ Angular 18:
 npm install ng-menu-toggle@v18-lts
 ```
 
-## Basic Usage
+Using `ng-menu-toggle` is easy:
+- Provide a complete signal to the `[isOpenSignal]` input and the component will handle the state automatically.
+- Configure its type, shape, hover behavior, and accessibility using inputs.
+- Style it with customizable CSS variables to match your design needs.
 
-Using `ng-menu-toggle` is very simple. Only one input is required: `[isOpenSignal]`.
-All other assignable attributes are explained below and are for you to customize to your liking.
-
-| Prop              | Description             | Type                       | Default |
-| ----------------- | ----------------------- | -------------------------- | ------- |
-| `isOpenSignal`    | Menu isOpen signal      | `WritableSignal<boolean>`  | `none`  |
-
-Here is a simple example of use:
+Here’s a basic usage example:
 
 ```ts
 import { Component, signal } from '@angular/core';
@@ -67,41 +63,58 @@ export class App {
 }`
 ```
 
-## Advanced Usage
+## Functionality
 
-In addition to `[isOpenSignal]`, `ng-menu-toggle` provides several `optional attributes` to customize its appearance and behavior.
+As shown in the example above, you can use the `[isOpenSignal]` input to manage your open state signal.
 
-```html
-<ng-menu-toggle
-  [isOpenSignal]="menuOpen"
-  type="uneven"
-  invert="true"
-  [thin]="true"
-  [rounded]="true"
-  animation="rotateY"
-  [faster]="true"
-  [tabIndex]="1"
-  lang="fr"
-  [customAria]="{
-    ariaLabelOpened: 'Edited Opened aria label',
-    ariaLabelClosed: 'Edited Closed aria label'
-  }"
-/>
+It’s important to provide the entire signal (not just its value, e.g. isOpen()) because the component itself changes the value of the signal when clicking on it.
+
+## Inputs and Outputs
+
+Here is a list of all input/output:
+
+### Functionality Input
+
+| **Input**        | **Description**                                                  | **Default** |
+| ---------------- | ---------------------------------------------------------------- | ----------- |
+| `isOpenSignal`   | Provides the writable signal that controls the open/close state. | —           |
+
+### Style & Behavior Inputs
+
+| **Input**   | **Description**                                                | **Default** |
+| ----------- | -------------------------------------------------------------- | ----------- |
+| `type`      | Defines the toggle’s visual style (`dots`, `bars`, or `uneven`). | `'bars'`    |
+| `invert`    | Inverts the toggle colors when set to `true`.                  | `false`     |
+| `thin`      | Makes the toggle lines thinner.                                 | `false`     |
+| `rounded`   | Applies rounded corners to the toggle lines.                    | `false`     |
+| `animation` | Determines the toggle animation (`rotateX`, `rotateY`, or `soft`). | `'soft'`    |
+| `faster`    | Speeds up the toggle animation when set to `true`.             | `false`     |
+
+### Accessibility Inputs
+
+| **Input**    | **Description**                                                         | **Default** |
+| ------------ | ----------------------------------------------------------------------- | ----------- |
+| `tabIndex`   | Controls the toggle’s tab order in keyboard navigation.                 | `0`         |
+| `lang`       | Defines the language for built-in ARIA labels (`en`, `es`, `fr`, etc.). | `'en'`      |
+| `customAria` | Provides custom ARIA labels to override default accessibility text.     | `null`      |
+
+## Styling
+
+You can easily customize the component’s appearance using the CSS variables listed below.
+
+```css
+ng-menu-toggle{
+    --menu-toggle-size: 50px;
+    --menu-toggle-color: red;
+}
 ```
 
-### Style and behavior attributes
+| **Variable**          | **Description**                                | **Default** |
+| --------------------- | ---------------------------------------------- | ----------- |
+| `--menu-toggle-size`  | Defines the toggle width and height            | `40px`      |
+| `--menu-toggle-color` | Sets the main color for bars and focus outline | `black`     |
 
-| Input       | Description                                                | Type    | Default   |
-| ----------- | ---------------------------------------------------------- | ------- | --------- |
-| `type`      | Button design: `'bars'`, `'dots'`, `'uneven'`              | string  | `'bars'`  |
-| `invert`    | Mirror effect. Usefull when `type="uneven"`                | boolean | `false`   |
-| `thin`      | It makes lines or dots thinner                             | boolean | `false`   |
-| `[rounded]` | Rounded borders                                            | boolean | `false`   |
-| `animation` | Animation style: `'rotateX'`, `'rotateY'`, `'soft'`        | string  | `'soft'`  |
-| `[faster]`  | Speeds up the rotate animation if `rotateX` or `rotateY`   | boolean | `false`   |
-
-
-### Accessibility attributes
+## Accessibility
 
 There are two ways of setting the aria-label attributes: `by lang attribute` or `by customAria attribute`
 
@@ -153,60 +166,7 @@ This option gives you full control over the **text announced by screen readers**
 > 💡 If you only set one of the properties, the other will use the label from the current `lang`.
 
 
-### Custom styles
-
-#### Custom styles by css variables
-
-You can customize `size` and `color` by using css variables.
-
-```css
-ng-menu-toggle{
-    --menu-toggle-size: 50px;
-    --menu-toggle-color: red;
-}
-```
-If not set, **default size** is `40px` and **default color** is `black`
-
-#### Custom styles by ng-deep
-You can customize styles by using ::gn-deep in css. For example:
-
-```css
-:ng-deep .menuToggle__botton{
-  background color: red
-}
-```
-
-##### Customizable elements
-
-- `.menuToggle__button` → The main button element
-- `.menuToggle__bar` → Individual bars inside the button
-- `.menuToggle__bar--1` → Top bar
-- `.menuToggle__bar--2` → Hidden bar for spacing
-- `.menuToggle__bar--3` → Bottom bar
-- `.menuToggle__bar--4` → Cross bar (positioned absolutely)
-- `.menuToggle__bar--5` → Cross bar (positioned absolutely)
-
-You can target different states by combining classes. For example:
-
-```css
-:ng-deep .menuToggle__button.isOpen {
-  background-color: red;
-}
-
-:ng-deep .menuToggle__bar--1 {
-  background-color: blue;
-}
-
-:ng-deep .menuToggle.rounded {
-  border: 2px solid red;
-}
-
-:ng-deep .menuToggle__bar.dots {
-  filter: drop-shadow(0 0 0.75rem red);
-}
-```
-
-## Report or suggest something
+## Contribute or report
 
 Choose the form that best fits your case:
 
@@ -215,7 +175,6 @@ Choose the form that best fits your case:
 - 🧩 [Suggest a new component](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=new_component_request.yml)
 
 👉 Or go to the [form selector](https://github.com/universalux/uux-hub/issues/new/choose).
-
 
 ## License
 MIT

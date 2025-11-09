@@ -11,7 +11,6 @@ import { THEME_TOGGLE_LANG } from './accessibility/theme-toggle.lang';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgThemeToggle {
-  private el = inject(ElementRef);
 
   /** ISDARK FEATURES */
 
@@ -19,7 +18,6 @@ export class NgThemeToggle {
 
   handleIsDark() {
     this.isDarkSignal()?.update(value => !value);
-    // this.setColor();
   }
 
   get isDark() {
@@ -56,19 +54,8 @@ export class NgThemeToggle {
   /** LIFE CYCLE */
 
   ngOnInit() {
-    // this.setColor();
     this.uniqueId.set(Math.random().toString(36).substring(2, 9));
   }
 
-  // ngOnChanges() {
-  //   this.setColor();
-  // }
-
-  /** METHODS */
-
-  // private setColor() {
-  //   const host = this.el.nativeElement as HTMLElement;
-  //   host.classList.toggle('isDark', this.isDark);
-  // }
 
 }

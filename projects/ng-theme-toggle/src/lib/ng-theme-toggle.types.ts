@@ -6,6 +6,6 @@ export type ThemeToggleLangs = keyof typeof THEME_TOGGLE_LANG;
 // "en" | "es" | "fr" | "it" | "de"
 
 export interface ThemeToggleCustomAria {
-  ariaLabelDark: string;
-  ariaLabelLight: string;
-}
+  ariaLabelDark?: string;
+  ariaLabelLight?: string;
+};

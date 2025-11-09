@@ -12,13 +12,13 @@ It is designed to work with **signals** and Angular **zoneless**, providing a li
 
 ## Table of Contents
 
-* [Instalation](#installation)
-* [Basic Usage](#basic-usage)
-* [Advanced Usage](#advanced-usage)
-  - [Style and behavior attributes](#style-and-behavior-attributes)
-  - [Accessibility attributes](#accessibility-attributes)
-  - [Custom styles](#custom-styles)
-* [Report or suggest something](#report-or-suggest-something)
+* [Installation](#installation)
+* [Overview](#overview)
+* [Functionality](#functionality)
+* [Inputs and Outputs](#inputs-and-outputs)
+* [Styling](#styling)
+* [Accessibility](#accessibility)
+* [Contribute or Report](#contribute-or-report)
 
 ## Installation
 
@@ -37,16 +37,15 @@ Angular 18:
 npm install ng-theme-toggle@v18-lts
 ```
 
-## Basic Usage
+## Overview
 
-Using `ng-theme-toggle` is very simple. Only one input is required: `[isDarkSignal]`.
-All other assignable attributes are explained below and are for you to customize to your liking.
+Using `ng-theme-toggle` is easy:
+- Provide a complete signal to the `[isDarkSignal]` input and the component will handle the state automatically.
+- Configure its type, shape, hover behavior, and accessibility using inputs.
+- Style it with customizable CSS variables to match your design needs.
 
-| Prop              | Description                                  | Type                       | Default |
-| ----------------- | -------------------------------------------- | -------------------------- | ------- |
-| `isDarkSignal`    | Dark/light mode writable signal in your app  | `WritableSignal<boolean>`  | `none`  |
+Here’s a basic usage example:
 
-Here is a simple example of use:
 ```ts
 import { Component, signal } from '@angular/core';
 import { NgThemeToggle } from 'ng-theme-toggle';
@@ -66,35 +65,86 @@ export class App {
 }`
 ```
 
-## Advanced Usage
+## Functionality
 
-In addition to `[isDarkSignal]`, `ng-theme-toggle` provides several `optional attributes` to customize its appearance and behavior.
+As shown in the example above, you can use the `[isDarkSignal]` input to manage your theme mode signal.
 
-```html
-<ng-theme-toggle
-  [isDarkSignal]="isDark"
-  hover="shadow"
-  animation="rotateY"
-  [faster]="true"
-  [tabIndex]="1"
-  lang="fr"
-  [customAria]="{
-    ariaLabelDark: 'Edited dark aria label',
-    ariaLabelLight: 'Edited light aria label'
-  }"
-/>
+It’s important to provide the entire signal (not just its value, e.g. isDark()) because the component itself changes the value of the signal when clicking on it.
+
+## Inputs and Outputs
+
+Here is a list of all input/ouput:
+
+### Functionality Input
+
+| **Input**      | **Description**                                                    | **Default** |
+| -------------- | ------------------------------------------------------------------ | ----------- |
+| `isDarkSignal` | Provides the writable signal that controls the current theme mode. | —           |
+
+### Style & Behavior Inputs
+
+| **Input**   | **Description**                                                       | **Default** |
+| ----------- | --------------------------------------------------------------------- | ----------- |
+| `type`      | Defines the toggle’s visual style (`solid`, `minimal`, or `outline`). | `'minimal'` |
+| `hover`     | Sets the hover effect style (`tone`, `scale`, `shadow`, or `none`).   | `'scale'`   |
+| `animation` | Determines the toggle animation (`rotateX`, `rotateY`, or `soft`).    | `'soft'`    |
+| `faster`    | Speeds up the toggle animation when set to `true`.                    | `false`     |
+
+### Accessibility Inputs
+
+| **Input**    | **Description**                                                         | **Default** |
+| ------------ | ----------------------------------------------------------------------- | ----------- |
+| `tabIndex`   | Controls the toggle’s tab order in keyboard navigation.                 | `0`         |
+| `lang`       | Defines the language for built-in ARIA labels (`en`, `es`, `fr`, etc.). | `'en'`      |
+| `customAria` | Provides custom ARIA labels to override default accessibility text.     | `null`      |
+
+## Styling
+
+You can easily customize the component’s appearance using the CSS variables listed below.
+
+```css
+ng-theme-toggle {
+  --theme-toggle-bg: var(--global-color-from-theme);
+  --theme-toggler-padding: 8px 16px;
+}
 ```
 
-### Style and behavior attributes
+| **Variable**                      | **Description**                                      | **Default**                       |
+| --------------------------------- | ---------------------------------------------------- | --------------------------------- |
+| `--theme-toggle-size`             | Defines the toggle width and height                 | `40px`                            |
+| `--theme-toggle-bg`               | Background color of the button                      | Inherits light/dark mode          |
+| `--theme-toggle-bg-light`         | Background in light mode                             | `transparent` / `white` *(solid)*|
+| `--theme-toggle-bg-dark`          | Background in dark mode                              | `transparent` / `black` *(solid)*|
+| `--theme-toggle-padding`          | Inner spacing of the button                          | `0` / `5px` *(solid/outline)*    |
+| `--theme-toggle-border`           | Border style of the button                            | Inherits light/dark mode          |
+| `--theme-toggle-border-light`     | Border in light mode                                  | `2px solid black`                 |
+| `--theme-toggle-border-dark`      | Border in dark mode                                   | `2px solid white`                 |
+| `--theme-toggle-radius`           | Controls the corner roundness                         | `50%`                             |
+| `--theme-toggle-shadow`           | Box shadow of the button                               | Inherits light/dark mode          |
+| `--theme-toggle-shadow-light`     | Shadow in light mode                                   | `none`                             |
+| `--theme-toggle-shadow-dark`      | Shadow in dark mode                                    | `none`                             |
+| `--theme-toggle-hover-transition` | Transition timing for hover effects                   | `.4s ease-in-out`                 |
+| `--theme-toggle-color-transition` | Transition timing for color and stroke changes       | `.4s ease-in-out`                 |
+| `--theme-toggle-color`            | Main icon color and focus outline                     | Inherits light/dark mode          |
+| `--theme-toggle-color-light`      | Icon color in light mode                               | `black`                            |
+| `--theme-toggle-color-dark`       | Icon color in dark mode                                | `white`                            |
+| `--theme-toggle-hover-bg`         | Background on hover                                   | Inherits light/dark mode          |
+| `--theme-toggle-hover-bg-light`   | Hover background in light mode                        | `#949494`                          |
+| `--theme-toggle-hover-bg-dark`    | Hover background in dark mode                         | `#949494`                          |
+| `--theme-toggle-hover-scale`      | Scale effect applied on hover                          | `1.05`                             |
+| `--theme-toggle-hover-shadow-color-light` | Shadow color on hover in light mode            | `rgba(0, 0, 0, 0.623)`           |
+| `--theme-toggle-hover-shadow-color-dark`  | Shadow color on hover in dark mode             | `rgba(255, 255, 255, 0.664)`     |
+| `--theme-toggle-rays-stroke-width`| Stroke width of the SVG rays                            | `50`                               |
 
-| Input       | Description                                                | Type    | Default   |
-| ----------- | ---------------------------------------------------------- | ------- | --------- |
-| `hover`     | Hover style: `'scale'`, `'shadow'`, `'none'`               | string  | `'scale'` |
-| `animation` | Animation style: `'rotateX'`, `'rotateY'`, `'soft'`        | string  | `'soft'`  |
-| `[faster]`  | Speeds up the rotate animation if `rotateX` or `rotateY`   | boolean | `false`   |
 
+### 💡 **Usage Notes**
 
-### Accessibility attributes
+- Variables with suffixes `-light` and `-dark` are automatically applied based on the theme state (`isDark`).
+- The generic variables (like `--theme-toggle-bg` or `--theme-toggle-border`) act as entry points to override both modes at once.
+- You can freely mix hover effects (`hover-tone`, `hover-scale`, `hover-shadow`) for combined transitions.
+- All color and transform transitions share the same easing and duration for visual consistency.
+
+## Accessibility
 
 There are two ways of setting the aria-label attributes: `by lang attribute` or `by customAria attribute`
 
@@ -145,31 +195,7 @@ This option gives you full control over the **text announced by screen readers**
 > 💡 Remember that what is indicated in the `customAria` attribute replaces the default language set in `lang`. <br>
 > 💡 If you only set one of the properties, the other will use the label from the current `lang`.
 
-
-### Custom styles
-
-#### Custom styles by css variables
-
-You can customize all those css properties using their variables:
-
-```css
-ng-theme-toggle{
-    --theme-toggle-color-duration: 400ms;
-    --theme-toggle-color-timing: linear;
-
-    --theme-toggle-color-dark: white;
-    --theme-toggle-color-light: black;
-
-    --theme-toggle-shadow-color-dark: rgba(255, 255, 255, 0.664);
-    --theme-toggle-shadow-color-light: rgba(0, 0, 0, 0.623);
-
-    --theme-toggle-sun-stroke-width: 50;
-    --theme-toggle-size: 40px;
-}
-```
-The values you see above are the default values if you dont set them.
-
-## Report or suggest something
+## Contribute or report
 
 Choose the form that best fits your case:
 
@@ -178,7 +204,6 @@ Choose the form that best fits your case:
 - 🧩 [Suggest a new component](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=new_component_request.yml)
 
 👉 Or go to the [form selector](https://github.com/universalux/uux-hub/issues/new/choose).
-
 
 ## License
 MIT

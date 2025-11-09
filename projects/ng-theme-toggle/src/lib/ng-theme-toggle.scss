@@ -74,12 +74,12 @@
 
 .themeToggle__button.outline{
   background: var(--theme-toggle-bg, transparent);
-  border: var(--theme-toggle-border, var(--theme-toggle-border-light, 2px solid black));
+  border: var(--theme-toggle-border, var(--theme-toggle-border-light, 2px solid var(--theme-toggle-color, var(--theme-toggle-color-light, black))));
   padding: var(--theme-toggle-padding, 5px);
 }
 
 .themeToggle__button.outline.isDark{
-  border: var(--theme-toggle-border, var(--theme-toggle-border-dark, 2px solid white));
+  border: var(--theme-toggle-border, var(--theme-toggle-border-dark, 2px solid var(--theme-toggle-color, var(--theme-toggle-color-dark, white))));
 }
 
 /* --- BUTTON - HOVERS --- */
@@ -98,13 +98,13 @@
 /* BUTTON SCALE HOVER */
 
 .themeToggle__button.hover-scale:hover{
-    transform: scale(var(--theme-toggle-hover-scale, 1.05));
+  transform: scale(var(--theme-toggle-hover-scale, 1.05));
 }
 
 /* BUTTON SHADOW HOVER */
 
 .themeToggle__button.minimal.isDark.hover-shadow:hover .themeToggle__svg{
-    transform: scale(1);
+    // transform: scale(1);
     filter: drop-shadow(0 0 3px var(--theme-toggle-hover-shadow-color-dark, rgba(255, 255, 255, 0.664)));
 }
 
@@ -113,7 +113,7 @@
 }
 
 .themeToggle__button.minimal.hover-shadow:hover .themeToggle__svg{
-    transform: scale(1);
+    // transform: scale(1);
     filter: drop-shadow(0 0 5px var(--theme-toggle-hover-shadow-color-light, rgba(0, 0, 0, 0.623)));
 }
 

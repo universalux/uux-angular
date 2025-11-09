@@ -67,6 +67,7 @@
 // }
 
 ng-theme-toggle{
+  // --theme-toggle-color-dark: yellow;
   // --theme-toggle-size:50px;
   // --theme-toggle-hover-bg-dark: red;
   // --theme-toggle-hover-bg-light: blue;
@@ -95,7 +96,10 @@ ng-theme-toggle{
 //   --theme-toggle-bg: orange;
 // }
 
-// ng-theme-toggle:nth-child(2){
+ng-theme-toggle:nth-child(2){
+  --theme-toggle-color-dark: yellow;
+  --theme-toggle-color-light: blue;
+}
 //   --theme-toggle-sun-stroke-width: 50;
 
 //   --theme-toggle-color-dark: rgb(239, 241, 97);
