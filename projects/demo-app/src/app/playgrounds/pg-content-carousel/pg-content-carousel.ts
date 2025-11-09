@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NgContentCarousel, CarouselItemDirective, AccessibilityOptions } from 'ng-content-carousel';
+import { NgContentCarousel, ContentCarouselItemDirective, ContentCarouselCustomAria } from 'ng-content-carousel';
 import { NgImageCard } from 'ng-image-card';
 
 @Component({
@@ -7,7 +7,7 @@ import { NgImageCard } from 'ng-image-card';
   imports: [
     NgContentCarousel,
     NgImageCard,
-    CarouselItemDirective
+    ContentCarouselItemDirective
   ],
   templateUrl: './pg-content-carousel.html',
   styleUrl: './pg-content-carousel.scss',
@@ -65,7 +65,7 @@ export class PgContentCarousel {
     // },
   ]
 
-  customAccesibilityOptions : AccessibilityOptions = {
+  customAccesibilityOptions : ContentCarouselCustomAria = {
     globalAriaLabel: 'EDIT Content carousel',
     globalRoleDescription: 'EDIT Carousel of content',
     prevBtnAriaLabel: 'EDIT Go to previous item',

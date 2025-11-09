@@ -17,10 +17,10 @@
     [hideArrowsWhenNoOverflow]="true"
     advanceMode="single"
     lang="es"
-    [accessibilityOptions]="customAccesibilityOptions"
+    [customAria]="customAccesibilityOptions"
   >
     @for (card of cardList; track $index) {
-      <a href="/" carouselItem style="position: relative;">
+      <a href="/" contentCarouselItem style="position: relative;">
         <ng-image-card animation="none" hover="scale" [shadow]="false">
           <header card-header>
             <img src="images/card/dog_profile.png">
