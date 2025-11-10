@@ -10,6 +10,9 @@
       "menu-button": [
         "./dist/menu-button"
       ],
+      "ng-content-card": [
+        "./dist/ng-content-card"
+      ],
       "ng-content-carousel": [
         "./dist/ng-content-carousel"
       ],
@@ -106,6 +109,12 @@
     },
     {
       "path": "./projects/ng-simple-button/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ng-content-card/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-content-card/tsconfig.spec.json"
     }
   ]
 }
