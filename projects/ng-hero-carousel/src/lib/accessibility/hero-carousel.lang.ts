@@ -1,6 +1,6 @@
-import { AccessibilityOptions } from "../ng-hero-carousel.types";
+import { HeroCarouselCustomAria } from "../ng-hero-carousel.types";
 
-export const HERO_CAROUSEL_LANG: Record<string, AccessibilityOptions> = {
+export const HERO_CAROUSEL_LANG: Record<string, HeroCarouselCustomAria> = {
     en: {
         autoplayPauseLabel: 'Pause carousel autoplay',
         autoplayPlayLabel: 'Resume carousel autoplay',

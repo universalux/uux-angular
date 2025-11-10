@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChild, Conten
 import { CommonModule, isPlatformBrowser, NgTemplateOutlet } from '@angular/common';
 import { SlideForDirective } from './directives/slide-for-directive';
 import { HERO_CAROUSEL_LANG } from './accessibility/hero-carousel.lang';
-import { CarouselItem, AccessibilityOptions } from './ng-hero-carousel.types';
+import { HeroCarouselItem, HeroCarouselCustomAria } from './ng-hero-carousel.types';
 import { SlideBgDirective } from "./directives/slide-bg-directive";
 
 @Component({
@@ -23,7 +23,7 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
 
   /** ---------- INPUTS ---------- */
 
-  slides = input<CarouselItem[]>([]);
+  slides = input<HeroCarouselItem[]>([]);
 
   /** STYLE INPUTS */
 
@@ -42,7 +42,7 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
   /** ACCESIBILITY INPUTS */
 
   lang = input<'en' | 'es' | 'fr' | 'de' | 'it'>('en');
-  accessibilityOptions = input<AccessibilityOptions |null>(null);
+  customAria = input<HeroCarouselCustomAria |null>(null);
 
   /** ---------- OUTPUTS ---------- */
 
@@ -64,7 +64,7 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
   private autoplayTimer = signal<number>(0);
   private resumeTimer = signal<number>(0);
 
-  protected acc = signal<AccessibilityOptions>(HERO_CAROUSEL_LANG['en']);
+  protected acc = signal<HeroCarouselCustomAria>(HERO_CAROUSEL_LANG['en']);
 
   /** ---------- VIEW CHILDREN ---------- */
 
@@ -205,7 +205,7 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
 
   /** NAVIGATION METHODS  */
 
-  liveRegionText = signal<string>('');
+  // liveRegionText = signal<string>('');
 
   protected goToSlide(index: number) {
     if (this.isChangingSlide()) return;
@@ -224,12 +224,12 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
     this.currentSlide.set(clamped);
     this.setSelectorInScroll();
 
-    const slideData = slides[clamped];
-    const slideNumber = clamped + 1;
-    const totalSlides = slides.length;
-    this.liveRegionText.set(
-      `Slide ${slideNumber} of ${totalSlides}. ${slideData.title || ''} ${slideData.subtitle || ''}`.trim()
-    );
+    // const slideData = slides[clamped];
+    // const slideNumber = clamped + 1;
+    // const totalSlides = slides.length;
+    // this.liveRegionText.set(
+    //   `Slide ${slideNumber} of ${totalSlides}. ${slideData.title || ''} ${slideData.subtitle || ''}`.trim()
+    // );
 
     const newSlideEl = this.slidesElements.toArray()[clamped]?.nativeElement;
 
@@ -356,7 +356,7 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
   private setAccOptions() {
       const currentLang = this.lang() ?? 'en';
       const langDefaults = HERO_CAROUSEL_LANG[currentLang];
-      const userOptions = this.accessibilityOptions() ?? {};
+      const userOptions = this.customAria() ?? {};
 
       this.acc.set({
         ...langDefaults,
@@ -364,6 +364,14 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
         slideAriaLabel: userOptions.slideAriaLabel ?? langDefaults.slideAriaLabel,
       });
   }
+
+  visibleRangeMessage() {
+    const current = this.currentSlide();
+    const total = this.slides().length;
+
+    const acc = this.acc(); // current accessibility options
+    return acc.slideAriaLabel!(current + 1, total);
+  };
 
   /** OTHER METHODS  */
 

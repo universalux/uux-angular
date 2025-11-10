@@ -1,7 +1,7 @@
 import { Component, signal } from "@angular/core";
 // import { AccessibilityOptions, CarouselItem, NgxFullCarousel } from "../../ngx-full-carousel";
 import { NgHeroCarousel } from "../../ng-hero-carousel";
-import { AccessibilityOptions, CarouselItem } from "../../ng-hero-carousel.types"
+import { HeroCarouselCustomAria, HeroCarouselItem } from "../../ng-hero-carousel.types"
 import { accessibilityOptionsMock, carouselItemsMock } from "./mocks";
 import { SlideForDirective } from "../../directives/slide-for-directive";
 
@@ -10,7 +10,7 @@ import { SlideForDirective } from "../../directives/slide-for-directive";
     template: `<ng-hero-carousel [slides]="items()" />`
 })
 export class TestHost {
-    items = signal<CarouselItem[]>(carouselItemsMock);
+    items = signal<HeroCarouselItem[]>(carouselItemsMock);
 }
 
 @Component({
@@ -30,7 +30,7 @@ export class TestHost {
         [autoplayResumeTime]="4000"
 
         [lang]="langSelection()"
-        [accessibilityOptions]="accOptions()"
+        [customAria]="accOptions()"
 
         (selected)="selectedItem.set($event)"
     >
@@ -50,7 +50,7 @@ export class TestHost {
     </ng-hero-carousel>`
 })
 export class TestHostAttr {
-    items = signal<CarouselItem[]>(carouselItemsMock);
+    items = signal<HeroCarouselItem[]>(carouselItemsMock);
     autoplay = signal<boolean>(false);
 
     arrows = signal<'up' | 'down' | 'auto'>('up');
@@ -58,7 +58,7 @@ export class TestHostAttr {
 
     langSelection = signal<'en' | 'es' | 'fr' | 'de' | 'it'>('es');
 
-    accOptions = signal<AccessibilityOptions | null>(accessibilityOptionsMock);
+    accOptions = signal<HeroCarouselCustomAria | null>(accessibilityOptionsMock);
 
     selectedItem = signal<number | null>(null);
 }
@@ -80,7 +80,7 @@ export class TestHostAttr {
         [autoplayResumeTime]="20"
 
         [lang]="langSelection()"
-        [accessibilityOptions]="accOptions()"
+        [customAria]="accOptions()"
 
         (selected)="selectedItem.set($event)"
     >
@@ -100,7 +100,7 @@ export class TestHostAttr {
     </ng-hero-carousel>`
 })
 export class TestHostAutoplay {
-    items = signal<CarouselItem[]>(carouselItemsMock);
+    items = signal<HeroCarouselItem[]>(carouselItemsMock);
     autoplay = signal<boolean>(true);
 
     arrows = signal<'up' | 'down' | 'auto'>('up');
@@ -108,7 +108,7 @@ export class TestHostAutoplay {
 
     langSelection = signal<'en' | 'es' | 'fr' | 'de' | 'it'>('es');
 
-    accOptions = signal<AccessibilityOptions | null>(null);
+    accOptions = signal<HeroCarouselCustomAria | null>(null);
 
     selectedItem = signal<number | null>(null);
 }

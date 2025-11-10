@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { NgHeroCarousel, CarouselItem, SlideForDirective, AccessibilityOptions} from 'ng-hero-carousel';
+import { NgHeroCarousel, HeroCarouselItem, SlideForDirective, HeroCarouselCustomAria} from 'ng-hero-carousel';
 import { heroCarouselMock } from './mock/hero-carousel.mock';
 
 @Component({
@@ -10,12 +10,12 @@ import { heroCarouselMock } from './mock/hero-carousel.mock';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PgHeroCarousel {
-  items = signal<CarouselItem[]>(heroCarouselMock);
+  items = signal<HeroCarouselItem[]>(heroCarouselMock);
 
   selectedItem = signal<number>(0);
 
 
-  accOpts = signal<AccessibilityOptions>({
+  accOpts = signal<HeroCarouselCustomAria>({
     autoplayPauseLabel: 'Pause carousel autoplay CHANGED',
     autoplayPlayLabel: 'Resume carousel autoplay CHANGED',
     hostAriaLabel: 'Main carousel CHANGED',

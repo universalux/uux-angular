@@ -12,16 +12,13 @@ It is designed to work with **signals** and Angular **zoneless**, providing a li
 
 ## Table of Contents
 
-* [Instalation](#installation)
-* [Basic Usage](#basic-usage)
-* [Advanced Usage](#advanced-usage)
-  - [Style attributes](#style-attributes)
-  - [Autoplay attributes](#autoplay-attributes)
-  - [Accessibility attributes](#accessibility-attributes)
-  - [Adding custom content: slide for](#adding-custom-content-slide-for)
-  - [Adding custom content: outerContent](#adding-custom-content-outerContent)
-  - [Custom styles](#custom-styles)
-* [Report or suggest something](#report-or-suggest-something)
+* [Installation](#installation)
+* [Overview](#overview)
+* [Functionality](#functionality)
+* [Inputs and Outputs](#inputs-and-outputs)
+* [Styling](#styling)
+* [Accessibility](#accessibility)
+* [Contribute or Report](#contribute-or-report)
 
 ## Installation
 
@@ -40,21 +37,45 @@ Angular 18:
 npm install ng-hero-carousel@v18-lts
 ```
 
-## Basic Usage
+## Overview
 
-The only **required input** for `ng-hero-carousel` is `[slides]`. All other inputs are optional and can be used to customize the carousel´s behavior and appearance.
-
-`slides` must be an array of objects with the type `CarouselItem[]`. You can import this type directly from the library:
+Using `ng-hero-carousel` is easy:
+- The only **required input** for `ng-hero-carousel` is `[slides]` where you can add backgrounds and some predefined content for each slide.
+- Configure its type, shape, behavior, and accessibility using inputs.
+- Style it with customizable CSS variables to match your design needs.
 
 ```ts
-import { CarouselItem } from 'ng-hero-carousel';
+import { NgHeroCarousel, HeroCarouselItem } from 'ng-hero-carousel';
+
+@Component({
+  imports: [NgHeroCarousel],
+  template: `
+    <ng-hero-carousel
+      [slides]="items()"
+    />
+  `
+})
+class App {
+  items = signal<HeroCarouselItem[]>([
+   { image_url: 'img1.jpg', title: 'First Slide', subtitle: '1st slide subtitle' },
+   { image_url: 'img2.jpg', title: 'Second Slide', subtitle: '2nd slide subtitle' },
+   ]);
+}
+```
+
+## Functionality
+
+`slides` must be an array of objects with the type `HeroCarouselItem[]`. You can import this type directly from the library:
+
+```ts
+import { HeroCarouselItem } from 'ng-hero-carousel';
 ```
 
 ### NgHeroCarousel Interface
 Here is the exact declaration of the CarouselItem type:
 
 ```ts
-export interface CarouselItem {
+export interface HeroCarouselItem {
   image_url?: string;
   backgroundColor?: string;
   title?: string;
@@ -69,166 +90,7 @@ export interface CarouselItem {
 | `title`           | `string`   | No       | Responsive title for the slide (<h2>)                  |
 | `subtitle`        | `string`   | No       | Responsive subtitle for the slide (<h3>)               |
 
-### Basic Usage example
-
-```ts
-import { NgHeroCarousel, CarouselItem } from 'ng-hero-carousel';
-
-@Component({
-  imports: [NgHeroCarousel],
-  template: `
-    <ng-hero-carousel
-      [slides]="items()"
-    />
-  `
-})
-class App {
-  items = signal<CarouselItem[]>([
-   { image_url: 'img1.jpg', title: 'First Slide', subtitle: '1st slide subtitle' },
-   { image_url: 'img2.jpg', title: 'Second Slide', subtitle: '2nd slide subtitle' },
-   ]);
-}
-```
-
-## Advanced Usage
-
-### Optional Attributes
-
-In addition to the "slides" attribute, there are a number of optional attributes to fully customize the carousel.
-
-```html
-<ng-hero-carousel
-    [slides]="items()"
-
-    [hasOverlay]="true"
-    [transitionTime]="800"
-    arrowsPlacement="auto"
-    [hasCounter]="true"
-    indicators="bars"
-
-    [hasAutoplay]="true"
-    [autoplayTime]="4000"
-    [autoplayResumeTime]="15000"
-
-    (selected)="selectedItem.set($event)"
-
-    lang="en"
-    accessibilityOptions="accOps()"
->
-```
-
-Below you will find a description of these optional attributes, determined by functionality.
-
-### Style attributes
-
-| Attribute          | Description                                                 | Type                          | Default   |
-| ------------------ | ----------------------------------------------------------- | ----------------------------- | --------- |
-| `[hasOverlay]`     | Add an overlay on top of the background image.              | boolean                       | `true`    |
-| `[transitionTime]` | Time in ms of the transition between slides                 | number                        | `800`     |
-| `arrowsPlacement`  | Position of arrows (Auto: up for desktop, down for mobile)  | `'up', 'down' or 'auto'`      | `'auto'`  |
-| `[hasCounter]`     | Add a counter (Ex: 1/5).                                    | boolean                       | `false`   |
-| `indicators`       | Select the type of indicator for the slides                 | `'bars', 'circles' or 'none'` | `'bars'`  |
-
-If you want to edit styles in more detail, see the styles section below.
-
-### Autoplay Attributes
-
-| Attribute              | Description                                                             | Type      | Default   |
-| ---------------------- | ----------------------------------------------------------------------- | --------- | --------- |
-| `[hasAutoplay]`        | Select whether you want autoplay or not                                 | boolean   | `true`    |
-| `[autoplayTime]`       | Time in ms in which the slide is automatically changed                  | number    | `7000`    |
-| `[autoplayResumeTime]` | Time in ms to resume autoplay when it stops (e.g. clicking on a slide)  | number    | `15000`   |
-
-### Current/selected slide output
-You can use `(selected)` output to get the current slide on screen. For example, if you want to build your own counter.
-
-### Accessibility Attributes
-
-This component includes five default languages. When you choose one using the "lang" attribute, all accessibility settings are configured in that language, so you don't have to do anything else.
-
-| Attribute              | Description                                              | Type                           | Default   |
-| ---------------------- | -------------------------------------------------------- | ------------------------------ | --------- |
-| `lang`                 | Select the language for accessibility                     | `'en', 'es', 'fr', 'de', 'it'` | `en`      |
-| `accessibilityOptions` | Set up your own custom aria attributes (more info below) | `AccessibilityOptions or null` | `null`    |
-
-*** We recommend using the lang attribute if you don't need any other languages than the ones provided by default. It's simple and compliant with WAI-ARIA standards. ***
-
-If you want to set up your own custom aria attributes, you should use the `AccessibilityOptions` interface.
-You can import it directly from the component:
-
-```ts
-import { AccessibilityOptions } from 'ng-hero-carousel';
-```
-
-Here is the exact declaration of the AccessibilityOptions type:
-
-```ts
-export interface AccessibilityOptions {
-  hostAriaLabel?: string;
-  autoplayPauseLabel?: string;
-  autoplayPlayLabel?: string;
-  prevBtnAriaLabel?: string;
-  nextBtnAriaLabel?: string;
-  slidesRegionAriaLabel?: string;
-  slidesRegionRoleDescription?: string;
-  slideAriaLabel?: (currentSlide: number, total: number) => string;
-  slideRoleDescription?: string;
-};
-```
-
-Here you can see a description of every field in `AccessibilityOptions` interface.
-Every field is type `string` (except slideAriaLabel) and `non-required`
-
-| Property                     | Description                                                                                       |
-|----------------------------- | ------------------------------------------------------------------------------------------------- |
-| `hostAriaLabel`              | aria-label for the host component. Usefull to indicate the user that has entered into a carousel |
-| `autoplayPauseLabel`         | aria-label for autoplay button when autoplay is playing (described action is to pause it)         |
-| `autoplayPlayLabel`          | aria-label for autoplay button when autoplay is paused (described action is to resume it)         |
-| `prevBtnAriaLabel`           | aria-label for the arrow button that goes to prev slide                                           |
-| `nextBtnAriaLabel`           | aria-label for the arrow button that goes to next slide                                           |
-| `slidesRegionAriaLabel`      | aria-label for the container of all slides                                                        |
-| `slidesRegionRoleDescription` | aria-roledescription for the container of all slides (role is 'group')                            |
-| `slideAriaLabel`             | aria-label for each slide. Is a function that returns the text for each slide (see example below) |
-| `slideRoleDescription`       | aria-roledescription for individual slide (role is 'group')                                       |
-
-
-IMPORTANT:
-- All fields are optional, so you can customize only the ones you want. Fields that have not been entered in "AccessibilityOptions" will retain their values ​​based on the selected "lang" (remember, default lang is "en")
-
-Here you have an example of use:
-
-```ts
-import { NgHeroCarousel, CarouselItem, AccessibilityOptions } from 'ng-hero-carousel';
-
-@Component({
-  imports: [NgHeroCarousel],
-  template: `
-    <ng-hero-carousel
-      [slides]="items()"
-      [accessibilityOptions]="accOpts()"
-    />
-  `
-})
-class App {
-  items = signal<CarouselItem[]>([
-   { image_url: 'img1.jpg', title: 'First Slide', subtitle: '1st slide subtitle' },
-   { image_url: 'img2.jpg', title: 'Second Slide', subtitle: '2nd slide subtitle' },
-   ]);
-
-  accOpts = signal<AccessibilityOptions>({
-    hostAriaLabel: 'Main carousel CHANGED',
-    autoplayPauseLabel: 'Pause carousel autoplay CHANGED',
-    autoplayPlayLabel: 'Resume carousel autoplay CHANGED',
-    prevBtnAriaLabel: 'Go to previous slide CHANGED',
-    nextBtnAriaLabel: 'Go to next slide CHANGED',
-    slidesRegionAriaLabel: 'Wide carousel CHANGED',
-    slidesRegionRoleDescription: 'Carousel CHANGED',
-    slideAriaLabel: (currentSlide: number, total: number) =>
-        `CHANGED - Slide ${currentSlide} of ${total}`,
-    slideRoleDescription: 'CHANGED - slide',
-  });
-}
-```
+> It´s important to know that you don´t have to add all elements. If you want, for exaple, only background and a title in one slide, you can set just `image_url` and `title`.
 
 ### Adding custom content: slide for
 
@@ -301,7 +163,62 @@ class App {
 As you can see in the example above, you just have to add `<ng-template #outerContent>` and use the template reference `#outerContent`.
 **IMPORTANT**: You must set the content inside `<ng-template #outerContent>` as `position: absolute` and place it where you want.
 
-### Custom styles
+## Inputs and Outputs
+
+There are several inputs/outputs that allow you to customize ng-hero-carousel component.
+
+Here is an example:
+
+```html
+<ng-hero-carousel
+    [slides]="items()"
+
+    [hasOverlay]="true"
+    [transitionTime]="800"
+    arrowsPlacement="auto"
+    [hasCounter]="true"
+    indicators="bars"
+
+    [hasAutoplay]="true"
+    [autoplayTime]="4000"
+    [autoplayResumeTime]="15000"
+
+    (selected)="selectedItem.set($event)"
+
+    lang="en"
+    accessibilityOptions="accOps()"
+>
+```
+
+### Style Inputs
+
+| Attribute          | Description                                                 | Type                          | Default   |
+| ------------------ | ----------------------------------------------------------- | ----------------------------- | --------- |
+| `[hasOverlay]`     | Add an overlay on top of the background image.              | boolean                       | `true`    |
+| `[transitionTime]` | Time in ms of the transition between slides                 | number                        | `800`     |
+| `arrowsPlacement`  | Position of arrows (Auto: up for desktop, down for mobile)  | `'up', 'down' or 'auto'`      | `'auto'`  |
+| `[hasCounter]`     | Add a counter (Ex: 1/5).                                    | boolean                       | `false`   |
+| `indicators`       | Select the type of indicator for the slides                 | `'bars', 'circles' or 'none'` | `'bars'`  |
+
+### Autoplay inputs
+
+| Attribute              | Description                                                             | Type      | Default   |
+| ---------------------- | ----------------------------------------------------------------------- | --------- | --------- |
+| `[hasAutoplay]`        | Select whether you want autoplay or not                                 | boolean   | `true`    |
+| `[autoplayTime]`       | Time in ms in which the slide is automatically changed                  | number    | `7000`    |
+| `[autoplayResumeTime]` | Time in ms to resume autoplay when it stops (e.g. clicking on a slide)  | number    | `15000`   |
+
+### Current/selected slide output
+You can use `(selected)` output to get the current slide on screen. For example, if you want to build your own counter.
+
+### Accessibility inputs
+
+| Attribute              | Description                                              | Type                           | Default   |
+| ---------------------- | -------------------------------------------------------- | ------------------------------ | --------- |
+| `lang`                 | Select the language for accessibility                     | `'en', 'es', 'fr', 'de', 'it'` | `en`      |
+| `customAria` | Set up your own custom aria attributes (more info below) | `HeroCarouselCustomAria or null` | `null`    |
+
+## Styling
 
 You can customize styles by using different **variables in CSS**.
 
@@ -336,7 +253,90 @@ ng-hero-carousel{
 }
 ```
 
-## Report or suggest something
+## Accessibility
+
+This component includes five default languages. When you choose one using the `lang` attribute, all accessibility settings are configured in that language, so you don't have to do anything else.
+
+*** We recommend using the lang attribute if you don't need any other languages than the ones provided by default. It's simple and compliant with WAI-ARIA standards. ***
+
+If you want to set up your own custom aria attributes, you should use the `HeroCarouselCustomAria` interface.
+You can import it directly from the component:
+
+```ts
+import { HeroCarouselCustomAria } from 'ng-hero-carousel';
+```
+
+Here is the exact declaration of the HeroCarouselCustomAria type:
+
+```ts
+export interface HeroCarouselCustomAria {
+  hostAriaLabel?: string;
+  autoplayPauseLabel?: string;
+  autoplayPlayLabel?: string;
+  prevBtnAriaLabel?: string;
+  nextBtnAriaLabel?: string;
+  slidesRegionAriaLabel?: string;
+  slidesRegionRoleDescription?: string;
+  slideAriaLabel?: (currentSlide: number, total: number) => string;
+  slideRoleDescription?: string;
+};
+```
+
+Here you can see a description of every field in `HeroCarouselCustomAria` interface.
+Every field is type `string` (except slideAriaLabel) and `non-required`
+
+| Property                     | Description                                                                                       |
+|----------------------------- | ------------------------------------------------------------------------------------------------- |
+| `hostAriaLabel`              | aria-label for the host component. Usefull to indicate the user that has entered into a carousel |
+| `autoplayPauseLabel`         | aria-label for autoplay button when autoplay is playing (described action is to pause it)         |
+| `autoplayPlayLabel`          | aria-label for autoplay button when autoplay is paused (described action is to resume it)         |
+| `prevBtnAriaLabel`           | aria-label for the arrow button that goes to prev slide                                           |
+| `nextBtnAriaLabel`           | aria-label for the arrow button that goes to next slide                                           |
+| `slidesRegionAriaLabel`      | aria-label for the container of all slides                                                        |
+| `slidesRegionRoleDescription` | aria-roledescription for the container of all slides (role is 'group')                            |
+| `slideAriaLabel`             | aria-label for each slide. Is a function that returns the text for each slide (see example below) |
+| `slideRoleDescription`       | aria-roledescription for individual slide (role is 'group')                                       |
+
+
+IMPORTANT:
+- All fields are optional, so you can customize only the ones you want. Fields that have not been entered in "AccessibilityOptions" will retain their values ​​based on the selected "lang" (remember, default lang is "en")
+
+Here you have an example of use:
+
+```ts
+import { NgHeroCarousel, HeroCarouselItem, HeroCarouselCustomAria } from 'ng-hero-carousel';
+
+@Component({
+  imports: [NgHeroCarousel],
+  template: `
+    <ng-hero-carousel
+      [slides]="items()"
+      [customAria]="accOpts()"
+    />
+  `
+})
+class App {
+  items = signal<HeroCarouselItem[]>([
+   { image_url: 'img1.jpg', title: 'First Slide', subtitle: '1st slide subtitle' },
+   { image_url: 'img2.jpg', title: 'Second Slide', subtitle: '2nd slide subtitle' },
+   ]);
+
+  accOpts = signal<HeroCarouselCustomAria>({
+    hostAriaLabel: 'Main carousel CHANGED',
+    autoplayPauseLabel: 'Pause carousel autoplay CHANGED',
+    autoplayPlayLabel: 'Resume carousel autoplay CHANGED',
+    prevBtnAriaLabel: 'Go to previous slide CHANGED',
+    nextBtnAriaLabel: 'Go to next slide CHANGED',
+    slidesRegionAriaLabel: 'Wide carousel CHANGED',
+    slidesRegionRoleDescription: 'Carousel CHANGED',
+    slideAriaLabel: (currentSlide: number, total: number) =>
+        `CHANGED - Slide ${currentSlide} of ${total}`,
+    slideRoleDescription: 'CHANGED - slide',
+  });
+}
+```
+
+## Contribute or report
 
 Choose the form that best fits your case:
 
@@ -345,7 +345,6 @@ Choose the form that best fits your case:
 - 🧩 [Suggest a new component](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=new_component_request.yml)
 
 👉 Or go to the [form selector](https://github.com/universalux/uux-hub/issues/new/choose).
-
 
 ## License
 MIT

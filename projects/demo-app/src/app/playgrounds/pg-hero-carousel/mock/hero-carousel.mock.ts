@@ -1,11 +1,11 @@
-import { CarouselItem } from "ng-hero-carousel"
+import { HeroCarouselItem } from "ng-hero-carousel"
 
-export const heroCarouselMock : CarouselItem[] = [
+export const heroCarouselMock : HeroCarouselItem[] = [
     {
         // image_url: 'https://image.tmdb.org/t/p/w1280/9BBTo63ANSmhC4e6r62OJFuK2GL.jpg',
         image_url: 'https://cdn.pixabay.com/photo/2016/06/30/20/39/horse-1489825_1280.jpg',
         backgroundColor: 'linear-gradient(127deg, #30a2fe 20%, #824dfe 100%)',
-        title: 'ngx-hero-carousel',
+        title: 'ng-hero-carousel',
         // subtitle: 'by Universal UX'
         // subtitle: 'Click on this image to watch a video example'
     },

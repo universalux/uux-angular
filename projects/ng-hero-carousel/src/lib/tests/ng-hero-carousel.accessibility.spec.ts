@@ -197,7 +197,7 @@ describe('NgxFullCarousel - Languages Acc Options', () => {
   });
 
 
-  it('should have custom aria attributes by accesibilityOptions', () => {
+  it('should have custom aria attributes by customAria', () => {
     const translations = accessibilityOptionsMock;
 
     expect(elements.carousel.nativeElement.getAttribute('aria-label')).toBe(translations.hostAriaLabel!);

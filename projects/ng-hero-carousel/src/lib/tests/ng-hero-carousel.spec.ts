@@ -87,7 +87,7 @@ describe('NgHeroCarousel - General', () => {
     const autoplayTimeInput = elements.carouselInstance.autoplayTime();
     const autoplayResumeTimeInput = elements.carouselInstance.autoplayResumeTime();
     const langInput = elements.carouselInstance.lang();
-    const accessibilityOptionsInput = elements.carouselInstance.accessibilityOptions();
+    const customAriaInput = elements.carouselInstance.customAria();
 
     expect(hasOverlayInput).toBe(true);
     expect(transitionTimeInput).toBe(800);
@@ -98,7 +98,7 @@ describe('NgHeroCarousel - General', () => {
     expect(autoplayTimeInput).toBe(7000);
     expect(autoplayResumeTimeInput).toBe(15000);
     expect(langInput).toBe('en');
-    expect(accessibilityOptionsInput).toBe(null);
+    expect(customAriaInput).toBe(null);
 
   });
 
