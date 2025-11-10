@@ -298,6 +298,32 @@
           }
         }
       }
+    },
+    "ng-content-card": {
+      "projectType": "library",
+      "root": "projects/ng-content-card",
+      "sourceRoot": "projects/ng-content-card/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-content-card/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-content-card/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/ng-content-card/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "schematics": {
