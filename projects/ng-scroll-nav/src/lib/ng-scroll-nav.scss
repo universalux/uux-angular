@@ -1,0 +1,65 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:host{
+  display: block;
+  width: 100%;
+  background: var(--scroll-nav-bg, inherit);
+  color: var(--scroll-nav-color, inherit);
+}
+
+.scrollNav{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.scrollNav__arrowButton{
+  min-width: 35px;
+  background: var(--scroll-nav-bg, inherit);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--scroll-nav-color, inherit);
+}
+
+.scrollNav__arrowIcon svg{
+  fill: var(--scroll-nav-color, currentColor);
+}
+
+.scrollNav__contentContainer{
+  width: 100%;
+  margin: 0 10px;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: var(--scroll-nav-justify-content, start);
+}
+
+.scrollNav__contentContainer.overflow{
+  justify-content: start !important;
+}
+
+.scrollNav__content{
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  gap: var(--scroll-nav-gap, 0);
+}
+
+.scrollNav__content.overflow{
+
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-snap-type: x mandatory;
+}
+
+
+.scrollNav__content::-webkit-scrollbar {
+  display: none;
+}
