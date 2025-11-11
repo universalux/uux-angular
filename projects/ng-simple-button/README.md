@@ -17,6 +17,7 @@ It is designed to work with **signals** and Angular **zoneless**, providing a li
 * [Functionality](#functionality)
 * [Inputs and Outputs](#inputs-and-outputs)
 * [Styling](#styling)
+* [Accessibility](#accessibility)
 * [Contribute or Report](#contribute-or-report)
 
 ## Installation
@@ -185,6 +186,10 @@ ng-simple-button.myClass {
   --simple-button-outline: 2px solid orange;
 }
 ```
+
+## Accessibility
+
+You can configure the accessibility of the component using the accessibility inputs explained in the inputs/outputs section: [Accessibility Inputs](#accessibility-inputs)
 
 ## Contribute or report
 

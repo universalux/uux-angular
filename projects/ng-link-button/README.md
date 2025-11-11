@@ -17,6 +17,7 @@ It is designed to work with **signals** and Angular **zoneless**, providing a li
 * [Functionality](#functionality)
 * [Inputs and Outputs](#inputs-and-outputs)
 * [Styling](#styling)
+* [Accessibility](#accessibility)
 * [Contribute or Report](#contribute-or-report)
 
 ## Installation
@@ -75,6 +76,8 @@ export class App {
 As it was mencioned below, you can set navigation route in two ways `href` (ideally for external links) or `routerLink` (for page routes).
 
 ### Router Link Mode
+
+> IMPORTANT: When using routerLink mode, the button itself will manage RouterLink dependencies. You must ensure that you do not import RouterLink into the component that uses ng-link-button. Doing so won't break functionality, but it may cause unexpected effects.
 
 Here’s an example showing all available properties in routerLink mode.
 
@@ -247,6 +250,10 @@ ng-link-button.myClass {
   --link-button-outline: 2px solid orange;
 }
 ```
+
+## Accessibility
+
+You can configure the accessibility of the component using the accessibility inputs explained in the inputs/outputs section: [Accessibility Inputs](#accessibility-inputs)
 
 ## Contribute or report
 

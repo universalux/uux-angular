@@ -41,7 +41,7 @@
 }
 
 .simpleButton:focus-visible{
-  outline: 2px solid var(--simple-button-focus-ring, var(--simple-button-color, currentColor));
+  outline: var(--link-button-focus-ring, var(--link-button-hover-stroke, 2px solid currentColor));
   outline-offset: 2px;
 }
 
