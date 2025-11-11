@@ -92,31 +92,6 @@
         }
       }
     },
-    "ng-menu-button": {
-      "projectType": "library",
-      "root": "projects/ng-menu-button",
-      "sourceRoot": "projects/ng-menu-button/src",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:ng-packagr",
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/ng-menu-button/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/ng-menu-button/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "tsConfig": "projects/ng-menu-button/tsconfig.spec.json"
-          }
-        }
-      }
-    },
     "ng-theme-toggle": {
       "projectType": "library",
       "root": "projects/ng-theme-toggle",
@@ -191,32 +166,6 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "projects/ng-hero-carousel/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "ng-image-card": {
-      "projectType": "library",
-      "root": "projects/ng-image-card",
-      "sourceRoot": "projects/ng-image-card/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:ng-packagr",
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/ng-image-card/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/ng-image-card/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "tsConfig": "projects/ng-image-card/tsconfig.spec.json"
           }
         }
       }

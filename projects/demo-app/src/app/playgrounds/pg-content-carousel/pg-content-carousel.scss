@@ -82,24 +82,24 @@ ng-content-carousel a{
   // width: 200px;
 }
 
-ng-image-card {
+ng-content-card {
   width: 100%;
   // max-width: 300px;
   min-width: 280px;
 }
 
-ng-image-card [card-header]{
+ng-content-card [card-header]{
   display: flex;
   align-items: center;
   column-gap: 1rem;
 }
 
-ng-image-card [card-header] img{
+ng-content-card [card-header] img{
   width: 50px;
   border-radius: 50%;
 }
 
-ng-image-card [card-footer]{
+ng-content-card [card-footer]{
   display: flex; column-gap: .5rem; justify-content: end;
 }
 
