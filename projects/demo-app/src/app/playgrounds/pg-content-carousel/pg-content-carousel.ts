@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgContentCarousel, ContentCarouselItemDirective, ContentCarouselCustomAria } from 'ng-content-carousel';
-import { NgImageCard } from 'ng-image-card';
+import { NgContentCard } from 'ng-content-card';
 
 @Component({
   selector: 'pg-content-carousel',
   imports: [
     NgContentCarousel,
-    NgImageCard,
+    NgContentCard,
     ContentCarouselItemDirective
   ],
   templateUrl: './pg-content-carousel.html',

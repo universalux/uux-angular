@@ -7,9 +7,6 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "paths": {
-      "menu-button": [
-        "./dist/menu-button"
-      ],
       "ng-content-card": [
         "./dist/ng-content-card"
       ],
@@ -19,14 +16,8 @@
       "ng-hero-carousel": [
         "./dist/ng-hero-carousel"
       ],
-      "ng-image-card": [
-        "./dist/ng-image-card"
-      ],
       "ng-link-button": [
         "./dist/ng-link-button"
-      ],
-      "ng-menu-button": [
-        "./dist/ng-menu-button"
       ],
       "ng-menu-toggle": [
         "./dist/ng-menu-toggle"
@@ -63,12 +54,6 @@
       "path": "./projects/demo-app/tsconfig.spec.json"
     },
     {
-      "path": "./projects/ng-menu-button/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/ng-menu-button/tsconfig.spec.json"
-    },
-    {
       "path": "./projects/ng-theme-toggle/tsconfig.lib.json"
     },
     {
@@ -85,12 +70,6 @@
     },
     {
       "path": "./projects/ng-hero-carousel/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/ng-image-card/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/ng-image-card/tsconfig.spec.json"
     },
     {
       "path": "./projects/ng-content-carousel/tsconfig.lib.json"
