@@ -87,8 +87,8 @@ export interface HeroCarouselItem {
 |------------------ | ---------- | -------- | ------------------------------------------------------ |
 | `image_url`       | `string`   | No       | Image URL for the slide                                |
 | `backgroundColor` | `string`   | No       | Background color or gradient for the slide, if needed  |
-| `title`           | `string`   | No       | Responsive title for the slide (<h2>)                  |
-| `subtitle`        | `string`   | No       | Responsive subtitle for the slide (<h3>)               |
+| `title`           | `string`   | No       | Responsive title for the slide (`<h2>`)                |
+| `subtitle`        | `string`   | No       | Responsive subtitle for the slide (`<h3>`)             |
 
 > It´s important to know that you don´t have to add all elements. If you want, for exaple, only background and a title in one slide, you can set just `image_url` and `title`.
 

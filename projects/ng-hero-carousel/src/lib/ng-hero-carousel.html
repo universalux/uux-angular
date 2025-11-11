@@ -129,7 +129,7 @@
                     </hgroup>
                 }
 
-                <!-- "isBrowser only needed in angular 18 and 19" -->
+                <!-- "isBrowser &&"" only needed in angular 18 and 19 -->
                 @if(getChildren($index)){
                     <div class="slideCustomContent" slideCustomContent [inert]="currentSlide() !== $index">
                         <ng-container [ngTemplateOutlet]="getChildren($index)"></ng-container>
