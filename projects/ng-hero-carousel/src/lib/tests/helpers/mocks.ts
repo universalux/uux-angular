@@ -1,6 +1,6 @@
-import { AccessibilityOptions, CarouselItem } from "../../ng-hero-carousel.types"
+import { HeroCarouselCustomAria, HeroCarouselItem } from "../../ng-hero-carousel.types"
 
-export const carouselItemsMock: CarouselItem[] = [
+export const carouselItemsMock: HeroCarouselItem[] = [
     {
         image_url: 'https://image.tmdb.org/t/p/w1280/9BBTo63ANSmhC4e6r62OJFuK2GL.jpg',
         backgroundColor: 'red',
@@ -15,7 +15,7 @@ export const carouselItemsMock: CarouselItem[] = [
     }
 ];
 
-export const accessibilityOptionsMock: AccessibilityOptions = {
+export const accessibilityOptionsMock: HeroCarouselCustomAria = {
     autoplayPauseLabel: 'Pause carousel autoplay CHANGED',
     autoplayPlayLabel: 'Resume carousel autoplay CHANGED',
     hostAriaLabel: 'Main carousel CHANGED',

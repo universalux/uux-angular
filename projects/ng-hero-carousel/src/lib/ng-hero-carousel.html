@@ -43,7 +43,7 @@
 
 <!-- READABLE CONTENT FOR EACH SLIDE -->
 <div class="sr-only" aria-live="polite" aria-atomic="true" role="status">
-    {{liveRegionText()}}
+    {{visibleRangeMessage()}}
 </div>
 
 
@@ -129,7 +129,7 @@
                     </hgroup>
                 }
 
-                <!-- "isBrowser only needed in angular 18 and 19" -->
+                <!-- "isBrowser &&"" only needed in angular 18 and 19 -->
                 @if(getChildren($index)){
                     <div class="slideCustomContent" slideCustomContent [inert]="currentSlide() !== $index">
                         <ng-container [ngTemplateOutlet]="getChildren($index)"></ng-container>
