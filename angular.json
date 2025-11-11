@@ -273,6 +273,32 @@
           }
         }
       }
+    },
+    "ng-scroll-nav": {
+      "projectType": "library",
+      "root": "projects/ng-scroll-nav",
+      "sourceRoot": "projects/ng-scroll-nav/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-scroll-nav/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-scroll-nav/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/ng-scroll-nav/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "schematics": {
