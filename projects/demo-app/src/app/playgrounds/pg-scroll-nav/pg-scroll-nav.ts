@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { NgScrollNav, ScrollNavCustomAria } from 'ng-scroll-nav';
-import { NgLinkButton,  } from 'ng-link-button';
+import { NgLinkButton } from 'ng-link-button';
 
 @Component({
   selector: 'pg-scroll-nav',

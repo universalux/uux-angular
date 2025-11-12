@@ -21,6 +21,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    margin-bottom: 2rem;
 }
 
 .titleContainer hgroup h1{
@@ -45,14 +47,13 @@
 }
 
 .container{
-    width: 600px;
-    margin-top: 1rem;
+    width: 500px;
+    // margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     column-gap: 2rem;
     row-gap: 1.5rem;
-
 }
 
 .container--full{
