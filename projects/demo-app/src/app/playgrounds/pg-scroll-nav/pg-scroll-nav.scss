@@ -47,7 +47,7 @@
 }
 
 .container{
-    width: 500px;
+    width: 475px;
     // margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
@@ -71,11 +71,15 @@ ng-scroll-nav{
   // --scroll-nav-color: red;
 }
 
+ng-scroll-nav{
+  --scroll-nav-gap: .5rem;
+}
+
 ng-link-button{
   font-weight: 700;
   text-wrap: nowrap;
-  --link-button-bg: transparent;
-  --link-button-color: white;
-  --link-button-hover-bg: black;
-  --link-button-hover-color: white;
+  // --link-button-bg: transparent;
+  // --link-button-color: white;
+  // --link-button-hover-bg: black;
+  // --link-button-hover-color: white;
 }

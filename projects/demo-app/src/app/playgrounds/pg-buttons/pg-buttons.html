@@ -1,4 +1,4 @@
-<div class="titleContainer">
+<!-- <div class="titleContainer">
   <hgroup>
     <h1>ng-simple-button</h1>
     <div>
@@ -8,25 +8,23 @@
 
   </hgroup>
   <img src="angular_white.png" class="angularLogo">
-</div>
+</div> -->
 <div class="container">
 
-  <ng-link-button type="solid" shape="square" hover="tone" direction="row" ariaCurrent="step">
+  <ng-link-button type="solid" [square]="true" hover="tone" direction="row" ariaCurrent="step">
     <span>Solid Square</span>
-  </ng-link-button>
-
-  <!-- <ng-link-button class="myClass" type="solid" shape="square" hover="tone" direction="row" ariaCurrent="step">
-    <span>Solid</span>
-  </ng-link-button> -->
-
-  <ng-link-button type="outline" shape="square" hover="scale" direction="row" ariaCurrent="step">
-    <span>Outline Square</span>
   </ng-link-button>
 
   <ng-link-button type="minimal" shape="square" hover="stroke" direction="row" ariaCurrent="step">
     <span>Minimal</span>
   </ng-link-button>
 
+  <ng-link-button type="outline" [square]="true" hover="scale" direction="row" ariaCurrent="step">
+    <span>Outline Square</span>
+  </ng-link-button>
+</div>
+
+<div class="container">
   <ng-link-button type="outline" shape="rounded" hover="tone" direction="row" ariaCurrent="step">
     <span>Outline Rounded</span>
   </ng-link-button>
@@ -36,7 +34,7 @@
   </ng-link-button>
 
   <ng-link-button routerLink="/test" [queryParams]="{ category: 'books', sort: 'price' }" fragment="hola" type="solid"
-    shape="square" hover="tone" direction="row" ariaCurrent="step">
+    [square]="true" hover="tone" direction="row" ariaCurrent="step">
     <svg role="img" viewBox="0 0 24 24" height="23px" xmlns="http://www.w3.org/2000/svg" class="rightHeader__linkIcon">
       <title>npm</title>
       <path
@@ -45,7 +43,7 @@
     <span>Icon + text</span>
   </ng-link-button>
 
-  <ng-link-button type="solid" shape="rounded" hover="tone" direction="row">
+  <ng-link-button type="solid" hover="tone" direction="row">
     <span>Text + Icon</span>
     <svg role="img" viewBox="0 0 24 24" height="23px" xmlns="http://www.w3.org/2000/svg" class="rightHeader__linkIcon">
       <title>npm</title>
@@ -54,11 +52,11 @@
     </svg>
   </ng-link-button>
 </div>
-<h4>100% Customizable</h4>
+<!-- <h4>100% Customizable</h4> -->
 
 <!-- ------------------- SIMPLE BUTTON --------------------- -->
 
-<div style="display: flex; gap: 2rem; width: 80%;">
+<!-- <div style="display: flex; gap: 2rem; width: 80%;">
 <ng-simple-button (onClick)="testClick($event)" type="solid" [square]="true" hover="stroke" direction="column" >
   <svg role="img" viewBox="0 0 24 24" height="23px" xmlns="http://www.w3.org/2000/svg" class="rightHeader__linkIcon">
     <title>npm</title>
@@ -77,4 +75,4 @@
 </ng-simple-button>
 </div>
 
-<span>{{count()}}</span>
+<span>{{count()}}</span> -->
