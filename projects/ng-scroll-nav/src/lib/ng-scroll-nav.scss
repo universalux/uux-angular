@@ -30,6 +30,8 @@
 
 .scrollNav__arrowIcon svg{
   fill: var(--scroll-nav-color, currentColor);
+  width: var(--scroll-nav-arrow-size, 1.4rem);
+  height: var(--scroll-nav-arrow-size, 1.4rem);
 }
 
 .scrollNav__contentContainer{
