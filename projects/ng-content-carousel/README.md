@@ -66,7 +66,7 @@ import { NgContentCarousel, ContentCarouselItemDirective } from 'ng-content-caro
 
 ## Functionality
 
-As shown in the example below, you just have the import the `ContentCarouselItemDirective` on your component and use `contentCarouselItem` on each container (this container can be any label: `<a>, <div>, <section>`... ).
+As shown in the example below, you just have to import the `ContentCarouselItemDirective` on your component and use `contentCarouselItem` on each container (this container can be any label: `<a>, <div>, <section>`... ).
 
 > IMPORTANT: All elements should have the same `width` so the carousel mechanism works well.
 
