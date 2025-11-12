@@ -5,7 +5,7 @@
 >
   @if (hasOverflow()) {
   <button
-    class="scrollNav__arrowButton"
+    class="scrollNav__arrowButton scrollNav__arrowButton--prev"
     (click)="scrollPrev()"
     tabindex="-1"
     [attr.aria-label]="acc().prevBtnAriaLabel"
@@ -39,7 +39,7 @@
 
   @if (hasOverflow()) {
   <button
-    class="scrollNav__arrowButton"
+    class="scrollNav__arrowButton scrollNav__arrowButton--next"
     (click)="scrollNext()"
     tabindex="-1"
     [attr.aria-label]="acc().nextBtnAriaLabel"
