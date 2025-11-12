@@ -10,7 +10,7 @@ import { NgThemeToggle, ThemeToggleCustomAria, ThemeToggleLangs } from 'ng-theme
 })
 export class PgThemeToggle {
 
-  isDark1 = signal<boolean>(true);
+  isDark1 = signal<boolean>(false);
   isDark2 = signal<boolean>(true);
   isDark3 = signal<boolean>(true);
 
