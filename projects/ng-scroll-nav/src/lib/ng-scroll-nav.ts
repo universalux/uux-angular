@@ -1,7 +1,8 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, effect, ElementRef, HostListener, input, OnInit, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, effect, ElementRef, HostListener, inject, input, OnInit, PLATFORM_ID, signal, ViewChild } from '@angular/core';
 import { debounceTime, fromEvent } from 'rxjs';
 import { ScrollNavCustomAria, ScrollNavLangs } from './ng-scroll-nav.types';
 import { SCROLL_NAV_LANG } from './accessibility/scroll-nav.lang';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   standalone: true,
@@ -12,6 +13,8 @@ import { SCROLL_NAV_LANG } from './accessibility/scroll-nav.lang';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgScrollNav implements AfterViewInit, OnInit {
+
+  isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   // Behavior inputs
   scrollStep = input<number>(150);
@@ -60,11 +63,14 @@ export class NgScrollNav implements AfterViewInit, OnInit {
   ngAfterViewInit(): void {
     this.calculateOverflow();
 
-    fromEvent(window, 'resize')
-    .pipe(debounceTime(100))
-    .subscribe(() => {
-      this.calculateOverflow();
-    });
+    if(this.isBrowser){
+      fromEvent(window, 'resize')
+      .pipe(debounceTime(100))
+      .subscribe(() => {
+        this.calculateOverflow();
+      });
+    };
+
   }
 
   ngOnInit(): void {

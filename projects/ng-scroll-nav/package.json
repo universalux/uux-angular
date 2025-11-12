@@ -1,12 +1,52 @@
 {
   "name": "ng-scroll-nav",
-  "version": "0.0.1",
+  "version": "20.0.0",
+  "description": "A responsive, customizable and accessible Angular scroll nav.",
+    "keywords": [
+    "angular",
+    "angular-component",
+    "ngx",
+    "ng",
+    "nav",
+    "angular-nav",
+    "scrollable-nav",
+    "custom-nav",
+    "customizable-nav",
+    "responsive",
+    "ui-component",
+    "signals",
+    "zoneless",
+    "standalone",
+    "ssr",
+    "typescript",
+    "accessibility",
+    "angular-18",
+    "angular-19",
+    "angular-20"
+  ],
+  "author": "Universal UX <aldaydev+uux@gmail.com>",
+  "contributors": [
+    "Rafa Alday <aldaydev@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/universalux/uux-angular"
+  },
+  "homepage": "https://github.com/universalux/uux-angular/tree/main/projects/ng-scroll-nav#readme",
+  "bugs": {
+    "url": "https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=angular_bug_report.yml",
+    "email": "aldaydev+uux@gmail.com"
+  },
+  "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^20.3.0",
-    "@angular/core": "^20.3.0"
+    "@angular/common": "^20.0.0",
+    "@angular/core": "^20.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "files": [
+    "**/*"
+  ]
 }
