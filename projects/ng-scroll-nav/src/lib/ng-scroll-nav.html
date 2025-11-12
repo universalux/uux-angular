@@ -1,3 +1,58 @@
-<nav>
-  <h2>NG SCROLL NAV</h2>
+<nav
+  #nav
+  class="scrollNav"
+  [attr.aria-label]="acc().navAriaLabel"
+>
+  @if (hasOverflow()) {
+  <button
+    class="scrollNav__arrowButton"
+    (click)="scrollPrev()"
+    tabindex="-1"
+    [attr.aria-label]="acc().prevBtnAriaLabel"
+  >
+      <div class="scrollNav__arrowIcon">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true" focusable="false"
+          width="1.5rem" height="1.5rem"
+          viewBox="320 -720 296 480"
+        >
+          <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/>
+        </svg>
+      </div>
+  </button>
+  }
+
+  <div
+    #contentContainer
+    class="scrollNav__contentContainer"
+    [class.overflow]="hasOverflow()"
+  >
+    <div
+      #content
+      class="scrollNav__content" [class.overflow]="hasOverflow()"
+      role="group"
+      [attr.aria-label]="acc().linksGroupAriaLabel"
+    >
+      <ng-content/>
+    </div>
+  </div>
+
+  @if (hasOverflow()) {
+  <button
+    class="scrollNav__arrowButton"
+    (click)="scrollNext()"
+    tabindex="-1"
+    [attr.aria-label]="acc().nextBtnAriaLabel"
+  >
+      <div class="scrollNav__arrowIcon" >
+        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"
+          width="1.5rem" height="1.5rem"
+          viewBox="320 -720 296 480"
+        >
+          <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
+        </svg>
+      </div>
+
+    </button>
+  }
 </nav>

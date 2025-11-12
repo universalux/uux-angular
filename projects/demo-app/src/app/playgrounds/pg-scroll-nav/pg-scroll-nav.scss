@@ -1,0 +1,80 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100dvh;
+    height: 100%;
+    background: linear-gradient(127deg, #30a2fe 20%, #824dfe 100%);
+
+}
+
+
+.titleContainer{
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleContainer hgroup h1{
+    font-size: 1.8rem;
+    margin-bottom: .35rem;
+}
+
+.titleContainer hgroup div{
+
+  display: flex;
+  column-gap: .3rem;
+  align-items: end;
+}
+
+.uuxLogo{
+  width: 125px;
+  margin-bottom: .1rem;
+}
+
+.angularLogo{
+    max-width: 52px;
+}
+
+.container{
+    width: 600px;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+
+}
+
+.container--full{
+  width: 100%;
+
+}
+
+ng-scroll-nav{
+  // --scroll-nav-arrow-size: 1rem;
+}
+
+.container--full ng-scroll-nav{
+  --scroll-nav-justify-content: center;
+  // --scroll-nav-bg: red;
+  // --scroll-nav-color: red;
+}
+
+ng-link-button{
+  font-weight: 700;
+  text-wrap: nowrap;
+  --link-button-bg: transparent;
+  --link-button-color: white;
+  --link-button-hover-bg: black;
+  --link-button-hover-color: white;
+}
