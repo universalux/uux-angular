@@ -37,6 +37,10 @@
 
   outline: 2px solid transparent;
 
+  transition: none;
+}
+
+.simpleButton.ready{
   transition: all var(--simple-button-transition-duration, .3s) ease-in-out;
 }
 
