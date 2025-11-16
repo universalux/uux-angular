@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, inject, input, output, PLATFORM_ID } from '@angular/core';
 
 @Component({
   standalone: true,
@@ -8,7 +9,7 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
   styleUrl: './ng-simple-button.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgSimpleButton {
+export class NgSimpleButton implements AfterViewInit{
 
   // ----- ACTION INPUT
   onClick = output<MouseEvent>();
@@ -28,5 +29,17 @@ export class NgSimpleButton {
   square = input<boolean>(false);
   hover = input<'tone' | 'scale' | 'stroke' | 'shadow' | 'none'>('tone');
   direction = input<'row' | 'column'>('row');
+
+  private el = inject(ElementRef);
+  private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+
+  ngAfterViewInit(): void {
+    if(this.isBrowser){
+      requestAnimationFrame(() => {
+        const btn = this.el.nativeElement.querySelector('.simpleButton');
+        btn.classList.add('ready');
+      });
+    }
+  };
 
 }

@@ -1,5 +1,5 @@
-import { NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, HostBinding, input } from '@angular/core';
+import { isPlatformBrowser, NgTemplateOutlet } from '@angular/common';
+import { ChangeDetectionStrategy, Component, ElementRef, inject, input, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 
 
@@ -41,5 +41,17 @@ export class NgLinkButton {
   square = input<boolean>(false);
   hover = input<'tone' | 'scale' | 'stroke' | 'shadow' | 'none'>('tone');
   direction = input<'row' | 'column'>('row');
+
+  private el = inject(ElementRef);
+  private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+
+  ngAfterViewInit(): void {
+    if(this.isBrowser){
+      requestAnimationFrame(() => {
+        const btn = this.el.nativeElement.querySelector('.linkButton');
+        btn.classList.add('ready');
+      });
+    }
+  };
 
 }

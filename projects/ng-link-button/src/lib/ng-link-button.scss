@@ -37,6 +37,10 @@
 
   outline: 2px solid transparent;
 
+  transition: none;
+}
+
+.linkButton.ready{
   transition: all var(--link-button-transition-duration, .3s) ease-in-out;
 }
 
