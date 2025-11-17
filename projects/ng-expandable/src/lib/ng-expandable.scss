@@ -1,0 +1,109 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:host{
+
+  --expandable-transition-duration: .3s;
+  --internal-transition-duration: 0s;
+
+  --expandable-hover-transition-duration: 0s;
+  --internal-hover-transition-duration: 0s;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: var(--expandable-width, 100%);
+  height: var(--exapandable-height, fit-content);
+  color: var(--expandable-color, inherit);
+  background: var(--expandable-bg, transparent);
+  border: var(--expandable-border, none);
+  overflow: hidden;
+  border-radius: var(--expandable-border-radius, .3rem);
+  transition: gap var(--internal-transition-duration) ease-in-out;
+}
+
+:host.ready{
+  --internal-transition-duration: var(--expandable-transition-duration);
+  --internal-hover-transition-duration: var(--expandable-hover-transition-duration);
+}
+
+:host.separation{
+  gap: var(--expandable-gap, 0);
+}
+
+/* ----- BUTTON -----*/
+
+.expandable__button{
+  color: var(--expandable-button-color, var(--expandable-color, inherit));
+  background: var(--expandable-button-bg, var(--expandable-bg, black));
+  border: var(--expandable-button-border, none);
+  width: 100%;
+  text-align: var(--expandable-button-text-align, left);
+  cursor: pointer;
+  padding: var(--expandable-button-padding, 1rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  transition:
+    background var(--internal-hover-transition-duration) ease-in-out,
+    color var(--internal-hover-transition-duration) ease-in-out;
+}
+
+.expandable__button:hover{
+  background: var(--expandable-button-hover-bg, var(--expandable-button-bg, var(--expandable-bg, color-mix(in srgb, black 80%, white 20%))));
+  color: var(--expandable-button-hover-color, var(--expandable-button-color, var(--expandable-color, inherit)));
+}
+
+.expandable__button.expanded{
+  background: var(--expandable-button-expanded-bg, var(--expandable-button-hover-bg, var(--expandable-button-bg, var(--expandable-bg, color-mix(in srgb, black 80%, white 20%)))));
+  color: var(--expandable-button-expanded-color, var(--expandable-button-hover-color, var(--expandable-button-color, var(--expandable-color, inherit))));
+}
+
+:host:has(.expandable__button:focus-visible){
+  outline: var(--expandable-button-focus-ring, 2px solid currentColor);
+  outline-offset: 2px;
+}
+
+.expandable__button span{
+  font-size: var(--expandable-button-font-size, 1rem);
+  font-weight: var(--expandable-button-font-weight, 500);
+}
+
+.expandable__arrow,
+.expandable__plus{
+  fill: var(--expandable-icon-color, var(--expandable-button-color, var(--expandable-color, currentColor)));
+  width: var(--expandable-icon-size, 1.1rem);
+  height: var(--expandable-icon-size, 1.1rem);
+  transition: transform var(--internal-transition-duration, .3s) ease-in-out;
+}
+
+.expandable__plus{
+  transform: rotate(0);
+  stroke: var(--expandable-icon-color, var(--expandable-button-color, var(--expandable-color, currentColor)));
+}
+
+.expandable__plus.expanded{
+  transform: rotate(135deg);
+}
+
+.expandable__arrow.expanded{
+  transform: rotate(180deg);
+}
+
+/* ----- EXPANDABLE CONTENT -----*/
+
+.expandable__expansor{
+  height: 0;
+  overflow-y: hidden;
+  transition: height var(--internal-transition-duration, .3s) ease-in-out;
+}
+
+.expandable__content{
+  padding: var(--expandable-content-padding, 1rem);
+  background: var(--expandable-content-bg, var(--expandable-bg, black));
+  color: var(--expandable-content-color, var(--expandable-color, inherit));
+}
