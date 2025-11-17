@@ -13,6 +13,9 @@
       "ng-content-carousel": [
         "./dist/ng-content-carousel"
       ],
+      "ng-expandable": [
+        "./dist/ng-expandable"
+      ],
       "ng-hero-carousel": [
         "./dist/ng-hero-carousel"
       ],
@@ -103,6 +106,12 @@
     },
     {
       "path": "./projects/ng-scroll-nav/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ng-expandable/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-expandable/tsconfig.spec.json"
     }
   ]
 }
