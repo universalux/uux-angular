@@ -299,6 +299,32 @@
           }
         }
       }
+    },
+    "ng-expandable": {
+      "projectType": "library",
+      "root": "projects/ng-expandable",
+      "sourceRoot": "projects/ng-expandable/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-expandable/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-expandable/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/ng-expandable/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "schematics": {
