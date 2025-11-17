@@ -1,3 +1,78 @@
-<button>
-  {{label()}}
+<button
+  (click)="handleExpansion()"
+  [id]="expandableBtnId()"
+
+
+  class="expandable__button"
+  [class.expanded]="isExpanded()"
+
+  [tabIndex]="tabIndex()"
+  [attr.aria-expanded]="isExpanded()"
+  [attr.aria-controls]="expandableContentId()"
+>
+
+  <span>{{label()}}</span>
+
+  @if (iconType() === 'arrow') {
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true" focusable="false"
+      width="1.1rem" height="1.1rem"
+      viewBox="320 -720 296 480"
+      class="expandable__arrow"
+      [class.expanded]="isExpanded()"
+    >
+      <g transform="rotate(-90 468 -480)">
+        <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/>
+      </g>
+    </svg>
+  }
+
+  @if (iconType() === 'plus') {
+    <svg xmlns="http://www.w3.org/2000/svg"
+      height="1.1rem" width="1.1rem"
+      viewBox="76 -756 808 680"
+      aria-hidden="true" focusable="false"
+      class="expandable__plus"
+      [class.expanded]="isExpanded()"
+    >
+      <path d="M417-86v-331H86v-126h331v-331h126v331h331v126H543v331H417Z"/>
+    </svg>
+
+    <!-- <svg xmlns="http://www.w3.org/2000/svg"
+      height="24px" width="24px" viewBox="0 -960 960 960"
+      aria-hidden="true" focusable="false"
+      class="expandable__plus"
+      [class.expanded]="isExpanded()"
+    >
+      <path d="M440-120v-320H120v-80h320v-320h80v320h320v80H520v320h-80Z"/>
+    </svg> -->
+    <!-- <svg xmlns="http://www.w3.org/2000/svg"
+      width="1.2rem" height="1.2rem"
+      viewBox="213.85 -746.15 532.3 532.3"
+      aria-hidden="true" focusable="false"
+      class="expandable__plus"
+      [class.expanded]="isExpanded()"
+    >
+      <path d="M256-213.85 213.85-256l224-224-224-224L256-746.15l224 224 224-224L746.15-704l-224 224 224 224L704-213.85l-224-224-224 224Z"/>
+    </svg> -->
+  }
+
+
+
 </button>
+
+<section
+  [id]="expandableContentId()"
+
+  class="expandable__expansor"
+  [style.height]="isExpanded() ? contentHeight() + 'px' : '0px'"
+
+  role="region"
+  [attr.aria-labelledby]="expandableBtnId()"
+  [attr.inert]="!isExpanded() ? '' : null"
+>
+  <div #content class="expandable__content">
+    <ng-content/>
+  </div>
+</section>
