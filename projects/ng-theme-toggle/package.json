@@ -1,6 +1,6 @@
 {
   "name": "ng-theme-toggle",
-  "version": "20.0.1",
+  "version": "20.0.2",
   "description": "An Angular component for toggling dark/light theme in a simple and customizable way",
   "keywords": [
     "angular",
