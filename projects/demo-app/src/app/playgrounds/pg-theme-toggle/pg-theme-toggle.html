@@ -16,7 +16,7 @@
     hover="scale"
   />
 
-  <ng-theme-toggle
+  <ng-theme-toggle class="minimal"
     [isDarkSignal]="isDark2"
     hover="shadow"
     type="minimal"
@@ -35,7 +35,13 @@
 
 </div>
 
-
+<ng-theme-toggle
+    [isDarkSignal]="isDark3"
+    animation="rotateY"
+    type="minimal"
+    hover="tone"
+    [faster]="true"
+  />
 
   <!-- <ng-theme-toggle
     [isDarkSignal]="isDark"

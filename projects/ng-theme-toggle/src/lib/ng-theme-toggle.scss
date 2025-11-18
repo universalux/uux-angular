@@ -57,13 +57,13 @@
 /* BUTTON - TYPES */
 
 .themeToggle__button.solid{
-  background: var(--theme-toggle-bg, var(--theme-toggle-bg-light, white));
+  background: var(--theme-toggle-bg, var(--theme-toggle-bg-light, #30a2fe));
   border: var(--theme-toggle-border, var(--theme-toggle-border-light, none));
   padding: var(--theme-toggle-padding, 5px);
 }
 
 .themeToggle__button.solid.isDark{
-  background: var(--theme-toggle-bg, var(--theme-toggle-bg-dark, black));
+  background: var(--theme-toggle-bg, var(--theme-toggle-bg-dark, #30a2fe));
   border: var(--theme-toggle-border, var(--theme-toggle-border-dark, none));
 }
 
@@ -87,18 +87,91 @@
 /* BUTTON TONE HOVER */
 
 .themeToggle__button.hover-tone:hover{
-  background: var(--theme-toggle-hover-bg, var(--theme-toggle-hover-bg-light, #949494));
+  background: var(--theme-toggle-hover-bg, var(--theme-toggle-hover-bg-light, #824dfe));
+}
+
+.themeToggle__button.hover-tone:hover .themeToggle__svg .themeToggle__line{
+  stroke: var(--theme-toggle-hover-color, var(--theme-toggle-hover-color-light, var(--theme-toggle-color, var(--theme-toggle-color-light, black))));
+}
+
+.themeToggle__button.hover-tone:hover .themeToggle__svg.isDark .themeToggle__line{
+  stroke: var(--theme-toggle-hover-color, var(--theme-toggle-hover-color-light, var(--theme-toggle-color, var(--theme-toggle-color-light, black))));
+}
+
+.themeToggle__button.hover-tone:hover .themeToggle__svg.isDark .themeToggle__mainCircle{
+  fill: var(--theme-toggle-hover-color, var(--theme-toggle-hover-color-light, var(--theme-toggle-color, var(--theme-toggle-color-light, black))));
+}
+
+.themeToggle__button.hover-tone:hover .themeToggle__svg .themeToggle__mainCircle{
+  fill: var(--theme-toggle-hover-color, var(--theme-toggle-hover-color-light, var(--theme-toggle-color, var(--theme-toggle-color-light, black))));
 }
 
 .themeToggle__button.isDark.hover-tone:hover{
-  background: var(--theme-toggle-hover-bg, var(--theme-toggle-hover-bg-dark, #949494));
+  background: var(--theme-toggle-hover-bg, var(--theme-toggle-hover-bg-dark, #824dfe));
 }
+
+.themeToggle__button.isDark.hover-tone:hover .themeToggle__svg .themeToggle__line{
+  stroke: var(--theme-toggle-hover-color, var(--theme-toggle-hover-color-dark, var(--theme-toggle-color, var(--theme-toggle-color-dark, white))));
+}
+
+.themeToggle__button.isDark.hover-tone:hover .themeToggle__svg.isDark .themeToggle__line{
+  stroke: var(--theme-toggle-hover-color, var(--theme-toggle-hover-color-dark, var(--theme-toggle-color, var(--theme-toggle-color-dark, white))));
+}
+
+.themeToggle__button.isDark.hover-tone:hover .themeToggle__svg.isDark .themeToggle__mainCircle{
+  fill: var(--theme-toggle-hover-color, var(--theme-toggle-hover-color-dark, var(--theme-toggle-color, var(--theme-toggle-color-dark, white))));
+}
+
+.themeToggle__button.isDark.hover-tone:hover .themeToggle__svg .themeToggle__mainCircle{
+  fill: var(--theme-toggle-hover-color, var(--theme-toggle-hover-color-dark, var(--theme-toggle-color, var(--theme-toggle-color-dark, white))));
+}
+
+.themeToggle__button.minimal.hover-tone:hover{
+  background: var(--theme-toggle-hover-bg, var(--theme-toggle-hover-bg-light, transparent));
+}
+
+.themeToggle__button.minimal.hover-tone:hover .themeToggle__svg .themeToggle__line{
+  stroke: var(--theme-toggle-hover-color, var(--theme-toggle-hover-color-dark, blue));
+}
+
+.themeToggle__button.minimal.hover-tone:hover .themeToggle__svg.isDark .themeToggle__line{
+  stroke: var(--theme-toggle-hover-color, var(--theme-toggle-hover-color-dark, blue));
+}
+
+.themeToggle__button.minimal.hover-tone:hover .themeToggle__svg.isDark .themeToggle__mainCircle{
+  fill: var(--theme-toggle-hover-color, var(--theme-toggle-hover-color-dark, blue));
+}
+
+.themeToggle__button.minimal.hover-tone:hover .themeToggle__svg .themeToggle__mainCircle{
+  fill: var(--theme-toggle-hover-color, var(--theme-toggle-hover-color-dark, blue));
+}
+
+.themeToggle__button.minimal.isDark.hover-tone:hover{
+  background: var(--theme-toggle-hover-bg, var(--theme-toggle-hover-bg-dark, transparent));
+}
+
+.themeToggle__button.minimal.isDark.hover-tone:hover .themeToggle__svg .themeToggle__line{
+  stroke: var(--theme-toggle-hover-color, var(--theme-toggle-hover-color-dark, yellow));
+}
+
+.themeToggle__button.minimal.isDark.hover-tone:hover .themeToggle__svg.isDark .themeToggle__line{
+  stroke: var(--theme-toggle-hover-color, var(--theme-toggle-hover-color-dark, yellow));
+}
+
+.themeToggle__button.minimal.isDark.hover-tone:hover .themeToggle__svg.isDark .themeToggle__mainCircle{
+  fill: var(--theme-toggle-hover-color, var(--theme-toggle-hover-color-dark, yellow));
+}
+
+.themeToggle__button.minimal.isDark.hover-tone:hover .themeToggle__svg .themeToggle__mainCircle{
+  fill: var(--theme-toggle-hover-color, var(--theme-toggle-hover-color-dark, yellow));
+}
+
 
 
 /* BUTTON SCALE HOVER */
 
 .themeToggle__button.hover-scale:hover{
-  transform: scale(var(--theme-toggle-hover-scale, 1.05));
+  transform: scale(var(--theme-toggle-hover-scale, 1.1));
 }
 
 /* BUTTON SHADOW HOVER */
@@ -118,11 +191,11 @@
 }
 
 .themeToggle__button.isDark.hover-shadow:not(.minimal):hover {
-  box-shadow: 2px 2px 5px var(--theme-toggle-hover-shadow-color-dark, rgba(83, 83, 83, 0.664));
+  box-shadow: 2px 2px 5px var(--theme-toggle-hover-shadow-color-dark, white);
 }
 
 .themeToggle__button.hover-shadow:not(.minimal):hover {
-  box-shadow: 2px 2px 5px var(--theme-toggle-hover-shadow-color-light, rgba(83, 83, 83, 0.664));
+  box-shadow: 2px 2px 5px var(--theme-toggle-hover-shadow-color-light, black);
 }
 
 
