@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ContentChildren, effect, QueryList, ViewChildren } from '@angular/core';
-import { NgExpandable } from 'ng-expandable';
+import { NgExpand } from 'ng-expand';
 
 type ExpansionChange = {
   state: boolean;
@@ -7,19 +7,19 @@ type ExpansionChange = {
 }
 
 @Component({
-  selector: 'pg-expandable',
-  imports: [NgExpandable],
-  templateUrl: './pg-expandable.html',
-  styleUrl: './pg-expandable.scss',
+  selector: 'pg-expand',
+  imports: [NgExpand],
+  templateUrl: './pg-expand.html',
+  styleUrl: './pg-expand.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PgExpandable {
+export class PgExpand {
 
   // handleExpansions({state, id}: ExpansionChange){
   //   console.log(state, id);
   // }
 
-  @ViewChildren('accordionItem') accordionItems!: QueryList<NgExpandable>;
+  @ViewChildren('accordionItem') accordionItems!: QueryList<NgExpand>;
 
   ngAfterViewInit() {
     console.log('Items encontrados:', this.accordionItems.length);

@@ -3,13 +3,13 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, inject, 
 
 @Component({
   standalone: true,
-  selector: 'ng-expandable',
+  selector: 'ng-expand',
   imports: [],
-  templateUrl: './ng-expandable.html',
-  styleUrl: './ng-expandable.scss',
+  templateUrl: './ng-expand.html',
+  styleUrl: './ng-expand.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgExpandable implements AfterViewInit, OnInit {
+export class NgExpand implements AfterViewInit, OnInit {
 
   // ---- INJECTIONS
 
@@ -28,8 +28,8 @@ export class NgExpandable implements AfterViewInit, OnInit {
 
   isExpanded = model<boolean>(false);
   contentHeight = signal<number>(0);
-  expandableBtnId = signal<string>(this.generateUniqueId('expandable-btn'));
-  expandableContentId = signal<string>(this.generateUniqueId('expandable-content'));
+  expandBtnId = signal<string>(this.generateUniqueId('expand-btn'));
+  expandContentId = signal<string>(this.generateUniqueId('expand-content'));
 
   // ----- VIEW CHILDREN
 
@@ -55,7 +55,7 @@ export class NgExpandable implements AfterViewInit, OnInit {
 
   // ----- METHODS
 
-  generateUniqueId(prefix = 'expandable-btn'): string {
+  generateUniqueId(prefix = 'expand-btn'): string {
     const random = Math.random().toString(36).substring(2, 10);
     return `${prefix}-${random}`;
   }
