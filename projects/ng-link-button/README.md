@@ -170,15 +170,15 @@ Here is a list of all input/ouput:
 
 ### Accessibility Inputs
 
-| **Input**     | **Description**                                          | **Default** |
-| -------------- | -------------------------------------------------------- | ----------- |
-| `ariaLabel`    | Provides an accessible label for assistive technologies. | `null`      |
-| `title`        | Sets the native tooltip text shown on hover.             | `null`      |
-| `tabIndex`     | Controls the button’s tab order in keyboard navigation.  | `0`         |
-| `ariaCurrent`  | Indicates the current item in a set (e.g. current page). | `null`      |
-| `download`     | Suggests that the link should be downloaded as a file.   | `null`      |
-| `role`         | Defines the ARIA role (`link` or `button`).              | `null`      |
-| `disabled`     | Disables the button and prevents user interaction.       | `false`     |
+| **Input**     | **Description**                                                              | **Default** |
+| -------------- | --------------------------------------------------------------------------- | ----------- |
+| `ariaLabel`    | Provides an accessible label for assistive technologies.                    | `null`      |
+| `title`        | Sets the native tooltip text shown on hover.                                | `null`      |
+| `tabIndex`     | Controls the button’s tab order in keyboard navigation.                     | `0`         |
+| `ariaCurrent`  | Indicates the current item in a set (e.g. current page).                    | `null`      |
+| `download`     | Suggests that the link should be downloaded as a file. (only in href mode)  | `null`      |
+| `role`         | Defines the ARIA role (`link` or `button`).                                 | `null`      |
+| `disabled`     | Disables the button and prevents user interaction.                          | `false`     |
 
 
 ## Styling
