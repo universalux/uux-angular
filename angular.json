@@ -300,20 +300,20 @@
         }
       }
     },
-    "ng-expandable": {
+    "ng-expand": {
       "projectType": "library",
-      "root": "projects/ng-expandable",
-      "sourceRoot": "projects/ng-expandable/src",
+      "root": "projects/ng-expand",
+      "sourceRoot": "projects/ng-expand/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
           "configurations": {
             "production": {
-              "tsConfig": "projects/ng-expandable/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ng-expand/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ng-expandable/tsconfig.lib.json"
+              "tsConfig": "projects/ng-expand/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -321,7 +321,7 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "tsConfig": "projects/ng-expandable/tsconfig.spec.json"
+            "tsConfig": "projects/ng-expand/tsconfig.spec.json"
           }
         }
       }

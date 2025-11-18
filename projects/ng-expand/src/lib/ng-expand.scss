@@ -1,0 +1,109 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:host{
+
+  --expand-transition-duration: .3s;
+  --internal-transition-duration: 0s;
+
+  --expand-hover-transition-duration: 0s;
+  --internal-hover-transition-duration: 0s;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: var(--expand-width, 100%);
+  height: var(--expand-height, fit-content);
+  color: var(--expand-color, inherit);
+  background: var(--expand-bg, transparent);
+  border: var(--expand-border, none);
+  overflow: hidden;
+  border-radius: var(--expand-border-radius, .3rem);
+  transition: gap var(--internal-transition-duration) ease-in-out;
+}
+
+:host.ready{
+  --internal-transition-duration: var(--expand-transition-duration);
+  --internal-hover-transition-duration: var(--expand-hover-transition-duration);
+}
+
+:host.separation{
+  gap: var(--expand-gap, 0);
+}
+
+/* ----- BUTTON -----*/
+
+.expand__button{
+  color: var(--expand-button-color, var(--expand-color, inherit));
+  background: var(--expand-button-bg, var(--expand-bg, black));
+  border: var(--expand-button-border, none);
+  width: 100%;
+  text-align: var(--expand-button-text-align, left);
+  cursor: pointer;
+  padding: var(--expand-button-padding, 1rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  transition:
+    background var(--internal-hover-transition-duration) ease-in-out,
+    color var(--internal-hover-transition-duration) ease-in-out;
+}
+
+.expand__button:hover{
+  background: var(--expand-button-hover-bg, var(--expand-button-bg, var(--expand-bg, color-mix(in srgb, black 80%, white 20%))));
+  color: var(--expand-button-hover-color, var(--expand-button-color, var(--expand-color, inherit)));
+}
+
+.expand__button.expanded{
+  background: var(--expand-button-expanded-bg, var(--expand-button-hover-bg, var(--expand-button-bg, var(--expand-bg, color-mix(in srgb, black 80%, white 20%)))));
+  color: var(--expand-button-expanded-color, var(--expand-button-hover-color, var(--expand-button-color, var(--expand-color, inherit))));
+}
+
+:host:has(.expand__button:focus-visible){
+  outline: var(--expand-button-focus-ring, 2px solid currentColor);
+  outline-offset: 2px;
+}
+
+.expand__button span{
+  font-size: var(--expand-button-font-size, 1rem);
+  font-weight: var(--expand-button-font-weight, 500);
+}
+
+.expand__arrow,
+.expand__plus{
+  fill: var(--expand-icon-color, var(--expand-button-color, var(--expand-color, currentColor)));
+  width: var(--expand-icon-size, 1.1rem);
+  height: var(--expand-icon-size, 1.1rem);
+  transition: transform var(--internal-transition-duration, .3s) ease-in-out;
+}
+
+.expand__plus{
+  transform: rotate(0);
+  stroke: var(--expand-icon-color, var(--expand-button-color, var(--expand-color, currentColor)));
+}
+
+.expand__plus.expanded{
+  transform: rotate(135deg);
+}
+
+.expand__arrow.expanded{
+  transform: rotate(180deg);
+}
+
+/* ----- EXPAND CONTENT -----*/
+
+.expand__expansor{
+  height: 0;
+  overflow-y: hidden;
+  transition: height var(--internal-transition-duration, .3s) ease-in-out;
+}
+
+.expand__content{
+  padding: var(--expand-content-padding, 1rem);
+  background: var(--expand-content-bg, var(--expand-bg, black));
+  color: var(--expand-content-color, var(--expand-color, inherit));
+}

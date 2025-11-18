@@ -6,7 +6,7 @@ import { PgContentCarousel } from "./playgrounds/pg-content-carousel/pg-content-
 import { PgButtons } from "./playgrounds/pg-buttons/pg-buttons";
 import { PgContentCard } from './playgrounds/pg-content-card/pg-content-card';
 import { PgScrollNav } from './playgrounds/pg-scroll-nav/pg-scroll-nav';
-import { PgExpandable } from './playgrounds/pg-expandable/pg-expandable';
+import { PgExpand } from './playgrounds/pg-expand/pg-expand';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,7 @@ import { PgExpandable } from './playgrounds/pg-expandable/pg-expandable';
     PgContentCarousel,
     PgButtons,
     PgScrollNav,
-    PgExpandable
+    PgExpand
 ],
   templateUrl: './app.html',
   styleUrl: './app.scss'

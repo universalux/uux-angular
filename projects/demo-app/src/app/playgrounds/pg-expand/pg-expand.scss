@@ -1,0 +1,85 @@
+
+:host{
+    display: flex;
+    flex-direction: column;
+    row-gap: 3rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100dvh;
+    height: 100%;
+    background: linear-gradient(127deg, #30a2fe 20%, #824dfe 100%);
+    // color: red;
+    // background-color: white;
+}
+
+.titleContainer{
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleContainer hgroup h1{
+    font-size: 1.8rem;
+    margin-bottom: .35rem;
+}
+
+.titleContainer hgroup div{
+
+  display: flex;
+  column-gap: .3rem;
+  align-items: end;
+}
+
+.uuxLogo{
+  width: 125px;
+  margin-bottom: .1rem;
+}
+
+.angularLogo{
+    max-width: 52px;
+}
+
+.container{
+    width: 700px;
+    height: 213px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+
+}
+
+ng-expand{
+  // margin: 1rem;
+  // width: 50%;
+  // --expand-transition-duration: .3s;
+  --expand-hover-transition-duration: .2s;
+  // --expand-width: 90%;
+  // --expand-border: none;
+  // --expand-bg: red;
+  // --exapandable-border-raidus: 1rem;
+  // --expand-gap: .5rem;
+
+  --expand-icon-size: 1.1rem;
+
+
+  // --expand-button-hover-bg: blue;
+  // --expand-button-hover-color: red;
+  // --expand-button-bg: blue;
+  // --expand-button-padding: 1rem;
+
+  --expand-content-bg: white;
+  --expand-content-color: black;
+  --expand-button-font-size: 1.1rem;
+}
+
+ng-expand h4, ng-expand p{
+  margin-bottom: 1rem;
+}

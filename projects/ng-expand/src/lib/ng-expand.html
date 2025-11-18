@@ -1,14 +1,14 @@
 <button
   (click)="handleExpansion()"
-  [id]="expandableBtnId()"
+  [id]="expandBtnId()"
 
 
-  class="expandable__button"
+  class="expand__button"
   [class.expanded]="isExpanded()"
 
   [tabIndex]="tabIndex()"
   [attr.aria-expanded]="isExpanded()"
-  [attr.aria-controls]="expandableContentId()"
+  [attr.aria-controls]="expandContentId()"
 >
 
   <span>{{label()}}</span>
@@ -19,7 +19,7 @@
       aria-hidden="true" focusable="false"
       width="1.1rem" height="1.1rem"
       viewBox="320 -720 296 480"
-      class="expandable__arrow"
+      class="expand__arrow"
       [class.expanded]="isExpanded()"
     >
       <g transform="rotate(-90 468 -480)">
@@ -33,7 +33,7 @@
       height="1.1rem" width="1.1rem"
       viewBox="76 -756 808 680"
       aria-hidden="true" focusable="false"
-      class="expandable__plus"
+      class="expand__plus"
       [class.expanded]="isExpanded()"
     >
       <path d="M417-86v-331H86v-126h331v-331h126v331h331v126H543v331H417Z"/>
@@ -43,16 +43,16 @@
 </button>
 
 <section
-  [id]="expandableContentId()"
+  [id]="expandContentId()"
 
-  class="expandable__expansor"
+  class="expand__expansor"
   [style.height]="isExpanded() ? contentHeight() + 'px' : '0px'"
 
   role="region"
-  [attr.aria-labelledby]="expandableBtnId()"
+  [attr.aria-labelledby]="expandBtnId()"
   [attr.inert]="!isExpanded() ? '' : null"
 >
-  <div #content class="expandable__content">
+  <div #content class="expand__content">
     <ng-content/>
   </div>
 </section>
