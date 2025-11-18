@@ -54,4 +54,14 @@ export class NgLinkButton {
     }
   };
 
+  get downloadAttr(): string | null {
+    if (typeof this.download() === 'string') {
+      return this.download() as string;
+    } else if (this.download() === true) {
+      return '';
+    } else {
+      return null;
+    }
+  }
+
 }
