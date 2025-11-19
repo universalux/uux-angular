@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NgContentCarousel, ContentCarouselItemDirective, ContentCarouselCustomAria } from 'ng-content-carousel';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { NgContentCarousel, ContentCarouselItemDirective, ContentCarouselCustomAria, ContentCarouselLangs } from 'ng-content-carousel';
 import { NgContentCard } from 'ng-content-card';
 
 @Component({
@@ -64,6 +64,8 @@ export class PgContentCarousel {
     //   footer: 'Card footer content'
     // },
   ]
+
+  lang = signal<ContentCarouselLangs>('es');
 
   customAccesibilityOptions : ContentCarouselCustomAria = {
     globalAriaLabel: 'EDIT Content carousel',

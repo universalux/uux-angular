@@ -1,6 +1,4 @@
-import { ContentCarouselCustomAria } from "../ng-content-carousel.types";
-
-export const CONTENT_CAROUSEL_LANG: Record<string, ContentCarouselCustomAria> = {
+export const CONTENT_CAROUSEL_LANG = {
     en: {
       globalAriaLabel: 'Content carousel',
       globalRoleDescription: 'Carousel of content',
@@ -8,7 +6,7 @@ export const CONTENT_CAROUSEL_LANG: Record<string, ContentCarouselCustomAria> = 
       nextBtnAriaLabel: 'Go to next item',
       trackRoleDescription: 'Carousel track',
       trackAriaLabel: 'Carousel items',
-      rangeMessage: (first, last, total) => `Showing items ${first} to ${last} of ${total}`,
+      rangeMessage: (first : number, last : number, total: number) => `Showing items ${first} to ${last} of ${total}`,
     },
     es: {
       globalAriaLabel: 'Carrusel de contenido',
@@ -17,7 +15,7 @@ export const CONTENT_CAROUSEL_LANG: Record<string, ContentCarouselCustomAria> = 
       nextBtnAriaLabel: 'Ir al siguiente elemento',
       trackRoleDescription: 'Pista del carrusel',
       trackAriaLabel: 'Elementos del carrusel',
-      rangeMessage: (first, last, total) => `Mostrando elementos ${first} a ${last} de ${total}`,
+      rangeMessage: (first : number, last : number, total: number) => `Mostrando elementos ${first} a ${last} de ${total}`,
     },
     fr: {
       globalAriaLabel: 'Carrousel de contenu',
@@ -26,7 +24,7 @@ export const CONTENT_CAROUSEL_LANG: Record<string, ContentCarouselCustomAria> = 
       nextBtnAriaLabel: 'Aller à l’élément suivant',
       trackRoleDescription: 'Piste du carrousel',
       trackAriaLabel: 'Éléments du carrousel',
-      rangeMessage: (first, last, total) => `Affichage des éléments ${first} à ${last} sur ${total}`,
+      rangeMessage: (first : number, last : number, total: number) => `Affichage des éléments ${first} à ${last} sur ${total}`,
     },
     de: {
       globalAriaLabel: 'Inhaltskarussell',
@@ -35,7 +33,7 @@ export const CONTENT_CAROUSEL_LANG: Record<string, ContentCarouselCustomAria> = 
       nextBtnAriaLabel: 'Zum nächsten Element gehen',
       trackRoleDescription: 'Karussellspur',
       trackAriaLabel: 'Karussellelemente',
-      rangeMessage: (first, last, total) => `Elemente ${first} bis ${last} von ${total} werden angezeigt`,
+      rangeMessage: (first : number, last : number, total: number) => `Elemente ${first} bis ${last} von ${total} werden angezeigt`,
     },
     it: {
       globalAriaLabel: 'Carosello di contenuti',
@@ -44,6 +42,6 @@ export const CONTENT_CAROUSEL_LANG: Record<string, ContentCarouselCustomAria> = 
       nextBtnAriaLabel: 'Vai all’elemento successivo',
       trackRoleDescription: 'Traccia del carosello',
       trackAriaLabel: 'Elementi del carosello',
-      rangeMessage: (first, last, total) => `Visualizzazione elementi da ${first} a ${last} di ${total}`,
+      rangeMessage: (first : number, last : number, total: number) => `Visualizzazione elementi da ${first} a ${last} di ${total}`,
     }
-};
+} as const;

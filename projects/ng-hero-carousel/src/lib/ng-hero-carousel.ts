@@ -205,8 +205,6 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
 
   /** NAVIGATION METHODS  */
 
-  // liveRegionText = signal<string>('');
-
   protected goToSlide(index: number) {
     if (this.isChangingSlide()) return;
 
@@ -223,13 +221,6 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
 
     this.currentSlide.set(clamped);
     this.setSelectorInScroll();
-
-    // const slideData = slides[clamped];
-    // const slideNumber = clamped + 1;
-    // const totalSlides = slides.length;
-    // this.liveRegionText.set(
-    //   `Slide ${slideNumber} of ${totalSlides}. ${slideData.title || ''} ${slideData.subtitle || ''}`.trim()
-    // );
 
     const newSlideEl = this.slidesElements.toArray()[clamped]?.nativeElement;
 
@@ -342,7 +333,6 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
         this.nextSlide();
       }
     }
-
     // resume or reschedule autoplay
     this.resetAutoplay();
   }

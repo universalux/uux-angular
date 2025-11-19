@@ -155,14 +155,14 @@ ng-content-carousel .carousel-item{
 
 ## Accessibility
 
-This component includes five default languages. When you choose one using the "lang" attribute, all accessibility settings are configured in that language, so you don't have to do anything else.
+This component includes five default languages. When you choose one using the "lang" input, all accessibility settings are configured in that language, so you don't have to do anything else.
 
-| Attribute              | Description                                              | Type                           | Default   |
+| Input              | Description                                              | Type                           | Default   |
 | ---------------------- | -------------------------------------------------------- | ------------------------------ | --------- |
 | `lang`                 | Select the language for accessibility                     | `'en', 'es', 'fr', 'de', 'it'` | `en`      |
 | `customAria` | Set up your own custom aria attributes (more info below) | `ContentCarouselCustomAria or null` | `null`    |
 
-*** We recommend using the lang attribute if you don't need any other languages than the ones provided by default. It's simple and compliant with WAI-ARIA standards. ***
+*** We recommend using the lang input if you don't need any other languages than the ones provided by default. It's simple and compliant with WAI-ARIA standards. ***
 
 If you want to set up your own custom aria attributes, you should use the `customAria` interface.
 You can import it directly from the component:

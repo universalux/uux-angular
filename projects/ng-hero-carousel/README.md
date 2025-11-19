@@ -192,7 +192,7 @@ Here is an example:
 
 ### Style Inputs
 
-| Attribute          | Description                                                 | Type                          | Default   |
+| Input          | Description                                                 | Type                          | Default   |
 | ------------------ | ----------------------------------------------------------- | ----------------------------- | --------- |
 | `[hasOverlay]`     | Add an overlay on top of the background image.              | boolean                       | `true`    |
 | `[transitionTime]` | Time in ms of the transition between slides                 | number                        | `800`     |
@@ -202,7 +202,7 @@ Here is an example:
 
 ### Autoplay inputs
 
-| Attribute              | Description                                                             | Type      | Default   |
+| Input              | Description                                                             | Type      | Default   |
 | ---------------------- | ----------------------------------------------------------------------- | --------- | --------- |
 | `[hasAutoplay]`        | Select whether you want autoplay or not                                 | boolean   | `true`    |
 | `[autoplayTime]`       | Time in ms in which the slide is automatically changed                  | number    | `7000`    |
@@ -213,7 +213,7 @@ You can use `(selected)` output to get the current slide on screen. For example,
 
 ### Accessibility inputs
 
-| Attribute              | Description                                              | Type                           | Default   |
+| Input              | Description                                              | Type                           | Default   |
 | ---------------------- | -------------------------------------------------------- | ------------------------------ | --------- |
 | `lang`                 | Select the language for accessibility                     | `'en', 'es', 'fr', 'de', 'it'` | `en`      |
 | `customAria` | Set up your own custom aria attributes (more info below) | `HeroCarouselCustomAria or null` | `null`    |
@@ -255,9 +255,9 @@ ng-hero-carousel{
 
 ## Accessibility
 
-This component includes five default languages. When you choose one using the `lang` attribute, all accessibility settings are configured in that language, so you don't have to do anything else.
+This component includes five default languages. When you choose one using the `lang` input, all accessibility settings are configured in that language, so you don't have to do anything else.
 
-*** We recommend using the lang attribute if you don't need any other languages than the ones provided by default. It's simple and compliant with WAI-ARIA standards. ***
+*** We recommend using the lang input if you don't need any other languages than the ones provided by default. It's simple and compliant with WAI-ARIA standards. ***
 
 If you want to set up your own custom aria attributes, you should use the `HeroCarouselCustomAria` interface.
 You can import it directly from the component:

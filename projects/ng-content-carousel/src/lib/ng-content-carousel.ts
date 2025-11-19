@@ -148,7 +148,6 @@ export class NgContentCarousel implements AfterViewInit, OnInit {
     }else{
       this.hasOverflow.set(true);
     }
-    // console.log('Total items: ', this.totalItems(), 'items viewed: ', this.itemsViewed())
   };
 
 
