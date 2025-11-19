@@ -126,6 +126,12 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
       this.setGlobalAriaLabel();
     });
 
+    // ** IMPORTANT ** - transitionTime effect only needed in latest version (for playground in doc project)
+    effect(() => {
+      this.transitionTime();
+      this.setTransitionVariable()
+    });
+
     // **IMPORTANT** For angular 18 add ", { allowSignalWrites: true }" to each effect
   };
 
@@ -369,6 +375,13 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
     return `${this.transitionTime()}ms`;
   };
 
+  private setTransitionVariable(): void {
+    this.el.nativeElement.style.setProperty(
+      '--carousel-transition-time',
+      this.transitionCssValue
+    );
+  };
+
   private calculateSlideWidth() {
     const firstSlide = this.slidesElements.first;
     if (!firstSlide) return;
@@ -377,11 +390,6 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
     this.slideWidth.set(width);
   };
 
-  private setTransitionVariable(): void {
-    this.el.nativeElement.style.setProperty(
-      '--carousel-transition-time',
-      this.transitionCssValue
-    );
-  }
+
 
 }
