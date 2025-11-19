@@ -1,6 +1,4 @@
-import { HeroCarouselCustomAria } from "../ng-hero-carousel.types";
-
-export const HERO_CAROUSEL_LANG: Record<string, HeroCarouselCustomAria> = {
+export const HERO_CAROUSEL_LANG = {
     en: {
         autoplayPauseLabel: 'Pause carousel autoplay',
         autoplayPlayLabel: 'Resume carousel autoplay',
@@ -61,4 +59,4 @@ export const HERO_CAROUSEL_LANG: Record<string, HeroCarouselCustomAria> = {
             `Diapositiva ${currentSlide} di ${total}`,
         slideRoleDescription: 'diapositiva',
     },
-};
+} as const;

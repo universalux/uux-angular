@@ -1,7 +1,7 @@
 <ng-hero-carousel
     [slides]="items()"
     (selected)="selectedItem.set($event)"
-    lang="en"
+    [lang]="lang()"
     [transitionTime]="1000"
     [hasAutoplay]="false"
     [hasCounter]="true"

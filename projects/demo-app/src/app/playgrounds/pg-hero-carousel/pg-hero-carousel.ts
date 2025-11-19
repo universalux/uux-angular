@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { NgHeroCarousel, HeroCarouselItem, SlideForDirective, HeroCarouselCustomAria} from 'ng-hero-carousel';
+import { NgHeroCarousel, HeroCarouselItem, SlideForDirective, HeroCarouselCustomAria, HeroCarouselLangs} from 'ng-hero-carousel';
 import { heroCarouselMock } from './mock/hero-carousel.mock';
 
 @Component({
@@ -14,6 +14,7 @@ export class PgHeroCarousel {
 
   selectedItem = signal<number>(0);
 
+  lang = signal<HeroCarouselLangs>('es');
 
   accOpts = signal<HeroCarouselCustomAria>({
     autoplayPauseLabel: 'Pause carousel autoplay CHANGED',
