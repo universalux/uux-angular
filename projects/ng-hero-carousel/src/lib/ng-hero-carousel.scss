@@ -499,11 +499,11 @@
         max-width: calc(48px * 7 + .4rem * 5);
     }
 
-    .carousel__nextBtnContainer.fiveOrLess{
+    .carousel__nextBtnContainer.fiveOrLess:not(.up):not(.auto){
         right: calc(50% - (48px * 5 + .4rem * 3) + 48px);
     }
 
-    .carousel__prevBtnContainer.fiveOrLess{
+    .carousel__prevBtnContainer.fiveOrLess:not(.up):not(.auto){
         left: calc(50% - (48px * 5 + .4rem * 3) + 48px);
     }
 
