@@ -132,6 +132,13 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
       this.setTransitionVariable()
     });
 
+    // ** IMPORTANT ** - hasAutoplay effect only needed in latest version (for playground in doc project)
+    effect(() => {
+      if(!this.hasAutoplay()){
+        this.stopAutoplay()
+      }
+    });
+
     // **IMPORTANT** For angular 18 add ", { allowSignalWrites: true }" to each effect
   };
 
@@ -141,6 +148,7 @@ export class NgHeroCarousel implements OnInit, AfterViewInit {
     this.carouselId.set(`carousel-${Math.random().toString(36).slice(2,9)}`);
 
     this.setAccOptions();
+
   };
 
   ngAfterViewInit(): void {
