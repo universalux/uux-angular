@@ -1,0 +1,49 @@
+<div class="titleContainer">
+    <hgroup>
+        <h1>ng-toggle-kit</h1>
+        <div>
+          <h4>by</h4>
+          <img src="images/uux-brand-large-croped-white_300x43px.png" class="uuxLogo">
+        </div>
+
+    </hgroup>
+    <img src="angular_white.png" class="angularLogo">
+</div>
+<div class="container">
+
+  <div class="menuToggleContainer">
+    <ng-menu-toggle [class.light]="isDark()" [isOpenSignal]="isOpen" [thin]="true" type="uneven" animation="rotateX"/>
+
+    <ng-menu-toggle [class.light]="isDark()" [isOpenSignal]="isOpen" type="dots" animation="rotateY"/>
+
+    <ng-menu-toggle [class.light]="isDark()" [isOpenSignal]="isOpen" />
+  </div>
+
+  <div class="themeToggleContainer" [class.opened]="isOpen()">
+    <ng-theme-toggle
+      [isDarkSignal]="isDark"
+      type="solid"
+      hover="scale"
+    />
+
+    <ng-theme-toggle class="minimal"
+      [isDarkSignal]="isDark"
+      hover="shadow"
+      type="minimal"
+      animation="rotateX"
+      [faster]="false"
+      [customAria]="{ariaLabelDark: 'Hola'}"
+    />
+
+    <ng-theme-toggle
+      [isDarkSignal]="isDark"
+      animation="rotateY"
+      type="outline"
+      hover="shadow"
+      [faster]="true"
+    />
+  </div>
+
+
+
+</div>

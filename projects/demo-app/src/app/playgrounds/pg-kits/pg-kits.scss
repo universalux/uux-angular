@@ -1,0 +1,82 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100dvh;
+    height: 100%;
+    background: linear-gradient(127deg, #30a2fe 20%, #824dfe 100%);
+}
+
+.titleContainer{
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 2rem;
+}
+
+.titleContainer hgroup h1{
+    font-size: 1.8rem;
+    margin-bottom: .35rem;
+}
+
+.titleContainer hgroup div{
+
+  display: flex;
+  column-gap: .3rem;
+  align-items: end;
+}
+
+.uuxLogo{
+  width: 125px;
+  margin-bottom: .1rem;
+}
+
+.angularLogo{
+    max-width: 52px;
+}
+
+.container{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    column-gap: 3rem;
+    row-gap: 2.5rem;
+
+    // margin-top: 1rem;
+
+}
+
+.menuToggleContainer,
+.themeToggleContainer{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.themeToggleContainer{
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+}
+
+.themeToggleContainer.opened{
+  opacity: 1;
+}
+
+ng-menu-toggle.light{
+  --menu-toggle-color: white;
+}
+
+ng-theme-toggle.minimal{
+  --theme-toggle-color-dark: yellow;
+  --theme-toggle-color-light: blue;
+}
