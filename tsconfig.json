@@ -39,6 +39,9 @@
       ],
       "ng-toggle-kit": [
         "./dist/ng-toggle-kit"
+      ],
+      "ng-uux": [
+        "./dist/ng-uux"
       ]
     },
     "noImplicitReturns": true,
@@ -130,6 +133,12 @@
     },
     {
       "path": "./projects/ng-button-kit/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ng-uux/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-uux/tsconfig.spec.json"
     }
   ]
 }

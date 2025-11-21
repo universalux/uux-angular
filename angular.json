@@ -377,6 +377,32 @@
           }
         }
       }
+    },
+    "ng-uux": {
+      "projectType": "library",
+      "root": "projects/ng-uux",
+      "sourceRoot": "projects/ng-uux/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-uux/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-uux/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/ng-uux/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "schematics": {
