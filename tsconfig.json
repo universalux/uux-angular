@@ -7,6 +7,9 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "paths": {
+      "ng-button-kit": [
+        "./dist/ng-button-kit"
+      ],
       "ng-content-card": [
         "./dist/ng-content-card"
       ],
@@ -121,6 +124,12 @@
     },
     {
       "path": "./projects/ng-toggle-kit/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ng-button-kit/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-button-kit/tsconfig.spec.json"
     }
   ]
 }

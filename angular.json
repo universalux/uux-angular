@@ -351,6 +351,32 @@
           }
         }
       }
+    },
+    "ng-button-kit": {
+      "projectType": "library",
+      "root": "projects/ng-button-kit",
+      "sourceRoot": "projects/ng-button-kit/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-button-kit/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-button-kit/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/ng-button-kit/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "schematics": {
