@@ -1,14 +1,14 @@
 <p align="center">
   <a href="https://www.npmjs.com/~universalux" target="_blank" rel="noreferrer noopener">
-    <img src="https://github.com/universalux/uux-hub/blob/main/assets/components/angular/ng-toggle-kit/ng-toggle-kit-cover.gif?raw=true" alt="NgToggleKit cover">
+    <img src="https://github.com/universalux/uux-hub/blob/main/assets/components/angular/ng-button-kit/ng-button-kit-cover.png?raw=true" alt="NgButtonKit cover">
   </a>
 </p>
 
-# Angular toggle kit
+# Angular button kit
 
-**ng-toggle-kit** is a **standalone, reusable and customizable components kit** for Angular 18, 19 and 20.
+**ng-button-kit** is a **standalone, reusable and customizable components kit** for Angular 18, 19 and 20.
 
-It is designed to work with **signals** and Angular **zoneless**, providing a lightweight, flexible, and accessible menu and theme toggle buttons. It is also fully compatible with **SSR, CSR and prerender**.
+It is designed to work with **signals** and Angular **zoneless**, providing a lightweight, flexible, and accessible simple and link buttons. It is also fully compatible with **SSR, CSR and prerender**.
 
 The main purpose of this kit is to allow you to obtain different components with a single installation.
 
@@ -21,26 +21,26 @@ The main purpose of this kit is to allow you to obtain different components with
 
 ## Included components
 
-| **Component**   | **Description**                         | **Documentation** |
-| --------------- | --------------------------------------- | ----------------- |
-| `NgMenuToggle`  | Toggle button to handle a menu isOpen/isClose signal  | [See doc](https://www.npmjs.com/package/ng-menu-toggle) |
-| `NgThemeToggle` | Toggle button to handle a theme isDark/isLight signal  | [See doc](https://www.npmjs.com/package/ng-theme-toggle) |
+| **Component**    | **Description**                          | **Documentation** |
+| ---------------- | ---------------------------------------- | ----------------- |
+| `NgSimpleButton` | Simple button which execute a function   | [See doc](https://www.npmjs.com/package/ng-simple-button) |
+| `NgLinkButton`   | Button to navigate by href or routerLink | [See doc](https://www.npmjs.com/package/ng-link-button) |
 
 ## Installation
 
 If you want to install the latest version (currently 20):
 ```bash
-npm install ng-toggle-kit
+npm install ng-button-kit
 ```
 
 Angular 19:
 ```bash
-npm install ng-toggle-kit@v19-lts
+npm install ng-button-kit@v19-lts
 ```
 
 Angular 18:
 ```bash
-npm install ng-toggle-kit@v18-lts
+npm install ng-button-kit@v18-lts
 ```
 
 ## Import
@@ -48,8 +48,7 @@ npm install ng-toggle-kit@v18-lts
 You can import components of this kit lke this:
 
 ```ts
-import { NgThemeToggle, ThemeToggleLangs, ThemeToggleCustomAria } from 'ng-toggle-kit';
-import { NgMenuToggle, MenuToggleLangs, MenuToggleCustomAria } from 'ng-toggle-kit';
+import { NgLinkButton, NgSimpleButton } from 'ng-button-kit';
 ```
 
 > See the documentation for each component to learn more about the elements in the example.
