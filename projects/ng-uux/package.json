@@ -1,0 +1,57 @@
+{
+  "name": "ng-uux",
+  "version": "20.0.0",
+  "description": "An Angular components collection by Universal UX",
+  "keywords": [
+    "angular",
+    "angular-components",
+    "ngx",
+    "ng",
+    "button",
+    "carousel",
+    "card",
+    "toggle",
+    "nav",
+    "expand",
+    "accordion",
+    "ui-components",
+    "standalone",
+    "zoneless",
+    "typescript",
+    "accessibility",
+    "angular-18",
+    "angular-19",
+    "angular-20"
+  ],
+  "author": "Universal UX <aldaydev+uux@gmail.com>",
+  "contributors": [
+    "Rafa Alday <aldaydev@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/universalux/uux-angular"
+  },
+  "homepage": "https://github.com/universalux/uux-angular/tree/main/projects/ng-uux#readme",
+  "bugs": {
+    "url": "https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=angular_bug_report.yml",
+    "email": "aldaydev+uux@gmail.com"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "ng-content-card": "^20.0.0",
+    "ng-content-carousel": "^20.0.0",
+    "ng-expand": "^20.0.0",
+    "ng-hero-carousel": "^20.0.0",
+    "ng-link-button": "^20.0.0",
+    "ng-scroll-nav": "^20.0.0",
+    "ng-simple-button": "^20.0.0",
+    "ng-menu-toggle": "^20.0.0",
+    "ng-theme-toggle": "^20.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
