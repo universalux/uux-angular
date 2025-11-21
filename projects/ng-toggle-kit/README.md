@@ -24,7 +24,7 @@ The main purpose of this kit is to allow you to obtain different components with
 | **Component**   | **Description**                         | **Documentation** |
 | --------------- | --------------------------------------- | ----------------- |
 | `NgMenuToggle`  | Toggle button to handle a menu isOpen/isClose signal  | [See doc](https://www.npmjs.com/package/ng-menu-toggle) |
-| `NgThemeToggle` | Toggle button to handle a theme isDark/osLight signal  | [See doc](https://www.npmjs.com/package/ng-theme-toggle) |
+| `NgThemeToggle` | Toggle button to handle a theme isDark/isLight signal  | [See doc](https://www.npmjs.com/package/ng-theme-toggle) |
 
 ## Installation
 
