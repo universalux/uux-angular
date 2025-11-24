@@ -8,13 +8,26 @@
   </hgroup>
   <img src="angular_white.png" class="angularLogo">
 </div> -->
-<div class="container">
+
+<!-------------- ONLY NG EXPAND GROUP ----------------->
+
+<ng-expand-group>
+  <ng-expand label="Hola soy un expand">
+    Este es el contenido del expand
+  </ng-expand>
+  <ng-expand label="Hola soy OTRO expand">
+    Este es el contenido del expand
+  </ng-expand>
+</ng-expand-group>
+
+<!-------------- ONLY NG EXPAND ----------------->
+<!-- <div class="container">
   <ng-expand #accordionItem label="Expand button label" [startExpanded]="false">
     <h4>This is the content</h4>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo quo, animi optio a ducimus excepturi cupiditate dolore distinctio quod adipisci quaerat corrupti quis nobis expedita! Repellat et omnis veniam sapiente.</p>
     <span style="display: block; width: 100%; text-align: center;">100% customizable</span>
   </ng-expand>
-</div>
+</div> -->
 
 <!-- <div #accordion>
   <ng-expand #accordionItem label="expand button" [startExpanded]="true">

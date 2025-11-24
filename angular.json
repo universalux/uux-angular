@@ -403,6 +403,32 @@
           }
         }
       }
+    },
+    "ng-expand-group": {
+      "projectType": "library",
+      "root": "projects/ng-expand-group",
+      "sourceRoot": "projects/ng-expand-group/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-expand-group/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-expand-group/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/ng-expand-group/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "schematics": {
