@@ -19,6 +19,9 @@
       "ng-expand": [
         "./dist/ng-expand"
       ],
+      "ng-expand-group": [
+        "./dist/ng-expand-group"
+      ],
       "ng-hero-carousel": [
         "./dist/ng-hero-carousel"
       ],
@@ -139,6 +142,12 @@
     },
     {
       "path": "./projects/ng-uux/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ng-expand-group/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-expand-group/tsconfig.spec.json"
     }
   ]
 }
