@@ -31,9 +31,12 @@ export class NgExpandGroup {
         if (state) {
           this.expandedItem.emit(index);
           this.closeExpandables(index);
-        }else{
-          this.expandedItem.emit(null);
-        }
+        } else {
+        const anyOpen = this.accordionItems.some(i => i.isExpanded());
+          if (!anyOpen) {
+            this.expandedItem.emit(null);
+          }
+        };
       });
     });
   };
