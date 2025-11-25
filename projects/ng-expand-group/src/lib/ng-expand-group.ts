@@ -1,28 +1,42 @@
-import { ChangeDetectionStrategy, Component, ContentChildren, QueryList, ViewChildren } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, output, QueryList } from '@angular/core';
 import { NgExpand } from 'ng-expand';
 
 @Component({
+  host: {
+    role: 'group'
+  },
   selector: 'ng-expand-group',
   imports: [],
   template: `<ng-content/>`,
-  styles: ``,
+  styleUrl: './ng-expand-group.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgExpandGroup {
 
-  // @ViewChildren(NgExpand) accordionItems!: QueryList<NgExpand>;
+  openedItem = output<number | null>();
+
   @ContentChildren(NgExpand) accordionItems!: QueryList<NgExpand>
 
-  ngAfterViewInit() {
-    console.log('Items encontrados:', this.accordionItems.length);
-    this.accordionItems.forEach((item, index) => {
-      item.isExpanded.subscribe((state) => {
-        if(state){
-          this.closeExpandables(index);
-        }
-      })
+  ngAfterContentInit() {
+    this.accordionItems.changes.subscribe(() => {
+      this.attachListeners();
     });
-  }
+
+    this.attachListeners();
+  };
+
+  private attachListeners() {
+    this.accordionItems.forEach((item, index) => {
+      item.isExpanded.subscribe(state => {
+        if (state) {
+          this.openedItem.emit(index);
+          this.closeExpandables(index);
+        }else{
+          this.openedItem.emit(null);
+        }
+      });
+    });
+  };
 
   closeExpandables(openedExpandableIndex: number){
     this.accordionItems.forEach((item, index) => {
@@ -30,5 +44,6 @@ export class NgExpandGroup {
         item.isExpanded.set(false);
       }
     })
-  }
+  };
+
 }

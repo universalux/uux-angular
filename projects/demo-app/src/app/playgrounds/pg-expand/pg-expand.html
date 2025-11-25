@@ -11,7 +11,7 @@
 
 <!-------------- ONLY NG EXPAND GROUP ----------------->
 
-<ng-expand-group>
+<ng-expand-group (openedItem)="expandOpenedItem.set($event)">
   <ng-expand label="Hola soy un expand">
     Este es el contenido del expand
   </ng-expand>
@@ -19,6 +19,8 @@
     Este es el contenido del expand
   </ng-expand>
 </ng-expand-group>
+
+<span>{{expandOpenedItem()}}</span>
 
 <!-------------- ONLY NG EXPAND ----------------->
 <!-- <div class="container">
