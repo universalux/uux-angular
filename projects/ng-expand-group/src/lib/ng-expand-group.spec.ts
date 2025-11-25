@@ -7,7 +7,7 @@ import { By } from '@angular/platform-browser';
 @Component({
   imports: [NgExpand, NgExpandGroup],
   template: `
-    <ng-expand-group (openedItem)="expandOpenedItem.set($event)">
+    <ng-expand-group (expandedItem)="expandOpenedItem.set($event)">
       <ng-expand label="Expand label 1">
         Expand content 1
       </ng-expand>

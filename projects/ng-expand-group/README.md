@@ -1,63 +1,127 @@
-# NgExpandGroup
+<p align="center">
+  <a href="https://universalux.dev" target="_blank" rel="noreferrer noopener">
+    <img src="https://github.com/universalux/uux-hub/blob/main/assets/components/angular/ng-expand-group/ng-expand-group-cover.gif?raw=true" alt="NgExpandGroup cover">
+  </a>
+</p>
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.0.
+# NgExpandGroup - Angular accordion
 
-## Code scaffolding
+**ng-expand-group** is a **standalone, reusable and customizable component** for Angular 18, 19 and 20.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+It is designed to work with **signals** and Angular **zoneless**, providing a lightweight, flexible, and accordion of expandable items. It is also fully compatible with **SSR, CSR and prerender**.
 
+## Table of Contents
+
+* [Installation](#installation)
+* [Overview](#overview)
+* [Functionality](#functionality)
+* [Inputs and Outputs](#inputs-and-outputs)
+* [Styling](#styling)
+* [Accessibility](#accessibility)
+* [Contribute or Report](#contribute-or-report)
+
+## Installation
+
+If you want to install the latest version (currently 20):
 ```bash
-ng generate component component-name
+npm install ng-expand-group
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+Angular 19:
 ```bash
-ng generate --help
+npm install ng-expand-group@v19-lts
 ```
 
-## Building
-
-To build the library, run:
-
+Angular 18:
 ```bash
-ng build ng-expand-group
+npm install ng-expand-group@v18-lts
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+## Overview
 
-### Publishing the Library
 
-Once the project is built, you can publish your library by following these steps:
+`ng-expand-group` requires the `ng-expand` component from our library. However, you don't need to install anything, as ng-expand is automatically installed with ng-expand-group.
 
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/ng-expand-group
-   ```
+Using `ng-expand-group` is easy:
+- Define the accordion items you need using ng-expand as children of the component.
+- If needed, you can use the `(expandedItem)` output to get the index of the current expanded item.
+- Style it with customizable CSS variables to match your design needs.
 
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
+Here’s a basic usage example:
 
-## Running unit tests
+```ts
+import { Component, signal } from '@angular/core';
+import { NgExpand, NgExpandGroup } from 'ng-expand-group';
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+@Component({
+  selector: 'app',
+  standalone: true,
+  imports: [ NgExpand, NgExpandGroup ],
+  template: `
+    <ng-expand-group (expandedItem)="expandedItemSignal.set($event)>
+      <ng-expand label="Expand button label 1">
+        <p>This is the content 1</p>
+      </ng-expand>
+      <ng-expand label="Expand button label 2">
+        <p>This is the content 2</p>
+      </ng-expand>
+    </ng-expand-group>
+  `,
+})
+export class App {
+  expandedItemSignal = signal<number | null>(null);
+}
 ```
 
-## Running end-to-end tests
+## Functionality
 
-For end-to-end (e2e) testing, run:
+As you can see in the example bellow, you simply have to add as `ng-expand` items you need as children of `ng-expand-group`.
 
-```bash
-ng e2e
+If needed, you can get the index of the current expanded item through the output `(expandedItem)`. If a ng-expand item is expanded, you will get its index (number). If there is no item expanded, you will get null.
+
+## Inputs and Outputs
+
+Here is a list of all input/ouput:
+
+### Functionality Outputs
+
+| **Output**        | **Description**                                               | **Default** |
+| ----------------- | ------------------------------------------------------------- | ----------- |
+| `(expandedItem)`  | Get the index of the current expanded item (number or null )  | null        |
+
+
+## Styling
+
+You can easily customize the component’s appearance using CSS.
+There is only one CSS variable that will help you to set up the `gap` between each item (--expand-group-gap).
+
+```css
+ng-expand-group {
+  padding: 10px 20px;
+  --expand-group-gap: 1rem;
+}
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+| **Variable**           | **Description**                      | **Default**       |
+| ---------------------- | ------------------------------------ | ----------------- |
+| `--expand-group-gap`   | Gap between ng-expand items inside.  | `.5rem`           |
 
-## Additional Resources
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Accessibility
+
+This component is fully accessible. All functional accessibility features are already built in.
+
+Keep in mind that you are responsible for configuring the accessibility of any content you place inside the ng-expand components.
+
+## Contribute or report
+
+Choose the form that best fits your case:
+
+- 🐞 [Report a bug](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=angular_bug_report.yml)
+- ✨ [Request an improvement for an existing component](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=angular_feature_request.yml)
+- 🧩 [Suggest a new component](https://github.com/universalux/uux-hub/issues/new?assignees=aldaydev&labels=bug&template=new_component_request.yml)
+
+👉 Or go to the [form selector](https://github.com/universalux/uux-hub/issues/new/choose).
+
+## License
+MIT

@@ -1,26 +1,31 @@
-<!-- <div class="titleContainer">
+<div class="titleContainer">
   <hgroup>
-    <h1>ng-expand</h1>
+    <h1>ng-expand-group</h1>
     <div>
       <h4>by</h4>
       <img src="images/uux-brand-large-croped-white_300x43px.png" class="uuxLogo">
     </div>
   </hgroup>
   <img src="angular_white.png" class="angularLogo">
-</div> -->
+</div>
 
 <!-------------- ONLY NG EXPAND GROUP ----------------->
 
-<ng-expand-group (openedItem)="expandOpenedItem.set($event)">
-  <ng-expand label="Hola soy un expand">
-    Este es el contenido del expand
-  </ng-expand>
-  <ng-expand label="Hola soy OTRO expand">
-    Este es el contenido del expand
-  </ng-expand>
-</ng-expand-group>
+<div class="container">
+  <ng-expand-group (expandedItem)="expandOpenedItem.set($event)">
+    <ng-expand label="Expand button label">
+      <h4>This is the content</h4>
+      <span style="display: block; width: 100%; text-align: center;">100% customizable</span>
+    </ng-expand>
+    <ng-expand label="Expand button label">
+      <h4>This is the content</h4>
+      <span style="display: block; width: 100%; text-align: center;">100% customizable</span>
+    </ng-expand>
+  </ng-expand-group>
+</div>
 
-<span>{{expandOpenedItem()}}</span>
+
+<!-- <span>{{expandOpenedItem()}}</span> -->
 
 <!-------------- ONLY NG EXPAND ----------------->
 <!-- <div class="container">

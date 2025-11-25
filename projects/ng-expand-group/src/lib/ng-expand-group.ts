@@ -13,7 +13,7 @@ import { NgExpand } from 'ng-expand';
 })
 export class NgExpandGroup {
 
-  openedItem = output<number | null>();
+  expandedItem = output<number | null>();
 
   @ContentChildren(NgExpand) accordionItems!: QueryList<NgExpand>
 
@@ -29,10 +29,10 @@ export class NgExpandGroup {
     this.accordionItems.forEach((item, index) => {
       item.isExpanded.subscribe(state => {
         if (state) {
-          this.openedItem.emit(index);
+          this.expandedItem.emit(index);
           this.closeExpandables(index);
         }else{
-          this.openedItem.emit(null);
+          this.expandedItem.emit(null);
         }
       });
     });
