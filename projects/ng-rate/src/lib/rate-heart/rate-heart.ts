@@ -5,12 +5,11 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
   selector: 'rate-heart',
   imports: [],
   templateUrl: './rate-heart.html',
-  styleUrl: './rate-heart.scss',
+  styleUrl: '../rate-icon.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RateHeart {
   itemPercentage = input<number>(0);
-
   uniqueId = signal<string>(this.generateUniqueId());
 
   generateUniqueId(prefix = 'rate-heart'): string {

@@ -1,20 +1,33 @@
 <div class="rateContainer">
 
-  <!-- (mouseenter)="stopPercentage($event)" (mouseleave)="restartPercentage()" -->
+  @for (item of itemsAverages(); track $index) {
 
-  @if (icon() === 'star') {
-    @for (item of itemsPercentages(); track $index) {
-      <rate-star [itemPercentage]="item" [index]="$index" (mouseenter)="setVote($index)" (mouseleave)="cancelVote()" (click)="sendVote()" />
+    @if(readOnly()) {
+      @if(icon() === 'star') {
+        <rate-star [itemPercentage]="item" />
+      }@else if(icon() === 'heart') {
+        <rate-heart [itemPercentage]="item" />
+      }
+    }@else {
+      <button
+        class="rateItemButton"
+        (mouseenter)="setVote($index)"
+        (mouseleave)="cancelVote()"
+        (click)="sendVote()"
+        (focus)="setVote($index)"
+        (blur)="cancelVote()"
+        (keydown.enter)="sendVote()"
+        (keydown.space)="sendVote()"
+      >
+        @if(icon() === 'star') {
+          <rate-star [itemPercentage]="item" />
+        } @else if(icon() === 'heart') {
+          <rate-heart [itemPercentage]="item" />
+        }
+      </button>
     }
-  }
 
-  @if (icon() === 'heart') {
-    @for (item of itemsPercentages(); track $index) {
-      <rate-heart [itemPercentage]="item" />
-    }
   }
 
 </div>
-
-
 

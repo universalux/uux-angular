@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, OnChanges, OnInit, output, signal, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, OnChanges, OnInit, output, signal, SimpleChanges } from '@angular/core';
 import { RateStar } from './rate-star/rate-star';
 import { RateHeart } from "./rate-heart/rate-heart";
 
@@ -12,49 +12,51 @@ import { RateHeart } from "./rate-heart/rate-heart";
 })
 export class NgRate implements OnInit, OnChanges {
 
-  count = input<3 | 4 | 5 | 7 | 10>(5);
-  percetage = input(0);
+  items = input< 3 | 4 | 5 | 7 | 10 >(5);
+  average = input(0);
   icon = input<'star' | 'heart'>('heart');
-  voteFormat = input<'items' | 'percentage'>('items');
+  readOnly = input<boolean>(false);
   vote = output<number>();
 
-  itemsPercentages = signal<number[]>([]);
-
+  itemsAverages = signal<number[]>([]);
   currentVote = signal<number | null>(0);
+  clampedAverage = computed(() => {
+    const avg = this.average();
+    const max = this.items();
+    const min = 0;
+
+    if (typeof avg !== 'number' || isNaN(avg)) return 0;
+
+    // clamp (0 → max)
+    return Math.min(max, Math.max(min, avg));
+  });
 
   // ---------- Life cycle ----------
 
   firstRender : boolean = true;
   ngOnInit(): void {
-    this.updateItems(this.percetage());
+    this.updateItems(this.clampedAverage());
     this.firstRender = false;
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['percetage'] && !this.firstRender) {
-      this.updateItems(changes['percetage'].currentValue);
+    if (changes['average'] && !this.firstRender) {
+      this.updateItems(this.clampedAverage());
     }
   }
 
   // ---------- Methods ----------
 
   setVote(index: number){
-    const oneItem = 100 / this.count();
-    const markedElements = (index + 1) * oneItem;
-    console.log(markedElements);
+
+    const markedElements = (index + 1);
     this.updateItems(markedElements);
-    console.log('cuandots', markedElements / oneItem)
-    if(this.voteFormat() === 'items'){
-      this.currentVote.set(markedElements / oneItem);
-    }
-    if(this.voteFormat() === 'percentage'){
-      this.currentVote.set(markedElements);
-    }
+    this.currentVote.set(markedElements);
   };
 
   cancelVote(){
     this.currentVote.set(null);
-    this.updateItems(this.percetage());
+    this.updateItems(this.average());
   };
 
   sendVote(){
@@ -64,29 +66,26 @@ export class NgRate implements OnInit, OnChanges {
 
   }
 
-  private updateItems (percentage: number ) {
+  private updateItems (average: number ) {
 
-    const count = this.count();
-    const oneItem = 100 / count;
-    let total = percentage;
+    let currentAverage = average;
+    const items = this.items();
+    console.log('currentAverage:', currentAverage, 'items: ', items);
     let itemsArr = [];
 
-    for (let i = 1; i <= count; i++) {
-      if(total > oneItem){
+    for (let i = 1; i <= items; i++) {
+      if(currentAverage >= 1){
         itemsArr.push(100);
-        total = total - oneItem;
-      }else if(total <= oneItem && total > 0){
-        const lastItemPercentage = Math.floor((100 * total) / oneItem);
-        itemsArr.push(lastItemPercentage);
-        total = 0;
-      }else{
+        currentAverage --;
+      }else if(currentAverage < 1 && currentAverage > 0){
+        itemsArr.push(Math.floor(currentAverage * 100));
+        currentAverage = 0;
+      }else {
         itemsArr.push(0);
       }
     }
 
-    this.itemsPercentages.set(itemsArr);
-
+    this.itemsAverages.set(itemsArr);
   };
-
 
 }

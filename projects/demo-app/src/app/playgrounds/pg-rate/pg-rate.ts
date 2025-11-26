@@ -10,7 +10,7 @@ import { NgRate } from 'ng-rate';
 })
 export class PgRate {
 
-  customPercentage = signal<number | null>(50);
+  customPercentage = signal<number | null>(2.4);
 
   handleCustomPercentage(event: Event){
     const target = event.target as HTMLInputElement;
@@ -19,8 +19,8 @@ export class PgRate {
 
   vote = signal<number | null>(null);
 
-  getVotePercentage(){
-    return this.vote()! * (100/5);
-  }
+  // getVotePercentage(){
+  //   return this.vote()! * (100/5);
+  // }
 
 }
