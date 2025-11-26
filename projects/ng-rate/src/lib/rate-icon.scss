@@ -1,0 +1,19 @@
+:host{
+  display: block;
+}
+
+.rateIcon__fill{
+  fill: var(--icon-filled-color, gold);
+}
+
+.rateIcon__stroke{
+  fill: transparent;
+  stroke: var(--icon-stroke-color, white);
+  stroke-width: var(--icon-stroke-width, 10%);
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.rateIcon__emptyFill{
+  fill: var(--icon-empty-color, transparent);
+}

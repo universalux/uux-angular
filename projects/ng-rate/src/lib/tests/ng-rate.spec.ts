@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgRate } from './ng-rate';
+import { NgRate } from '../ng-rate';
 import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('NgRate', () => {
