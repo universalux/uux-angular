@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { NgRate } from 'ng-rate';
 
 @Component({
@@ -9,5 +9,18 @@ import { NgRate } from 'ng-rate';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PgRate {
+
+  customPercentage = signal<number | null>(50);
+
+  handleCustomPercentage(event: Event){
+    const target = event.target as HTMLInputElement;
+    this.customPercentage.set(+target.value);
+  }
+
+  vote = signal<number | null>(null);
+
+  getVotePercentage(){
+    return this.vote()! * (100/5);
+  }
 
 }

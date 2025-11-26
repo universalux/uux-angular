@@ -1,1 +1,5 @@
-<ng-rate/>
+<ng-rate [percetage]="getVotePercentage()" [count]="5" icon="star" (vote)="vote.set($event)"/>
+
+<input type="number" (input)="handleCustomPercentage($event)">
+
+<h2>Vote is: {{vote()}}</h2>

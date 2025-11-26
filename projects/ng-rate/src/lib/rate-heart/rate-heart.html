@@ -1,0 +1,49 @@
+<button>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  width="100%" height="100%"
+>
+  <defs>
+    <!-- ORIGINAL PATH DEL CORAZÓN -->
+    <path
+      [attr.id]="uniqueId() + 'heart'"
+      d="M12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5
+         M12 5.50063C16.4998 0.825464 22 4.27416 22 9.1371C22 14 17.9806 16.5914 15.0383 18.9109C14 19.7294 13 20.5 12 20.5"
+    />
+
+    <!-- FILL MASK -->
+    <mask [attr.id]="uniqueId() + 'heart-fill-mask'">
+      <!-- fondo negro no visible -->
+      <rect x="0" y="0" width="24" height="24" fill="black" />
+      <!-- área visible según porcentaje -->
+      <rect
+        x="0"
+        y="0"
+        [attr.width]="itemPercentage() / 100 * 24"
+        height="24"
+        fill="white"
+      />
+    </mask>
+  </defs>
+
+  <!-- Empty inner layer -->
+  <use
+    [attr.href]="'#' + uniqueId() + 'heart'"
+    class="rateHeart__emptyFill"
+  ></use>
+
+  <!-- Fill usando máscara -->
+  <use
+    [attr.href]="'#' + uniqueId() + 'heart'"
+    class="rateHeart__fill"
+    [attr.mask]="'url(#' + uniqueId() + 'heart-fill-mask)'"
+  ></use>
+
+  <!-- Stroke layer -->
+  <use
+    [attr.href]="'#' + uniqueId() + 'heart'"
+    class="rateHeart__stroke"
+  ></use>
+</svg>
+</button>

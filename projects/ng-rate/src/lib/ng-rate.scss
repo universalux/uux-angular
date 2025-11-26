@@ -1,3 +1,19 @@
-:host{
-  display: block;
+.rateContainer{
+  display: flex;
+  // gap: var(--rate-gap, 2rem);
+}
+
+rate-star{
+  padding: 0 var(--rate-item-x-padding, .5rem);
+  --star-filled-color: var(--rate-filled-color, gold);
+  --star-stroke-color: var(--rate-stroke-color, white);
+  --star-stroke-width: var(--rate-stroke-width, 5%);
+  --star-empty-color: var(--rate-empty-color, transparent);
+}
+
+rate-heart{
+  --heart-filled-color: var(--rate-filled-color, gold);
+  --heart-stroke-color: var(--rate-stroke-color, white);
+  --heart-stroke-width: var(--rate-stroke-width, 5%);
+  --heart-empty-color: var(--rate-empty-color, transparent);
 }
