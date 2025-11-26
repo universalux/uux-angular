@@ -5,6 +5,7 @@ import { NgExpand } from 'ng-expand';
   host: {
     role: 'group'
   },
+  standalone: true,
   selector: 'ng-expand-group',
   imports: [],
   template: `<ng-content/>`,
