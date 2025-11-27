@@ -14,7 +14,7 @@ export class NgRate implements OnInit, OnChanges {
 
   items = input< 3 | 4 | 5 | 7 | 10 >(5);
   average = input(0);
-  icon = input<'star' | 'heart'>('heart');
+  icon = input<'star' | 'heart'>('star');
   readOnly = input<boolean>(false);
   vote = output<number>();
 
@@ -40,9 +40,10 @@ export class NgRate implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['average'] && !this.firstRender) {
+    if (changes['average'] || changes['items']  && !this.firstRender) {
       this.updateItems(this.clampedAverage());
     }
+
   }
 
   // ---------- Methods ----------
@@ -70,7 +71,6 @@ export class NgRate implements OnInit, OnChanges {
 
     let currentAverage = average;
     const items = this.items();
-    console.log('currentAverage:', currentAverage, 'items: ', items);
     let itemsArr = [];
 
     for (let i = 1; i <= items; i++) {

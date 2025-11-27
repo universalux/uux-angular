@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { NgRate } from 'ng-rate';
 
+type Items = 3 | 4 | 5 | 7 | 10;
+
 @Component({
   selector: 'pg-rate',
   imports: [ NgRate ],
@@ -12,15 +14,18 @@ export class PgRate {
 
   customPercentage = signal<number | null>(2.4);
 
+  items = signal<Items>(5);
+
   handleCustomPercentage(event: Event){
     const target = event.target as HTMLInputElement;
     this.customPercentage.set(+target.value);
   }
 
-  vote = signal<number | null>(null);
+  handleCustomItems(event: Event){
+    const target = event.target as HTMLInputElement;
+    this.items.set(+target.value as Items);
+  }
 
-  // getVotePercentage(){
-  //   return this.vote()! * (100/5);
-  // }
+  vote = signal<number | null>(null);
 
 }
