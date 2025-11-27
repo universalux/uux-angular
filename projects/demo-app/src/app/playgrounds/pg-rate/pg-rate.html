@@ -1,12 +1,78 @@
-<ng-rate
+<!-- <div class="titleContainer">
+  <hgroup>
+    <h1>ng-rate</h1>
+    <div>
+      <h4>by</h4>
+      <img src="images/uux-brand-large-croped-white_300x43px.png" class="uuxLogo">
+    </div>
+  </hgroup>
+  <img src="angular_white.png" class="angularLogo">
+</div> -->
+
+<div class="container">
+  <div class="upperRates">
+    <ng-rate
+      [average]="vote()!"
+      [items]="5"
+      icon="star"
+      [readOnly]="false"
+      [hover]="['scale']"
+      (vote)="vote.set($event)"
+    />
+
+    <ng-rate
+      [average]="vote2()!"
+      [items]="3"
+      icon="heart"
+      [readOnly]="false"
+      [hover]="['translateY']"
+      (vote)="vote2.set($event)"
+    />
+  </div>
+
+
+  <ng-rate
+    class="solid"
+    [average]="vote3()!"
+    [items]="10"
+    icon="star"
+    [readOnly]="false"
+    [hover]="['translateY', 'scale', 'rotateX']"
+    (vote)="vote3.set($event)"
+  />
+</div>
+
+<!--- FORM -->
+
+<!-- <form>
+  <label>
+    <input type="checkbox" name="color" value="scale" (input)="handleHoverChange($event)">
+    scale
+  </label>
+
+  <label>
+    <input type="checkbox" name="color" value="rotateX" (input)="handleHoverChange($event)">
+    rotateX
+  </label>
+
+  <label>
+    <input type="checkbox" name="color" value="translateY" (input)="handleHoverChange($event)">
+    translateY
+  </label>
+</form> -->
+
+<!--- ---------------------------- -->
+
+<!-- <ng-rate
   [average]="vote()!"
   [items]="items()"
   icon="heart"
   [readOnly]="false"
+  [hover]="hoverSettings()"
   (vote)="vote.set($event)"
-/>
-
+/> -->
+<!--
 <input type="number" (input)="handleCustomPercentage($event)">
 <input type="number" (input)="handleCustomItems($event)">
 
-<h2>Vote is: {{vote()}}</h2>
+<h2>Vote is: {{vote()}}</h2> -->

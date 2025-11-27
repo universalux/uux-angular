@@ -1,13 +1,15 @@
 import { Component, signal } from "@angular/core";
 import { NgRate } from "../../ng-rate";
+import { RateLangs } from "../../ng-rate.types";
 
+export type ItemValues = 3 | 4 | 5 | 7 | 10;
 
 @Component({
   imports: [NgRate],
   template: `<ng-rate [readOnly]="true" [average]="3.5" [items]="items()"/>`
 })
 export class TestHostReadOnly {
-  items = signal< 3 | 4 | 5 | 7 | 10>(5);
+  items = signal<ItemValues>(5);
 }
 
 @Component({
@@ -18,10 +20,12 @@ export class TestHostReadOnly {
         [items]="items()"
         icon="heart"
         (vote)="vote.set($event)"
+        [lang]="lang()"
       />
     `
 })
 export class TestHostInteractive {
   vote = signal<number | null>(null);
-  items = signal< 3 | 4 | 5 | 7 | 10>(3);
+  items = signal<ItemValues>(3);
+  lang = signal<RateLangs>('en');
 }
