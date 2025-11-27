@@ -3,11 +3,13 @@
   @for (item of itemsAverages(); track $index) {
 
     @if(readOnly()) {
+
       @if(icon() === 'star') {
         <rate-star [itemPercentage]="item" />
       }@else if(icon() === 'heart') {
         <rate-heart [itemPercentage]="item" />
       }
+
     }@else {
       <button
         class="rateItemButton"

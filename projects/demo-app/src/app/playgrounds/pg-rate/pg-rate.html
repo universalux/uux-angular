@@ -1,10 +1,12 @@
 <ng-rate
-  [average]="customPercentage()!"
-  [items]="5" icon="heart"
+  [average]="vote()!"
+  [items]="items()"
+  icon="heart"
   [readOnly]="false"
   (vote)="vote.set($event)"
 />
 
 <input type="number" (input)="handleCustomPercentage($event)">
+<input type="number" (input)="handleCustomItems($event)">
 
 <h2>Vote is: {{vote()}}</h2>
