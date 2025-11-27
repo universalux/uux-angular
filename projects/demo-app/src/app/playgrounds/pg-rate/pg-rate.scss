@@ -1,8 +1,81 @@
+
 :host{
-  display: block;
+    display: flex;
+    flex-direction: column;
+    row-gap: 3rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100dvh;
+    height: 100%;
+    background: linear-gradient(127deg, #30a2fe 20%, #824dfe 100%);
+    // color: red;
+    // background-color: white;
+}
+
+.titleContainer{
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleContainer hgroup h1{
+    font-size: 1.8rem;
+    margin-bottom: .35rem;
+}
+
+.titleContainer hgroup div{
+
+  display: flex;
+  column-gap: .3rem;
+  align-items: end;
+}
+
+.uuxLogo{
+  width: 125px;
+  margin-bottom: .1rem;
+}
+
+.angularLogo{
+    max-width: 52px;
+}
+
+.container{
+    width: 500px;
+    // height: 113px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+
+}
+
+.upperRates{
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+ng-rate.solid{
+  // height: 30px;
+  // width: 200px;
+  // height: 100%;
+
+  // --rate-shadow: none;
+  --rate-stroke-width: 0;
+  --rate-empty-color: white;
 }
 
 ng-rate{
+  // height: 100%;
+  max-height: 60px;
+  // height: fit-content;
   // --rate-gap: 1rem;
   // --rate-filled-color: blue;
   // --rate-stroke-color: red;

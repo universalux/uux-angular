@@ -1,4 +1,10 @@
-<div class="rateContainer">
+<div
+  class="rateContainer"
+  [attr.role]="readOnly() ? null : 'radiogroup'"
+  [attr.aria-label]="readOnly()
+    ? acc().containerReadOnlyAriaLabel
+    : acc().containerInteractiveAriaLabel"
+>
 
   @for (item of itemsAverages(); track $index) {
 
@@ -12,14 +18,16 @@
 
     }@else {
       <button
-        class="rateItemButton"
+        class="rateItemButton hoverEffects"
+        role="radio"
+        [attr.aria-checked]="currentVote() === $index + 1"
+        [attr.aria-label]="acc().buttonInteractiveAriaLabel($index + 1, items())"
         (mouseenter)="setVote($index)"
         (mouseleave)="cancelVote()"
         (click)="sendVote()"
         (focus)="setVote($index)"
         (blur)="cancelVote()"
-        (keydown.enter)="sendVote()"
-        (keydown.space)="sendVote()"
+        (keydown)="onKeydown($event, $index)"
       >
         @if(icon() === 'star') {
           <rate-star [itemPercentage]="item" />
