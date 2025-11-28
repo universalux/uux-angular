@@ -1,0 +1,47 @@
+:host{
+  display: block;
+}
+
+.ratingContainer{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(var(--rating-shadow, 2px 2px 5px rgba(0, 0, 0, 0.548)));
+}
+
+.ratingItemButton{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  height: 100%
+}
+
+.ratingItemButton.hoverEffects:hover rating-star ::ng-deep svg,
+.ratingItemButton.hoverEffects:hover rating-heart ::ng-deep svg {
+  transform-origin: center;
+  transition: transform var(--rating-hover-transition-duration, .3s) ease-in-out;
+  transform: var(--hover-transform);
+}
+
+.ratingItemButton:focus-visible {
+  outline: var(--rating-focus-ring, 2px solid var(--rating-stroke-color, white));
+  outline-offset: 2px;
+}
+
+rating-star ::ng-deep svg,
+rating-heart ::ng-deep svg{
+  transition: transform var(--rating-hover-transition-duration, .3s) ease-in-out;
+  height: 100%;
+}
+
+rating-star, rating-heart{
+  padding: 0 var(--rating-item-x-padding, .3rem);
+  --icon-filled-color: var(--rating-filled-color, gold);
+  --icon-stroke-color: var(--rating-stroke-color, white);
+  --icon-stroke-width: var(--rating-stroke-width, .7);
+  --icon-empty-color: var(--rating-empty-color, transparent);
+}
+
+rating-heart{
+  --icon-filled-color: var(--rating-filled-color, red);
+}

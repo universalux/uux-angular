@@ -1,6 +1,6 @@
 <div class="titleContainer">
   <hgroup>
-    <h1>ng-rate</h1>
+    <h1>ng-ratings</h1>
     <div>
       <h4>by</h4>
       <img src="images/uux-brand-large-croped-white_300x43px.png" class="uuxLogo">
@@ -11,7 +11,7 @@
 
 <div class="container">
   <div class="upperRates">
-    <ng-rate
+    <ng-ratings
       [average]="vote()!"
       [items]="5"
       icon="star"
@@ -20,7 +20,7 @@
       (vote)="vote.set($event)"
     />
 
-    <ng-rate
+    <ng-ratings
       [average]="vote2()!"
       [items]="3"
       icon="heart"
@@ -31,7 +31,7 @@
   </div>
 
 
-  <ng-rate
+  <ng-ratings
     class="solid"
     [average]="!vote3() ? average() : vote3()!"
     [items]="10"
@@ -63,7 +63,7 @@
 
 <!--- ---------------------------- -->
 
-<!-- <ng-rate
+<!-- <ng-ratings
   [average]="vote()!"
   [items]="items()"
   icon="heart"

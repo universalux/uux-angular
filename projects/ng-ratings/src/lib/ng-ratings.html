@@ -1,5 +1,5 @@
 <div
-  class="rateContainer"
+  class="ratingContainer"
   [attr.role]="readOnly() ? null : 'radiogroup'"
   [attr.aria-label]="readOnly()
     ? acc().containerReadOnlyAriaLabel
@@ -11,17 +11,17 @@
     @if(readOnly()) {
 
       @if(icon() === 'star') {
-        <rate-star [itemPercentage]="item" />
+        <rating-star [itemPercentage]="item" />
       }@else if(icon() === 'heart') {
-        <rate-heart [itemPercentage]="item" />
+        <rating-heart [itemPercentage]="item" />
       }
 
     }@else {
       <button
-        class="rateItemButton hoverEffects"
+        class="ratingItemButton hoverEffects"
         role="radio"
         [attr.aria-checked]="currentVote() === $index + 1"
-        [attr.aria-label]="acc().buttonInteractiveAriaLabel($index + 1, items())"
+        [attr.aria-label]="acc().buttonInteractiveAriaLabel?.($index + 1, items())"
         (mouseenter)="setVote($index)"
         (mouseleave)="cancelVote()"
         (click)="sendVote()"
@@ -30,9 +30,9 @@
         (keydown)="onKeydown($event, $index)"
       >
         @if(icon() === 'star') {
-          <rate-star [itemPercentage]="item" />
+          <rating-star [itemPercentage]="item" />
         } @else if(icon() === 'heart') {
-          <rate-heart [itemPercentage]="item" />
+          <rating-heart [itemPercentage]="item" />
         }
       </button>
     }

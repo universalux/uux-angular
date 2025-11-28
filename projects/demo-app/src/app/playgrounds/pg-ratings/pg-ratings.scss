@@ -62,24 +62,24 @@
   gap: 3rem;
 }
 
-ng-rate.solid{
+ng-ratings.solid{
   margin: 0 auto;
   // height: 30px;
   // width: 200px;
   // height: 100%;
 
-  // --rate-shadow: none;
-  --rate-stroke-width: 0;
-  --rate-empty-color: white;
+  // --raintg-shadow: none;
+  --rating-stroke-width: 0;
+  --rating-empty-color: white;
 }
 
-ng-rate{
+ng-ratings{
   // height: 100%;
   max-height: 35px;
   // height: fit-content;
-  // --rate-gap: 1rem;
-  // --rate-filled-color: blue;
-  // --rate-stroke-color: red;
-  // --rate-stroke-width: 7%;
-  // --rate-empty-color: green;
+  // --raintg-gap: 1rem;
+  // --raintg-filled-color: blue;
+  // --raintg-stroke-color: red;
+  // --raintg-stroke-width: 7%;
+  // --raintg-empty-color: green;
 }

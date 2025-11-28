@@ -8,7 +8,7 @@ import { PgContentCard } from './playgrounds/pg-content-card/pg-content-card';
 import { PgScrollNav } from './playgrounds/pg-scroll-nav/pg-scroll-nav';
 import { PgExpand } from './playgrounds/pg-expand/pg-expand';
 import { PgKits } from "./playgrounds/pg-kits/pg-kits";
-import { PgRate } from "./playgrounds/pg-rate/pg-rate";
+import { PgRatings } from "./playgrounds/pg-ratings/pg-ratings";
 
 @Component({
   selector: 'app-root',
@@ -22,7 +22,7 @@ import { PgRate } from "./playgrounds/pg-rate/pg-rate";
     PgScrollNav,
     PgExpand,
     PgKits,
-    PgRate
+    PgRatings
 ],
   templateUrl: './app.html',
   styleUrl: './app.scss'

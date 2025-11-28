@@ -1,18 +1,18 @@
 import { ChangeDetectionStrategy, Component, computed, ElementRef, inject, input, OnChanges, OnInit, output, signal, SimpleChanges } from '@angular/core';
-import { RateStar } from './rate-star/rate-star';
-import { RateHeart } from "./rate-heart/rate-heart";
-import { RateCustomAria, RateLangs } from './ng-rate.types';
-import { RATE_LANG } from './accessibility/rate.lang';
+import { RatingStar } from './rating-star/rating-star';
+import { RatingHeart } from "./rating-heart/rating-heart";
+import { RatingCustomAria, RatingLangs } from './ng-ratings.types';
+import { RATING_LANG } from './accessibility/rating.lang';
 
 @Component({
   standalone: true,
-  selector: 'ng-rate',
-  imports: [RateStar, RateHeart],
-  templateUrl: './ng-rate.html',
-  styleUrl: './ng-rate.scss',
+  selector: 'ng-ratings',
+  imports: [RatingStar, RatingHeart],
+  templateUrl: './ng-ratings.html',
+  styleUrl: './ng-ratings.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgRate implements OnInit, OnChanges {
+export class NgRatings implements OnInit, OnChanges {
 
   el = inject(ElementRef);
 
@@ -27,8 +27,8 @@ export class NgRate implements OnInit, OnChanges {
   hover = input<Array<'scale' | 'rotateX' | 'translateY'> |'none'>(['scale']);
 
   // Accessibility inputs
-  lang = input<RateLangs>('en');
-  customAria = input<Partial<RateCustomAria> | null>(null);
+  lang = input<RatingLangs>('en');
+  customAria = input<Partial<RatingCustomAria> | null>(null);
 
   // Internal signals
   itemsAverages = signal<number[]>([]);
@@ -43,7 +43,7 @@ export class NgRate implements OnInit, OnChanges {
     // clamp (0 → max)
     return Math.min(max, Math.max(min, avg));
   });
-  acc = signal<RateCustomAria>(RATE_LANG['en']);
+  acc = signal<RatingCustomAria>(RATING_LANG['en']);
 
   // ---------- Life cycle ----------
 
@@ -96,7 +96,7 @@ export class NgRate implements OnInit, OnChanges {
   };
 
   focusItem(index: number) {
-    const buttons = this.el.nativeElement.querySelectorAll('.rateItemButton');
+    const buttons = this.el.nativeElement.querySelectorAll('.ratingItemButton');
     const btn = buttons[index] as HTMLButtonElement;
     btn.focus();
   };
@@ -145,7 +145,7 @@ export class NgRate implements OnInit, OnChanges {
 
   setAccOptions() {
     const currentLang = this.lang() ?? 'en';
-    const langDefaults = RATE_LANG[currentLang];
+    const langDefaults = RATING_LANG[currentLang];
     const userOptions = this.customAria() ?? {};
 
     this.acc.set({
@@ -156,9 +156,9 @@ export class NgRate implements OnInit, OnChanges {
 
   getHoverTransform() {
     const transforms = [];
-    if (this.hover().includes('scale')) transforms.push('scale(var(--rate-hover-scale, 1.1))');
-    if (this.hover().includes('rotateX')) transforms.push('rotate(var(--rate-hover-rotateX, 15deg))');
-    if (this.hover().includes('translateY')) transforms.push('translateY(var(--rate-hover-translateY,  -5px))');
+    if (this.hover().includes('scale')) transforms.push('scale(var(--rating-hover-scale, 1.1))');
+    if (this.hover().includes('rotateX')) transforms.push('rotate(var(--rating-hover-rotateX, 15deg))');
+    if (this.hover().includes('translateY')) transforms.push('translateY(var(--rating-hover-translateY,  -5px))');
     return transforms.join(' ');
   }
 

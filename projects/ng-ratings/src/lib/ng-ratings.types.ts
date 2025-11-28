@@ -1,9 +1,9 @@
-import { RATE_LANG } from "./accessibility/rate.lang";
+import { RATING_LANG } from "./accessibility/rating.lang";
 
-export type RateLangs = keyof typeof RATE_LANG;
+export type RatingLangs = keyof typeof RATING_LANG;
 // "en" | "es" | "fr" | "it" | "de"
 
-export interface RateCustomAria {
+export interface RatingCustomAria {
   containerReadOnlyAriaLabel?: string;
   containerInteractiveAriaLabel?: string;
   buttonInteractiveAriaLabel?: (value: number, total: number) => string;

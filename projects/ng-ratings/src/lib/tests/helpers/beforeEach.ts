@@ -2,28 +2,28 @@ import { DebugElement, provideZonelessChangeDetection } from "@angular/core";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { TestHostReadOnly, TestHostInteractive } from "./testHosts";
 import { By } from "@angular/platform-browser";
-import { NgRate } from "../../ng-rate";
-import { RateStar } from "../../rate-star/rate-star";
-import { RateHeart } from "../../rate-heart/rate-heart";
+import { NgRatings } from "../../ng-ratings";
+import { RatingStar } from "../../rating-star/rating-star";
+import { RatingHeart } from "../../rating-heart/rating-heart";
 
-export interface RateElements {
+export interface RatingElements {
 
     // Test Host declarations
     hostComponent: TestHostReadOnly | TestHostInteractive;
     fixture: ComponentFixture<TestHostReadOnly | TestHostInteractive>;
 
     // Component Declarations
-    rate: DebugElement;
-    rateInstance: NgRate;
+    ratings: DebugElement;
+    ratingsInstance: NgRatings;
 
     // Usefull elements declarations
-    rateItemButtons: DebugElement[];
-    rateStars: DebugElement[];
-    rateHearts: DebugElement[];
+    ratingItemButtons: DebugElement[];
+    ratingStars: DebugElement[];
+    ratingHearts: DebugElement[];
 
 }
 
-export async function beforeEachRateTest(hostType: 'readOnly' | 'interactive' = 'readOnly'){
+export async function beforeEachRatingsTest(hostType: 'readOnly' | 'interactive' = 'readOnly'){
 
     await TestBed.configureTestingModule({
         providers: [
@@ -44,25 +44,25 @@ export async function beforeEachRateTest(hostType: 'readOnly' | 'interactive' = 
 
 
 
-    const rate = fixture.debugElement.query(By.directive(NgRate));
-    const rateInstance = rate.componentInstance;
+    const ratings = fixture.debugElement.query(By.directive(NgRatings));
+    const ratingsInstance = ratings.componentInstance;
 
     fixture.detectChanges();
 
     //List of buttons if is NOT readOnly
-    const rateItemButtons = fixture.debugElement.queryAll(By.css('.rateItemButton'));
+    const ratingItemButtons = fixture.debugElement.queryAll(By.css('.ratingItemButton'));
 
     //List of icons if is readOnly
-    const rateStars = fixture.debugElement.queryAll(By.directive(RateStar));
-    const rateHearts = fixture.debugElement.queryAll(By.directive(RateHeart));
+    const ratingStars = fixture.debugElement.queryAll(By.directive(RatingStar));
+    const ratingHearts = fixture.debugElement.queryAll(By.directive(RatingHeart));
 
     return {
       fixture,
       hostComponent,
-      rate,
-      rateInstance,
-      rateItemButtons,
-      rateStars,
-      rateHearts
+      ratings,
+      ratingsInstance,
+      ratingItemButtons,
+      ratingStars,
+      ratingHearts
     }
 }

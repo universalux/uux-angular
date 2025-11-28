@@ -31,8 +31,8 @@
       "ng-menu-toggle": [
         "./dist/ng-menu-toggle"
       ],
-      "ng-rate": [
-        "./dist/ng-rate"
+      "ng-ratings": [
+        "./dist/ng-ratings"
       ],
       "ng-scroll-nav": [
         "./dist/ng-scroll-nav"
@@ -153,10 +153,10 @@
       "path": "./projects/ng-expand-group/tsconfig.spec.json"
     },
     {
-      "path": "./projects/ng-rate/tsconfig.lib.json"
+      "path": "./projects/ng-ratings/tsconfig.lib.json"
     },
     {
-      "path": "./projects/ng-rate/tsconfig.spec.json"
+      "path": "./projects/ng-ratings/tsconfig.spec.json"
     }
   ]
 }

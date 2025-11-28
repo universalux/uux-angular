@@ -2,17 +2,17 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 
 @Component({
   standalone: true,
-  selector: 'rate-heart',
+  selector: 'rating-star',
   imports: [],
-  templateUrl: './rate-heart.html',
-  styleUrl: '../rate-icon.scss',
+  templateUrl: './rating-star.html',
+  styleUrl: '../rating-icon.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RateHeart {
+export class RatingStar {
   itemPercentage = input<number>(0);
   uniqueId = signal<string>(this.generateUniqueId());
 
-  generateUniqueId(prefix = 'rate-heart'): string {
+  generateUniqueId(prefix = 'rating-star'): string {
     const random = Math.random().toString(36).substring(2, 10);
     return `${prefix}-${random}`;
   }

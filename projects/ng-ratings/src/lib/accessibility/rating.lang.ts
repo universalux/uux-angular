@@ -1,4 +1,4 @@
-export const RATE_LANG = {
+export const RATING_LANG = {
   en: {
     containerReadOnlyAriaLabel: 'Average rating',
     containerInteractiveAriaLabel: 'Rating selector',

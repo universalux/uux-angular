@@ -430,20 +430,20 @@
         }
       }
     },
-    "ng-rate": {
+    "ng-ratings": {
       "projectType": "library",
-      "root": "projects/ng-rate",
-      "sourceRoot": "projects/ng-rate/src",
+      "root": "projects/ng-ratings",
+      "sourceRoot": "projects/ng-ratings/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
           "configurations": {
             "production": {
-              "tsConfig": "projects/ng-rate/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ng-ratings/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ng-rate/tsconfig.lib.json"
+              "tsConfig": "projects/ng-ratings/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -451,7 +451,7 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "tsConfig": "projects/ng-rate/tsconfig.spec.json"
+            "tsConfig": "projects/ng-ratings/tsconfig.spec.json"
           }
         }
       }

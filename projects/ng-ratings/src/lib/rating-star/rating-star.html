@@ -28,20 +28,20 @@
   <!-- Empty inner layer -->
   <use
     [attr.href]="'#' + uniqueId() + 'star'"
-    class="rateIcon__emptyFill"
+    class="ratingIcon__emptyFill"
   ></use>
 
   <!-- Fill usando máscara -->
   <use
     [attr.href]="'#' + uniqueId() + 'star'"
-    class="rateIcon__fill"
+    class="ratingIcon__fill"
     [attr.mask]="'url(#' + uniqueId() + 'star-fill-mask)'"
   ></use>
 
   <!-- Stroke layer -->
   <use
     [attr.href]="'#' + uniqueId() + 'star'"
-    class="rateIcon__stroke"
+    class="ratingIcon__stroke"
     stroke-width="1.5"
   ></use>
 </svg>
