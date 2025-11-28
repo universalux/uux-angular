@@ -9,6 +9,7 @@ import { PgScrollNav } from './playgrounds/pg-scroll-nav/pg-scroll-nav';
 import { PgExpand } from './playgrounds/pg-expand/pg-expand';
 import { PgKits } from "./playgrounds/pg-kits/pg-kits";
 import { PgRatings } from "./playgrounds/pg-ratings/pg-ratings";
+import { Covers } from "./covers/covers";
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,8 @@ import { PgRatings } from "./playgrounds/pg-ratings/pg-ratings";
     PgScrollNav,
     PgExpand,
     PgKits,
-    PgRatings
+    PgRatings,
+    Covers
 ],
   templateUrl: './app.html',
   styleUrl: './app.scss'

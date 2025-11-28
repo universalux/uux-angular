@@ -1,0 +1,111 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100dvh;
+    height: 100%;
+    background: linear-gradient(127deg, #30a2fe 20%, #824dfe 100%);
+    // color: red;
+    // background-color: white;
+}
+
+.titleContainer{
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleContainer hgroup h1{
+    font-size: 1.8rem;
+    margin-bottom: .35rem;
+}
+
+.titleContainer hgroup div{
+
+  display: flex;
+  column-gap: .3rem;
+  align-items: end;
+}
+
+.uuxLogo{
+  width: 125px;
+  margin-bottom: .1rem;
+}
+
+.angularLogo{
+    max-width: 52px;
+}
+
+.container{
+    width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+
+}
+
+ng-link-button.myClass{
+  // --link-button-outline: 2px solid orange;
+}
+
+ng-link-button[type="outline"]{
+
+  --link-button-outline: 2px solid white;
+  --link-button-color: white;
+}
+
+ng-link-button[type="solid"]{
+
+  // --link-button-bg: red;
+  // --link-button-color: black;
+  // background: red; //Only affects to type='solid'
+  // margin: 5px;
+  // box-shadow: 3px 3px 10px black;
+  // border-radius: 1.5rem; //Only affects to shape='rounded'
+  // color: blue;
+
+  // --link-button-outline: 2px solid yellow;
+  // --link-button-bg: blue; // Affects to all types
+  // --link-button-padding: .5rem 1rem;
+  // --link-button-flex-gap: .5rem;
+  // --link-button-transition-duration: 0.2s;
+
+  // --link-button-hover-bg: red;
+  // --link-button-hover-color: inherit;
+  // --link-button-hover-outline: 1px solid #824dfe;
+  // --link-button-hover-scale: 1.05;
+
+  // --link-button-active-bg: var(--link-button-hover-bg);
+  // --link-button-active-color: inherit;
+  // --link-button-active-outline: var(--link-button-hover-outline);
+  // --link-button-active-scale: 1.02;
+
+}
+
+ng-simple-button{
+  // --simple-button-hover-stroke: 1px solid red;
+  // --simple-button-width: 100%;
+  // --simple-button-justify-content: center;
+  // --simple-button-height: 100%;
+  // --simple-button-radius: 0rem;
+  // --simple-button-padding: .7rem 2rem;
+  // --simple-button-bg: red;
+  // --simple-button-color: white;
+  // --simple-button-border: 1px solid white;
+  // --simple-button-focus-ring: green;
+  // --simple-button-border: 1px solid red;
+
+  // --simple-button-hover-scale: 1.1;
+  // --simple-button-hover-bg: blue;
+  // --simple-button-hover-shadow: 5px 5px 10px black;
+}
