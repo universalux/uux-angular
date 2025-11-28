@@ -42,7 +42,7 @@
 }
 
 .angularLogo{
-    max-width: 52px;
+  max-width: 52px;
 }
 
 .container{
@@ -58,11 +58,12 @@
 
 .upperRates{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 3rem;
 }
 
 ng-rate.solid{
+  margin: 0 auto;
   // height: 30px;
   // width: 200px;
   // height: 100%;
@@ -74,7 +75,7 @@ ng-rate.solid{
 
 ng-rate{
   // height: 100%;
-  max-height: 60px;
+  max-height: 35px;
   // height: fit-content;
   // --rate-gap: 1rem;
   // --rate-filled-color: blue;

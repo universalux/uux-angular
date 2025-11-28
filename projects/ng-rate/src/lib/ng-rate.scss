@@ -5,6 +5,7 @@
 .rateContainer{
   height: 100%;
   display: flex;
+  justify-content: center;
   filter: drop-shadow(var(--rate-shadow, 2px 2px 5px rgba(0, 0, 0, 0.548)));
 }
 

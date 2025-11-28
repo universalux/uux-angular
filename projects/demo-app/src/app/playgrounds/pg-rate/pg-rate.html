@@ -1,4 +1,4 @@
-<!-- <div class="titleContainer">
+<div class="titleContainer">
   <hgroup>
     <h1>ng-rate</h1>
     <div>
@@ -7,7 +7,7 @@
     </div>
   </hgroup>
   <img src="angular_white.png" class="angularLogo">
-</div> -->
+</div>
 
 <div class="container">
   <div class="upperRates">
@@ -33,7 +33,7 @@
 
   <ng-rate
     class="solid"
-    [average]="vote3()!"
+    [average]="!vote3() ? average() : vote3()!"
     [items]="10"
     icon="star"
     [readOnly]="false"

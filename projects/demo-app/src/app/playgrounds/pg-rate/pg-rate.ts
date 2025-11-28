@@ -57,5 +57,6 @@ export class PgRate {
   vote = signal<number | null>(null);
   vote2 = signal<number | null>(null);
   vote3 = signal<number | null>(null);
+  average = signal<number>(5.5);
 
 }
