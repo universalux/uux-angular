@@ -3,11 +3,11 @@
   height: 100%;
 }
 
-.rateIcon__fill{
+.ratingIcon__fill{
   fill: var(--icon-filled-color, gold);
 }
 
-.rateIcon__stroke{
+.ratingIcon__stroke{
   fill: transparent;
   stroke: var(--icon-stroke-color, white);
   stroke-width: var(--icon-stroke-width, 10%);
@@ -15,6 +15,6 @@
   stroke-linecap: round;
 }
 
-.rateIcon__emptyFill{
+.ratingIcon__emptyFill{
   fill: var(--icon-empty-color, transparent);
 }

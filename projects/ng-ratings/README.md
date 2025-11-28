@@ -1,12 +1,12 @@
 <p align="center">
   <a href="https://universalux.dev" target="_blank" rel="noreferrer noopener">
-    <img src="https://github.com/universalux/uux-hub/blob/main/assets/components/angular/ng-rate/ng-rate-cover.gif?raw=true" alt="NgRate cover">
+    <img src="https://github.com/universalux/uux-hub/blob/main/assets/components/angular/ng-ratings/ng-ratings-cover.gif?raw=true" alt="NgRatings cover">
   </a>
 </p>
 
-# NgRate - Angular Menu rating component
+# NgRatings - Angular Menu rating component
 
-**ng-rate** is a **standalone, reusable and customizable component** for Angular 18, 19 and 20.
+**ng-ratings** is a **standalone, reusable and customizable component** for Angular 18, 19 and 20.
 
 It is designed to work with **signals** and Angular **zoneless**, providing a lightweight, flexible, and accessible rating component. It is also fully compatible with **SSR, CSR and prerender**.
 
@@ -24,20 +24,20 @@ It is designed to work with **signals** and Angular **zoneless**, providing a li
 
 If you want to install the latest version (currently 20):
 ```bash
-npm install ng-rate
+npm install ng-ratings
 ```
 
 Angular 19:
 ```bash
-npm install ng-rate@v19-lts
+npm install ng-ratings@v19-lts
 ```
 
 Angular 18:
 ```bash
-npm install ng-rate@v18-lts
+npm install ng-ratings@v18-lts
 ```
 
-Using `ng-rate` is easy:
+Using `ng-ratings` is easy:
 - Set the average you want to show at `(average)` input and/or able the component to generate votes using the `[readOnly]` input (you will get the vote value through `(vote)` output) .
 - Configure its type, icon, hover behavior and accessibility using inputs.
 - Style it with customizable CSS variables to match your design needs.
@@ -46,14 +46,14 @@ Here’s a basic usage example:
 
 ```ts
 import { Component, signal } from '@angular/core';
-import { NgRate } from 'ng-rate';
+import { NgRatings } from 'ng-ratings';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NgRate],
+  imports: [NgRatings],
   template: `
-    <ng-rate
+    <ng-ratings
       [average]="3.4"
       [items]="7"
       icon="heart"
@@ -120,24 +120,24 @@ Here is a list of all input/output:
 You can easily customize the component’s appearance using the CSS variables listed below.
 
 ```css
-ng-rate{
+ng-ratings{
   max-height: 35px;
-  --rate-filled-color: blue;
-  --icon-stroke-width: .4;
-  --icon-empty-color: white;
+  --rating-filled-color: blue;
+  --rating-stroke-width: .4;
+  --rating-empty-color: white;
 }
 ```
 
 | **Variable**                       | **Description**                                    | **Default**                                 |
 | ---------------------------------- | -------------------------------------------------- | ------------------------------------------- |
-| `--rate-shadow`                    | Drop-shadow applied to the rating container.       | `2px 2px 5px rgba(0,0,0,.548)`              |
-| `--rate-hover-transition-duration` | Duration of the hover animation on icons.          | `.3s`                                       |
-| `--rate-focus-ring`                | Outline style applied when an item receives focus. | `2px solid var(--rate-stroke-color, white)` |
-| `--rate-item-x-padding`            | Horizontal spacing between each icon.              | `.3rem`                                     |
-| `--rate-filled-color` | Fill color used for the filled portion of icons. | `gold` (stars), `red` (hearts) |
-| `--rate-stroke-color` | Stroke color applied to icon outlines.           | `white`                        |
-| `--rate-stroke-width` | Width of the icon stroke.                        | `.7`                           |
-| `--rate-empty-color`  | Color for the unfilled portion of icons.         | `transparent`                  |
+| `--rating-shadow`                    | Drop-shadow applied to the rating container.       | `2px 2px 5px rgba(0,0,0,.548)`              |
+| `--rating-hover-transition-duration` | Duration of the hover animation on icons.          | `.3s`                                       |
+| `--rating-focus-ring`                | Outline style applied when an item receives focus. | `2px solid var(--rating-stroke-color, white)` |
+| `--rating-item-x-padding`            | Horizontal spacing between each icon.              | `.3rem`                                     |
+| `--rating-filled-color` | Fill color used for the filled portion of icons. | `gold` (stars), `red` (hearts) |
+| `--rating-stroke-color` | Stroke color applied to icon outlines.           | `white`                        |
+| `--rating-stroke-width` | Width of the icon stroke.                        | `.7`                           |
+| `--rating-empty-color`  | Color for the unfilled portion of icons.         | `transparent`                  |
 
 
 ## Accessibility
@@ -146,23 +146,23 @@ This component includes five default languages. When you choose one using the `l
 
 *** We recommend using the lang input if you don't need any other languages than the ones provided by default. It's simple and compliant with WAI-ARIA standards. ***
 
-If you want to set up your own custom aria attributes, you should use the `RateCustomAria` interface.
+If you want to set up your own custom aria attributes, you should use the `RatingCustomAria` interface.
 You can import it directly from the component:
 
 ```ts
-import { RateCustomAria } from 'ng-hero-carousel';
+import { RatingCustomAria } from 'ng-ratings';
 ```
 
-Here is the exact declaration of the HeroCarouselCustomAria type:
+Here is the exact declaration of the RatingCustomAria type:
 
 ```ts
-export interface RateCustomAria {
+export interface RatingCustomAria {
   containerReadOnlyAriaLabel?: string;
   containerInteractiveAriaLabel?: string;
   buttonInteractiveAriaLabel?: (value: number, total: number) => string;
 };
 ```
-Here you can see a description of every field in `RateCustomAria` interface.
+Here you can see a description of every field in `RatingCustomAria` interface.
 Every field is type `string` (except buttonInteractiveAriaLabel) and `non-required`
 
 | **Property**                    | **Description**                                                                                       |
@@ -177,12 +177,12 @@ IMPORTANT:
 Here you have an example of use:
 
 ```ts
-import { NgRate, RateCustomAria } from 'ng-hero-carousel';
+import { NgRatings, RatingCustomAria } from 'ng-ratings';
 
 @Component({
-  imports: [NgHeroCarousel],
+  imports: [NgRatings],
   template: `
-    <ng-rate
+    <ng-ratings
       [items]="4"
       [average]="2.5"
       [customAria]="accOpts()"
@@ -191,8 +191,8 @@ import { NgRate, RateCustomAria } from 'ng-hero-carousel';
 })
 class App {
 
-  accOpts = signal<RateCustomAria>({
-    containerReadOnlyAriaLabel: 'CUSTOM - Average rating',
+  accOpts = signal<RatingCustomAria>({
+    containerInteractiveAriaLabel: 'CUSTOM - Average rating',
     buttonInteractiveAriaLabel: (value, total) =>
         `CHANGED - Select ${value} of ${total}`
   });

@@ -1,21 +1,21 @@
 import { Component, signal } from "@angular/core";
-import { NgRate } from "../../ng-rate";
-import { RateLangs } from "../../ng-rate.types";
+import { NgRatings } from "../../ng-ratings";
+import { RatingLangs } from "../../ng-ratings.types";
 
 export type ItemValues = 3 | 4 | 5 | 7 | 10;
 
 @Component({
-  imports: [NgRate],
-  template: `<ng-rate [readOnly]="true" [average]="3.5" [items]="items()"/>`
+  imports: [NgRatings],
+  template: `<ng-ratings [readOnly]="true" [average]="3.5" [items]="items()"/>`
 })
 export class TestHostReadOnly {
   items = signal<ItemValues>(5);
 }
 
 @Component({
-    imports: [NgRate],
+    imports: [NgRatings],
     template: `
-      <ng-rate
+      <ng-ratings
         [average]="vote()!"
         [items]="items()"
         icon="heart"
@@ -27,5 +27,5 @@ export class TestHostReadOnly {
 export class TestHostInteractive {
   vote = signal<number | null>(null);
   items = signal<ItemValues>(3);
-  lang = signal<RateLangs>('en');
+  lang = signal<RatingLangs>('en');
 }

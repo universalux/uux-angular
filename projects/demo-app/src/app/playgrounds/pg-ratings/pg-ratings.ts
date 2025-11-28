@@ -1,16 +1,16 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { NgRate } from 'ng-rate';
+import { NgRatings } from 'ng-ratings';
 
 type Items = 3 | 4 | 5 | 7 | 10;
 
 @Component({
-  selector: 'pg-rate',
-  imports: [ NgRate ],
-  templateUrl: './pg-rate.html',
-  styleUrl: './pg-rate.scss',
+  selector: 'pg-ratings',
+  imports: [ NgRatings ],
+  templateUrl: './pg-ratings.html',
+  styleUrl: './pg-ratings.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PgRate {
+export class PgRatings {
 
   customPercentage = signal<number | null>(2.4);
 

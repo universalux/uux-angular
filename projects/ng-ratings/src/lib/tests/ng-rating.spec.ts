@@ -1,18 +1,18 @@
 import { By } from '@angular/platform-browser';
-import { beforeEachRateTest, RateElements } from './helpers/beforeEach';
+import { beforeEachRatingsTest, RatingElements } from './helpers/beforeEach';
 import { ItemValues, TestHostInteractive, TestHostReadOnly } from './helpers/testHosts';
-import { RateStar } from '../rate-star/rate-star';
+import { RatingStar } from '../rating-star/rating-star';
 import { DebugElement } from '@angular/core';
-import { RateHeart } from '../rate-heart/rate-heart';
-import { RATE_LANG } from '../accessibility/rate.lang';
-import { RateLangs } from '../ng-rate.types';
+import { RatingHeart } from '../rating-heart/rating-heart';
+import { RATING_LANG } from '../accessibility/rating.lang';
+import { RatingLangs } from '../ng-ratings.types';
 
-describe('NgRate - ReadOnly', () => {
+describe('NgRatings - ReadOnly', () => {
 
-  let elements: RateElements;
+  let elements: RatingElements;
 
   beforeEach(async () => {
-    elements = await beforeEachRateTest('readOnly');
+    elements = await beforeEachRatingsTest('readOnly');
   });
 
   // HELPER FUNCTIONS
@@ -31,7 +31,7 @@ describe('NgRate - ReadOnly', () => {
     checkItemsFill(itemList);
 
     if(interactive){
-      const buttonList = elements.fixture.debugElement.queryAll(By.css('.rateItemButton'));
+      const buttonList = elements.fixture.debugElement.queryAll(By.css('.ratingItemButton'));
       expect(buttonList.length).toBe(value);
       checkButtonVote(buttonList);
     };
@@ -39,9 +39,9 @@ describe('NgRate - ReadOnly', () => {
 
   const checkItemsFill = (list: DebugElement[]) => {
     console.log('CHECKING ITEMS FILL');
-    let average = elements.rateInstance.average();
+    let average = elements.ratingsInstance.average();
     list.forEach((debugEl) => {
-      const compInstance = debugEl.componentInstance as RateHeart;
+      const compInstance = debugEl.componentInstance as RatingHeart;
       if(average >= 1){
         expect(compInstance.itemPercentage()).toBe(100);
         average --;
@@ -72,20 +72,20 @@ describe('NgRate - ReadOnly', () => {
   it('should create', () => {
     expect(elements.fixture).toBeTruthy();
     expect(elements.hostComponent).toBeTruthy();
-    expect(elements.rate).toBeTruthy();
-    expect(elements.rateInstance).toBeTruthy();
-    expect(elements.rateItemButtons).toEqual([]);
-    expect(elements.rateStars).toBeTruthy();
-    expect(elements.rateHearts).toEqual([]);
+    expect(elements.ratings).toBeTruthy();
+    expect(elements.ratingsInstance).toBeTruthy();
+    expect(elements.ratingItemButtons).toEqual([]);
+    expect(elements.ratingStars).toBeTruthy();
+    expect(elements.ratingHearts).toEqual([]);
   });
 
   it('should have initial predefined values', () => {
-    expect(elements.rateInstance.items()).toBe(5);
-    expect(elements.rateInstance.average()).toBe(3.5);
-    expect(elements.rateInstance.icon()).toBe('star');
-    expect(elements.rateInstance.readOnly()).toBe(true);
-    expect(elements.rateInstance.lang()).toBe('en');
-    expect(elements.rateInstance.customAria()).toBe(null);
+    expect(elements.ratingsInstance.items()).toBe(5);
+    expect(elements.ratingsInstance.average()).toBe(3.5);
+    expect(elements.ratingsInstance.icon()).toBe('star');
+    expect(elements.ratingsInstance.readOnly()).toBe(true);
+    expect(elements.ratingsInstance.lang()).toBe('en');
+    expect(elements.ratingsInstance.customAria()).toBe(null);
   });
 
   it('should render icons depending on "items" input and adjust filled items', () => {
@@ -99,7 +99,7 @@ describe('NgRate - ReadOnly', () => {
 
       // We check functionalities with each item value
       checkItemValue({
-        iconType: RateStar,
+        iconType: RatingStar,
         interactive: false,
         value: itemValue
       });
@@ -107,18 +107,18 @@ describe('NgRate - ReadOnly', () => {
   });
 
   it('should apply accessibility readOnly labels', () => {
-    const container = elements.fixture.debugElement.query(By.css('.rateContainer')).nativeElement as HTMLDivElement;
-    expect(container.getAttribute('aria-label')).toBe(RATE_LANG['en'].containerReadOnlyAriaLabel)
+    const container = elements.fixture.debugElement.query(By.css('.ratingContainer')).nativeElement as HTMLDivElement;
+    expect(container.getAttribute('aria-label')).toBe(RATING_LANG['en'].containerReadOnlyAriaLabel)
   });
 
 });
 
-describe('NgRate - Interactive', () => {
+describe('NgRating - Interactive', () => {
 
-  let elements: RateElements;
+  let elements: RatingElements;
 
   beforeEach(async () => {
-    elements = await beforeEachRateTest('interactive');
+    elements = await beforeEachRatingsTest('interactive');
   });
 
   // HELPER FUNCTIONS
@@ -130,7 +130,7 @@ describe('NgRate - Interactive', () => {
     isinteractive: boolean;
     value: number;
   };
-  const langValues : RateLangs[] = ['en', 'es', 'it', 'de', 'fr'];
+  const langValues : RatingLangs[] = ['en', 'es', 'it', 'de', 'fr'];
 
   const checkItemValue = ({host, iconType, isinteractive, value} : CheckItemValues) => {
     console.log('CHECKING LENGTH: ', value);
@@ -139,7 +139,7 @@ describe('NgRate - Interactive', () => {
     checkItemsFill(itemList);
 
     if(isinteractive){
-      const buttonList = elements.fixture.debugElement.queryAll(By.css('.rateItemButton'));
+      const buttonList = elements.fixture.debugElement.queryAll(By.css('.ratingItemButton'));
       expect(buttonList.length).toBe(value);
       checkButton(buttonList, value);
     };
@@ -149,9 +149,9 @@ describe('NgRate - Interactive', () => {
 
   const checkItemsFill = (list: DebugElement[]) => {
     console.log('CHECKING ITEMS FILL');
-    let average = elements.rateInstance.average();
+    let average = elements.ratingsInstance.average();
     list.forEach((debugEl) => {
-      const compInstance = debugEl.componentInstance as RateHeart;
+      const compInstance = debugEl.componentInstance as RatingHeart;
       if(average >= 1){
         expect(compInstance.itemPercentage()).toBe(100);
         average --;
@@ -187,12 +187,12 @@ describe('NgRate - Interactive', () => {
       host.lang.set(lang);
       elements.fixture.detectChanges();
 
-      const container = elements.fixture.debugElement.query(By.css('.rateContainer')).nativeElement as HTMLDivElement;
+      const container = elements.fixture.debugElement.query(By.css('.ratingContainer')).nativeElement as HTMLDivElement;
       if(interactive){
-        expect(container.getAttribute('aria-label')).toBe(RATE_LANG[lang].containerInteractiveAriaLabel);
+        expect(container.getAttribute('aria-label')).toBe(RATING_LANG[lang].containerInteractiveAriaLabel);
 
       }else{
-        expect(container.getAttribute('aria-label')).toBe(RATE_LANG[lang].containerReadOnlyAriaLabel);
+        expect(container.getAttribute('aria-label')).toBe(RATING_LANG[lang].containerReadOnlyAriaLabel);
       }
 
     });
@@ -208,7 +208,7 @@ describe('NgRate - Interactive', () => {
       host.lang.set(lang);
       elements.fixture.detectChanges();
 
-      expect(button.nativeElement.getAttribute('aria-label')).toBe(RATE_LANG[lang].buttonInteractiveAriaLabel(current + 1, total));
+      expect(button.nativeElement.getAttribute('aria-label')).toBe(RATING_LANG[lang].buttonInteractiveAriaLabel(current + 1, total));
 
     });
   };
@@ -218,18 +218,18 @@ describe('NgRate - Interactive', () => {
   it('should create', () => {
     expect(elements.fixture).toBeTruthy();
     expect(elements.hostComponent).toBeTruthy();
-    expect(elements.rate).toBeTruthy();
-    expect(elements.rateInstance).toBeTruthy();
-    expect(elements.rateItemButtons).toBeTruthy();
-    expect(elements.rateStars).toEqual([]);
-    expect(elements.rateHearts).toBeTruthy();
+    expect(elements.ratings).toBeTruthy();
+    expect(elements.ratingsInstance).toBeTruthy();
+    expect(elements.ratingItemButtons).toBeTruthy();
+    expect(elements.ratingStars).toEqual([]);
+    expect(elements.ratingHearts).toBeTruthy();
   });
 
   it('should have initial predefined values', () => {
-    expect(elements.rateInstance.items()).toBe(3);
-    expect(elements.rateInstance.average()).toBeNull();
-    expect(elements.rateInstance.icon()).toBe('heart');
-    expect(elements.rateInstance.readOnly()).toBe(false);
+    expect(elements.ratingsInstance.items()).toBe(3);
+    expect(elements.ratingsInstance.average()).toBeNull();
+    expect(elements.ratingsInstance.icon()).toBe('heart');
+    expect(elements.ratingsInstance.readOnly()).toBe(false);
   });
 
   it('should render icons depending on "items" input and adjust filled items', () => {
@@ -244,7 +244,7 @@ describe('NgRate - Interactive', () => {
       // We check functionalities with each item value
       checkItemValue({
         host,
-        iconType: RateHeart,
+        iconType: RatingHeart,
         isinteractive: true,
         value: itemValue
       });
