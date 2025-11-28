@@ -19,6 +19,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transform: translateY(20px);
 }
 
 .titleContainer hgroup h1{
@@ -103,10 +104,16 @@ ng-content-card [card-footer]{
   display: flex; column-gap: .5rem; justify-content: end;
 }
 
-// ng-content-carousel .carousel-item{
-//   background-color: blue;
-//   margin: 0 2rem;
-// }
+ng-content-carousel .carousel-item{
+  padding: 5px;
+  overflow: hidden;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+ng-content-carousel .carousel-item img{
+  border-radius: 10px;
+}
 
 @media screen and (max-width: 1024px) {
   .slideExample{

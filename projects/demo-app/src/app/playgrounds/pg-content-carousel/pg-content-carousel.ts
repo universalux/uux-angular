@@ -16,53 +16,27 @@ import { NgContentCard } from 'ng-content-card';
 export class PgContentCarousel {
   cardList = [
     {
-      header: 'CARD 1',
-      image: {url: 'images/card/dog_post.png', alt: 'Alt del perro'},
-      body: 'This is the content for the body of the card',
-      footer: 'Card footer content'
+        image_url: 'https://image.tmdb.org/t/p/w342/fjgSlNGECNgVeMJaOdDAXmGh7ZM.jpg',
     },
     {
-      header: 'CARD 2',
-      image: {url: 'images/card/dog_post.png', alt: 'Alt del perro'},
-      body: 'This is the content for the body of the card',
-      footer: 'Card footer content'
+        image_url: 'https://image.tmdb.org/t/p/w342/iWLV12z9oexSRLz2WKyqCZbKoPA.jpg',
     },
     {
-      header: 'CARD 3',
-      image: {url: 'images/card/dog_post.png', alt: 'Alt del perro'},
-      body: 'This is the content for the body of the card',
-      footer: 'Card footer content'
+        image_url: 'https://image.tmdb.org/t/p/w342/dyW5mX4wwDoZWgTYObx6pg9V0i9.jpg',
+        title: 'Mini Slider Mock 3',
     },
-    // {
-    //   header: 'CARD 4',
-    //   image: {url: 'images/card/dog_post.png', alt: 'Alt del perro'},
-    //   body: 'This is the content for the body of the card',
-    //   footer: 'Card footer content'
-    // },
-    // {
-    //   header: 'CARD 5',
-    //   image: {url: 'images/card/dog_post.png', alt: 'Alt del perro'},
-    //   body: 'This is the content for the body of the card',
-    //   footer: 'Card footer content'
-    // },
-    // {
-    //   header: 'CARD 6',
-    //   image: {url: 'images/card/dog_post.png', alt: 'Alt del perro'},
-    //   body: 'This is the content for the body of the card',
-    //   footer: 'Card footer content'
-    // },
-    // {
-    //   header: 'CARD 7',
-    //   image: {url: 'images/card/dog_post.png', alt: 'Alt del perro'},
-    //   body: 'This is the content for the body of the card',
-    //   footer: 'Card footer content'
-    // },
-    // {
-    //   header: 'CARD 8',
-    //   image: {url: 'images/card/dog_post.png', alt: 'Alt del perro'},
-    //   body: 'This is the content for the body of the card',
-    //   footer: 'Card footer content'
-    // },
+    {
+        image_url: 'https://image.tmdb.org/t/p/w342/nYqEQ3ltw0hHc1kBaNWr7Rb8WNZ.jpg',
+    },
+    {
+        image_url: 'https://image.tmdb.org/t/p/w342/aYPlrLJWjVkixwrJXA0f4V3D7Ab.jpg',
+    },
+    {
+        image_url: 'https://image.tmdb.org/t/p/w342/8hrrdAShrWXCnZn8qRQS2h9L7vg.jpg',
+    },
+    {
+        image_url: 'https://image.tmdb.org/t/p/w342/7dMoQsJ4Mxom4HwD2I0obFIxOAb.jpg',
+    },
   ]
 
   lang = signal<ContentCarouselLangs>('es');
